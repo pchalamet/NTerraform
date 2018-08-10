@@ -1,0 +1,39 @@
+using System.Collections.Generic;
+
+namespace NTerraform.Resources
+{
+    public class azurerm_dns_ns_record : NTerraform.resource
+    {
+        public class record
+        {
+            public record(string @nsdname)
+            {
+                @Nsdname = @nsdname;
+            }
+
+            public string @Nsdname { get; }
+        }
+
+        public azurerm_dns_ns_record(string @name,
+                                     string @resourceGroupName,
+                                     int @ttl,
+                                     string @zoneName,
+                                     HashSet<record> @record = null)
+        {
+            @Name = @name;
+            @ResourceGroupName = @resourceGroupName;
+            @Ttl = @ttl;
+            @ZoneName = @zoneName;
+            @Record = @record;
+        }
+
+        public string @Name { get; }
+        public string @ResourceGroupName { get; }
+        public int @Ttl { get; }
+        public string @ZoneName { get; }
+        public HashSet<record> @Record { get; }
+        public List<string> @Records { get; }
+        public Dictionary<string,string> @Tags { get; }
+    }
+
+}

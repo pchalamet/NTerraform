@@ -1,0 +1,27 @@
+using System.Collections.Generic;
+
+namespace NTerraform.Resources
+{
+    public class azurerm_postgresql_database : NTerraform.resource
+    {
+        public azurerm_postgresql_database(string @charset,
+                                           string @collation,
+                                           string @name,
+                                           string @resourceGroupName,
+                                           string @serverName)
+        {
+            @Charset = @charset;
+            @Collation = @collation;
+            @Name = @name;
+            @ResourceGroupName = @resourceGroupName;
+            @ServerName = @serverName;
+        }
+
+        public string @Charset { get; }
+        public string @Collation { get; }
+        public string @Name { get; }
+        public string @ResourceGroupName { get; }
+        public string @ServerName { get; }
+    }
+
+}
