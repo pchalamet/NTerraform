@@ -21,7 +21,7 @@ let rec toTypeName name primitive =
                                                 | Collection.List -> sprintf "%s list" declType
                                                 | Collection.Map -> sprintf "Map<string,%s>" declType
                                                 | Collection.Set -> sprintf "%s list" declType
-    | FieldType.Structure _ -> name |> toPascalCase
+    | FieldType.Structure _ -> name 
 
 
 
@@ -46,7 +46,7 @@ let rec generateType name fields =
         seq {
             yield! generateFields fields
 
-            let stype = sprintf "type %s(" (name |> toPascalCase)
+            let stype = sprintf "type %s(" name
             let separator = ",\n"+ System.String(' ', stype.Length)
 
             let primitiveParameters = fields |> List.filter (fun x -> x.Cardinality = Cardinality.Required)
