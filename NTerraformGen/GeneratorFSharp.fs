@@ -43,11 +43,20 @@ let rec generateType name fields =
                 | _ -> ()
             }
 
+        let rec generateCtor header sep footer prms =
+            seq {
+                match prms with
+                | [] -> yield sprintf "%s%s" header footer
+                | [prm] -> yield sprintf "%s%s%s" header prm footer
+                | prm :: t -> yield sprintf "%s%s," header prm
+                              yield! generateCtor sep sep footer t
+            }
+
         seq {
             yield! generateFields fields
 
-            let stype = sprintf "type %s(" name
-            let separator = ",\n"+ System.String(' ', stype.Length)
+            let ctor = sprintf "type %s(" name
+            let ctorIndent = System.String(' ', ctor.Length)
 
             let primitiveParameters = fields |> List.filter (fun x -> x.Cardinality = Cardinality.Required)
             let rangeParameters = fields |> List.filter (fun x -> match x.Cardinality with
@@ -61,16 +70,18 @@ let rec generateType name fields =
             let orderedParameters = (primitiveParameters @ rangeParameters |> List.sortBy (fun x -> x.Name))
                                     @ (optPrimitiveParameters @ optRangeParameters |> List.sortBy (fun x -> x.Name))
 
-            let parameters = orderedParameters
-                                |> List.map (fun x -> sprintf "%s``%s`` : %s" (toOptional x.Cardinality) 
+            let ctorPrms = orderedParameters
+                               |> List.filter (fun x -> x.Modifier = Modifier.In)
+                               |> List.map (fun x -> sprintf "%s``%s`` : %s" (toOptional x.Cardinality) 
                                                                           (x.Name |> toCamlCase) 
                                                                           (toTypeName x.Name x.Type))
-            let parametersDecl = System.String.Join(separator, parameters)
+                               |> generateCtor ctor ctorIndent ") ="
             let members = orderedParameters
+                            |> List.filter (fun x -> x.Modifier = Modifier.In) // UNDONE: Out parameters not support as of now
                             |> List.map (fun x -> sprintf "    member this.``%s`` = ``%s``" (x.Name |> toPascalCase) 
                                                                                     (x.Name |> toCamlCase))
 
-            yield sprintf "%s%s) =" stype parametersDecl
+            yield! ctorPrms
             yield! members
             yield ""
         }
