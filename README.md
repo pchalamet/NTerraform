@@ -49,6 +49,9 @@ resource "azurerm_virtual_network" "network" {
 
 This can be written in an F# script:
 ```fsharp
+open NTerraform.Providers
+open NTerraform.Resources
+
 let provider = azurerm(environment = "dev")
 let networkrg = azurerm_resource_group(name = "production",
                                        location = "West US")
@@ -62,7 +65,7 @@ let network = azurerm_virtual_network(name = "production-network",
                                       resourceGroupName = networkrg.Name,
                                       subnet = networkSubnets)
 
-NTerraform.schema.Build();
+NTerraform.schema.Build()
 ```
 
 This script can then be executed through FSI (it will write to stdout the terraform definition).
