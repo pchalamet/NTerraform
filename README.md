@@ -1,5 +1,6 @@
 # NTerraform
 NTerraform aims at writing C# or F# instead of *terraform* syntax. It's a POC as of now but looks really promising.
+Note that as of now, no tf file is generated - this has to be implemented ;-) but this will come soon !
 
 Advantages:
 * C# or F# syntax is easier to grasp
