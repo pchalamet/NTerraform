@@ -18,7 +18,7 @@ namespace NTerraform.Resources
                                      string @resourceGroupName,
                                      int @ttl,
                                      string @zoneName,
-                                     HashSet<record> @record = null)
+                                     record[] @record = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -31,8 +31,8 @@ namespace NTerraform.Resources
         public string @ResourceGroupName { get; }
         public int @Ttl { get; }
         public string @ZoneName { get; }
-        public HashSet<record> @Record { get; }
-        public List<string> @Records { get; }
+        public record[] @Record { get; }
+        public string[] @Records { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

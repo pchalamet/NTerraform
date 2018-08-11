@@ -12,7 +12,7 @@ namespace NTerraform.Resources
                                  int? @idleTimeoutInMinutes = null,
                                  string @reverseFqdn = null,
                                  string @sku = null,
-                                 List<string> @zones = null)
+                                 string[] @zones = null)
         {
             @Location = @location;
             @Name = @name;
@@ -36,7 +36,7 @@ namespace NTerraform.Resources
         public string @ReverseFqdn { get; }
         public string @Sku { get; }
         public Dictionary<string,string> @Tags { get; }
-        public List<string> @Zones { get; }
+        public string[] @Zones { get; }
     }
 
 }

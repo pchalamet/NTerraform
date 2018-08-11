@@ -9,7 +9,7 @@ namespace NTerraform.Resources
             public service(string @name,
                            string @address = null,
                            int? @port = null,
-                           HashSet<string> @tags = null)
+                           string[] @tags = null)
             {
                 @Name = @name;
                 @Address = @address;
@@ -21,12 +21,12 @@ namespace NTerraform.Resources
             public string @Address { get; }
             public string @Id { get; }
             public int? @Port { get; }
-            public HashSet<string> @Tags { get; }
+            public string[] @Tags { get; }
         }
 
         public consul_catalog_entry(string @address,
                                     string @node,
-                                    HashSet<service> @service = null,
+                                    service[] @service = null,
                                     string @token = null)
         {
             @Address = @address;
@@ -38,7 +38,7 @@ namespace NTerraform.Resources
         public string @Address { get; }
         public string @Node { get; }
         public string @Datacenter { get; }
-        public HashSet<service> @Service { get; }
+        public service[] @Service { get; }
         public string @Token { get; }
     }
 

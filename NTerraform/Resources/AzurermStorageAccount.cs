@@ -6,16 +6,28 @@ namespace NTerraform.Resources
     {
         public class network_rules
         {
-            public network_rules(HashSet<string> @ipRules = null,
-                                 HashSet<string> @virtualNetworkSubnetIds = null)
+            public network_rules(string[] @ipRules = null,
+                                 string[] @virtualNetworkSubnetIds = null)
             {
                 @IpRules = @ipRules;
                 @VirtualNetworkSubnetIds = @virtualNetworkSubnetIds;
             }
 
-            public HashSet<string> @Bypass { get; }
-            public HashSet<string> @IpRules { get; }
-            public HashSet<string> @VirtualNetworkSubnetIds { get; }
+            public string[] @Bypass { get; }
+            public string[] @IpRules { get; }
+            public string[] @VirtualNetworkSubnetIds { get; }
+        }
+
+        public class identity
+        {
+            public identity(string @type)
+            {
+                @Type = @type;
+            }
+
+            public string @Type { get; }
+            public string @PrincipalId { get; }
+            public string @TenantId { get; }
         }
 
         public class custom_domain
@@ -31,18 +43,6 @@ namespace NTerraform.Resources
             public bool? @UseSubdomain { get; }
         }
 
-        public class identity
-        {
-            public identity(string @type)
-            {
-                @Type = @type;
-            }
-
-            public string @Type { get; }
-            public string @PrincipalId { get; }
-            public string @TenantId { get; }
-        }
-
         public azurerm_storage_account(string @accountReplicationType,
                                        string @accountTier,
                                        string @location,
@@ -50,12 +50,12 @@ namespace NTerraform.Resources
                                        string @resourceGroupName,
                                        string @accountEncryptionSource = null,
                                        string @accountKind = null,
-                                       List<custom_domain> @customDomain = null,
+                                       custom_domain[] @customDomain = null,
                                        bool? @enableBlobEncryption = null,
                                        bool? @enableFileEncryption = null,
                                        bool? @enableHttpsTrafficOnly = null,
-                                       List<identity> @identity = null,
-                                       List<network_rules> @networkRules = null)
+                                       identity[] @identity = null,
+                                       network_rules[] @networkRules = null)
         {
             @AccountReplicationType = @accountReplicationType;
             @AccountTier = @accountTier;
@@ -81,12 +81,12 @@ namespace NTerraform.Resources
         public string @AccountEncryptionSource { get; }
         public string @AccountKind { get; }
         public string @AccountType { get; }
-        public List<custom_domain> @CustomDomain { get; }
+        public custom_domain[] @CustomDomain { get; }
         public bool? @EnableBlobEncryption { get; }
         public bool? @EnableFileEncryption { get; }
         public bool? @EnableHttpsTrafficOnly { get; }
-        public List<identity> @Identity { get; }
-        public List<network_rules> @NetworkRules { get; }
+        public identity[] @Identity { get; }
+        public network_rules[] @NetworkRules { get; }
         public string @PrimaryAccessKey { get; }
         public string @PrimaryBlobConnectionString { get; }
         public string @PrimaryBlobEndpoint { get; }

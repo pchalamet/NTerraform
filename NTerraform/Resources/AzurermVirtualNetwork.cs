@@ -20,12 +20,12 @@ namespace NTerraform.Resources
             public string @SecurityGroup { get; }
         }
 
-        public azurerm_virtual_network(List<string> @addressSpace,
+        public azurerm_virtual_network(string[] @addressSpace,
                                        string @location,
                                        string @name,
                                        string @resourceGroupName,
-                                       List<string> @dnsServers = null,
-                                       HashSet<subnet> @subnet = null)
+                                       string[] @dnsServers = null,
+                                       subnet[] @subnet = null)
         {
             @AddressSpace = @addressSpace;
             @Location = @location;
@@ -35,12 +35,12 @@ namespace NTerraform.Resources
             @Subnet = @subnet;
         }
 
-        public List<string> @AddressSpace { get; }
+        public string[] @AddressSpace { get; }
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<string> @DnsServers { get; }
-        public HashSet<subnet> @Subnet { get; }
+        public string[] @DnsServers { get; }
+        public subnet[] @Subnet { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

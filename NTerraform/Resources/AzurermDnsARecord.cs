@@ -5,7 +5,7 @@ namespace NTerraform.Resources
     public class azurerm_dns_a_record : NTerraform.resource
     {
         public azurerm_dns_a_record(string @name,
-                                    HashSet<string> @records,
+                                    string[] @records,
                                     string @resourceGroupName,
                                     int @ttl,
                                     string @zoneName)
@@ -18,7 +18,7 @@ namespace NTerraform.Resources
         }
 
         public string @Name { get; }
-        public HashSet<string> @Records { get; }
+        public string[] @Records { get; }
         public string @ResourceGroupName { get; }
         public int @Ttl { get; }
         public string @ZoneName { get; }

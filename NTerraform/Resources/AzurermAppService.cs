@@ -4,6 +4,18 @@ namespace NTerraform.Resources
 {
     public class azurerm_app_service : NTerraform.resource
     {
+        public class identity
+        {
+            public identity(string @type)
+            {
+                @Type = @type;
+            }
+
+            public string @Type { get; }
+            public string @PrincipalId { get; }
+            public string @TenantId { get; }
+        }
+
         public class site_config
         {
             public class ip_restriction
@@ -20,10 +32,10 @@ namespace NTerraform.Resources
             }
 
             public site_config(bool? @alwaysOn = null,
-                               List<string> @defaultDocuments = null,
+                               string[] @defaultDocuments = null,
                                string @dotnetFrameworkVersion = null,
                                bool? @http2Enabled = null,
-                               List<ip_restriction> @ipRestriction = null,
+                               ip_restriction[] @ipRestriction = null,
                                string @javaContainer = null,
                                string @javaContainerVersion = null,
                                string @javaVersion = null,
@@ -47,11 +59,11 @@ namespace NTerraform.Resources
             }
 
             public bool? @AlwaysOn { get; }
-            public List<string> @DefaultDocuments { get; }
+            public string[] @DefaultDocuments { get; }
             public string @DotnetFrameworkVersion { get; }
             public string @FtpsState { get; }
             public bool? @Http2Enabled { get; }
-            public List<ip_restriction> @IpRestriction { get; }
+            public ip_restriction[] @IpRestriction { get; }
             public string @JavaContainer { get; }
             public string @JavaContainerVersion { get; }
             public string @JavaVersion { get; }
@@ -66,28 +78,6 @@ namespace NTerraform.Resources
             public string @ScmType { get; }
             public bool? @Use32BitWorkerProcess { get; }
             public bool? @WebsocketsEnabled { get; }
-        }
-
-        public class site_credential
-        {
-            public site_credential()
-            {
-            }
-
-            public string @Password { get; }
-            public string @Username { get; }
-        }
-
-        public class identity
-        {
-            public identity(string @type)
-            {
-                @Type = @type;
-            }
-
-            public string @Type { get; }
-            public string @PrincipalId { get; }
-            public string @TenantId { get; }
         }
 
         public class connection_string
@@ -116,17 +106,27 @@ namespace NTerraform.Resources
             public string @RepoUrl { get; }
         }
 
+        public class site_credential
+        {
+            public site_credential()
+            {
+            }
+
+            public string @Password { get; }
+            public string @Username { get; }
+        }
+
         public azurerm_app_service(string @appServicePlanId,
                                    string @location,
                                    string @name,
                                    string @resourceGroupName,
-                                   List<connection_string> @connectionString = null,
+                                   connection_string[] @connectionString = null,
                                    bool? @enabled = null,
                                    bool? @httpsOnly = null,
-                                   List<identity> @identity = null,
-                                   List<site_config> @siteConfig = null,
-                                   List<site_credential> @siteCredential = null,
-                                   List<source_control> @sourceControl = null)
+                                   identity[] @identity = null,
+                                   site_config[] @siteConfig = null,
+                                   site_credential[] @siteCredential = null,
+                                   source_control[] @sourceControl = null)
         {
             @AppServicePlanId = @appServicePlanId;
             @Location = @location;
@@ -147,15 +147,15 @@ namespace NTerraform.Resources
         public string @ResourceGroupName { get; }
         public Dictionary<string,string> @AppSettings { get; }
         public bool? @ClientAffinityEnabled { get; }
-        public List<connection_string> @ConnectionString { get; }
+        public connection_string[] @ConnectionString { get; }
         public string @DefaultSiteHostname { get; }
         public bool? @Enabled { get; }
         public bool? @HttpsOnly { get; }
-        public List<identity> @Identity { get; }
+        public identity[] @Identity { get; }
         public string @OutboundIpAddresses { get; }
-        public List<site_config> @SiteConfig { get; }
-        public List<site_credential> @SiteCredential { get; }
-        public List<source_control> @SourceControl { get; }
+        public site_config[] @SiteConfig { get; }
+        public site_credential[] @SiteCredential { get; }
+        public source_control[] @SourceControl { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

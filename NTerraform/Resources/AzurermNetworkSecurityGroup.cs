@@ -13,15 +13,15 @@ namespace NTerraform.Resources
                                  string @protocol,
                                  string @description = null,
                                  string @destinationAddressPrefix = null,
-                                 HashSet<string> @destinationAddressPrefixes = null,
-                                 HashSet<string> @destinationApplicationSecurityGroupIds = null,
+                                 string[] @destinationAddressPrefixes = null,
+                                 string[] @destinationApplicationSecurityGroupIds = null,
                                  string @destinationPortRange = null,
-                                 HashSet<string> @destinationPortRanges = null,
+                                 string[] @destinationPortRanges = null,
                                  string @sourceAddressPrefix = null,
-                                 HashSet<string> @sourceAddressPrefixes = null,
-                                 HashSet<string> @sourceApplicationSecurityGroupIds = null,
+                                 string[] @sourceAddressPrefixes = null,
+                                 string[] @sourceApplicationSecurityGroupIds = null,
                                  string @sourcePortRange = null,
-                                 HashSet<string> @sourcePortRanges = null)
+                                 string[] @sourcePortRanges = null)
             {
                 @Access = @access;
                 @Direction = @direction;
@@ -48,21 +48,21 @@ namespace NTerraform.Resources
             public string @Protocol { get; }
             public string @Description { get; }
             public string @DestinationAddressPrefix { get; }
-            public HashSet<string> @DestinationAddressPrefixes { get; }
-            public HashSet<string> @DestinationApplicationSecurityGroupIds { get; }
+            public string[] @DestinationAddressPrefixes { get; }
+            public string[] @DestinationApplicationSecurityGroupIds { get; }
             public string @DestinationPortRange { get; }
-            public HashSet<string> @DestinationPortRanges { get; }
+            public string[] @DestinationPortRanges { get; }
             public string @SourceAddressPrefix { get; }
-            public HashSet<string> @SourceAddressPrefixes { get; }
-            public HashSet<string> @SourceApplicationSecurityGroupIds { get; }
+            public string[] @SourceAddressPrefixes { get; }
+            public string[] @SourceApplicationSecurityGroupIds { get; }
             public string @SourcePortRange { get; }
-            public HashSet<string> @SourcePortRanges { get; }
+            public string[] @SourcePortRanges { get; }
         }
 
         public azurerm_network_security_group(string @location,
                                               string @name,
                                               string @resourceGroupName,
-                                              HashSet<security_rule> @securityRule = null)
+                                              security_rule[] @securityRule = null)
         {
             @Location = @location;
             @Name = @name;
@@ -73,7 +73,7 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public HashSet<security_rule> @SecurityRule { get; }
+        public security_rule[] @SecurityRule { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

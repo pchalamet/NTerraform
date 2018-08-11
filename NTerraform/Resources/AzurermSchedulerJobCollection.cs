@@ -25,7 +25,7 @@ namespace NTerraform.Resources
                                                 string @name,
                                                 string @resourceGroupName,
                                                 string @sku,
-                                                List<quota> @quota = null,
+                                                quota[] @quota = null,
                                                 string @state = null)
         {
             @Location = @location;
@@ -40,7 +40,7 @@ namespace NTerraform.Resources
         public string @Name { get; }
         public string @ResourceGroupName { get; }
         public string @Sku { get; }
-        public List<quota> @Quota { get; }
+        public quota[] @Quota { get; }
         public string @State { get; }
         public Dictionary<string,string> @Tags { get; }
     }

@@ -4,19 +4,6 @@ namespace NTerraform.Resources
 {
     public class azurerm_service_fabric_cluster : NTerraform.resource
     {
-        public class client_certificate_thumbprint
-        {
-            public client_certificate_thumbprint(bool @isAdmin,
-                                                 string @thumbprint)
-            {
-                @IsAdmin = @isAdmin;
-                @Thumbprint = @thumbprint;
-            }
-
-            public bool @IsAdmin { get; }
-            public string @Thumbprint { get; }
-        }
-
         public class certificate
         {
             public certificate(string @thumbprint,
@@ -68,6 +55,19 @@ namespace NTerraform.Resources
             public Dictionary<string,string> @Parameters { get; }
         }
 
+        public class client_certificate_thumbprint
+        {
+            public client_certificate_thumbprint(bool @isAdmin,
+                                                 string @thumbprint)
+            {
+                @IsAdmin = @isAdmin;
+                @Thumbprint = @thumbprint;
+            }
+
+            public bool @IsAdmin { get; }
+            public string @Thumbprint { get; }
+        }
+
         public class node_type
         {
             public class ephemeral_ports
@@ -101,9 +101,9 @@ namespace NTerraform.Resources
                              int @instanceCount,
                              bool @isPrimary,
                              string @name,
-                             List<application_ports> @applicationPorts = null,
+                             application_ports[] @applicationPorts = null,
                              string @durabilityLevel = null,
-                             List<ephemeral_ports> @ephemeralPorts = null)
+                             ephemeral_ports[] @ephemeralPorts = null)
             {
                 @ClientEndpointPort = @clientEndpointPort;
                 @HttpEndpointPort = @httpEndpointPort;
@@ -120,24 +120,24 @@ namespace NTerraform.Resources
             public int @InstanceCount { get; }
             public bool @IsPrimary { get; }
             public string @Name { get; }
-            public List<application_ports> @ApplicationPorts { get; }
+            public application_ports[] @ApplicationPorts { get; }
             public string @DurabilityLevel { get; }
-            public List<ephemeral_ports> @EphemeralPorts { get; }
+            public ephemeral_ports[] @EphemeralPorts { get; }
         }
 
         public azurerm_service_fabric_cluster(string @location,
                                               string @managementEndpoint,
                                               string @name,
-                                              List<node_type> @nodeType,
+                                              node_type[] @nodeType,
                                               string @reliabilityLevel,
                                               string @resourceGroupName,
                                               string @upgradeMode,
                                               string @vmImage,
-                                              HashSet<string> @addOnFeatures = null,
-                                              List<certificate> @certificate = null,
-                                              List<client_certificate_thumbprint> @clientCertificateThumbprint = null,
-                                              List<diagnostics_config> @diagnosticsConfig = null,
-                                              List<fabric_settings> @fabricSettings = null)
+                                              string[] @addOnFeatures = null,
+                                              certificate[] @certificate = null,
+                                              client_certificate_thumbprint[] @clientCertificateThumbprint = null,
+                                              diagnostics_config[] @diagnosticsConfig = null,
+                                              fabric_settings[] @fabricSettings = null)
         {
             @Location = @location;
             @ManagementEndpoint = @managementEndpoint;
@@ -157,17 +157,17 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @ManagementEndpoint { get; }
         public string @Name { get; }
-        public List<node_type> @NodeType { get; }
+        public node_type[] @NodeType { get; }
         public string @ReliabilityLevel { get; }
         public string @ResourceGroupName { get; }
         public string @UpgradeMode { get; }
         public string @VmImage { get; }
-        public HashSet<string> @AddOnFeatures { get; }
-        public List<certificate> @Certificate { get; }
-        public List<client_certificate_thumbprint> @ClientCertificateThumbprint { get; }
+        public string[] @AddOnFeatures { get; }
+        public certificate[] @Certificate { get; }
+        public client_certificate_thumbprint[] @ClientCertificateThumbprint { get; }
         public string @ClusterEndpoint { get; }
-        public List<diagnostics_config> @DiagnosticsConfig { get; }
-        public List<fabric_settings> @FabricSettings { get; }
+        public diagnostics_config[] @DiagnosticsConfig { get; }
+        public fabric_settings[] @FabricSettings { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

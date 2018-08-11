@@ -20,7 +20,7 @@ namespace NTerraform.Resources
             }
 
             public publish_content_link(string @uri,
-                                        List<hash> @hash = null,
+                                        hash[] @hash = null,
                                         string @version = null)
             {
                 @Uri = @uri;
@@ -29,7 +29,7 @@ namespace NTerraform.Resources
             }
 
             public string @Uri { get; }
-            public List<hash> @Hash { get; }
+            public hash[] @Hash { get; }
             public string @Version { get; }
         }
 
@@ -38,7 +38,7 @@ namespace NTerraform.Resources
                                           bool @logProgress,
                                           bool @logVerbose,
                                           string @name,
-                                          List<publish_content_link> @publishContentLink,
+                                          publish_content_link[] @publishContentLink,
                                           string @resourceGroupName,
                                           string @runbookType,
                                           string @description = null)
@@ -59,7 +59,7 @@ namespace NTerraform.Resources
         public bool @LogProgress { get; }
         public bool @LogVerbose { get; }
         public string @Name { get; }
-        public List<publish_content_link> @PublishContentLink { get; }
+        public publish_content_link[] @PublishContentLink { get; }
         public string @ResourceGroupName { get; }
         public string @RunbookType { get; }
         public string @Description { get; }

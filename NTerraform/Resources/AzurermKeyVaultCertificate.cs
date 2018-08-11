@@ -19,32 +19,6 @@ namespace NTerraform.Resources
 
         public class certificate_policy
         {
-            public class secret_properties
-            {
-                public secret_properties(string @contentType)
-                {
-                    @ContentType = @contentType;
-                }
-
-                public string @ContentType { get; }
-            }
-
-            public class x509_certificate_properties
-            {
-                public x509_certificate_properties(List<string> @keyUsage,
-                                                   string @subject,
-                                                   int @validityInMonths)
-                {
-                    @KeyUsage = @keyUsage;
-                    @Subject = @subject;
-                    @ValidityInMonths = @validityInMonths;
-                }
-
-                public List<string> @KeyUsage { get; }
-                public string @Subject { get; }
-                public int @ValidityInMonths { get; }
-            }
-
             public class issuer_parameters
             {
                 public issuer_parameters(string @name)
@@ -76,16 +50,6 @@ namespace NTerraform.Resources
 
             public class lifetime_action
             {
-                public class action
-                {
-                    public action(string @actionType)
-                    {
-                        @ActionType = @actionType;
-                    }
-
-                    public string @ActionType { get; }
-                }
-
                 public class trigger
                 {
                     public trigger(int? @daysBeforeExpiry = null,
@@ -99,22 +63,58 @@ namespace NTerraform.Resources
                     public int? @LifetimePercentage { get; }
                 }
 
-                public lifetime_action(List<action> @action,
-                                       List<trigger> @trigger)
+                public class action
+                {
+                    public action(string @actionType)
+                    {
+                        @ActionType = @actionType;
+                    }
+
+                    public string @ActionType { get; }
+                }
+
+                public lifetime_action(action[] @action,
+                                       trigger[] @trigger)
                 {
                     @Action = @action;
                     @Trigger = @trigger;
                 }
 
-                public List<action> @Action { get; }
-                public List<trigger> @Trigger { get; }
+                public action[] @Action { get; }
+                public trigger[] @Trigger { get; }
             }
 
-            public certificate_policy(List<issuer_parameters> @issuerParameters,
-                                      List<key_properties> @keyProperties,
-                                      List<secret_properties> @secretProperties,
-                                      List<lifetime_action> @lifetimeAction = null,
-                                      List<x509_certificate_properties> @x509CertificateProperties = null)
+            public class secret_properties
+            {
+                public secret_properties(string @contentType)
+                {
+                    @ContentType = @contentType;
+                }
+
+                public string @ContentType { get; }
+            }
+
+            public class x509_certificate_properties
+            {
+                public x509_certificate_properties(string[] @keyUsage,
+                                                   string @subject,
+                                                   int @validityInMonths)
+                {
+                    @KeyUsage = @keyUsage;
+                    @Subject = @subject;
+                    @ValidityInMonths = @validityInMonths;
+                }
+
+                public string[] @KeyUsage { get; }
+                public string @Subject { get; }
+                public int @ValidityInMonths { get; }
+            }
+
+            public certificate_policy(issuer_parameters[] @issuerParameters,
+                                      key_properties[] @keyProperties,
+                                      secret_properties[] @secretProperties,
+                                      lifetime_action[] @lifetimeAction = null,
+                                      x509_certificate_properties[] @x509CertificateProperties = null)
             {
                 @IssuerParameters = @issuerParameters;
                 @KeyProperties = @keyProperties;
@@ -123,17 +123,17 @@ namespace NTerraform.Resources
                 @X509CertificateProperties = @x509CertificateProperties;
             }
 
-            public List<issuer_parameters> @IssuerParameters { get; }
-            public List<key_properties> @KeyProperties { get; }
-            public List<secret_properties> @SecretProperties { get; }
-            public List<lifetime_action> @LifetimeAction { get; }
-            public List<x509_certificate_properties> @X509CertificateProperties { get; }
+            public issuer_parameters[] @IssuerParameters { get; }
+            public key_properties[] @KeyProperties { get; }
+            public secret_properties[] @SecretProperties { get; }
+            public lifetime_action[] @LifetimeAction { get; }
+            public x509_certificate_properties[] @X509CertificateProperties { get; }
         }
 
-        public azurerm_key_vault_certificate(List<certificate_policy> @certificatePolicy,
+        public azurerm_key_vault_certificate(certificate_policy[] @certificatePolicy,
                                              string @name,
                                              string @vaultUri,
-                                             List<certificate> @certificate = null)
+                                             certificate[] @certificate = null)
         {
             @CertificatePolicy = @certificatePolicy;
             @Name = @name;
@@ -141,10 +141,10 @@ namespace NTerraform.Resources
             @Certificate = @certificate;
         }
 
-        public List<certificate_policy> @CertificatePolicy { get; }
+        public certificate_policy[] @CertificatePolicy { get; }
         public string @Name { get; }
         public string @VaultUri { get; }
-        public List<certificate> @Certificate { get; }
+        public certificate[] @Certificate { get; }
         public string @CertificateData { get; }
         public string @SecretId { get; }
         public Dictionary<string,string> @Tags { get; }

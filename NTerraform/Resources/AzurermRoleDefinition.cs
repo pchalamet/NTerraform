@@ -6,20 +6,20 @@ namespace NTerraform.Resources
     {
         public class permissions
         {
-            public permissions(List<string> @actions = null,
-                               List<string> @notActions = null)
+            public permissions(string[] @actions = null,
+                               string[] @notActions = null)
             {
                 @Actions = @actions;
                 @NotActions = @notActions;
             }
 
-            public List<string> @Actions { get; }
-            public List<string> @NotActions { get; }
+            public string[] @Actions { get; }
+            public string[] @NotActions { get; }
         }
 
-        public azurerm_role_definition(List<string> @assignableScopes,
+        public azurerm_role_definition(string[] @assignableScopes,
                                        string @name,
-                                       List<permissions> @permissions,
+                                       permissions[] @permissions,
                                        string @scope,
                                        string @description = null)
         {
@@ -30,9 +30,9 @@ namespace NTerraform.Resources
             @Description = @description;
         }
 
-        public List<string> @AssignableScopes { get; }
+        public string[] @AssignableScopes { get; }
         public string @Name { get; }
-        public List<permissions> @Permissions { get; }
+        public permissions[] @Permissions { get; }
         public string @Scope { get; }
         public string @Description { get; }
         public string @RoleDefinitionId { get; }

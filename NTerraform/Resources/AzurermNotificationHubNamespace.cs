@@ -18,7 +18,7 @@ namespace NTerraform.Resources
                                                   string @name,
                                                   string @namespaceType,
                                                   string @resourceGroupName,
-                                                  List<sku> @sku,
+                                                  sku[] @sku,
                                                   bool? @enabled = null)
         {
             @Location = @location;
@@ -33,7 +33,7 @@ namespace NTerraform.Resources
         public string @Name { get; }
         public string @NamespaceType { get; }
         public string @ResourceGroupName { get; }
-        public List<sku> @Sku { get; }
+        public sku[] @Sku { get; }
         public bool? @Enabled { get; }
         public string @ServicebusEndpoint { get; }
     }

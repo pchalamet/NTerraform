@@ -28,7 +28,7 @@ namespace NTerraform.Resources
         public int @Port { get; }
         public string @ResourceGroupName { get; }
         public int? @IntervalInSeconds { get; }
-        public HashSet<string> @LoadBalancerRules { get; }
+        public string[] @LoadBalancerRules { get; }
         public string @Location { get; }
         public int? @NumberOfProbes { get; }
         public string @Protocol { get; }

@@ -38,7 +38,7 @@ namespace NTerraform.Resources
                                                           string @virtualNetworkGatewayId,
                                                           string @authorizationKey = null,
                                                           string @expressRouteCircuitId = null,
-                                                          List<ipsec_policy> @ipsecPolicy = null,
+                                                          ipsec_policy[] @ipsecPolicy = null,
                                                           string @localNetworkGatewayId = null,
                                                           string @peerVirtualNetworkGatewayId = null,
                                                           string @sharedKey = null)
@@ -64,7 +64,7 @@ namespace NTerraform.Resources
         public string @AuthorizationKey { get; }
         public bool? @EnableBgp { get; }
         public string @ExpressRouteCircuitId { get; }
-        public List<ipsec_policy> @IpsecPolicy { get; }
+        public ipsec_policy[] @IpsecPolicy { get; }
         public string @LocalNetworkGatewayId { get; }
         public string @PeerVirtualNetworkGatewayId { get; }
         public int? @RoutingWeight { get; }

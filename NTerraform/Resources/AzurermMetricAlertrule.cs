@@ -21,7 +21,7 @@ namespace NTerraform.Resources
             {
             }
 
-            public List<string> @CustomEmails { get; }
+            public string[] @CustomEmails { get; }
             public bool? @SendToServiceOwners { get; }
         }
 
@@ -34,9 +34,9 @@ namespace NTerraform.Resources
                                         string @resourceGroupName,
                                         string @resourceId,
                                         int @threshold,
-                                        List<email_action> @emailAction = null,
+                                        email_action[] @emailAction = null,
                                         bool? @enabled = null,
-                                        List<webhook_action> @webhookAction = null)
+                                        webhook_action[] @webhookAction = null)
         {
             @Aggregation = @aggregation;
             @Location = @location;
@@ -62,10 +62,10 @@ namespace NTerraform.Resources
         public string @ResourceId { get; }
         public int @Threshold { get; }
         public string @Description { get; }
-        public List<email_action> @EmailAction { get; }
+        public email_action[] @EmailAction { get; }
         public bool? @Enabled { get; }
         public Dictionary<string,string> @Tags { get; }
-        public List<webhook_action> @WebhookAction { get; }
+        public webhook_action[] @WebhookAction { get; }
     }
 
 }

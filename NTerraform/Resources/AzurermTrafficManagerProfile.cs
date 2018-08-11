@@ -33,8 +33,8 @@ namespace NTerraform.Resources
             public string @Path { get; }
         }
 
-        public azurerm_traffic_manager_profile(HashSet<dns_config> @dnsConfig,
-                                               HashSet<monitor_config> @monitorConfig,
+        public azurerm_traffic_manager_profile(dns_config[] @dnsConfig,
+                                               monitor_config[] @monitorConfig,
                                                string @name,
                                                string @resourceGroupName,
                                                string @trafficRoutingMethod)
@@ -46,8 +46,8 @@ namespace NTerraform.Resources
             @TrafficRoutingMethod = @trafficRoutingMethod;
         }
 
-        public HashSet<dns_config> @DnsConfig { get; }
-        public HashSet<monitor_config> @MonitorConfig { get; }
+        public dns_config[] @DnsConfig { get; }
+        public monitor_config[] @MonitorConfig { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
         public string @TrafficRoutingMethod { get; }

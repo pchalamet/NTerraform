@@ -22,7 +22,7 @@ namespace NTerraform.Resources
                                           string @resourceGroupName,
                                           bool? @adminEnabled = null,
                                           string @sku = null,
-                                          List<storage_account> @storageAccount = null,
+                                          storage_account[] @storageAccount = null,
                                           string @storageAccountId = null)
         {
             @Location = @location;
@@ -42,7 +42,7 @@ namespace NTerraform.Resources
         public string @AdminUsername { get; }
         public string @LoginServer { get; }
         public string @Sku { get; }
-        public List<storage_account> @StorageAccount { get; }
+        public storage_account[] @StorageAccount { get; }
         public string @StorageAccountId { get; }
         public Dictionary<string,string> @Tags { get; }
     }

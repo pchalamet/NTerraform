@@ -47,9 +47,9 @@ let rec toTypeName name primitive =
     | FieldType.Collection (coll, fieldType) -> let declType = toTypeName name fieldType
                                                 match coll with
                                                 | Collection.Single -> declType
-                                                | Collection.List -> sprintf "List<%s>" declType
+                                                | Collection.List -> sprintf "%s[]" declType
                                                 | Collection.Map -> sprintf "Dictionary<string,%s>" declType
-                                                | Collection.Set -> sprintf "HashSet<%s>" declType
+                                                | Collection.Set -> sprintf "%s[]" declType
     | FieldType.Structure _ -> name
 
 

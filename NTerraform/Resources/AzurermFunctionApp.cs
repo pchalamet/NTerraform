@@ -4,6 +4,28 @@ namespace NTerraform.Resources
 {
     public class azurerm_function_app : NTerraform.resource
     {
+        public class site_credential
+        {
+            public site_credential()
+            {
+            }
+
+            public string @Password { get; }
+            public string @Username { get; }
+        }
+
+        public class identity
+        {
+            public identity(string @type)
+            {
+                @Type = @type;
+            }
+
+            public string @Type { get; }
+            public string @PrincipalId { get; }
+            public string @TenantId { get; }
+        }
+
         public class connection_string
         {
             public connection_string(string @name,
@@ -36,40 +58,18 @@ namespace NTerraform.Resources
             public bool? @WebsocketsEnabled { get; }
         }
 
-        public class identity
-        {
-            public identity(string @type)
-            {
-                @Type = @type;
-            }
-
-            public string @Type { get; }
-            public string @PrincipalId { get; }
-            public string @TenantId { get; }
-        }
-
-        public class site_credential
-        {
-            public site_credential()
-            {
-            }
-
-            public string @Password { get; }
-            public string @Username { get; }
-        }
-
         public azurerm_function_app(string @appServicePlanId,
                                     string @location,
                                     string @name,
                                     string @resourceGroupName,
                                     string @storageConnectionString,
                                     Dictionary<string,string> @appSettings = null,
-                                    List<connection_string> @connectionString = null,
+                                    connection_string[] @connectionString = null,
                                     bool? @enabled = null,
                                     bool? @httpsOnly = null,
-                                    List<identity> @identity = null,
-                                    List<site_config> @siteConfig = null,
-                                    List<site_credential> @siteCredential = null,
+                                    identity[] @identity = null,
+                                    site_config[] @siteConfig = null,
+                                    site_credential[] @siteCredential = null,
                                     string @version = null)
         {
             @AppServicePlanId = @appServicePlanId;
@@ -94,14 +94,14 @@ namespace NTerraform.Resources
         public string @StorageConnectionString { get; }
         public Dictionary<string,string> @AppSettings { get; }
         public bool? @ClientAffinityEnabled { get; }
-        public List<connection_string> @ConnectionString { get; }
+        public connection_string[] @ConnectionString { get; }
         public string @DefaultHostname { get; }
         public bool? @Enabled { get; }
         public bool? @HttpsOnly { get; }
-        public List<identity> @Identity { get; }
+        public identity[] @Identity { get; }
         public string @OutboundIpAddresses { get; }
-        public List<site_config> @SiteConfig { get; }
-        public List<site_credential> @SiteCredential { get; }
+        public site_config[] @SiteConfig { get; }
+        public site_credential[] @SiteCredential { get; }
         public Dictionary<string,string> @Tags { get; }
         public string @Version { get; }
     }

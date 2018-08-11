@@ -43,9 +43,9 @@ namespace NTerraform.Resources
         public azurerm_packet_capture(string @name,
                                       string @networkWatcherName,
                                       string @resourceGroupName,
-                                      List<storage_location> @storageLocation,
+                                      storage_location[] @storageLocation,
                                       string @targetResourceId,
-                                      List<filter> @filter = null,
+                                      filter[] @filter = null,
                                       int? @maximumBytesPerPacket = null,
                                       int? @maximumBytesPerSession = null,
                                       int? @maximumCaptureDuration = null)
@@ -64,9 +64,9 @@ namespace NTerraform.Resources
         public string @Name { get; }
         public string @NetworkWatcherName { get; }
         public string @ResourceGroupName { get; }
-        public List<storage_location> @StorageLocation { get; }
+        public storage_location[] @StorageLocation { get; }
         public string @TargetResourceId { get; }
-        public List<filter> @Filter { get; }
+        public filter[] @Filter { get; }
         public int? @MaximumBytesPerPacket { get; }
         public int? @MaximumBytesPerSession { get; }
         public int? @MaximumCaptureDuration { get; }

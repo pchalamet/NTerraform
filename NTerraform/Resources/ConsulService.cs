@@ -7,7 +7,7 @@ namespace NTerraform.Resources
         public consul_service(string @name,
                               string @node,
                               int? @port = null,
-                              List<string> @tags = null)
+                              string[] @tags = null)
         {
             @Name = @name;
             @Node = @node;
@@ -21,7 +21,7 @@ namespace NTerraform.Resources
         public string @Datacenter { get; }
         public int? @Port { get; }
         public string @ServiceId { get; }
-        public List<string> @Tags { get; }
+        public string[] @Tags { get; }
     }
 
 }

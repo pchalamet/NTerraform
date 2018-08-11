@@ -17,7 +17,7 @@ namespace NTerraform.Resources
         public azurerm_relay_namespace(string @location,
                                        string @name,
                                        string @resourceGroupName,
-                                       List<sku> @sku)
+                                       sku[] @sku)
         {
             @Location = @location;
             @Name = @name;
@@ -28,7 +28,7 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<sku> @Sku { get; }
+        public sku[] @Sku { get; }
         public string @MetricId { get; }
         public string @PrimaryConnectionString { get; }
         public string @PrimaryKey { get; }

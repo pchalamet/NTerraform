@@ -42,7 +42,7 @@ namespace NTerraform.Resources
                                                     string @subscriptionName,
                                                     string @topicName,
                                                     string @action = null,
-                                                    List<correlation_filter> @correlationFilter = null,
+                                                    correlation_filter[] @correlationFilter = null,
                                                     string @sqlFilter = null)
         {
             @FilterType = @filterType;
@@ -63,7 +63,7 @@ namespace NTerraform.Resources
         public string @SubscriptionName { get; }
         public string @TopicName { get; }
         public string @Action { get; }
-        public List<correlation_filter> @CorrelationFilter { get; }
+        public correlation_filter[] @CorrelationFilter { get; }
         public string @SqlFilter { get; }
     }
 

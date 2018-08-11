@@ -6,25 +6,6 @@ namespace NTerraform.Resources
     {
         public class profile
         {
-            public class recurrence
-            {
-                public recurrence(List<string> @days,
-                                  List<int> @hours,
-                                  List<int> @minutes,
-                                  string @timezone = null)
-                {
-                    @Days = @days;
-                    @Hours = @hours;
-                    @Minutes = @minutes;
-                    @Timezone = @timezone;
-                }
-
-                public List<string> @Days { get; }
-                public List<int> @Hours { get; }
-                public List<int> @Minutes { get; }
-                public string @Timezone { get; }
-            }
-
             public class capacity
             {
                 public capacity(int @default,
@@ -93,15 +74,15 @@ namespace NTerraform.Resources
                     public int @Value { get; }
                 }
 
-                public rule(List<metric_trigger> @metricTrigger,
-                            List<scale_action> @scaleAction)
+                public rule(metric_trigger[] @metricTrigger,
+                            scale_action[] @scaleAction)
                 {
                     @MetricTrigger = @metricTrigger;
                     @ScaleAction = @scaleAction;
                 }
 
-                public List<metric_trigger> @MetricTrigger { get; }
-                public List<scale_action> @ScaleAction { get; }
+                public metric_trigger[] @MetricTrigger { get; }
+                public scale_action[] @ScaleAction { get; }
             }
 
             public class fixed_date
@@ -120,11 +101,30 @@ namespace NTerraform.Resources
                 public string @Timezone { get; }
             }
 
-            public profile(List<capacity> @capacity,
+            public class recurrence
+            {
+                public recurrence(string[] @days,
+                                  int[] @hours,
+                                  int[] @minutes,
+                                  string @timezone = null)
+                {
+                    @Days = @days;
+                    @Hours = @hours;
+                    @Minutes = @minutes;
+                    @Timezone = @timezone;
+                }
+
+                public string[] @Days { get; }
+                public int[] @Hours { get; }
+                public int[] @Minutes { get; }
+                public string @Timezone { get; }
+            }
+
+            public profile(capacity[] @capacity,
                            string @name,
-                           List<fixed_date> @fixedDate = null,
-                           List<recurrence> @recurrence = null,
-                           List<rule> @rule = null)
+                           fixed_date[] @fixedDate = null,
+                           recurrence[] @recurrence = null,
+                           rule[] @rule = null)
             {
                 @Capacity = @capacity;
                 @Name = @name;
@@ -133,18 +133,18 @@ namespace NTerraform.Resources
                 @Rule = @rule;
             }
 
-            public List<capacity> @Capacity { get; }
+            public capacity[] @Capacity { get; }
             public string @Name { get; }
-            public List<fixed_date> @FixedDate { get; }
-            public List<recurrence> @Recurrence { get; }
-            public List<rule> @Rule { get; }
+            public fixed_date[] @FixedDate { get; }
+            public recurrence[] @Recurrence { get; }
+            public rule[] @Rule { get; }
         }
 
         public class notification
         {
             public class email
             {
-                public email(List<string> @customEmails = null,
+                public email(string[] @customEmails = null,
                              bool? @sendToSubscriptionAdministrator = null,
                              bool? @sendToSubscriptionCoAdministrator = null)
                 {
@@ -153,7 +153,7 @@ namespace NTerraform.Resources
                     @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
                 }
 
-                public List<string> @CustomEmails { get; }
+                public string[] @CustomEmails { get; }
                 public bool? @SendToSubscriptionAdministrator { get; }
                 public bool? @SendToSubscriptionCoAdministrator { get; }
             }
@@ -171,24 +171,24 @@ namespace NTerraform.Resources
                 public Dictionary<string,string> @Properties { get; }
             }
 
-            public notification(List<email> @email = null,
-                                List<webhook> @webhook = null)
+            public notification(email[] @email = null,
+                                webhook[] @webhook = null)
             {
                 @Email = @email;
                 @Webhook = @webhook;
             }
 
-            public List<email> @Email { get; }
-            public List<webhook> @Webhook { get; }
+            public email[] @Email { get; }
+            public webhook[] @Webhook { get; }
         }
 
         public azurerm_autoscale_setting(string @location,
                                          string @name,
-                                         List<profile> @profile,
+                                         profile[] @profile,
                                          string @resourceGroupName,
                                          string @targetResourceId,
                                          bool? @enabled = null,
-                                         List<notification> @notification = null)
+                                         notification[] @notification = null)
         {
             @Location = @location;
             @Name = @name;
@@ -201,11 +201,11 @@ namespace NTerraform.Resources
 
         public string @Location { get; }
         public string @Name { get; }
-        public List<profile> @Profile { get; }
+        public profile[] @Profile { get; }
         public string @ResourceGroupName { get; }
         public string @TargetResourceId { get; }
         public bool? @Enabled { get; }
-        public List<notification> @Notification { get; }
+        public notification[] @Notification { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

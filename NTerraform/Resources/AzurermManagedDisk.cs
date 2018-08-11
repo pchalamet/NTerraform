@@ -33,8 +33,8 @@ namespace NTerraform.Resources
             }
 
             public encryption_settings(bool @enabled,
-                                       List<disk_encryption_key> @diskEncryptionKey = null,
-                                       List<key_encryption_key> @keyEncryptionKey = null)
+                                       disk_encryption_key[] @diskEncryptionKey = null,
+                                       key_encryption_key[] @keyEncryptionKey = null)
             {
                 @Enabled = @enabled;
                 @DiskEncryptionKey = @diskEncryptionKey;
@@ -42,8 +42,8 @@ namespace NTerraform.Resources
             }
 
             public bool @Enabled { get; }
-            public List<disk_encryption_key> @DiskEncryptionKey { get; }
-            public List<key_encryption_key> @KeyEncryptionKey { get; }
+            public disk_encryption_key[] @DiskEncryptionKey { get; }
+            public key_encryption_key[] @KeyEncryptionKey { get; }
         }
 
         public azurerm_managed_disk(string @createOption,
@@ -51,11 +51,11 @@ namespace NTerraform.Resources
                                     string @name,
                                     string @resourceGroupName,
                                     string @storageAccountType,
-                                    List<encryption_settings> @encryptionSettings = null,
+                                    encryption_settings[] @encryptionSettings = null,
                                     string @imageReferenceId = null,
                                     string @osType = null,
                                     string @sourceResourceId = null,
-                                    List<string> @zones = null)
+                                    string[] @zones = null)
         {
             @CreateOption = @createOption;
             @Location = @location;
@@ -75,13 +75,13 @@ namespace NTerraform.Resources
         public string @ResourceGroupName { get; }
         public string @StorageAccountType { get; }
         public int? @DiskSizeGb { get; }
-        public List<encryption_settings> @EncryptionSettings { get; }
+        public encryption_settings[] @EncryptionSettings { get; }
         public string @ImageReferenceId { get; }
         public string @OsType { get; }
         public string @SourceResourceId { get; }
         public string @SourceUri { get; }
         public Dictionary<string,string> @Tags { get; }
-        public List<string> @Zones { get; }
+        public string[] @Zones { get; }
     }
 
 }

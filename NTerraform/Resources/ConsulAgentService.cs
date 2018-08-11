@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     {
         public consul_agent_service(string @name,
                                     int? @port = null,
-                                    List<string> @tags = null)
+                                    string[] @tags = null)
         {
             @Name = @name;
             @Port = @port;
@@ -16,7 +16,7 @@ namespace NTerraform.Resources
         public string @Name { get; }
         public string @Address { get; }
         public int? @Port { get; }
-        public List<string> @Tags { get; }
+        public string[] @Tags { get; }
     }
 
 }

@@ -17,9 +17,9 @@ namespace NTerraform.Resources
         public string @ApplicationId { get; }
         public bool? @AvailableToOtherTenants { get; }
         public string @Homepage { get; }
-        public List<string> @IdentifierUris { get; }
+        public string[] @IdentifierUris { get; }
         public bool? @Oauth2AllowImplicitFlow { get; }
-        public List<string> @ReplyUrls { get; }
+        public string[] @ReplyUrls { get; }
     }
 
 }

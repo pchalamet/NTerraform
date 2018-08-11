@@ -35,8 +35,8 @@ namespace NTerraform.Resources
         public azurerm_iothub(string @location,
                               string @name,
                               string @resourceGroupName,
-                              List<sku> @sku,
-                              List<shared_access_policy> @sharedAccessPolicy = null)
+                              sku[] @sku,
+                              shared_access_policy[] @sharedAccessPolicy = null)
         {
             @Location = @location;
             @Name = @name;
@@ -48,9 +48,9 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<sku> @Sku { get; }
+        public sku[] @Sku { get; }
         public string @Hostname { get; }
-        public List<shared_access_policy> @SharedAccessPolicy { get; }
+        public shared_access_policy[] @SharedAccessPolicy { get; }
         public Dictionary<string,string> @Tags { get; }
         public string @Type { get; }
     }

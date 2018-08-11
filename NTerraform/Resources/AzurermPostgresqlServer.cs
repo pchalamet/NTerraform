@@ -4,22 +4,6 @@ namespace NTerraform.Resources
 {
     public class azurerm_postgresql_server : NTerraform.resource
     {
-        public class storage_profile
-        {
-            public storage_profile(int @storageMb,
-                                   int? @backupRetentionDays = null,
-                                   string @geoRedundantBackup = null)
-            {
-                @StorageMb = @storageMb;
-                @BackupRetentionDays = @backupRetentionDays;
-                @GeoRedundantBackup = @geoRedundantBackup;
-            }
-
-            public int @StorageMb { get; }
-            public int? @BackupRetentionDays { get; }
-            public string @GeoRedundantBackup { get; }
-        }
-
         public class sku
         {
             public sku(int @capacity,
@@ -39,14 +23,30 @@ namespace NTerraform.Resources
             public string @Tier { get; }
         }
 
+        public class storage_profile
+        {
+            public storage_profile(int @storageMb,
+                                   int? @backupRetentionDays = null,
+                                   string @geoRedundantBackup = null)
+            {
+                @StorageMb = @storageMb;
+                @BackupRetentionDays = @backupRetentionDays;
+                @GeoRedundantBackup = @geoRedundantBackup;
+            }
+
+            public int @StorageMb { get; }
+            public int? @BackupRetentionDays { get; }
+            public string @GeoRedundantBackup { get; }
+        }
+
         public azurerm_postgresql_server(string @administratorLogin,
                                          string @administratorLoginPassword,
                                          string @location,
                                          string @name,
                                          string @resourceGroupName,
-                                         List<sku> @sku,
+                                         sku[] @sku,
                                          string @sslEnforcement,
-                                         List<storage_profile> @storageProfile,
+                                         storage_profile[] @storageProfile,
                                          string @version)
         {
             @AdministratorLogin = @administratorLogin;
@@ -65,9 +65,9 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<sku> @Sku { get; }
+        public sku[] @Sku { get; }
         public string @SslEnforcement { get; }
-        public List<storage_profile> @StorageProfile { get; }
+        public storage_profile[] @StorageProfile { get; }
         public string @Version { get; }
         public string @Fqdn { get; }
         public Dictionary<string,string> @Tags { get; }

@@ -8,7 +8,7 @@ namespace NTerraform.Resources
                                                 string @profileName,
                                                 string @resourceGroupName,
                                                 string @type,
-                                                List<string> @geoMappings = null,
+                                                string[] @geoMappings = null,
                                                 int? @minChildEndpoints = null,
                                                 string @targetResourceId = null)
         {
@@ -28,7 +28,7 @@ namespace NTerraform.Resources
         public string @EndpointLocation { get; }
         public string @EndpointMonitorStatus { get; }
         public string @EndpointStatus { get; }
-        public List<string> @GeoMappings { get; }
+        public string[] @GeoMappings { get; }
         public int? @MinChildEndpoints { get; }
         public int? @Priority { get; }
         public string @Target { get; }

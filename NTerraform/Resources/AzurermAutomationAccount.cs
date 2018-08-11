@@ -17,7 +17,7 @@ namespace NTerraform.Resources
         public azurerm_automation_account(string @location,
                                           string @name,
                                           string @resourceGroupName,
-                                          List<sku> @sku)
+                                          sku[] @sku)
         {
             @Location = @location;
             @Name = @name;
@@ -28,7 +28,7 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<sku> @Sku { get; }
+        public sku[] @Sku { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

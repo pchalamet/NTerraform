@@ -18,12 +18,12 @@ namespace NTerraform.Resources
             public int? @PeerWeight { get; }
         }
 
-        public azurerm_local_network_gateway(List<string> @addressSpace,
+        public azurerm_local_network_gateway(string[] @addressSpace,
                                              string @gatewayAddress,
                                              string @location,
                                              string @name,
                                              string @resourceGroupName,
-                                             List<bgp_settings> @bgpSettings = null)
+                                             bgp_settings[] @bgpSettings = null)
         {
             @AddressSpace = @addressSpace;
             @GatewayAddress = @gatewayAddress;
@@ -33,12 +33,12 @@ namespace NTerraform.Resources
             @BgpSettings = @bgpSettings;
         }
 
-        public List<string> @AddressSpace { get; }
+        public string[] @AddressSpace { get; }
         public string @GatewayAddress { get; }
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<bgp_settings> @BgpSettings { get; }
+        public bgp_settings[] @BgpSettings { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

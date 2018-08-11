@@ -25,7 +25,7 @@ namespace NTerraform.Resources
                                    string @name,
                                    string @resourceGroupName,
                                    bool? @disableBgpRoutePropagation = null,
-                                   List<route> @route = null)
+                                   route[] @route = null)
         {
             @Location = @location;
             @Name = @name;
@@ -38,8 +38,8 @@ namespace NTerraform.Resources
         public string @Name { get; }
         public string @ResourceGroupName { get; }
         public bool? @DisableBgpRoutePropagation { get; }
-        public List<route> @Route { get; }
-        public HashSet<string> @Subnets { get; }
+        public route[] @Route { get; }
+        public string[] @Subnets { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

@@ -23,7 +23,7 @@ namespace NTerraform.Resources
                                              string @peeringLocation,
                                              string @resourceGroupName,
                                              string @serviceProviderName,
-                                             List<sku> @sku,
+                                             sku[] @sku,
                                              bool? @allowClassicOperations = null)
         {
             @BandwidthInMbps = @bandwidthInMbps;
@@ -42,7 +42,7 @@ namespace NTerraform.Resources
         public string @PeeringLocation { get; }
         public string @ResourceGroupName { get; }
         public string @ServiceProviderName { get; }
-        public List<sku> @Sku { get; }
+        public sku[] @Sku { get; }
         public bool? @AllowClassicOperations { get; }
         public string @ServiceKey { get; }
         public string @ServiceProviderProvisioningState { get; }

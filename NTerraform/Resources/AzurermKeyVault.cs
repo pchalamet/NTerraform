@@ -4,31 +4,6 @@ namespace NTerraform.Resources
 {
     public class azurerm_key_vault : NTerraform.resource
     {
-        public class access_policy
-        {
-            public access_policy(List<string> @keyPermissions,
-                                 string @objectId,
-                                 List<string> @secretPermissions,
-                                 string @tenantId,
-                                 string @applicationId = null,
-                                 List<string> @certificatePermissions = null)
-            {
-                @KeyPermissions = @keyPermissions;
-                @ObjectId = @objectId;
-                @SecretPermissions = @secretPermissions;
-                @TenantId = @tenantId;
-                @ApplicationId = @applicationId;
-                @CertificatePermissions = @certificatePermissions;
-            }
-
-            public List<string> @KeyPermissions { get; }
-            public string @ObjectId { get; }
-            public List<string> @SecretPermissions { get; }
-            public string @TenantId { get; }
-            public string @ApplicationId { get; }
-            public List<string> @CertificatePermissions { get; }
-        }
-
         public class sku
         {
             public sku(string @name)
@@ -39,12 +14,37 @@ namespace NTerraform.Resources
             public string @Name { get; }
         }
 
+        public class access_policy
+        {
+            public access_policy(string[] @keyPermissions,
+                                 string @objectId,
+                                 string[] @secretPermissions,
+                                 string @tenantId,
+                                 string @applicationId = null,
+                                 string[] @certificatePermissions = null)
+            {
+                @KeyPermissions = @keyPermissions;
+                @ObjectId = @objectId;
+                @SecretPermissions = @secretPermissions;
+                @TenantId = @tenantId;
+                @ApplicationId = @applicationId;
+                @CertificatePermissions = @certificatePermissions;
+            }
+
+            public string[] @KeyPermissions { get; }
+            public string @ObjectId { get; }
+            public string[] @SecretPermissions { get; }
+            public string @TenantId { get; }
+            public string @ApplicationId { get; }
+            public string[] @CertificatePermissions { get; }
+        }
+
         public azurerm_key_vault(string @location,
                                  string @name,
                                  string @resourceGroupName,
-                                 List<sku> @sku,
+                                 sku[] @sku,
                                  string @tenantId,
-                                 List<access_policy> @accessPolicy = null,
+                                 access_policy[] @accessPolicy = null,
                                  bool? @enabledForDeployment = null,
                                  bool? @enabledForDiskEncryption = null,
                                  bool? @enabledForTemplateDeployment = null)
@@ -63,9 +63,9 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<sku> @Sku { get; }
+        public sku[] @Sku { get; }
         public string @TenantId { get; }
-        public List<access_policy> @AccessPolicy { get; }
+        public access_policy[] @AccessPolicy { get; }
         public bool? @EnabledForDeployment { get; }
         public bool? @EnabledForDiskEncryption { get; }
         public bool? @EnabledForTemplateDeployment { get; }

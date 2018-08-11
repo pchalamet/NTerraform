@@ -25,7 +25,7 @@ namespace NTerraform.Resources
                 public string @StorageAccountId { get; }
             }
 
-            public capture_description(List<destination> @destination,
+            public capture_description(destination[] @destination,
                                        bool @enabled,
                                        string @encoding,
                                        int? @intervalInSeconds = null,
@@ -38,7 +38,7 @@ namespace NTerraform.Resources
                 @SizeLimitInBytes = @sizeLimitInBytes;
             }
 
-            public List<destination> @Destination { get; }
+            public destination[] @Destination { get; }
             public bool @Enabled { get; }
             public string @Encoding { get; }
             public int? @IntervalInSeconds { get; }
@@ -50,7 +50,7 @@ namespace NTerraform.Resources
                                 string @namespaceName,
                                 int @partitionCount,
                                 string @resourceGroupName,
-                                List<capture_description> @captureDescription = null,
+                                capture_description[] @captureDescription = null,
                                 string @location = null)
         {
             @MessageRetention = @messageRetention;
@@ -67,9 +67,9 @@ namespace NTerraform.Resources
         public string @NamespaceName { get; }
         public int @PartitionCount { get; }
         public string @ResourceGroupName { get; }
-        public List<capture_description> @CaptureDescription { get; }
+        public capture_description[] @CaptureDescription { get; }
         public string @Location { get; }
-        public HashSet<string> @PartitionIds { get; }
+        public string[] @PartitionIds { get; }
     }
 
 }

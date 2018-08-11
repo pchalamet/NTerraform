@@ -9,14 +9,15 @@ function Invoke-NTerraformGen
 }
 
 
-function Invoke-TFSchema
+function List-TFSchema
 {
-    param([string] $provider)
+    param([string] $type, [string] $def)
 
-    ../tfschema resource list $provider
+    ../tfschema $type list $def
 }
 
 terraform init
-Invoke-TFSchema azurerm | % { Write-Host "Generating resource $_"; Invoke-NTerraformGen resource $_ }
-Invoke-TFSchema consul | % { Write-Host "Generating resource $_"; Invoke-NTerraformGen resource $_ }
-
+cat providers.txt | % { Write-Host "Generating provider $_"
+                        Invoke-NTerraformGen provider $_ 
+                        List-TFSchema data $_ | % { Write-Host "Generating data $_"; Invoke-NTerraformGen data $_ }
+                        List-TFSchema resource $_ | % { Write-Host "Generating resource $_"; Invoke-NTerraformGen resource $_ } }

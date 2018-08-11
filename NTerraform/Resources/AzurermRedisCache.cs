@@ -49,11 +49,11 @@ namespace NTerraform.Resources
                                    string @family,
                                    string @location,
                                    string @name,
-                                   List<redis_configuration> @redisConfiguration,
+                                   redis_configuration[] @redisConfiguration,
                                    string @resourceGroupName,
                                    string @skuName,
                                    bool? @enableNonSslPort = null,
-                                   List<patch_schedule> @patchSchedule = null,
+                                   patch_schedule[] @patchSchedule = null,
                                    int? @shardCount = null,
                                    string @subnetId = null)
         {
@@ -74,12 +74,12 @@ namespace NTerraform.Resources
         public string @Family { get; }
         public string @Location { get; }
         public string @Name { get; }
-        public List<redis_configuration> @RedisConfiguration { get; }
+        public redis_configuration[] @RedisConfiguration { get; }
         public string @ResourceGroupName { get; }
         public string @SkuName { get; }
         public bool? @EnableNonSslPort { get; }
         public string @Hostname { get; }
-        public List<patch_schedule> @PatchSchedule { get; }
+        public patch_schedule[] @PatchSchedule { get; }
         public int? @Port { get; }
         public string @PrimaryAccessKey { get; }
         public string @PrivateStaticIpAddress { get; }

@@ -37,7 +37,7 @@ namespace NTerraform.Resources
                                     string @resourceGroupName,
                                     string @serverName,
                                     string @createMode = null,
-                                    List<import> @import = null)
+                                    import[] @import = null)
         {
             @Location = @location;
             @Name = @name;
@@ -58,7 +58,7 @@ namespace NTerraform.Resources
         public string @Edition { get; }
         public string @ElasticPoolName { get; }
         public string @Encryption { get; }
-        public List<import> @Import { get; }
+        public import[] @Import { get; }
         public string @MaxSizeBytes { get; }
         public string @RequestedServiceObjectiveId { get; }
         public string @RequestedServiceObjectiveName { get; }

@@ -4,14 +4,14 @@ namespace NTerraform.Resources
 {
     public class azurerm_key_vault_access_policy : NTerraform.resource
     {
-        public azurerm_key_vault_access_policy(List<string> @keyPermissions,
+        public azurerm_key_vault_access_policy(string[] @keyPermissions,
                                                string @objectId,
                                                string @resourceGroupName,
-                                               List<string> @secretPermissions,
+                                               string[] @secretPermissions,
                                                string @tenantId,
                                                string @vaultName,
                                                string @applicationId = null,
-                                               List<string> @certificatePermissions = null)
+                                               string[] @certificatePermissions = null)
         {
             @KeyPermissions = @keyPermissions;
             @ObjectId = @objectId;
@@ -23,14 +23,14 @@ namespace NTerraform.Resources
             @CertificatePermissions = @certificatePermissions;
         }
 
-        public List<string> @KeyPermissions { get; }
+        public string[] @KeyPermissions { get; }
         public string @ObjectId { get; }
         public string @ResourceGroupName { get; }
-        public List<string> @SecretPermissions { get; }
+        public string[] @SecretPermissions { get; }
         public string @TenantId { get; }
         public string @VaultName { get; }
         public string @ApplicationId { get; }
-        public List<string> @CertificatePermissions { get; }
+        public string[] @CertificatePermissions { get; }
     }
 
 }

@@ -24,7 +24,7 @@ namespace NTerraform.Resources
         }
 
         public azurerm_dns_srv_record(string @name,
-                                      HashSet<record> @record,
+                                      record[] @record,
                                       string @resourceGroupName,
                                       int @ttl,
                                       string @zoneName)
@@ -37,7 +37,7 @@ namespace NTerraform.Resources
         }
 
         public string @Name { get; }
-        public HashSet<record> @Record { get; }
+        public record[] @Record { get; }
         public string @ResourceGroupName { get; }
         public int @Ttl { get; }
         public string @ZoneName { get; }

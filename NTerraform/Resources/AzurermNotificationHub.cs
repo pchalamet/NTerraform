@@ -4,6 +4,16 @@ namespace NTerraform.Resources
 {
     public class azurerm_notification_hub : NTerraform.resource
     {
+        public class gcm_credential
+        {
+            public gcm_credential(string @apiKey)
+            {
+                @ApiKey = @apiKey;
+            }
+
+            public string @ApiKey { get; }
+        }
+
         public class apns_credential
         {
             public apns_credential(string @applicationMode,
@@ -26,22 +36,12 @@ namespace NTerraform.Resources
             public string @Token { get; }
         }
 
-        public class gcm_credential
-        {
-            public gcm_credential(string @apiKey)
-            {
-                @ApiKey = @apiKey;
-            }
-
-            public string @ApiKey { get; }
-        }
-
         public azurerm_notification_hub(string @location,
                                         string @name,
                                         string @namespaceName,
                                         string @resourceGroupName,
-                                        List<apns_credential> @apnsCredential = null,
-                                        List<gcm_credential> @gcmCredential = null)
+                                        apns_credential[] @apnsCredential = null,
+                                        gcm_credential[] @gcmCredential = null)
         {
             @Location = @location;
             @Name = @name;
@@ -55,8 +55,8 @@ namespace NTerraform.Resources
         public string @Name { get; }
         public string @NamespaceName { get; }
         public string @ResourceGroupName { get; }
-        public List<apns_credential> @ApnsCredential { get; }
-        public List<gcm_credential> @GcmCredential { get; }
+        public apns_credential[] @ApnsCredential { get; }
+        public gcm_credential[] @GcmCredential { get; }
     }
 
 }

@@ -18,8 +18,8 @@ namespace NTerraform.Resources
         public string @LoadbalancerId { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public HashSet<string> @BackendIpConfigurations { get; }
-        public HashSet<string> @LoadBalancingRules { get; }
+        public string[] @BackendIpConfigurations { get; }
+        public string[] @LoadBalancingRules { get; }
         public string @Location { get; }
     }
 

@@ -4,47 +4,17 @@ namespace NTerraform.Resources
 {
     public class azurerm_application_gateway : NTerraform.resource
     {
-        public class url_path_map
+        public class gateway_ip_configuration
         {
-            public class path_rule
+            public gateway_ip_configuration(string @name,
+                                            string @subnetId)
             {
-                public path_rule(string @backendAddressPoolName,
-                                 string @backendHttpSettingsName,
-                                 string @name,
-                                 List<string> @paths)
-                {
-                    @BackendAddressPoolName = @backendAddressPoolName;
-                    @BackendHttpSettingsName = @backendHttpSettingsName;
-                    @Name = @name;
-                    @Paths = @paths;
-                }
-
-                public string @BackendAddressPoolName { get; }
-                public string @BackendHttpSettingsName { get; }
-                public string @Name { get; }
-                public List<string> @Paths { get; }
-                public string @BackendAddressPoolId { get; }
-                public string @BackendHttpSettingsId { get; }
-                public string @Id { get; }
-            }
-
-            public url_path_map(string @defaultBackendAddressPoolName,
-                                string @defaultBackendHttpSettingsName,
-                                string @name,
-                                List<path_rule> @pathRule)
-            {
-                @DefaultBackendAddressPoolName = @defaultBackendAddressPoolName;
-                @DefaultBackendHttpSettingsName = @defaultBackendHttpSettingsName;
                 @Name = @name;
-                @PathRule = @pathRule;
+                @SubnetId = @subnetId;
             }
 
-            public string @DefaultBackendAddressPoolName { get; }
-            public string @DefaultBackendHttpSettingsName { get; }
             public string @Name { get; }
-            public List<path_rule> @PathRule { get; }
-            public string @DefaultBackendAddressPoolId { get; }
-            public string @DefaultBackendHttpSettingsId { get; }
+            public string @SubnetId { get; }
             public string @Id { get; }
         }
 
@@ -78,6 +48,95 @@ namespace NTerraform.Resources
             public bool? @RequireSni { get; }
             public string @SslCertificateId { get; }
             public string @SslCertificateName { get; }
+        }
+
+        public class authentication_certificate
+        {
+            public authentication_certificate(string @data,
+                                              string @name)
+            {
+                @Data = @data;
+                @Name = @name;
+            }
+
+            public string @Data { get; }
+            public string @Name { get; }
+            public string @Id { get; }
+        }
+
+        public class sku
+        {
+            public sku(int @capacity,
+                       string @name,
+                       string @tier)
+            {
+                @Capacity = @capacity;
+                @Name = @name;
+                @Tier = @tier;
+            }
+
+            public int @Capacity { get; }
+            public string @Name { get; }
+            public string @Tier { get; }
+        }
+
+        public class frontend_ip_configuration
+        {
+            public frontend_ip_configuration(string @name)
+            {
+                @Name = @name;
+            }
+
+            public string @Name { get; }
+            public string @Id { get; }
+            public string @PrivateIpAddress { get; }
+            public string @PrivateIpAddressAllocation { get; }
+            public string @PublicIpAddressId { get; }
+            public string @SubnetId { get; }
+        }
+
+        public class url_path_map
+        {
+            public class path_rule
+            {
+                public path_rule(string @backendAddressPoolName,
+                                 string @backendHttpSettingsName,
+                                 string @name,
+                                 string[] @paths)
+                {
+                    @BackendAddressPoolName = @backendAddressPoolName;
+                    @BackendHttpSettingsName = @backendHttpSettingsName;
+                    @Name = @name;
+                    @Paths = @paths;
+                }
+
+                public string @BackendAddressPoolName { get; }
+                public string @BackendHttpSettingsName { get; }
+                public string @Name { get; }
+                public string[] @Paths { get; }
+                public string @BackendAddressPoolId { get; }
+                public string @BackendHttpSettingsId { get; }
+                public string @Id { get; }
+            }
+
+            public url_path_map(string @defaultBackendAddressPoolName,
+                                string @defaultBackendHttpSettingsName,
+                                string @name,
+                                path_rule[] @pathRule)
+            {
+                @DefaultBackendAddressPoolName = @defaultBackendAddressPoolName;
+                @DefaultBackendHttpSettingsName = @defaultBackendHttpSettingsName;
+                @Name = @name;
+                @PathRule = @pathRule;
+            }
+
+            public string @DefaultBackendAddressPoolName { get; }
+            public string @DefaultBackendHttpSettingsName { get; }
+            public string @Name { get; }
+            public path_rule[] @PathRule { get; }
+            public string @DefaultBackendAddressPoolId { get; }
+            public string @DefaultBackendHttpSettingsId { get; }
+            public string @Id { get; }
         }
 
         public class request_routing_rule
@@ -115,14 +174,14 @@ namespace NTerraform.Resources
             public class match
             {
                 public match(string @body = null,
-                             List<string> @statusCode = null)
+                             string[] @statusCode = null)
                 {
                     @Body = @body;
                     @StatusCode = @statusCode;
                 }
 
                 public string @Body { get; }
-                public List<string> @StatusCode { get; }
+                public string[] @StatusCode { get; }
             }
 
             public probe(string @host,
@@ -132,7 +191,7 @@ namespace NTerraform.Resources
                          string @protocol,
                          int @timeout,
                          int @unhealthyThreshold,
-                         List<match> @match = null,
+                         match[] @match = null,
                          int? @minimumServers = null)
             {
                 @Host = @host;
@@ -154,84 +213,8 @@ namespace NTerraform.Resources
             public int @Timeout { get; }
             public int @UnhealthyThreshold { get; }
             public string @Id { get; }
-            public List<match> @Match { get; }
+            public match[] @Match { get; }
             public int? @MinimumServers { get; }
-        }
-
-        public class gateway_ip_configuration
-        {
-            public gateway_ip_configuration(string @name,
-                                            string @subnetId)
-            {
-                @Name = @name;
-                @SubnetId = @subnetId;
-            }
-
-            public string @Name { get; }
-            public string @SubnetId { get; }
-            public string @Id { get; }
-        }
-
-        public class backend_address_pool
-        {
-            public backend_address_pool(string @name,
-                                        List<string> @fqdnList = null,
-                                        List<string> @ipAddressList = null)
-            {
-                @Name = @name;
-                @FqdnList = @fqdnList;
-                @IpAddressList = @ipAddressList;
-            }
-
-            public string @Name { get; }
-            public List<string> @FqdnList { get; }
-            public string @Id { get; }
-            public List<string> @IpAddressList { get; }
-        }
-
-        public class frontend_ip_configuration
-        {
-            public frontend_ip_configuration(string @name)
-            {
-                @Name = @name;
-            }
-
-            public string @Name { get; }
-            public string @Id { get; }
-            public string @PrivateIpAddress { get; }
-            public string @PrivateIpAddressAllocation { get; }
-            public string @PublicIpAddressId { get; }
-            public string @SubnetId { get; }
-        }
-
-        public class authentication_certificate
-        {
-            public authentication_certificate(string @data,
-                                              string @name)
-            {
-                @Data = @data;
-                @Name = @name;
-            }
-
-            public string @Data { get; }
-            public string @Name { get; }
-            public string @Id { get; }
-        }
-
-        public class sku
-        {
-            public sku(int @capacity,
-                       string @name,
-                       string @tier)
-            {
-                @Capacity = @capacity;
-                @Name = @name;
-                @Tier = @tier;
-            }
-
-            public int @Capacity { get; }
-            public string @Name { get; }
-            public string @Tier { get; }
         }
 
         public class waf_configuration
@@ -253,18 +236,22 @@ namespace NTerraform.Resources
             public string @RuleSetType { get; }
         }
 
-        public class frontend_port
+        public class ssl_certificate
         {
-            public frontend_port(string @name,
-                                 int @port)
+            public ssl_certificate(string @data,
+                                   string @name,
+                                   string @password)
             {
+                @Data = @data;
                 @Name = @name;
-                @Port = @port;
+                @Password = @password;
             }
 
+            public string @Data { get; }
             public string @Name { get; }
-            public int @Port { get; }
+            public string @Password { get; }
             public string @Id { get; }
+            public string @PublicCertData { get; }
         }
 
         public class backend_http_settings
@@ -284,7 +271,7 @@ namespace NTerraform.Resources
                                          string @name,
                                          int @port,
                                          string @protocol,
-                                         List<authentication_certificate> @authenticationCertificate = null,
+                                         authentication_certificate[] @authenticationCertificate = null,
                                          string @probeName = null,
                                          int? @requestTimeout = null)
             {
@@ -301,48 +288,61 @@ namespace NTerraform.Resources
             public string @Name { get; }
             public int @Port { get; }
             public string @Protocol { get; }
-            public List<authentication_certificate> @AuthenticationCertificate { get; }
+            public authentication_certificate[] @AuthenticationCertificate { get; }
             public string @Id { get; }
             public string @ProbeId { get; }
             public string @ProbeName { get; }
             public int? @RequestTimeout { get; }
         }
 
-        public class ssl_certificate
+        public class frontend_port
         {
-            public ssl_certificate(string @data,
-                                   string @name,
-                                   string @password)
+            public frontend_port(string @name,
+                                 int @port)
             {
-                @Data = @data;
                 @Name = @name;
-                @Password = @password;
+                @Port = @port;
             }
 
-            public string @Data { get; }
             public string @Name { get; }
-            public string @Password { get; }
+            public int @Port { get; }
             public string @Id { get; }
-            public string @PublicCertData { get; }
         }
 
-        public azurerm_application_gateway(List<backend_address_pool> @backendAddressPool,
-                                           List<backend_http_settings> @backendHttpSettings,
-                                           List<frontend_ip_configuration> @frontendIpConfiguration,
-                                           List<frontend_port> @frontendPort,
-                                           List<gateway_ip_configuration> @gatewayIpConfiguration,
-                                           List<http_listener> @httpListener,
+        public class backend_address_pool
+        {
+            public backend_address_pool(string @name,
+                                        string[] @fqdnList = null,
+                                        string[] @ipAddressList = null)
+            {
+                @Name = @name;
+                @FqdnList = @fqdnList;
+                @IpAddressList = @ipAddressList;
+            }
+
+            public string @Name { get; }
+            public string[] @FqdnList { get; }
+            public string @Id { get; }
+            public string[] @IpAddressList { get; }
+        }
+
+        public azurerm_application_gateway(backend_address_pool[] @backendAddressPool,
+                                           backend_http_settings[] @backendHttpSettings,
+                                           frontend_ip_configuration[] @frontendIpConfiguration,
+                                           frontend_port[] @frontendPort,
+                                           gateway_ip_configuration[] @gatewayIpConfiguration,
+                                           http_listener[] @httpListener,
                                            string @location,
                                            string @name,
-                                           List<request_routing_rule> @requestRoutingRule,
+                                           request_routing_rule[] @requestRoutingRule,
                                            string @resourceGroupName,
-                                           HashSet<sku> @sku,
-                                           List<authentication_certificate> @authenticationCertificate = null,
-                                           List<string> @disabledSslProtocols = null,
-                                           List<probe> @probe = null,
-                                           List<ssl_certificate> @sslCertificate = null,
-                                           List<url_path_map> @urlPathMap = null,
-                                           HashSet<waf_configuration> @wafConfiguration = null)
+                                           sku[] @sku,
+                                           authentication_certificate[] @authenticationCertificate = null,
+                                           string[] @disabledSslProtocols = null,
+                                           probe[] @probe = null,
+                                           ssl_certificate[] @sslCertificate = null,
+                                           url_path_map[] @urlPathMap = null,
+                                           waf_configuration[] @wafConfiguration = null)
         {
             @BackendAddressPool = @backendAddressPool;
             @BackendHttpSettings = @backendHttpSettings;
@@ -363,24 +363,24 @@ namespace NTerraform.Resources
             @WafConfiguration = @wafConfiguration;
         }
 
-        public List<backend_address_pool> @BackendAddressPool { get; }
-        public List<backend_http_settings> @BackendHttpSettings { get; }
-        public List<frontend_ip_configuration> @FrontendIpConfiguration { get; }
-        public List<frontend_port> @FrontendPort { get; }
-        public List<gateway_ip_configuration> @GatewayIpConfiguration { get; }
-        public List<http_listener> @HttpListener { get; }
+        public backend_address_pool[] @BackendAddressPool { get; }
+        public backend_http_settings[] @BackendHttpSettings { get; }
+        public frontend_ip_configuration[] @FrontendIpConfiguration { get; }
+        public frontend_port[] @FrontendPort { get; }
+        public gateway_ip_configuration[] @GatewayIpConfiguration { get; }
+        public http_listener[] @HttpListener { get; }
         public string @Location { get; }
         public string @Name { get; }
-        public List<request_routing_rule> @RequestRoutingRule { get; }
+        public request_routing_rule[] @RequestRoutingRule { get; }
         public string @ResourceGroupName { get; }
-        public HashSet<sku> @Sku { get; }
-        public List<authentication_certificate> @AuthenticationCertificate { get; }
-        public List<string> @DisabledSslProtocols { get; }
-        public List<probe> @Probe { get; }
-        public List<ssl_certificate> @SslCertificate { get; }
+        public sku[] @Sku { get; }
+        public authentication_certificate[] @AuthenticationCertificate { get; }
+        public string[] @DisabledSslProtocols { get; }
+        public probe[] @Probe { get; }
+        public ssl_certificate[] @SslCertificate { get; }
         public Dictionary<string,string> @Tags { get; }
-        public List<url_path_map> @UrlPathMap { get; }
-        public HashSet<waf_configuration> @WafConfiguration { get; }
+        public url_path_map[] @UrlPathMap { get; }
+        public waf_configuration[] @WafConfiguration { get; }
     }
 
 }

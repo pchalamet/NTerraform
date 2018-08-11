@@ -21,16 +21,6 @@ namespace NTerraform.Resources
             public string @Prefix { get; }
         }
 
-        public class capabilities
-        {
-            public capabilities(string @name)
-            {
-                @Name = @name;
-            }
-
-            public string @Name { get; }
-        }
-
         public class failover_policy
         {
             public failover_policy(string @location,
@@ -61,15 +51,25 @@ namespace NTerraform.Resources
             public int? @MaxStalenessPrefix { get; }
         }
 
-        public azurerm_cosmosdb_account(List<consistency_policy> @consistencyPolicy,
+        public class capabilities
+        {
+            public capabilities(string @name)
+            {
+                @Name = @name;
+            }
+
+            public string @Name { get; }
+        }
+
+        public azurerm_cosmosdb_account(consistency_policy[] @consistencyPolicy,
                                         string @location,
                                         string @name,
                                         string @offerType,
                                         string @resourceGroupName,
-                                        HashSet<capabilities> @capabilities = null,
+                                        capabilities[] @capabilities = null,
                                         bool? @enableAutomaticFailover = null,
-                                        HashSet<failover_policy> @failoverPolicy = null,
-                                        HashSet<geo_location> @geoLocation = null,
+                                        failover_policy[] @failoverPolicy = null,
+                                        geo_location[] @geoLocation = null,
                                         string @ipRangeFilter = null,
                                         string @kind = null)
         {
@@ -86,26 +86,26 @@ namespace NTerraform.Resources
             @Kind = @kind;
         }
 
-        public List<consistency_policy> @ConsistencyPolicy { get; }
+        public consistency_policy[] @ConsistencyPolicy { get; }
         public string @Location { get; }
         public string @Name { get; }
         public string @OfferType { get; }
         public string @ResourceGroupName { get; }
-        public HashSet<capabilities> @Capabilities { get; }
-        public List<string> @ConnectionStrings { get; }
+        public capabilities[] @Capabilities { get; }
+        public string[] @ConnectionStrings { get; }
         public bool? @EnableAutomaticFailover { get; }
         public string @Endpoint { get; }
-        public HashSet<failover_policy> @FailoverPolicy { get; }
-        public HashSet<geo_location> @GeoLocation { get; }
+        public failover_policy[] @FailoverPolicy { get; }
+        public geo_location[] @GeoLocation { get; }
         public string @IpRangeFilter { get; }
         public string @Kind { get; }
         public string @PrimaryMasterKey { get; }
         public string @PrimaryReadonlyMasterKey { get; }
-        public List<string> @ReadEndpoints { get; }
+        public string[] @ReadEndpoints { get; }
         public string @SecondaryMasterKey { get; }
         public string @SecondaryReadonlyMasterKey { get; }
         public Dictionary<string,string> @Tags { get; }
-        public List<string> @WriteEndpoints { get; }
+        public string[] @WriteEndpoints { get; }
     }
 
 }

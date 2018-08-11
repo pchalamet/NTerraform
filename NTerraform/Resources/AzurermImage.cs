@@ -44,8 +44,8 @@ namespace NTerraform.Resources
         public azurerm_image(string @location,
                              string @name,
                              string @resourceGroupName,
-                             List<data_disk> @dataDisk = null,
-                             List<os_disk> @osDisk = null,
+                             data_disk[] @dataDisk = null,
+                             os_disk[] @osDisk = null,
                              string @sourceVirtualMachineId = null)
         {
             @Location = @location;
@@ -59,8 +59,8 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<data_disk> @DataDisk { get; }
-        public List<os_disk> @OsDisk { get; }
+        public data_disk[] @DataDisk { get; }
+        public os_disk[] @OsDisk { get; }
         public string @SourceVirtualMachineId { get; }
         public Dictionary<string,string> @Tags { get; }
     }

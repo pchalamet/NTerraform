@@ -10,7 +10,7 @@ namespace NTerraform.Resources
                               string @virtualNetworkName,
                               string @networkSecurityGroupId = null,
                               string @routeTableId = null,
-                              List<string> @serviceEndpoints = null)
+                              string[] @serviceEndpoints = null)
         {
             @AddressPrefix = @addressPrefix;
             @Name = @name;
@@ -25,10 +25,10 @@ namespace NTerraform.Resources
         public string @Name { get; }
         public string @ResourceGroupName { get; }
         public string @VirtualNetworkName { get; }
-        public HashSet<string> @IpConfigurations { get; }
+        public string[] @IpConfigurations { get; }
         public string @NetworkSecurityGroupId { get; }
         public string @RouteTableId { get; }
-        public List<string> @ServiceEndpoints { get; }
+        public string[] @ServiceEndpoints { get; }
     }
 
 }

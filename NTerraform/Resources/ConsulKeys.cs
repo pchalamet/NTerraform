@@ -24,7 +24,7 @@ namespace NTerraform.Resources
             public string @Value { get; }
         }
 
-        public consul_keys(HashSet<key> @key = null,
+        public consul_keys(key[] @key = null,
                            string @token = null)
         {
             @Key = @key;
@@ -32,7 +32,7 @@ namespace NTerraform.Resources
         }
 
         public string @Datacenter { get; }
-        public HashSet<key> @Key { get; }
+        public key[] @Key { get; }
         public string @Token { get; }
         public Dictionary<string,string> @Var { get; }
     }

@@ -6,12 +6,12 @@ namespace NTerraform.Resources
     {
         public class microsoft_peering_config
         {
-            public microsoft_peering_config(List<string> @advertisedPublicPrefixes)
+            public microsoft_peering_config(string[] @advertisedPublicPrefixes)
             {
                 @AdvertisedPublicPrefixes = @advertisedPublicPrefixes;
             }
 
-            public List<string> @AdvertisedPublicPrefixes { get; }
+            public string[] @AdvertisedPublicPrefixes { get; }
         }
 
         public azurerm_express_route_circuit_peering(string @expressRouteCircuitName,
@@ -20,7 +20,7 @@ namespace NTerraform.Resources
                                                      string @resourceGroupName,
                                                      string @secondaryPeerAddressPrefix,
                                                      int @vlanId,
-                                                     List<microsoft_peering_config> @microsoftPeeringConfig = null,
+                                                     microsoft_peering_config[] @microsoftPeeringConfig = null,
                                                      string @sharedKey = null)
         {
             @ExpressRouteCircuitName = @expressRouteCircuitName;
@@ -40,7 +40,7 @@ namespace NTerraform.Resources
         public string @SecondaryPeerAddressPrefix { get; }
         public int @VlanId { get; }
         public int? @AzureAsn { get; }
-        public List<microsoft_peering_config> @MicrosoftPeeringConfig { get; }
+        public microsoft_peering_config[] @MicrosoftPeeringConfig { get; }
         public int? @PeerAsn { get; }
         public string @PrimaryAzurePort { get; }
         public string @SecondaryAzurePort { get; }

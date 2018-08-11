@@ -11,4 +11,10 @@
     public abstract class resource
     {
     }
+
+    public sealed class schema
+    {
+        public static void Build() { }
+    }
+
 }

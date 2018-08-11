@@ -37,9 +37,9 @@ namespace NTerraform.Resources
         public azurerm_app_service_plan(string @location,
                                         string @name,
                                         string @resourceGroupName,
-                                        List<sku> @sku,
+                                        sku[] @sku,
                                         string @kind = null,
-                                        List<properties> @properties = null)
+                                        properties[] @properties = null)
         {
             @Location = @location;
             @Name = @name;
@@ -52,10 +52,10 @@ namespace NTerraform.Resources
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public List<sku> @Sku { get; }
+        public sku[] @Sku { get; }
         public string @Kind { get; }
         public int? @MaximumNumberOfWorkers { get; }
-        public List<properties> @Properties { get; }
+        public properties[] @Properties { get; }
         public Dictionary<string,string> @Tags { get; }
     }
 

@@ -22,16 +22,16 @@ namespace NTerraform.Resources
             public string @Name { get; }
             public string @PrivateIpAddressAllocation { get; }
             public string @SubnetId { get; }
-            public HashSet<string> @ApplicationGatewayBackendAddressPoolsIds { get; }
-            public HashSet<string> @ApplicationSecurityGroupIds { get; }
-            public HashSet<string> @LoadBalancerBackendAddressPoolsIds { get; }
-            public HashSet<string> @LoadBalancerInboundNatRulesIds { get; }
+            public string[] @ApplicationGatewayBackendAddressPoolsIds { get; }
+            public string[] @ApplicationSecurityGroupIds { get; }
+            public string[] @LoadBalancerBackendAddressPoolsIds { get; }
+            public string[] @LoadBalancerInboundNatRulesIds { get; }
             public bool? @Primary { get; }
             public string @PrivateIpAddress { get; }
             public string @PublicIpAddressId { get; }
         }
 
-        public azurerm_network_interface(List<ip_configuration> @ipConfiguration,
+        public azurerm_network_interface(ip_configuration[] @ipConfiguration,
                                          string @location,
                                          string @name,
                                          string @resourceGroupName,
@@ -48,12 +48,12 @@ namespace NTerraform.Resources
             @NetworkSecurityGroupId = @networkSecurityGroupId;
         }
 
-        public List<ip_configuration> @IpConfiguration { get; }
+        public ip_configuration[] @IpConfiguration { get; }
         public string @Location { get; }
         public string @Name { get; }
         public string @ResourceGroupName { get; }
-        public HashSet<string> @AppliedDnsServers { get; }
-        public HashSet<string> @DnsServers { get; }
+        public string[] @AppliedDnsServers { get; }
+        public string[] @DnsServers { get; }
         public bool? @EnableAcceleratedNetworking { get; }
         public bool? @EnableIpForwarding { get; }
         public string @InternalDnsNameLabel { get; }
@@ -61,7 +61,7 @@ namespace NTerraform.Resources
         public string @MacAddress { get; }
         public string @NetworkSecurityGroupId { get; }
         public string @PrivateIpAddress { get; }
-        public List<string> @PrivateIpAddresses { get; }
+        public string[] @PrivateIpAddresses { get; }
         public Dictionary<string,string> @Tags { get; }
         public string @VirtualMachineId { get; }
     }

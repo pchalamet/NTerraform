@@ -4,7 +4,7 @@ namespace NTerraform.Resources
 {
     public class azurerm_key_vault_key : NTerraform.resource
     {
-        public azurerm_key_vault_key(List<string> @keyOpts,
+        public azurerm_key_vault_key(string[] @keyOpts,
                                      int @keySize,
                                      string @keyType,
                                      string @name,
@@ -17,7 +17,7 @@ namespace NTerraform.Resources
             @VaultUri = @vaultUri;
         }
 
-        public List<string> @KeyOpts { get; }
+        public string[] @KeyOpts { get; }
         public int @KeySize { get; }
         public string @KeyType { get; }
         public string @Name { get; }

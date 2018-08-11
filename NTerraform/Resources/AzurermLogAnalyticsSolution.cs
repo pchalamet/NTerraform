@@ -22,7 +22,7 @@ namespace NTerraform.Resources
         }
 
         public azurerm_log_analytics_solution(string @location,
-                                              List<plan> @plan,
+                                              plan[] @plan,
                                               string @resourceGroupName,
                                               string @solutionName,
                                               string @workspaceName,
@@ -37,7 +37,7 @@ namespace NTerraform.Resources
         }
 
         public string @Location { get; }
-        public List<plan> @Plan { get; }
+        public plan[] @Plan { get; }
         public string @ResourceGroupName { get; }
         public string @SolutionName { get; }
         public string @WorkspaceName { get; }
