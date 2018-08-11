@@ -1,6 +1,14 @@
 # NTerraform
 NTerraform aims at writing C# or F# instead of *terraform* syntax. It's a POC as of now but looks really promising.
 
+Advantages:
+* C# or F# syntax is easier to grasp
+* fully typed and completion ready
+
+Drawbacks:
+* it's merely a new layer on top of terraform
+* output can only be processed in terraform and not in NTerraform app
+
 For example, following terraform definition (from https://www.terraform.io/docs/providers/azurerm/index.html):
 
 ```
