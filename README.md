@@ -50,7 +50,7 @@ resource "azurerm_virtual_network" "network" {
 ```
 
 This can be written in C# like this:
-```c-sharp
+```csharp
 var provider = new azurerm(environment: "production");
 var networkrg = new azurerm_resource_group(name: "production",
                                            location: "West US");
@@ -68,7 +68,7 @@ NTerraform.schema.Build();
 ```
 
 or even better in F#:
-```f-sharp
+```fsharp
 let provider = azurerm(environment = "dev")
 let networkrg = azurerm_resource_group(name = "production",
                                        location = "West US")
