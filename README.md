@@ -3,7 +3,7 @@ NTerraform aims at writing C# or F# instead of *terraform* syntax. It's a POC as
 
 For example, following terraform definition (from https://www.terraform.io/docs/providers/azurerm/index.html):
 
-````
+```
 # Configure the Azure Provider
 provider "azurerm" { 
   environment = "production"
