@@ -2,24 +2,10 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_postgresql_server")]
     public sealed class azurerm_postgresql_server : NTerraform.resource
     {
-        public sealed class storage_profile
-        {
-            public storage_profile(int @storageMb,
-                                   int? @backupRetentionDays = null,
-                                   string @geoRedundantBackup = null)
-            {
-                @StorageMb = @storageMb;
-                @BackupRetentionDays = @backupRetentionDays;
-                @GeoRedundantBackup = @geoRedundantBackup;
-            }
-
-            public int @StorageMb { get; }
-            public int? @BackupRetentionDays { get; }
-            public string @GeoRedundantBackup { get; }
-        }
-
+        [TerraformStructure(category: "", typeName: "sku")]
         public sealed class sku
         {
             public sku(int @capacity,
@@ -33,10 +19,39 @@ namespace NTerraform.Resources
                 @Tier = @tier;
             }
 
+            [TerraformProperty(name: "capacity", @out: false, nested: false, min: 1, max: 1)]
             public int @Capacity { get; }
+
+            [TerraformProperty(name: "family", @out: false, nested: false, min: 1, max: 1)]
             public string @Family { get; }
+
+            [TerraformProperty(name: "name", @out: false, nested: false, min: 1, max: 1)]
             public string @Name { get; }
+
+            [TerraformProperty(name: "tier", @out: false, nested: false, min: 1, max: 1)]
             public string @Tier { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "storage_profile")]
+        public sealed class storage_profile
+        {
+            public storage_profile(int @storageMb,
+                                   int? @backupRetentionDays = null,
+                                   string @geoRedundantBackup = null)
+            {
+                @StorageMb = @storageMb;
+                @BackupRetentionDays = @backupRetentionDays;
+                @GeoRedundantBackup = @geoRedundantBackup;
+            }
+
+            [TerraformProperty(name: "storage_mb", @out: false, nested: false, min: 1, max: 1)]
+            public int @StorageMb { get; }
+
+            [TerraformProperty(name: "backup_retention_days", @out: false, nested: false, min: 0, max: 1)]
+            public int? @BackupRetentionDays { get; }
+
+            [TerraformProperty(name: "geo_redundant_backup", @out: false, nested: false, min: 0, max: 1)]
+            public string @GeoRedundantBackup { get; }
         }
 
         public azurerm_postgresql_server(string @administratorLogin,
@@ -60,16 +75,37 @@ namespace NTerraform.Resources
             @Version = @version;
         }
 
+        [TerraformProperty(name: "administrator_login", @out: false, nested: true, min: 1, max: 1)]
         public string @AdministratorLogin { get; }
+
+        [TerraformProperty(name: "administrator_login_password", @out: false, nested: true, min: 1, max: 1)]
         public string @AdministratorLoginPassword { get; }
+
+        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
         public string @Location { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "sku", @out: false, nested: true, min: 1, max: 1)]
         public sku[] @Sku { get; }
+
+        [TerraformProperty(name: "ssl_enforcement", @out: false, nested: true, min: 1, max: 1)]
         public string @SslEnforcement { get; }
+
+        [TerraformProperty(name: "storage_profile", @out: false, nested: true, min: 1, max: 1)]
         public storage_profile[] @StorageProfile { get; }
+
+        [TerraformProperty(name: "version", @out: false, nested: true, min: 1, max: 1)]
         public string @Version { get; }
+
+        [TerraformProperty(name: "fqdn", @out: true, nested: true, min: 0, max: 1)]
         public string @Fqdn { get; }
+
+        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

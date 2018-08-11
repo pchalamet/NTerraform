@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "consul_intention")]
     public sealed class consul_intention : NTerraform.resource
     {
         public consul_intention(string @action,
@@ -17,10 +18,19 @@ namespace NTerraform.Resources
             @Meta = @meta;
         }
 
+        [TerraformProperty(name: "action", @out: false, nested: true, min: 1, max: 1)]
         public string @Action { get; }
+
+        [TerraformProperty(name: "destination_name", @out: false, nested: true, min: 1, max: 1)]
         public string @DestinationName { get; }
+
+        [TerraformProperty(name: "source_name", @out: false, nested: true, min: 1, max: 1)]
         public string @SourceName { get; }
+
+        [TerraformProperty(name: "description", @out: false, nested: true, min: 0, max: 1)]
         public string @Description { get; }
+
+        [TerraformProperty(name: "meta", @out: false, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Meta { get; }
     }
 

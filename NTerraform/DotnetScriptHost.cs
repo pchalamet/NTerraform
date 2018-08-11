@@ -10,7 +10,6 @@ namespace NTerraform
 
         public Dictionary<string, object> GetVariables()
         {
-            System.Diagnostics.Debugger.Break();
             var currentClass = MethodBase.GetCurrentMethod().DeclaringType;
             return new Dictionary<string, object>();
         }

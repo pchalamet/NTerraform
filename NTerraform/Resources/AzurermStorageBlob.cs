@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_storage_blob")]
     public sealed class azurerm_storage_blob : NTerraform.resource
     {
         public azurerm_storage_blob(string @name,
@@ -29,17 +30,40 @@ namespace NTerraform.Resources
             @Type = @type;
         }
 
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "storage_account_name", @out: false, nested: true, min: 1, max: 1)]
         public string @StorageAccountName { get; }
+
+        [TerraformProperty(name: "storage_container_name", @out: false, nested: true, min: 1, max: 1)]
         public string @StorageContainerName { get; }
+
+        [TerraformProperty(name: "attempts", @out: false, nested: true, min: 0, max: 1)]
         public int? @Attempts { get; }
+
+        [TerraformProperty(name: "content_type", @out: false, nested: true, min: 0, max: 1)]
         public string @ContentType { get; }
+
+        [TerraformProperty(name: "parallelism", @out: false, nested: true, min: 0, max: 1)]
         public int? @Parallelism { get; }
+
+        [TerraformProperty(name: "size", @out: false, nested: true, min: 0, max: 1)]
         public int? @Size { get; }
+
+        [TerraformProperty(name: "source", @out: false, nested: true, min: 0, max: 1)]
         public string @Source { get; }
+
+        [TerraformProperty(name: "source_uri", @out: false, nested: true, min: 0, max: 1)]
         public string @SourceUri { get; }
+
+        [TerraformProperty(name: "type", @out: false, nested: true, min: 0, max: 1)]
         public string @Type { get; }
+
+        [TerraformProperty(name: "url", @out: true, nested: true, min: 0, max: 1)]
         public string @Url { get; }
     }
 

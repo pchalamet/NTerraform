@@ -2,8 +2,10 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "consul_keys")]
     public sealed class consul_keys : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "key")]
         public sealed class key
         {
             public key(string @path,
@@ -17,10 +19,19 @@ namespace NTerraform.Resources
                 @Name = @name;
             }
 
+            [TerraformProperty(name: "path", @out: false, nested: false, min: 1, max: 1)]
             public string @Path { get; }
+
+            [TerraformProperty(name: "default", @out: false, nested: false, min: 0, max: 1)]
             public string @Default { get; }
+
+            [TerraformProperty(name: "delete", @out: false, nested: false, min: 0, max: 1)]
             public bool? @Delete { get; }
+
+            [TerraformProperty(name: "name", @out: false, nested: false, min: 0, max: 1)]
             public string @Name { get; }
+
+            [TerraformProperty(name: "value", @out: true, nested: false, min: 0, max: 1)]
             public string @Value { get; }
         }
 
@@ -31,9 +42,16 @@ namespace NTerraform.Resources
             @Token = @token;
         }
 
+        [TerraformProperty(name: "datacenter", @out: true, nested: true, min: 0, max: 1)]
         public string @Datacenter { get; }
+
+        [TerraformProperty(name: "key", @out: false, nested: true, min: 0, max: 0)]
         public key[] @Key { get; }
+
+        [TerraformProperty(name: "token", @out: false, nested: true, min: 0, max: 1)]
         public string @Token { get; }
+
+        [TerraformProperty(name: "var", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Var { get; }
     }
 

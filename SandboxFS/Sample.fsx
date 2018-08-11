@@ -18,4 +18,3 @@ let network = azurerm_virtual_network(name = "production-network",
                                       subnet = networkSubnets)
 
 NTerraform.schema.Build()
-

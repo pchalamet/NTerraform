@@ -2,8 +2,10 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_relay_namespace")]
     public sealed class azurerm_relay_namespace : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "sku")]
         public sealed class sku
         {
             public sku(string @name)
@@ -11,6 +13,7 @@ namespace NTerraform.Resources
                 @Name = @name;
             }
 
+            [TerraformProperty(name: "name", @out: false, nested: false, min: 1, max: 1)]
             public string @Name { get; }
         }
 
@@ -25,15 +28,34 @@ namespace NTerraform.Resources
             @Sku = @sku;
         }
 
+        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
         public string @Location { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "sku", @out: false, nested: true, min: 1, max: 1)]
         public sku[] @Sku { get; }
+
+        [TerraformProperty(name: "metric_id", @out: true, nested: true, min: 0, max: 1)]
         public string @MetricId { get; }
+
+        [TerraformProperty(name: "primary_connection_string", @out: true, nested: true, min: 0, max: 1)]
         public string @PrimaryConnectionString { get; }
+
+        [TerraformProperty(name: "primary_key", @out: true, nested: true, min: 0, max: 1)]
         public string @PrimaryKey { get; }
+
+        [TerraformProperty(name: "secondary_connection_string", @out: true, nested: true, min: 0, max: 1)]
         public string @SecondaryConnectionString { get; }
+
+        [TerraformProperty(name: "secondary_key", @out: true, nested: true, min: 0, max: 1)]
         public string @SecondaryKey { get; }
+
+        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

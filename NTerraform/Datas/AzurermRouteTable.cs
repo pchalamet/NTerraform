@@ -2,17 +2,26 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
+    [TerraformStructure(category: "data", typeName: "azurerm_route_table")]
     public sealed class azurerm_route_table : NTerraform.data
     {
+        [TerraformStructure(category: "", typeName: "route")]
         public sealed class route
         {
             public route()
             {
             }
 
+            [TerraformProperty(name: "address_prefix", @out: true, nested: false, min: 0, max: 1)]
             public string @AddressPrefix { get; }
+
+            [TerraformProperty(name: "name", @out: true, nested: false, min: 0, max: 1)]
             public string @Name { get; }
+
+            [TerraformProperty(name: "next_hop_in_ip_address", @out: true, nested: false, min: 0, max: 1)]
             public string @NextHopInIpAddress { get; }
+
+            [TerraformProperty(name: "next_hop_type", @out: true, nested: false, min: 0, max: 1)]
             public string @NextHopType { get; }
         }
 
@@ -25,11 +34,22 @@ namespace NTerraform.Datas
             @Route = @route;
         }
 
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "location", @out: true, nested: true, min: 0, max: 1)]
         public string @Location { get; }
+
+        [TerraformProperty(name: "route", @out: false, nested: true, min: 0, max: 0)]
         public route[] @Route { get; }
+
+        [TerraformProperty(name: "subnets", @out: true, nested: true, min: 0, max: 1)]
         public string[] @Subnets { get; }
+
+        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

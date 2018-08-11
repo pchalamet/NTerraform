@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_virtual_machine_extension")]
     public sealed class azurerm_virtual_machine_extension : NTerraform.resource
     {
         public azurerm_virtual_machine_extension(string @location,
@@ -27,16 +28,37 @@ namespace NTerraform.Resources
             @Settings = @settings;
         }
 
+        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
         public string @Location { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "publisher", @out: false, nested: true, min: 1, max: 1)]
         public string @Publisher { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "type", @out: false, nested: true, min: 1, max: 1)]
         public string @Type { get; }
+
+        [TerraformProperty(name: "type_handler_version", @out: false, nested: true, min: 1, max: 1)]
         public string @TypeHandlerVersion { get; }
+
+        [TerraformProperty(name: "virtual_machine_name", @out: false, nested: true, min: 1, max: 1)]
         public string @VirtualMachineName { get; }
+
+        [TerraformProperty(name: "auto_upgrade_minor_version", @out: false, nested: true, min: 0, max: 1)]
         public bool? @AutoUpgradeMinorVersion { get; }
+
+        [TerraformProperty(name: "protected_settings", @out: false, nested: true, min: 0, max: 1)]
         public string @ProtectedSettings { get; }
+
+        [TerraformProperty(name: "settings", @out: false, nested: true, min: 0, max: 1)]
         public string @Settings { get; }
+
+        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

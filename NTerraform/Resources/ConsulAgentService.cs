@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "consul_agent_service")]
     public sealed class consul_agent_service : NTerraform.resource
     {
         public consul_agent_service(string @name,
@@ -13,9 +14,16 @@ namespace NTerraform.Resources
             @Tags = @tags;
         }
 
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "address", @out: true, nested: true, min: 0, max: 1)]
         public string @Address { get; }
+
+        [TerraformProperty(name: "port", @out: false, nested: true, min: 0, max: 1)]
         public int? @Port { get; }
+
+        [TerraformProperty(name: "tags", @out: false, nested: true, min: 0, max: 1)]
         public string[] @Tags { get; }
     }
 

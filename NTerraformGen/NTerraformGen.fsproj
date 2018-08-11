@@ -7,14 +7,11 @@
     <Compile Include="Collections.fs" />
     <Compile Include="StringHelpers.fs" />
     <Compile Include="TerraformSchema.fs" />
-    <Compile Include="GeneratorFSharp.fs" />
     <Compile Include="GeneratorCSharp.fs" />
     <Compile Include="GeneratorDump.fs" />
     <Compile Include="OutConsole.fs" />
     <Compile Include="OutFile.fs" />
     <Compile Include="Program.fs" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 </Project>

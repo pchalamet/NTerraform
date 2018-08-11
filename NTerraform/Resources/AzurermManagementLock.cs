@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_management_lock")]
     public sealed class azurerm_management_lock : NTerraform.resource
     {
         public azurerm_management_lock(string @lockLevel,
@@ -15,9 +16,16 @@ namespace NTerraform.Resources
             @Notes = @notes;
         }
 
+        [TerraformProperty(name: "lock_level", @out: false, nested: true, min: 1, max: 1)]
         public string @LockLevel { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "scope", @out: false, nested: true, min: 1, max: 1)]
         public string @Scope { get; }
+
+        [TerraformProperty(name: "notes", @out: false, nested: true, min: 0, max: 1)]
         public string @Notes { get; }
     }
 

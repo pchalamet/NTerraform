@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_data_lake_analytics_firewall_rule")]
     public sealed class azurerm_data_lake_analytics_firewall_rule : NTerraform.resource
     {
         public azurerm_data_lake_analytics_firewall_rule(string @accountName,
@@ -17,10 +18,19 @@ namespace NTerraform.Resources
             @StartIpAddress = @startIpAddress;
         }
 
+        [TerraformProperty(name: "account_name", @out: false, nested: true, min: 1, max: 1)]
         public string @AccountName { get; }
+
+        [TerraformProperty(name: "end_ip_address", @out: false, nested: true, min: 1, max: 1)]
         public string @EndIpAddress { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "start_ip_address", @out: false, nested: true, min: 1, max: 1)]
         public string @StartIpAddress { get; }
     }
 

@@ -23,7 +23,7 @@ let extract tfType tfName =
 let usage() =
     printfn "nterraform <lang> <out> <type> <name>"
     printfn "where:"
-    printfn "  <lang>: fs, cs, dump"
+    printfn "  <lang>: cs, dump"
     printfn "  <out> : console, file"    
     printfn "  <type>: data, provider, resource"
     printfn "  <name>: name of the structure"
@@ -36,7 +36,6 @@ let main argv =
                                             let lines = match lang with
                                                         | "dump" -> GeneratorDump.Generate tfType tfName structure
                                                         | "cs" -> GeneratorCSharp.Generate tfType tfName structure
-                                                        | "fs" -> GeneratorFSharp.Generate tfType tfName structure
                                                         | _ -> failwithf "Unknown generator %A" lang
                                             match output with
                                             | "console" -> OutConsole.Write lines

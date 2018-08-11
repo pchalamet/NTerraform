@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_mysql_firewall_rule")]
     public sealed class azurerm_mysql_firewall_rule : NTerraform.resource
     {
         public azurerm_mysql_firewall_rule(string @endIpAddress,
@@ -17,10 +18,19 @@ namespace NTerraform.Resources
             @StartIpAddress = @startIpAddress;
         }
 
+        [TerraformProperty(name: "end_ip_address", @out: false, nested: true, min: 1, max: 1)]
         public string @EndIpAddress { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "server_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ServerName { get; }
+
+        [TerraformProperty(name: "start_ip_address", @out: false, nested: true, min: 1, max: 1)]
         public string @StartIpAddress { get; }
     }
 

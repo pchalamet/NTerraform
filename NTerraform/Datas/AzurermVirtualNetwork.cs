@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
+    [TerraformStructure(category: "data", typeName: "azurerm_virtual_network")]
     public sealed class azurerm_virtual_network : NTerraform.data
     {
         public azurerm_virtual_network(string @name,
@@ -11,11 +12,22 @@ namespace NTerraform.Datas
             @ResourceGroupName = @resourceGroupName;
         }
 
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "address_spaces", @out: true, nested: true, min: 0, max: 1)]
         public string[] @AddressSpaces { get; }
+
+        [TerraformProperty(name: "dns_servers", @out: true, nested: true, min: 0, max: 1)]
         public string[] @DnsServers { get; }
+
+        [TerraformProperty(name: "subnets", @out: true, nested: true, min: 0, max: 1)]
         public string[] @Subnets { get; }
+
+        [TerraformProperty(name: "vnet_peerings", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @VnetPeerings { get; }
     }
 

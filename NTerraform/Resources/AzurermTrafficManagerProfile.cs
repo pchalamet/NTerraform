@@ -2,21 +2,10 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_traffic_manager_profile")]
     public sealed class azurerm_traffic_manager_profile : NTerraform.resource
     {
-        public sealed class dns_config
-        {
-            public dns_config(string @relativeName,
-                              int @ttl)
-            {
-                @RelativeName = @relativeName;
-                @Ttl = @ttl;
-            }
-
-            public string @RelativeName { get; }
-            public int @Ttl { get; }
-        }
-
+        [TerraformStructure(category: "", typeName: "monitor_config")]
         public sealed class monitor_config
         {
             public monitor_config(int @port,
@@ -28,9 +17,31 @@ namespace NTerraform.Resources
                 @Path = @path;
             }
 
+            [TerraformProperty(name: "port", @out: false, nested: false, min: 1, max: 1)]
             public int @Port { get; }
+
+            [TerraformProperty(name: "protocol", @out: false, nested: false, min: 1, max: 1)]
             public string @Protocol { get; }
+
+            [TerraformProperty(name: "path", @out: false, nested: false, min: 0, max: 1)]
             public string @Path { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "dns_config")]
+        public sealed class dns_config
+        {
+            public dns_config(string @relativeName,
+                              int @ttl)
+            {
+                @RelativeName = @relativeName;
+                @Ttl = @ttl;
+            }
+
+            [TerraformProperty(name: "relative_name", @out: false, nested: false, min: 1, max: 1)]
+            public string @RelativeName { get; }
+
+            [TerraformProperty(name: "ttl", @out: false, nested: false, min: 1, max: 1)]
+            public int @Ttl { get; }
         }
 
         public azurerm_traffic_manager_profile(dns_config[] @dnsConfig,
@@ -46,13 +57,28 @@ namespace NTerraform.Resources
             @TrafficRoutingMethod = @trafficRoutingMethod;
         }
 
+        [TerraformProperty(name: "dns_config", @out: false, nested: true, min: 1, max: 0)]
         public dns_config[] @DnsConfig { get; }
+
+        [TerraformProperty(name: "monitor_config", @out: false, nested: true, min: 1, max: 0)]
         public monitor_config[] @MonitorConfig { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "traffic_routing_method", @out: false, nested: true, min: 1, max: 1)]
         public string @TrafficRoutingMethod { get; }
+
+        [TerraformProperty(name: "fqdn", @out: true, nested: true, min: 0, max: 1)]
         public string @Fqdn { get; }
+
+        [TerraformProperty(name: "profile_status", @out: true, nested: true, min: 0, max: 1)]
         public string @ProfileStatus { get; }
+
+        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

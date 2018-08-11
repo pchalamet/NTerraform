@@ -10,9 +10,8 @@ type Modifier =
     | Out
 
 type Cardinality =
-    | Optional
-    | Required
-    | Range of int option*int option
+    { Min : int
+      Max : int }
 
 type Collection =
     | Single
@@ -80,7 +79,7 @@ let rec parseType (typeDef : string) : FieldType =
 
 let convertAttributeToField (attribute : TFAttribute) : Field =
     let fieldName = attribute.Name
-    let fieldOpt = attribute.Required ? (Cardinality.Required, Cardinality.Optional)
+    let fieldOpt = attribute.Required ? ( {Min = 1; Max = 1}, {Min = 0; Max = 1})
     let fieldMod = attribute.Computed ? (Modifier.Out, Modifier.In) 
     let fieldType = attribute.Type |> parseType
     { Name = fieldName
@@ -104,12 +103,9 @@ let rec convertSchemaToStructure (attributes : TFAttribute seq) (blockTypes : TF
         let structName = blockType.Name
         let structure = convertSchemaToStructure blockType.Attributes blockType.BlockTypes
         let collType = FieldType.Collection (convertToCollection blockType.Nesting, structure)
-        let minCard = blockType.MinItems |> toBound
-        let maxCard = blockType.MaxItems |> toBound
-        let card = match minCard, maxCard with
-                   | Some 0, Some 1 -> Cardinality.Optional
-                   | Some 1, Some 1 -> Cardinality.Required
-                   | _ -> Cardinality.Range (minCard, maxCard)
+        let minOcc = blockType.MinItems
+        let maxOcc = blockType.MaxItems
+        let card = { Min = minOcc; Max = maxOcc }
         { Name = structName
           Modifier = Modifier.In
           Cardinality = card

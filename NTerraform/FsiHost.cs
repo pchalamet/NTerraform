@@ -11,8 +11,11 @@ namespace NTerraform
 
         public Dictionary<string, object> GetVariables()
         {
-            var types = Assembly.GetExecutingAssembly().GetTypes();
-            var fsiType = types.First(x => x.Name.StartsWith("FSI_", StringComparison.InvariantCulture));
+            var fsiType = AppDomain.CurrentDomain.GetAssemblies()
+                                                 .Select(x => x.GetTypes())
+                                                 .SelectMany(x => x)
+                                                 .First(x => x.Name.StartsWith("FSI_", StringComparison.InvariantCulture));
+
             var props = fsiType.GetProperties(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
 
             var dict = new Dictionary<string, object>();

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_traffic_manager_endpoint")]
     public sealed class azurerm_traffic_manager_endpoint : NTerraform.resource
     {
         public azurerm_traffic_manager_endpoint(string @name,
@@ -21,18 +22,43 @@ namespace NTerraform.Resources
             @TargetResourceId = @targetResourceId;
         }
 
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "profile_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ProfileName { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "type", @out: false, nested: true, min: 1, max: 1)]
         public string @Type { get; }
+
+        [TerraformProperty(name: "endpoint_location", @out: true, nested: true, min: 0, max: 1)]
         public string @EndpointLocation { get; }
+
+        [TerraformProperty(name: "endpoint_monitor_status", @out: true, nested: true, min: 0, max: 1)]
         public string @EndpointMonitorStatus { get; }
+
+        [TerraformProperty(name: "endpoint_status", @out: true, nested: true, min: 0, max: 1)]
         public string @EndpointStatus { get; }
+
+        [TerraformProperty(name: "geo_mappings", @out: false, nested: true, min: 0, max: 1)]
         public string[] @GeoMappings { get; }
+
+        [TerraformProperty(name: "min_child_endpoints", @out: false, nested: true, min: 0, max: 1)]
         public int? @MinChildEndpoints { get; }
+
+        [TerraformProperty(name: "priority", @out: true, nested: true, min: 0, max: 1)]
         public int? @Priority { get; }
+
+        [TerraformProperty(name: "target", @out: true, nested: true, min: 0, max: 1)]
         public string @Target { get; }
+
+        [TerraformProperty(name: "target_resource_id", @out: false, nested: true, min: 0, max: 1)]
         public string @TargetResourceId { get; }
+
+        [TerraformProperty(name: "weight", @out: true, nested: true, min: 0, max: 1)]
         public int? @Weight { get; }
     }
 

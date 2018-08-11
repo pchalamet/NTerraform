@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_availability_set")]
     public sealed class azurerm_availability_set : NTerraform.resource
     {
         public azurerm_availability_set(string @location,
@@ -19,12 +20,25 @@ namespace NTerraform.Resources
             @PlatformUpdateDomainCount = @platformUpdateDomainCount;
         }
 
+        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
         public string @Location { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "managed", @out: false, nested: true, min: 0, max: 1)]
         public bool? @Managed { get; }
+
+        [TerraformProperty(name: "platform_fault_domain_count", @out: false, nested: true, min: 0, max: 1)]
         public int? @PlatformFaultDomainCount { get; }
+
+        [TerraformProperty(name: "platform_update_domain_count", @out: false, nested: true, min: 0, max: 1)]
         public int? @PlatformUpdateDomainCount { get; }
+
+        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

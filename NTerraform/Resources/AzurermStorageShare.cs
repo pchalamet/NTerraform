@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_storage_share")]
     public sealed class azurerm_storage_share : NTerraform.resource
     {
         public azurerm_storage_share(string @name,
@@ -15,10 +16,19 @@ namespace NTerraform.Resources
             @Quota = @quota;
         }
 
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "storage_account_name", @out: false, nested: true, min: 1, max: 1)]
         public string @StorageAccountName { get; }
+
+        [TerraformProperty(name: "quota", @out: false, nested: true, min: 0, max: 1)]
         public int? @Quota { get; }
+
+        [TerraformProperty(name: "url", @out: true, nested: true, min: 0, max: 1)]
         public string @Url { get; }
     }
 

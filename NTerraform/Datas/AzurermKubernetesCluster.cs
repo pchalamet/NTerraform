@@ -2,30 +2,83 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
+    [TerraformStructure(category: "data", typeName: "azurerm_kubernetes_cluster")]
     public sealed class azurerm_kubernetes_cluster : NTerraform.data
     {
-        public sealed class kube_config
+        [TerraformStructure(category: "", typeName: "agent_pool_profile")]
+        public sealed class agent_pool_profile
         {
-            public kube_config()
+            public agent_pool_profile()
             {
             }
 
-            public string @ClientCertificate { get; }
-            public string @ClientKey { get; }
-            public string @ClusterCaCertificate { get; }
-            public string @Host { get; }
-            public string @Password { get; }
-            public string @Username { get; }
+            [TerraformProperty(name: "count", @out: true, nested: false, min: 0, max: 1)]
+            public int? @Count { get; }
+
+            [TerraformProperty(name: "dns_prefix", @out: true, nested: false, min: 0, max: 1)]
+            public string @DnsPrefix { get; }
+
+            [TerraformProperty(name: "name", @out: true, nested: false, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "os_disk_size_gb", @out: true, nested: false, min: 0, max: 1)]
+            public int? @OsDiskSizeGb { get; }
+
+            [TerraformProperty(name: "os_type", @out: true, nested: false, min: 0, max: 1)]
+            public string @OsType { get; }
+
+            [TerraformProperty(name: "vm_size", @out: true, nested: false, min: 0, max: 1)]
+            public string @VmSize { get; }
+
+            [TerraformProperty(name: "vnet_subnet_id", @out: true, nested: false, min: 0, max: 1)]
+            public string @VnetSubnetId { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "service_principal")]
+        public sealed class service_principal
+        {
+            public service_principal()
+            {
+            }
+
+            [TerraformProperty(name: "client_id", @out: true, nested: false, min: 0, max: 1)]
+            public string @ClientId { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "network_profile")]
+        public sealed class network_profile
+        {
+            public network_profile()
+            {
+            }
+
+            [TerraformProperty(name: "dns_service_ip", @out: true, nested: false, min: 0, max: 1)]
+            public string @DnsServiceIp { get; }
+
+            [TerraformProperty(name: "docker_bridge_cidr", @out: true, nested: false, min: 0, max: 1)]
+            public string @DockerBridgeCidr { get; }
+
+            [TerraformProperty(name: "network_plugin", @out: true, nested: false, min: 0, max: 1)]
+            public string @NetworkPlugin { get; }
+
+            [TerraformProperty(name: "pod_cidr", @out: true, nested: false, min: 0, max: 1)]
+            public string @PodCidr { get; }
+
+            [TerraformProperty(name: "service_cidr", @out: true, nested: false, min: 0, max: 1)]
+            public string @ServiceCidr { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "linux_profile")]
         public sealed class linux_profile
         {
+            [TerraformStructure(category: "", typeName: "ssh_key")]
             public sealed class ssh_key
             {
                 public ssh_key()
                 {
                 }
 
+                [TerraformProperty(name: "key_data", @out: true, nested: false, min: 0, max: 1)]
                 public string @KeyData { get; }
             }
 
@@ -34,45 +87,37 @@ namespace NTerraform.Datas
                 @SshKey = @sshKey;
             }
 
+            [TerraformProperty(name: "admin_username", @out: true, nested: false, min: 0, max: 1)]
             public string @AdminUsername { get; }
+
+            [TerraformProperty(name: "ssh_key", @out: false, nested: false, min: 0, max: 0)]
             public ssh_key[] @SshKey { get; }
         }
 
-        public sealed class agent_pool_profile
+        [TerraformStructure(category: "", typeName: "kube_config")]
+        public sealed class kube_config
         {
-            public agent_pool_profile()
+            public kube_config()
             {
             }
 
-            public int? @Count { get; }
-            public string @DnsPrefix { get; }
-            public string @Name { get; }
-            public int? @OsDiskSizeGb { get; }
-            public string @OsType { get; }
-            public string @VmSize { get; }
-            public string @VnetSubnetId { get; }
-        }
+            [TerraformProperty(name: "client_certificate", @out: true, nested: false, min: 0, max: 1)]
+            public string @ClientCertificate { get; }
 
-        public sealed class service_principal
-        {
-            public service_principal()
-            {
-            }
+            [TerraformProperty(name: "client_key", @out: true, nested: false, min: 0, max: 1)]
+            public string @ClientKey { get; }
 
-            public string @ClientId { get; }
-        }
+            [TerraformProperty(name: "cluster_ca_certificate", @out: true, nested: false, min: 0, max: 1)]
+            public string @ClusterCaCertificate { get; }
 
-        public sealed class network_profile
-        {
-            public network_profile()
-            {
-            }
+            [TerraformProperty(name: "host", @out: true, nested: false, min: 0, max: 1)]
+            public string @Host { get; }
 
-            public string @DnsServiceIp { get; }
-            public string @DockerBridgeCidr { get; }
-            public string @NetworkPlugin { get; }
-            public string @PodCidr { get; }
-            public string @ServiceCidr { get; }
+            [TerraformProperty(name: "password", @out: true, nested: false, min: 0, max: 1)]
+            public string @Password { get; }
+
+            [TerraformProperty(name: "username", @out: true, nested: false, min: 0, max: 1)]
+            public string @Username { get; }
         }
 
         public azurerm_kubernetes_cluster(string @name,
@@ -92,19 +137,46 @@ namespace NTerraform.Datas
             @ServicePrincipal = @servicePrincipal;
         }
 
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "agent_pool_profile", @out: false, nested: true, min: 0, max: 0)]
         public agent_pool_profile[] @AgentPoolProfile { get; }
+
+        [TerraformProperty(name: "dns_prefix", @out: true, nested: true, min: 0, max: 1)]
         public string @DnsPrefix { get; }
+
+        [TerraformProperty(name: "fqdn", @out: true, nested: true, min: 0, max: 1)]
         public string @Fqdn { get; }
+
+        [TerraformProperty(name: "kube_config", @out: false, nested: true, min: 0, max: 0)]
         public kube_config[] @KubeConfig { get; }
+
+        [TerraformProperty(name: "kube_config_raw", @out: true, nested: true, min: 0, max: 1)]
         public string @KubeConfigRaw { get; }
+
+        [TerraformProperty(name: "kubernetes_version", @out: true, nested: true, min: 0, max: 1)]
         public string @KubernetesVersion { get; }
+
+        [TerraformProperty(name: "linux_profile", @out: false, nested: true, min: 0, max: 0)]
         public linux_profile[] @LinuxProfile { get; }
+
+        [TerraformProperty(name: "location", @out: true, nested: true, min: 0, max: 1)]
         public string @Location { get; }
+
+        [TerraformProperty(name: "network_profile", @out: false, nested: true, min: 0, max: 0)]
         public network_profile[] @NetworkProfile { get; }
+
+        [TerraformProperty(name: "node_resource_group", @out: true, nested: true, min: 0, max: 1)]
         public string @NodeResourceGroup { get; }
+
+        [TerraformProperty(name: "service_principal", @out: false, nested: true, min: 0, max: 0)]
         public service_principal[] @ServicePrincipal { get; }
+
+        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

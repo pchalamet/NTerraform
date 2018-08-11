@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_data_lake_analytics_account")]
     public sealed class azurerm_data_lake_analytics_account : NTerraform.resource
     {
         public azurerm_data_lake_analytics_account(string @defaultStoreAccountName,
@@ -17,11 +18,22 @@ namespace NTerraform.Resources
             @Tier = @tier;
         }
 
+        [TerraformProperty(name: "default_store_account_name", @out: false, nested: true, min: 1, max: 1)]
         public string @DefaultStoreAccountName { get; }
+
+        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
         public string @Location { get; }
+
+        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
+
+        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
+
+        [TerraformProperty(name: "tier", @out: false, nested: true, min: 0, max: 1)]
         public string @Tier { get; }
     }
 

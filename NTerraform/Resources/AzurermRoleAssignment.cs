@@ -2,6 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
+    [TerraformStructure(category: "resource", typeName: "azurerm_role_assignment")]
     public sealed class azurerm_role_assignment : NTerraform.resource
     {
         public azurerm_role_assignment(string @principalId,
@@ -13,10 +14,19 @@ namespace NTerraform.Resources
             @RoleDefinitionName = @roleDefinitionName;
         }
 
+        [TerraformProperty(name: "principal_id", @out: false, nested: true, min: 1, max: 1)]
         public string @PrincipalId { get; }
+
+        [TerraformProperty(name: "scope", @out: false, nested: true, min: 1, max: 1)]
         public string @Scope { get; }
+
+        [TerraformProperty(name: "name", @out: true, nested: true, min: 0, max: 1)]
         public string @Name { get; }
+
+        [TerraformProperty(name: "role_definition_id", @out: true, nested: true, min: 0, max: 1)]
         public string @RoleDefinitionId { get; }
+
+        [TerraformProperty(name: "role_definition_name", @out: false, nested: true, min: 0, max: 1)]
         public string @RoleDefinitionName { get; }
     }
 

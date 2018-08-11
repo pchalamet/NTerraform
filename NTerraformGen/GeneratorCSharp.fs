@@ -3,7 +3,7 @@ open TerraformSchema
 open System.IO
 open System
 open StringHelpers
-
+open Collections
 
 
 //let pluralize (field : Field) name =
@@ -22,8 +22,8 @@ open StringHelpers
 
 let toNullable (field : Field) =
     match field.Type, field.Cardinality with
-    | Primitive Primitive.Bool, Cardinality.Optional -> "?"
-    | Primitive Primitive.Number, Cardinality.Optional -> "?"
+    | Primitive Primitive.Bool, { Min = 0; Max = _ } -> "?"
+    | Primitive Primitive.Number, { Min = 0; Max = _ } -> "?"
     | _ -> ""
 
 // C# 8.0
@@ -34,10 +34,12 @@ let toNullable (field : Field) =
 
 let initNullable (field : Field) =
     match field.Type, field.Cardinality with
-    | _, Cardinality.Optional -> " = null"
-    | _, Cardinality.Range (None, _) -> " = null"
+    | _, { Min = 0; Max = _ } -> " = null"
     | _ -> ""
 
+let nullableIntValue = function
+    | Some x -> sprintf "%d" x
+    | _ -> "null"
 
 let rec toTypeName name primitive =
     match primitive with
@@ -87,25 +89,14 @@ let rec generateType tfType tfName fields =
             let space12 = System.String(' ', 12 + indent)
 
             let className = name
-            let baseClass = match tfType with
-                            | Some x -> sprintf " : NTerraform.%s" x
-                            | _ -> ""
-            yield sprintf "%spublic sealed class %s%s" space4 className baseClass
-            yield sprintf "%s{" space4
+            let category, baseClass = match tfType with
+                                      | Some x -> x, sprintf " : NTerraform.%s" x
+                                      | _ -> "", ""
+            let parameters = fields |> List.filter (fun x -> x.Cardinality.Min <> 0)
 
-            yield! generateFields fields
-
-            let primitiveParameters = fields |> List.filter (fun x -> x.Cardinality = Cardinality.Required)
-            let rangeParameters = fields |> List.filter (fun x -> match x.Cardinality with
-                                                                  | Cardinality.Range (Some _, _) -> true
-                                                                  | _ -> false)
-
-            let optPrimitiveParameters = fields |> List.filter (fun x -> x.Cardinality = Cardinality.Optional)
-            let optRangeParameters = fields |> List.filter (fun x -> match x.Cardinality with
-                                                                     | Cardinality.Range (None, _) -> true
-                                                                     | _ -> false)
-            let orderedParameters = (primitiveParameters @ rangeParameters |> List.sortBy (fun x -> x.Name))
-                                    @ (optPrimitiveParameters @ optRangeParameters |> List.sortBy (fun x -> x.Name))
+            let optParameters = fields |> List.filter (fun x -> x.Cardinality.Min = 0)
+            let orderedParameters = (parameters |> List.sortBy (fun x -> x.Name))
+                                    @ (optParameters |> List.sortBy (fun x -> x.Name))
 
             let ctor = sprintf "%spublic %s(" space8 className
             let ctorIndent = System.String(' ', ctor.Length)
@@ -122,6 +113,14 @@ let rec generateType tfType tfName fields =
                                |> List.map (fun x -> sprintf "%s@%s = @%s;" space12
                                                                             (x.Name |> toPascalCase)
                                                                             (x.Name |> toCamlCase))
+                                                                            
+            let attributes = orderedParameters
+                                |> List.map (fun x -> sprintf "%s[TerraformProperty(name: %A, @out: %s, nested: %s, min: %d, max: %d)]"
+                                                            space8
+                                                            x.Name
+                                                            ((x.Modifier = Modifier.Out) ? ("true", "false"))
+                                                            (tfType.IsSome ? ("true", "false"))
+                                                            x.Cardinality.Min x.Cardinality.Max)
 
             let members = orderedParameters
                                |> List.map (fun x -> sprintf "%spublic %s%s @%s { get; }" space8
@@ -129,12 +128,22 @@ let rec generateType tfType tfName fields =
                                                                                         (toNullable x)
                                                                                         (x.Name |> toPascalCase))
 
+            let attrXmembers = List.zip attributes members
+
+            yield sprintf "%s[TerraformStructure(category: %A, typeName: %A)]" space4 category name
+            yield sprintf "%spublic sealed class %s%s" space4 className baseClass
+            yield sprintf "%s{" space4
+
+            yield! generateFields fields
+
             yield! ctorPrms
             yield sprintf "%s{" space8
             yield! ctorInit
             yield sprintf "%s}" space8
-            yield ""
-            yield! members
+            for attrXmember in attrXmembers do
+                yield ""
+                yield attrXmember |> fst
+                yield attrXmember |> snd
             yield sprintf "%s}" space4
             yield ""
         }
