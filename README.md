@@ -48,25 +48,7 @@ resource "azurerm_virtual_network" "network" {
 }
 ```
 
-This can be written in C# like this:
-```csharp
-var provider = new azurerm(environment: "production");
-var networkrg = new azurerm_resource_group(name: "production",
-                                           location: "West US");
-
-var networkSubnets = new[] { new azurerm_virtual_network.subnet(name: "subnet1", addressPrefix: "10.0.1.0/24"),
-                             new azurerm_virtual_network.subnet(name: "subnet2", addressPrefix: "10.0.2.0/24"),
-                             new azurerm_virtual_network.subnet(name: "subnet3", addressPrefix: "10.0.3.0/24") };
-var network = new azurerm_virtual_network(name: "production-network",
-                                          addressSpace: new[] { "10.0.0.0/16" },
-                                          location: networkrg.Location,
-                                          resourceGroupName: networkrg.Name,
-                                          subnet: networkSubnets);
-
-NTerraform.schema.Build();
-```
-
-or even better in F#:
+This can be written in an F# script:
 ```fsharp
 let provider = azurerm(environment = "dev")
 let networkrg = azurerm_resource_group(name = "production",
@@ -84,7 +66,7 @@ let network = azurerm_virtual_network(name = "production-network",
 NTerraform.schema.Build();
 ```
 
-The idea is then to run this script in C# script or FSI (F#).
+This script can then be executed through FSI (it will write to stdout the terraform definition).
 
 # Dependencies
 * TFSchema: use this version https://github.com/pchalamet/tfschema, required for deterministic tf schema support
@@ -98,7 +80,7 @@ Script `NTerraform/build.ps1` can regenerate definitions. Update `NTerraform/pro
 # Future
 This is a POC as stated before. Roadmap is for the moment:
 
-1. Generate tf files
+1. Generate tf files (DONE)
 schema.Build() does nothing so it must detect context and generate tf files accordingly.
 Idea is to use either FSI (F# interactive) and C# script (https://github.com/filipw/dotnet-script): capture execution contexte and generate tf files.
 
@@ -112,4 +94,4 @@ NTerraform app should be the entry point and delegate everything to real terrafo
 Also should be able to support outputs by parsing terraform output.
 
 4. Implement terraform type provider (F#)
-Import definition directly from a type provider without requiring prio NTerraform support library reference or compilation.
+Import definition directly from a type provider without requiring prior NTerraform support library reference or compilation. Could be slow.
