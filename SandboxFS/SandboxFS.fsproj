@@ -4,9 +4,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="NTerraformCore.fs" />
-    <Compile Include="AzurermVirtualNetwork.fs" />
     <Compile Include="Program.fs" />
     <None Include="Network.fsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NTerraform\NTerraform.csproj" />
   </ItemGroup>
 </Project>
