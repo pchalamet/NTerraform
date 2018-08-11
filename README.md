@@ -2,7 +2,7 @@
 NTerraform aims at writing F# instead of *terraform* syntax. It's a POC as of now but looks really promising.
 
 Pros:
-* F# syntax is easier to grasp and open new configuration opportunities
+* F# syntax is easier to grasp and offers new opportunities
 * fully typed and completion ready !
 
 Cons:
