@@ -28,6 +28,7 @@ namespace NTerraform.Resources
             @RequiresDuplicateDetection = @requiresDuplicateDetection;
             @Status = @status;
             @SupportOrdering = @supportOrdering;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

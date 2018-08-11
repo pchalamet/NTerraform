@@ -5,22 +5,12 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "azurerm_kubernetes_cluster")]
     public sealed class azurerm_kubernetes_cluster : NTerraform.data
     {
-        [TerraformStructure(category: "", typeName: "service_principal")]
-        public sealed class service_principal
-        {
-            public service_principal()
-            {
-            }
-
-            [TerraformProperty(name: "client_id", @out: true, min: 0, max: 1)]
-            public string @ClientId { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "agent_pool_profile")]
-        public sealed class agent_pool_profile
+        public sealed class agent_pool_profile: NTerraform.structure
         {
             public agent_pool_profile()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "count", @out: true, min: 0, max: 1)]
@@ -45,11 +35,76 @@ namespace NTerraform.Datas
             public string @VnetSubnetId { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "network_profile")]
+        public sealed class network_profile: NTerraform.structure
+        {
+            public network_profile()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
+            public string @DnsServiceIp { get; }
+
+            [TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
+            public string @DockerBridgeCidr { get; }
+
+            [TerraformProperty(name: "network_plugin", @out: true, min: 0, max: 1)]
+            public string @NetworkPlugin { get; }
+
+            [TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
+            public string @PodCidr { get; }
+
+            [TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
+            public string @ServiceCidr { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "linux_profile")]
+        public sealed class linux_profile: NTerraform.structure
+        {
+            [TerraformStructure(category: "", typeName: "ssh_key")]
+            public sealed class ssh_key: NTerraform.structure
+            {
+                public ssh_key()
+                {
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "key_data", @out: true, min: 0, max: 1)]
+                public string @KeyData { get; }
+            }
+
+            public linux_profile(ssh_key[] @sshKey = null)
+            {
+                @SshKey = @sshKey;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "admin_username", @out: true, min: 0, max: 1)]
+            public string @AdminUsername { get; }
+
+            [TerraformProperty(name: "ssh_key", @out: false, min: 0, max: 0)]
+            public ssh_key[] @SshKey { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "service_principal")]
+        public sealed class service_principal: NTerraform.structure
+        {
+            public service_principal()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "client_id", @out: true, min: 0, max: 1)]
+            public string @ClientId { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "kube_config")]
-        public sealed class kube_config
+        public sealed class kube_config: NTerraform.structure
         {
             public kube_config()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
@@ -71,55 +126,6 @@ namespace NTerraform.Datas
             public string @Username { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "linux_profile")]
-        public sealed class linux_profile
-        {
-            [TerraformStructure(category: "", typeName: "ssh_key")]
-            public sealed class ssh_key
-            {
-                public ssh_key()
-                {
-                }
-
-                [TerraformProperty(name: "key_data", @out: true, min: 0, max: 1)]
-                public string @KeyData { get; }
-            }
-
-            public linux_profile(ssh_key[] @sshKey = null)
-            {
-                @SshKey = @sshKey;
-            }
-
-            [TerraformProperty(name: "admin_username", @out: true, min: 0, max: 1)]
-            public string @AdminUsername { get; }
-
-            [TerraformProperty(name: "ssh_key", @out: false, min: 0, max: 0)]
-            public ssh_key[] @SshKey { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "network_profile")]
-        public sealed class network_profile
-        {
-            public network_profile()
-            {
-            }
-
-            [TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
-            public string @DnsServiceIp { get; }
-
-            [TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
-            public string @DockerBridgeCidr { get; }
-
-            [TerraformProperty(name: "network_plugin", @out: true, min: 0, max: 1)]
-            public string @NetworkPlugin { get; }
-
-            [TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
-            public string @PodCidr { get; }
-
-            [TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
-            public string @ServiceCidr { get; }
-        }
-
         public azurerm_kubernetes_cluster(string @name,
                                           string @resourceGroupName,
                                           agent_pool_profile[] @agentPoolProfile = null,
@@ -135,6 +141,7 @@ namespace NTerraform.Datas
             @LinuxProfile = @linuxProfile;
             @NetworkProfile = @networkProfile;
             @ServicePrincipal = @servicePrincipal;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

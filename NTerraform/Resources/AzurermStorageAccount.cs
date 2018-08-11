@@ -6,13 +6,14 @@ namespace NTerraform.Resources
     public sealed class azurerm_storage_account : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "custom_domain")]
-        public sealed class custom_domain
+        public sealed class custom_domain: NTerraform.structure
         {
             public custom_domain(string @name,
                                  bool? @useSubdomain = null)
             {
                 @Name = @name;
                 @UseSubdomain = @useSubdomain;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -23,13 +24,14 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "network_rules")]
-        public sealed class network_rules
+        public sealed class network_rules: NTerraform.structure
         {
             public network_rules(string[] @ipRules = null,
                                  string[] @virtualNetworkSubnetIds = null)
             {
                 @IpRules = @ipRules;
                 @VirtualNetworkSubnetIds = @virtualNetworkSubnetIds;
+                base._validate_();
             }
 
             [TerraformProperty(name: "bypass", @out: true, min: 0, max: 1)]
@@ -43,11 +45,12 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "identity")]
-        public sealed class identity
+        public sealed class identity: NTerraform.structure
         {
             public identity(string @type)
             {
                 @Type = @type;
+                base._validate_();
             }
 
             [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
@@ -87,6 +90,7 @@ namespace NTerraform.Resources
             @EnableHttpsTrafficOnly = @enableHttpsTrafficOnly;
             @Identity = @identity;
             @NetworkRules = @networkRules;
+            base._validate_();
         }
 
         [TerraformProperty(name: "account_replication_type", @out: false, min: 1, max: 1)]

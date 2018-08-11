@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_storage_account : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "custom_domain")]
-        public sealed class custom_domain
+        public sealed class custom_domain: NTerraform.structure
         {
             public custom_domain()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
@@ -23,6 +24,7 @@ namespace NTerraform.Datas
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @CustomDomain = @customDomain;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

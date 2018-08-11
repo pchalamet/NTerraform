@@ -7,6 +7,7 @@ namespace NTerraform.Datas
     {
         public azurerm_azuread_application()
         {
+            base._validate_();
         }
 
         [TerraformProperty(name: "application_id", @out: true, min: 0, max: 1)]

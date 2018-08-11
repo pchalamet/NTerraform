@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @StartIpAddress = @startIpAddress;
+            base._validate_();
         }
 
         [TerraformProperty(name: "account_name", @out: false, min: 1, max: 1)]

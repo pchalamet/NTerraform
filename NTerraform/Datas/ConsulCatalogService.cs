@@ -6,7 +6,7 @@ namespace NTerraform.Datas
     public sealed class consul_catalog_service : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "query_options")]
-        public sealed class query_options
+        public sealed class query_options: NTerraform.structure
         {
             public query_options(bool? @allowStale = null,
                                  string @datacenter = null,
@@ -25,6 +25,7 @@ namespace NTerraform.Datas
                 @Token = @token;
                 @WaitIndex = @waitIndex;
                 @WaitTime = @waitTime;
+                base._validate_();
             }
 
             [TerraformProperty(name: "allow_stale", @out: false, min: 0, max: 1)]
@@ -53,13 +54,14 @@ namespace NTerraform.Datas
         }
 
         [TerraformStructure(category: "", typeName: "service")]
-        public sealed class service
+        public sealed class service: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "tagged_addresses")]
-            public sealed class tagged_addresses
+            public sealed class tagged_addresses: NTerraform.structure
             {
                 public tagged_addresses()
                 {
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
@@ -72,6 +74,7 @@ namespace NTerraform.Datas
             public service(Dictionary<string,tagged_addresses> @taggedAddresses = null)
             {
                 @TaggedAddresses = @taggedAddresses;
+                base._validate_();
             }
 
             [TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
@@ -125,6 +128,7 @@ namespace NTerraform.Datas
             @QueryOptions = @queryOptions;
             @Service = @service;
             @Tag = @tag;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

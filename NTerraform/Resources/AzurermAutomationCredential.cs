@@ -18,6 +18,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Username = @username;
             @Description = @description;
+            base._validate_();
         }
 
         [TerraformProperty(name: "account_name", @out: false, min: 1, max: 1)]

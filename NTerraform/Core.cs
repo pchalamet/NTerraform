@@ -40,15 +40,45 @@ namespace NTerraform
 
 
 
-    public abstract class data
+    public abstract class structure
+    {
+        protected void _validate_()
+        {
+            foreach (var prop in GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
+            {
+                var propAttribute = prop.GetCustomAttribute<TerraformPropertyAttribute>();
+                var value = prop.GetValue(this);
+
+                if (propAttribute.Min != 0 && null == value)
+                    throw new ApplicationException($"Property {prop.Name} is mandatory");
+
+                switch (value)
+                {
+                    case null:
+                        if (propAttribute.Min != 0)
+                            throw new ApplicationException($"Property {prop.Name} is mandatory");
+                        break;
+
+                    case object[] arr:
+                        if (propAttribute.Min != 0 && arr.Length < propAttribute.Min)
+                            throw new ApplicationException($"Expecting at least {propAttribute.Min} items in property {prop.Name}");
+                        if (propAttribute.Max != 0 && propAttribute.Max < arr.Length)
+                            throw new ApplicationException($"Expecting at most {propAttribute.Max} items in property {prop.Name}");
+                        break;
+                }
+            }
+        }
+    }
+
+    public abstract class data : structure
     {
     }
 
-    public abstract class provider
+    public abstract class provider : structure
     {
     }
 
-    public abstract class resource
+    public abstract class resource : structure
     {
     }
 
@@ -113,8 +143,6 @@ namespace NTerraform
                 switch (Format(value))
                 {
                     case null:
-                        if (propAttribute.Min != 0)
-                            throw new ApplicationException($"Expecting value for property {prop.Name}");
                         break;
 
                     case string s:
@@ -122,16 +150,8 @@ namespace NTerraform
                         break;
 
                     case object[] arr:
-                        if (propAttribute.Min != 0 && arr.Length < propAttribute.Min)
-                            throw new ApplicationException($"Expecting at least {propAttribute.Min} items for property {prop.Name}");
-                        if (propAttribute.Max != 0 && propAttribute.Max < arr.Length)
-                            throw new ApplicationException($"Expecting at most {propAttribute.Max} items for property {prop.Name}");
-
                         foreach (var item in arr)
-                        {
-                            var s = Format(item);
-                            WriteObject(indent + 2, $"  {sindent}{propAttribute.Name} =", s);
-                        }
+                            WriteObject(indent + 2, $"  {sindent}{propAttribute.Name} =", Format(item));
                         break;
 
                     default:
@@ -155,9 +175,7 @@ namespace NTerraform
         private static void ProcessVariables(Dictionary<string, object> context)
         {
             foreach (var kvp in context)
-            {
                 ProcessVariable(kvp.Key, kvp.Value);
-            }
         }
 
 

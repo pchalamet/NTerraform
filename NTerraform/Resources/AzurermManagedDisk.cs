@@ -6,16 +6,17 @@ namespace NTerraform.Resources
     public sealed class azurerm_managed_disk : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "encryption_settings")]
-        public sealed class encryption_settings
+        public sealed class encryption_settings: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "disk_encryption_key")]
-            public sealed class disk_encryption_key
+            public sealed class disk_encryption_key: NTerraform.structure
             {
                 public disk_encryption_key(string @secretUrl,
                                            string @sourceVaultId)
                 {
                     @SecretUrl = @secretUrl;
                     @SourceVaultId = @sourceVaultId;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "secret_url", @out: false, min: 1, max: 1)]
@@ -26,13 +27,14 @@ namespace NTerraform.Resources
             }
 
             [TerraformStructure(category: "", typeName: "key_encryption_key")]
-            public sealed class key_encryption_key
+            public sealed class key_encryption_key: NTerraform.structure
             {
                 public key_encryption_key(string @keyUrl,
                                           string @sourceVaultId)
                 {
                     @KeyUrl = @keyUrl;
                     @SourceVaultId = @sourceVaultId;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "key_url", @out: false, min: 1, max: 1)]
@@ -49,6 +51,7 @@ namespace NTerraform.Resources
                 @Enabled = @enabled;
                 @DiskEncryptionKey = @diskEncryptionKey;
                 @KeyEncryptionKey = @keyEncryptionKey;
+                base._validate_();
             }
 
             [TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
@@ -82,6 +85,7 @@ namespace NTerraform.Resources
             @OsType = @osType;
             @SourceResourceId = @sourceResourceId;
             @Zones = @zones;
+            base._validate_();
         }
 
         [TerraformProperty(name: "create_option", @out: false, min: 1, max: 1)]

@@ -5,28 +5,24 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "azurerm_cosmosdb_account")]
     public sealed class azurerm_cosmosdb_account : NTerraform.data
     {
-        [TerraformStructure(category: "", typeName: "geo_location")]
-        public sealed class geo_location
+        [TerraformStructure(category: "", typeName: "capabilities")]
+        public sealed class capabilities: NTerraform.structure
         {
-            public geo_location()
+            public capabilities()
             {
+                base._validate_();
             }
 
-            [TerraformProperty(name: "failover_priority", @out: true, min: 0, max: 1)]
-            public int? @FailoverPriority { get; }
-
-            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
-            public string @Location { get; }
+            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
         }
 
         [TerraformStructure(category: "", typeName: "consistency_policy")]
-        public sealed class consistency_policy
+        public sealed class consistency_policy: NTerraform.structure
         {
             public consistency_policy()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "consistency_level", @out: true, min: 0, max: 1)]
@@ -39,15 +35,22 @@ namespace NTerraform.Datas
             public int? @MaxStalenessPrefix { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "capabilities")]
-        public sealed class capabilities
+        [TerraformStructure(category: "", typeName: "geo_location")]
+        public sealed class geo_location: NTerraform.structure
         {
-            public capabilities()
+            public geo_location()
             {
+                base._validate_();
             }
 
-            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            [TerraformProperty(name: "failover_priority", @out: true, min: 0, max: 1)]
+            public int? @FailoverPriority { get; }
+
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
+            public string @Location { get; }
         }
 
         public azurerm_cosmosdb_account(string @name,
@@ -61,6 +64,7 @@ namespace NTerraform.Datas
             @Capabilities = @capabilities;
             @ConsistencyPolicy = @consistencyPolicy;
             @GeoLocation = @geoLocation;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

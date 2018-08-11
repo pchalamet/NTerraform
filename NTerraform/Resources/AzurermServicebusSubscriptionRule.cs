@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_servicebus_subscription_rule : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "correlation_filter")]
-        public sealed class correlation_filter
+        public sealed class correlation_filter: NTerraform.structure
         {
             public correlation_filter(string @contentType = null,
                                       string @correlationId = null,
@@ -25,6 +25,7 @@ namespace NTerraform.Resources
                 @ReplyToSessionId = @replyToSessionId;
                 @SessionId = @sessionId;
                 @To = @to;
+                base._validate_();
             }
 
             [TerraformProperty(name: "content_type", @out: false, min: 0, max: 1)]
@@ -71,6 +72,7 @@ namespace NTerraform.Resources
             @Action = @action;
             @CorrelationFilter = @correlationFilter;
             @SqlFilter = @sqlFilter;
+            base._validate_();
         }
 
         [TerraformProperty(name: "filter_type", @out: false, min: 1, max: 1)]

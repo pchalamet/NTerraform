@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @ServerName = @serverName;
             @SubnetId = @subnetId;
             @IgnoreMissingVnetServiceEndpoint = @ignoreMissingVnetServiceEndpoint;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

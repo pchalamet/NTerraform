@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_network_security_group : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "security_rule")]
-        public sealed class security_rule
+        public sealed class security_rule: NTerraform.structure
         {
             public security_rule(string @access,
                                  string @direction,
@@ -41,6 +41,7 @@ namespace NTerraform.Resources
                 @SourceApplicationSecurityGroupIds = @sourceApplicationSecurityGroupIds;
                 @SourcePortRange = @sourcePortRange;
                 @SourcePortRanges = @sourcePortRanges;
+                base._validate_();
             }
 
             [TerraformProperty(name: "access", @out: false, min: 1, max: 1)]
@@ -101,6 +102,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @SecurityRule = @securityRule;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

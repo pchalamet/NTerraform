@@ -22,6 +22,7 @@ namespace NTerraform.Resources
             @Location = @location;
             @NumberOfProbes = @numberOfProbes;
             @RequestPath = @requestPath;
+            base._validate_();
         }
 
         [TerraformProperty(name: "loadbalancer_id", @out: false, min: 1, max: 1)]

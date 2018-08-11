@@ -6,13 +6,14 @@ namespace NTerraform.Resources
     public sealed class azurerm_lb : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "frontend_ip_configuration")]
-        public sealed class frontend_ip_configuration
+        public sealed class frontend_ip_configuration: NTerraform.structure
         {
             public frontend_ip_configuration(string @name,
                                              string[] @zones = null)
             {
                 @Name = @name;
                 @Zones = @zones;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -51,6 +52,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @Sku = @sku;
+            base._validate_();
         }
 
         [TerraformProperty(name: "frontend_ip_configuration", @out: false, min: 1, max: 0)]

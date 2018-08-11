@@ -6,7 +6,7 @@ namespace NTerraform.Datas
     public sealed class consul_key_prefix : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "subkey")]
-        public sealed class subkey
+        public sealed class subkey: NTerraform.structure
         {
             public subkey(string @name,
                           string @path,
@@ -15,6 +15,7 @@ namespace NTerraform.Datas
                 @Name = @name;
                 @Path = @path;
                 @Default = @default;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -34,6 +35,7 @@ namespace NTerraform.Datas
             @PathPrefix = @pathPrefix;
             @Subkey = @subkey;
             @Token = @token;
+            base._validate_();
         }
 
         [TerraformProperty(name: "path_prefix", @out: false, min: 1, max: 1)]

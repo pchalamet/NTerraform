@@ -7,6 +7,7 @@ namespace NTerraform.Datas
     {
         public azurerm_client_config()
         {
+            base._validate_();
         }
 
         [TerraformProperty(name: "client_id", @out: true, min: 0, max: 1)]

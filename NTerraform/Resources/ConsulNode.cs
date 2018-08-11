@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @Address = @address;
             @Name = @name;
             @Token = @token;
+            base._validate_();
         }
 
         [TerraformProperty(name: "address", @out: false, min: 1, max: 1)]

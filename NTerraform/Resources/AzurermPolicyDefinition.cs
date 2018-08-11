@@ -22,6 +22,7 @@ namespace NTerraform.Resources
             @Metadata = @metadata;
             @Parameters = @parameters;
             @PolicyRule = @policyRule;
+            base._validate_();
         }
 
         [TerraformProperty(name: "display_name", @out: false, min: 1, max: 1)]

@@ -42,6 +42,7 @@ namespace NTerraform.Resources
             @SourceApplicationSecurityGroupIds = @sourceApplicationSecurityGroupIds;
             @SourcePortRange = @sourcePortRange;
             @SourcePortRanges = @sourcePortRanges;
+            base._validate_();
         }
 
         [TerraformProperty(name: "access", @out: false, min: 1, max: 1)]

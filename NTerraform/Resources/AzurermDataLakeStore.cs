@@ -20,6 +20,7 @@ namespace NTerraform.Resources
             @FirewallAllowAzureIps = @firewallAllowAzureIps;
             @FirewallState = @firewallState;
             @Tier = @tier;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

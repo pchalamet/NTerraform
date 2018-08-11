@@ -14,6 +14,7 @@ namespace NTerraform.Resources
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "application_type", @out: false, min: 1, max: 1)]

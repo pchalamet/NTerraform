@@ -6,7 +6,7 @@ namespace NTerraform.Datas
     public sealed class azurerm_storage_account_sas : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "services")]
-        public sealed class services
+        public sealed class services: NTerraform.structure
         {
             public services(bool @blob,
                             bool @file,
@@ -17,6 +17,7 @@ namespace NTerraform.Datas
                 @File = @file;
                 @Queue = @queue;
                 @Table = @table;
+                base._validate_();
             }
 
             [TerraformProperty(name: "blob", @out: false, min: 1, max: 1)]
@@ -32,8 +33,31 @@ namespace NTerraform.Datas
             public bool @Table { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "resource_types")]
+        public sealed class resource_types: NTerraform.structure
+        {
+            public resource_types(bool @container,
+                                  bool @object,
+                                  bool @service)
+            {
+                @Container = @container;
+                @Object = @object;
+                @Service = @service;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "container", @out: false, min: 1, max: 1)]
+            public bool @Container { get; }
+
+            [TerraformProperty(name: "object", @out: false, min: 1, max: 1)]
+            public bool @Object { get; }
+
+            [TerraformProperty(name: "service", @out: false, min: 1, max: 1)]
+            public bool @Service { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "permissions")]
-        public sealed class permissions
+        public sealed class permissions: NTerraform.structure
         {
             public permissions(bool @add,
                                bool @create,
@@ -52,6 +76,7 @@ namespace NTerraform.Datas
                 @Read = @read;
                 @Update = @update;
                 @Write = @write;
+                base._validate_();
             }
 
             [TerraformProperty(name: "add", @out: false, min: 1, max: 1)]
@@ -79,28 +104,6 @@ namespace NTerraform.Datas
             public bool @Write { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "resource_types")]
-        public sealed class resource_types
-        {
-            public resource_types(bool @container,
-                                  bool @object,
-                                  bool @service)
-            {
-                @Container = @container;
-                @Object = @object;
-                @Service = @service;
-            }
-
-            [TerraformProperty(name: "container", @out: false, min: 1, max: 1)]
-            public bool @Container { get; }
-
-            [TerraformProperty(name: "object", @out: false, min: 1, max: 1)]
-            public bool @Object { get; }
-
-            [TerraformProperty(name: "service", @out: false, min: 1, max: 1)]
-            public bool @Service { get; }
-        }
-
         public azurerm_storage_account_sas(string @connectionString,
                                            string @expiry,
                                            permissions[] @permissions,
@@ -116,6 +119,7 @@ namespace NTerraform.Datas
             @Services = @services;
             @Start = @start;
             @HttpsOnly = @httpsOnly;
+            base._validate_();
         }
 
         [TerraformProperty(name: "connection_string", @out: false, min: 1, max: 1)]

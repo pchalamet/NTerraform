@@ -5,22 +5,8 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_function_app")]
     public sealed class azurerm_function_app : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "site_credential")]
-        public sealed class site_credential
-        {
-            public site_credential()
-            {
-            }
-
-            [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "connection_string")]
-        public sealed class connection_string
+        public sealed class connection_string: NTerraform.structure
         {
             public connection_string(string @name,
                                      string @type,
@@ -29,6 +15,7 @@ namespace NTerraform.Resources
                 @Name = @name;
                 @Type = @type;
                 @Value = @value;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -41,12 +28,28 @@ namespace NTerraform.Resources
             public string @Value { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "site_credential")]
+        public sealed class site_credential: NTerraform.structure
+        {
+            public site_credential()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
+
+            [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "identity")]
-        public sealed class identity
+        public sealed class identity: NTerraform.structure
         {
             public identity(string @type)
             {
                 @Type = @type;
+                base._validate_();
             }
 
             [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
@@ -60,7 +63,7 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "site_config")]
-        public sealed class site_config
+        public sealed class site_config: NTerraform.structure
         {
             public site_config(bool? @alwaysOn = null,
                                bool? @use32BitWorkerProcess = null,
@@ -69,6 +72,7 @@ namespace NTerraform.Resources
                 @AlwaysOn = @alwaysOn;
                 @Use32BitWorkerProcess = @use32BitWorkerProcess;
                 @WebsocketsEnabled = @websocketsEnabled;
+                base._validate_();
             }
 
             [TerraformProperty(name: "always_on", @out: false, min: 0, max: 1)]
@@ -108,6 +112,7 @@ namespace NTerraform.Resources
             @SiteConfig = @siteConfig;
             @SiteCredential = @siteCredential;
             @Version = @version;
+            base._validate_();
         }
 
         [TerraformProperty(name: "app_service_plan_id", @out: false, min: 1, max: 1)]

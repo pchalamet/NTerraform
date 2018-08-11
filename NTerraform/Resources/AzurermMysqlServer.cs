@@ -5,30 +5,8 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_mysql_server")]
     public sealed class azurerm_mysql_server : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "storage_profile")]
-        public sealed class storage_profile
-        {
-            public storage_profile(int @storageMb,
-                                   int? @backupRetentionDays = null,
-                                   string @geoRedundantBackup = null)
-            {
-                @StorageMb = @storageMb;
-                @BackupRetentionDays = @backupRetentionDays;
-                @GeoRedundantBackup = @geoRedundantBackup;
-            }
-
-            [TerraformProperty(name: "storage_mb", @out: false, min: 1, max: 1)]
-            public int @StorageMb { get; }
-
-            [TerraformProperty(name: "backup_retention_days", @out: false, min: 0, max: 1)]
-            public int? @BackupRetentionDays { get; }
-
-            [TerraformProperty(name: "geo_redundant_backup", @out: false, min: 0, max: 1)]
-            public string @GeoRedundantBackup { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku
+        public sealed class sku: NTerraform.structure
         {
             public sku(int @capacity,
                        string @family,
@@ -39,6 +17,7 @@ namespace NTerraform.Resources
                 @Family = @family;
                 @Name = @name;
                 @Tier = @tier;
+                base._validate_();
             }
 
             [TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
@@ -52,6 +31,29 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
             public string @Tier { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "storage_profile")]
+        public sealed class storage_profile: NTerraform.structure
+        {
+            public storage_profile(int @storageMb,
+                                   int? @backupRetentionDays = null,
+                                   string @geoRedundantBackup = null)
+            {
+                @StorageMb = @storageMb;
+                @BackupRetentionDays = @backupRetentionDays;
+                @GeoRedundantBackup = @geoRedundantBackup;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "storage_mb", @out: false, min: 1, max: 1)]
+            public int @StorageMb { get; }
+
+            [TerraformProperty(name: "backup_retention_days", @out: false, min: 0, max: 1)]
+            public int? @BackupRetentionDays { get; }
+
+            [TerraformProperty(name: "geo_redundant_backup", @out: false, min: 0, max: 1)]
+            public string @GeoRedundantBackup { get; }
         }
 
         public azurerm_mysql_server(string @administratorLogin,
@@ -73,6 +75,7 @@ namespace NTerraform.Resources
             @SslEnforcement = @sslEnforcement;
             @StorageProfile = @storageProfile;
             @Version = @version;
+            base._validate_();
         }
 
         [TerraformProperty(name: "administrator_login", @out: false, min: 1, max: 1)]

@@ -10,6 +10,7 @@ namespace NTerraform.Datas
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

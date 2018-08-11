@@ -18,6 +18,7 @@ namespace NTerraform.Resources
             @VirtualMachineId = @virtualMachineId;
             @CreateOption = @createOption;
             @WriteAcceleratorEnabled = @writeAcceleratorEnabled;
+            base._validate_();
         }
 
         [TerraformProperty(name: "caching", @out: false, min: 1, max: 1)]

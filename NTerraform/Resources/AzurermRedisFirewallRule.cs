@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @RedisCacheName = @redisCacheName;
             @ResourceGroupName = @resourceGroupName;
             @StartIp = @startIp;
+            base._validate_();
         }
 
         [TerraformProperty(name: "end_ip", @out: false, min: 1, max: 1)]

@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class consul_keys : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "key")]
-        public sealed class key
+        public sealed class key: NTerraform.structure
         {
             public key(string @path,
                        string @default = null,
@@ -17,6 +17,7 @@ namespace NTerraform.Resources
                 @Default = @default;
                 @Delete = @delete;
                 @Name = @name;
+                base._validate_();
             }
 
             [TerraformProperty(name: "path", @out: false, min: 1, max: 1)]
@@ -40,6 +41,7 @@ namespace NTerraform.Resources
         {
             @Key = @key;
             @Token = @token;
+            base._validate_();
         }
 
         [TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]

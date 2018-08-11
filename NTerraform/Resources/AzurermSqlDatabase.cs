@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_sql_database : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "import")]
-        public sealed class import
+        public sealed class import: NTerraform.structure
         {
             public import(string @administratorLogin,
                           string @administratorLoginPassword,
@@ -23,6 +23,7 @@ namespace NTerraform.Resources
                 @StorageKeyType = @storageKeyType;
                 @StorageUri = @storageUri;
                 @OperationMode = @operationMode;
+                base._validate_();
             }
 
             [TerraformProperty(name: "administrator_login", @out: false, min: 1, max: 1)]
@@ -60,6 +61,7 @@ namespace NTerraform.Resources
             @ServerName = @serverName;
             @CreateMode = @createMode;
             @Import = @import;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

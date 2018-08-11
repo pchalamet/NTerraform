@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @ExpressRouteCircuitName = @expressRouteCircuitName;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "express_route_circuit_name", @out: false, min: 1, max: 1)]

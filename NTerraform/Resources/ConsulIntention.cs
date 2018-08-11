@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @SourceName = @sourceName;
             @Description = @description;
             @Meta = @meta;
+            base._validate_();
         }
 
         [TerraformProperty(name: "action", @out: false, min: 1, max: 1)]

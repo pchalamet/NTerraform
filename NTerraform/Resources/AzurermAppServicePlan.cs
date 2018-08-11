@@ -5,28 +5,8 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_app_service_plan")]
     public sealed class azurerm_app_service_plan : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku
-        {
-            public sku(string @size,
-                       string @tier)
-            {
-                @Size = @size;
-                @Tier = @tier;
-            }
-
-            [TerraformProperty(name: "size", @out: false, min: 1, max: 1)]
-            public string @Size { get; }
-
-            [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
-            public string @Tier { get; }
-
-            [TerraformProperty(name: "capacity", @out: true, min: 0, max: 1)]
-            public int? @Capacity { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "properties")]
-        public sealed class properties
+        public sealed class properties: NTerraform.structure
         {
             public properties(string @appServiceEnvironmentId = null,
                               bool? @perSiteScaling = null,
@@ -35,6 +15,7 @@ namespace NTerraform.Resources
                 @AppServiceEnvironmentId = @appServiceEnvironmentId;
                 @PerSiteScaling = @perSiteScaling;
                 @Reserved = @reserved;
+                base._validate_();
             }
 
             [TerraformProperty(name: "app_service_environment_id", @out: false, min: 0, max: 1)]
@@ -45,6 +26,27 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "reserved", @out: false, min: 0, max: 1)]
             public bool? @Reserved { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "sku")]
+        public sealed class sku: NTerraform.structure
+        {
+            public sku(string @size,
+                       string @tier)
+            {
+                @Size = @size;
+                @Tier = @tier;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "size", @out: false, min: 1, max: 1)]
+            public string @Size { get; }
+
+            [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
+            public string @Tier { get; }
+
+            [TerraformProperty(name: "capacity", @out: true, min: 0, max: 1)]
+            public int? @Capacity { get; }
         }
 
         public azurerm_app_service_plan(string @location,
@@ -60,6 +62,7 @@ namespace NTerraform.Resources
             @Sku = @sku;
             @Kind = @kind;
             @Properties = @properties;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

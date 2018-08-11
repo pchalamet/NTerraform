@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_redis_cache : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "redis_configuration")]
-        public sealed class redis_configuration
+        public sealed class redis_configuration: NTerraform.structure
         {
             public redis_configuration(string @maxmemoryPolicy = null,
                                        string @notifyKeyspaceEvents = null,
@@ -21,6 +21,7 @@ namespace NTerraform.Resources
                 @RdbBackupFrequency = @rdbBackupFrequency;
                 @RdbBackupMaxSnapshotCount = @rdbBackupMaxSnapshotCount;
                 @RdbStorageConnectionString = @rdbStorageConnectionString;
+                base._validate_();
             }
 
             [TerraformProperty(name: "maxclients", @out: true, min: 0, max: 1)]
@@ -52,13 +53,14 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "patch_schedule")]
-        public sealed class patch_schedule
+        public sealed class patch_schedule: NTerraform.structure
         {
             public patch_schedule(string @dayOfWeek,
                                   int? @startHourUtc = null)
             {
                 @DayOfWeek = @dayOfWeek;
                 @StartHourUtc = @startHourUtc;
+                base._validate_();
             }
 
             [TerraformProperty(name: "day_of_week", @out: false, min: 1, max: 1)]
@@ -91,6 +93,7 @@ namespace NTerraform.Resources
             @PatchSchedule = @patchSchedule;
             @ShardCount = @shardCount;
             @SubnetId = @subnetId;
+            base._validate_();
         }
 
         [TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]

@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @StorageAccountName = @storageAccountName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

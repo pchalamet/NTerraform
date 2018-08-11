@@ -22,6 +22,7 @@ namespace NTerraform.Resources
             @VaultName = @vaultName;
             @ApplicationId = @applicationId;
             @CertificatePermissions = @certificatePermissions;
+            base._validate_();
         }
 
         [TerraformProperty(name: "key_permissions", @out: false, min: 1, max: 1)]

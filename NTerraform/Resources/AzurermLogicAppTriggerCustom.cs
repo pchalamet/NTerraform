@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @Body = @body;
             @LogicAppId = @logicAppId;
             @Name = @name;
+            base._validate_();
         }
 
         [TerraformProperty(name: "body", @out: false, min: 1, max: 1)]

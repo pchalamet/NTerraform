@@ -18,6 +18,7 @@ namespace NTerraform.Resources
             @Parameters = @parameters;
             @WorkflowSchema = @workflowSchema;
             @WorkflowVersion = @workflowVersion;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

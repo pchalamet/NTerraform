@@ -14,6 +14,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @Scope = @scope;
             @Notes = @notes;
+            base._validate_();
         }
 
         [TerraformProperty(name: "lock_level", @out: false, min: 1, max: 1)]

@@ -6,13 +6,14 @@ namespace NTerraform.Resources
     public sealed class azurerm_express_route_circuit : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku
+        public sealed class sku: NTerraform.structure
         {
             public sku(string @family,
                        string @tier)
             {
                 @Family = @family;
                 @Tier = @tier;
+                base._validate_();
             }
 
             [TerraformProperty(name: "family", @out: false, min: 1, max: 1)]
@@ -39,6 +40,7 @@ namespace NTerraform.Resources
             @ServiceProviderName = @serviceProviderName;
             @Sku = @sku;
             @AllowClassicOperations = @allowClassicOperations;
+            base._validate_();
         }
 
         [TerraformProperty(name: "bandwidth_in_mbps", @out: false, min: 1, max: 1)]

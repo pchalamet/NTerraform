@@ -6,13 +6,14 @@ namespace NTerraform.Resources
     public sealed class azurerm_key_vault_certificate : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "certificate")]
-        public sealed class certificate
+        public sealed class certificate: NTerraform.structure
         {
             public certificate(string @contents,
                                string @password = null)
             {
                 @Contents = @contents;
                 @Password = @password;
+                base._validate_();
             }
 
             [TerraformProperty(name: "contents", @out: false, min: 1, max: 1)]
@@ -23,36 +24,15 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "certificate_policy")]
-        public sealed class certificate_policy
+        public sealed class certificate_policy: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "x509_certificate_properties")]
-            public sealed class x509_certificate_properties
-            {
-                public x509_certificate_properties(string[] @keyUsage,
-                                                   string @subject,
-                                                   int @validityInMonths)
-                {
-                    @KeyUsage = @keyUsage;
-                    @Subject = @subject;
-                    @ValidityInMonths = @validityInMonths;
-                }
-
-                [TerraformProperty(name: "key_usage", @out: false, min: 1, max: 1)]
-                public string[] @KeyUsage { get; }
-
-                [TerraformProperty(name: "subject", @out: false, min: 1, max: 1)]
-                public string @Subject { get; }
-
-                [TerraformProperty(name: "validity_in_months", @out: false, min: 1, max: 1)]
-                public int @ValidityInMonths { get; }
-            }
-
             [TerraformStructure(category: "", typeName: "issuer_parameters")]
-            public sealed class issuer_parameters
+            public sealed class issuer_parameters: NTerraform.structure
             {
                 public issuer_parameters(string @name)
                 {
                     @Name = @name;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -60,7 +40,7 @@ namespace NTerraform.Resources
             }
 
             [TerraformStructure(category: "", typeName: "key_properties")]
-            public sealed class key_properties
+            public sealed class key_properties: NTerraform.structure
             {
                 public key_properties(bool @exportable,
                                       int @keySize,
@@ -71,6 +51,7 @@ namespace NTerraform.Resources
                     @KeySize = @keySize;
                     @KeyType = @keyType;
                     @ReuseKey = @reuseKey;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "exportable", @out: false, min: 1, max: 1)]
@@ -87,14 +68,15 @@ namespace NTerraform.Resources
             }
 
             [TerraformStructure(category: "", typeName: "lifetime_action")]
-            public sealed class lifetime_action
+            public sealed class lifetime_action: NTerraform.structure
             {
                 [TerraformStructure(category: "", typeName: "action")]
-                public sealed class action
+                public sealed class action: NTerraform.structure
                 {
                     public action(string @actionType)
                     {
                         @ActionType = @actionType;
+                        base._validate_();
                     }
 
                     [TerraformProperty(name: "action_type", @out: false, min: 1, max: 1)]
@@ -102,13 +84,14 @@ namespace NTerraform.Resources
                 }
 
                 [TerraformStructure(category: "", typeName: "trigger")]
-                public sealed class trigger
+                public sealed class trigger: NTerraform.structure
                 {
                     public trigger(int? @daysBeforeExpiry = null,
                                    int? @lifetimePercentage = null)
                     {
                         @DaysBeforeExpiry = @daysBeforeExpiry;
                         @LifetimePercentage = @lifetimePercentage;
+                        base._validate_();
                     }
 
                     [TerraformProperty(name: "days_before_expiry", @out: false, min: 0, max: 1)]
@@ -123,6 +106,7 @@ namespace NTerraform.Resources
                 {
                     @Action = @action;
                     @Trigger = @trigger;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "action", @out: false, min: 1, max: 1)]
@@ -133,15 +117,39 @@ namespace NTerraform.Resources
             }
 
             [TerraformStructure(category: "", typeName: "secret_properties")]
-            public sealed class secret_properties
+            public sealed class secret_properties: NTerraform.structure
             {
                 public secret_properties(string @contentType)
                 {
                     @ContentType = @contentType;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "content_type", @out: false, min: 1, max: 1)]
                 public string @ContentType { get; }
+            }
+
+            [TerraformStructure(category: "", typeName: "x509_certificate_properties")]
+            public sealed class x509_certificate_properties: NTerraform.structure
+            {
+                public x509_certificate_properties(string[] @keyUsage,
+                                                   string @subject,
+                                                   int @validityInMonths)
+                {
+                    @KeyUsage = @keyUsage;
+                    @Subject = @subject;
+                    @ValidityInMonths = @validityInMonths;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "key_usage", @out: false, min: 1, max: 1)]
+                public string[] @KeyUsage { get; }
+
+                [TerraformProperty(name: "subject", @out: false, min: 1, max: 1)]
+                public string @Subject { get; }
+
+                [TerraformProperty(name: "validity_in_months", @out: false, min: 1, max: 1)]
+                public int @ValidityInMonths { get; }
             }
 
             public certificate_policy(issuer_parameters[] @issuerParameters,
@@ -155,6 +163,7 @@ namespace NTerraform.Resources
                 @SecretProperties = @secretProperties;
                 @LifetimeAction = @lifetimeAction;
                 @X509CertificateProperties = @x509CertificateProperties;
+                base._validate_();
             }
 
             [TerraformProperty(name: "issuer_parameters", @out: false, min: 1, max: 1)]
@@ -182,6 +191,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @VaultUri = @vaultUri;
             @Certificate = @certificate;
+            base._validate_();
         }
 
         [TerraformProperty(name: "certificate_policy", @out: false, min: 1, max: 1)]

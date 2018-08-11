@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @AppServiceName = @appServiceName;
             @AppServiceSlotName = @appServiceSlotName;
             @ResourceGroupName = @resourceGroupName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "app_service_name", @out: false, min: 1, max: 1)]

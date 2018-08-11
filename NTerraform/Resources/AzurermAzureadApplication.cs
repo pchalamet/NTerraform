@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @AvailableToOtherTenants = @availableToOtherTenants;
             @Oauth2AllowImplicitFlow = @oauth2AllowImplicitFlow;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @PrincipalId = @principalId;
             @Scope = @scope;
             @RoleDefinitionName = @roleDefinitionName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "principal_id", @out: false, min: 1, max: 1)]

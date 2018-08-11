@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class consul_catalog_entry : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "service")]
-        public sealed class service
+        public sealed class service: NTerraform.structure
         {
             public service(string @name,
                            string @address = null,
@@ -17,6 +17,7 @@ namespace NTerraform.Resources
                 @Address = @address;
                 @Port = @port;
                 @Tags = @tags;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -44,6 +45,7 @@ namespace NTerraform.Resources
             @Node = @node;
             @Service = @service;
             @Token = @token;
+            base._validate_();
         }
 
         [TerraformProperty(name: "address", @out: false, min: 1, max: 1)]

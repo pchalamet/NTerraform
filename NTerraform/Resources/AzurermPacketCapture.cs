@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_packet_capture : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "filter")]
-        public sealed class filter
+        public sealed class filter: NTerraform.structure
         {
             public filter(string @protocol,
                           string @localIpAddress = null,
@@ -19,6 +19,7 @@ namespace NTerraform.Resources
                 @LocalPort = @localPort;
                 @RemoteIpAddress = @remoteIpAddress;
                 @RemotePort = @remotePort;
+                base._validate_();
             }
 
             [TerraformProperty(name: "protocol", @out: false, min: 1, max: 1)]
@@ -38,13 +39,14 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "storage_location")]
-        public sealed class storage_location
+        public sealed class storage_location: NTerraform.structure
         {
             public storage_location(string @filePath = null,
                                     string @storageAccountId = null)
             {
                 @FilePath = @filePath;
                 @StorageAccountId = @storageAccountId;
+                base._validate_();
             }
 
             [TerraformProperty(name: "file_path", @out: false, min: 0, max: 1)]
@@ -76,6 +78,7 @@ namespace NTerraform.Resources
             @MaximumBytesPerPacket = @maximumBytesPerPacket;
             @MaximumBytesPerSession = @maximumBytesPerSession;
             @MaximumCaptureDuration = @maximumCaptureDuration;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

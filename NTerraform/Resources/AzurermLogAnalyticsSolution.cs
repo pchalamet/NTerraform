@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_log_analytics_solution : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "plan")]
-        public sealed class plan
+        public sealed class plan: NTerraform.structure
         {
             public plan(string @product,
                         string @publisher,
@@ -15,6 +15,7 @@ namespace NTerraform.Resources
                 @Product = @product;
                 @Publisher = @publisher;
                 @PromotionCode = @promotionCode;
+                base._validate_();
             }
 
             [TerraformProperty(name: "product", @out: false, min: 1, max: 1)]
@@ -43,6 +44,7 @@ namespace NTerraform.Resources
             @SolutionName = @solutionName;
             @WorkspaceName = @workspaceName;
             @WorkspaceResourceId = @workspaceResourceId;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

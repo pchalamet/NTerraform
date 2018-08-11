@@ -6,10 +6,10 @@ namespace NTerraform.Resources
     public sealed class azurerm_eventhub : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "capture_description")]
-        public sealed class capture_description
+        public sealed class capture_description: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "destination")]
-            public sealed class destination
+            public sealed class destination: NTerraform.structure
             {
                 public destination(string @archiveNameFormat,
                                    string @blobContainerName,
@@ -20,6 +20,7 @@ namespace NTerraform.Resources
                     @BlobContainerName = @blobContainerName;
                     @Name = @name;
                     @StorageAccountId = @storageAccountId;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "archive_name_format", @out: false, min: 1, max: 1)]
@@ -46,6 +47,7 @@ namespace NTerraform.Resources
                 @Encoding = @encoding;
                 @IntervalInSeconds = @intervalInSeconds;
                 @SizeLimitInBytes = @sizeLimitInBytes;
+                base._validate_();
             }
 
             [TerraformProperty(name: "destination", @out: false, min: 1, max: 1)]
@@ -79,6 +81,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @CaptureDescription = @captureDescription;
             @Location = @location;
+            base._validate_();
         }
 
         [TerraformProperty(name: "message_retention", @out: false, min: 1, max: 1)]

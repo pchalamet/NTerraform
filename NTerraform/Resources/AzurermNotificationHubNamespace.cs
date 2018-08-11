@@ -6,11 +6,12 @@ namespace NTerraform.Resources
     public sealed class azurerm_notification_hub_namespace : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku
+        public sealed class sku: NTerraform.structure
         {
             public sku(string @name)
             {
                 @Name = @name;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -30,6 +31,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Sku = @sku;
             @Enabled = @enabled;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

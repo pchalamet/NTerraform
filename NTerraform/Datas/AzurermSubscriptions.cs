@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_subscriptions : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "subscriptions")]
-        public sealed class subscriptions
+        public sealed class subscriptions: NTerraform.structure
         {
             public subscriptions()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "display_name", @out: true, min: 0, max: 1)]
@@ -34,6 +35,7 @@ namespace NTerraform.Datas
         public azurerm_subscriptions(subscriptions[] @subscriptions = null)
         {
             @Subscriptions = @subscriptions;
+            base._validate_();
         }
 
         [TerraformProperty(name: "subscriptions", @out: false, min: 0, max: 0)]

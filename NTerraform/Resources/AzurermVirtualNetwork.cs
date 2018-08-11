@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_virtual_network : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "subnet")]
-        public sealed class subnet
+        public sealed class subnet: NTerraform.structure
         {
             public subnet(string @addressPrefix,
                           string @name,
@@ -15,6 +15,7 @@ namespace NTerraform.Resources
                 @AddressPrefix = @addressPrefix;
                 @Name = @name;
                 @SecurityGroup = @securityGroup;
+                base._validate_();
             }
 
             [TerraformProperty(name: "address_prefix", @out: false, min: 1, max: 1)]
@@ -40,6 +41,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @DnsServers = @dnsServers;
             @Subnet = @subnet;
+            base._validate_();
         }
 
         [TerraformProperty(name: "address_space", @out: false, min: 1, max: 1)]

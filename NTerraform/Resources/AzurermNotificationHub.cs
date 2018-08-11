@@ -5,20 +5,8 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_notification_hub")]
     public sealed class azurerm_notification_hub : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "gcm_credential")]
-        public sealed class gcm_credential
-        {
-            public gcm_credential(string @apiKey)
-            {
-                @ApiKey = @apiKey;
-            }
-
-            [TerraformProperty(name: "api_key", @out: false, min: 1, max: 1)]
-            public string @ApiKey { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "apns_credential")]
-        public sealed class apns_credential
+        public sealed class apns_credential: NTerraform.structure
         {
             public apns_credential(string @applicationMode,
                                    string @bundleId,
@@ -31,6 +19,7 @@ namespace NTerraform.Resources
                 @KeyId = @keyId;
                 @TeamId = @teamId;
                 @Token = @token;
+                base._validate_();
             }
 
             [TerraformProperty(name: "application_mode", @out: false, min: 1, max: 1)]
@@ -49,6 +38,19 @@ namespace NTerraform.Resources
             public string @Token { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "gcm_credential")]
+        public sealed class gcm_credential: NTerraform.structure
+        {
+            public gcm_credential(string @apiKey)
+            {
+                @ApiKey = @apiKey;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "api_key", @out: false, min: 1, max: 1)]
+            public string @ApiKey { get; }
+        }
+
         public azurerm_notification_hub(string @location,
                                         string @name,
                                         string @namespaceName,
@@ -62,6 +64,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @ApnsCredential = @apnsCredential;
             @GcmCredential = @gcmCredential;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

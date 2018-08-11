@@ -14,6 +14,7 @@ namespace NTerraform.Resources
             @Value = @value;
             @VaultUri = @vaultUri;
             @ContentType = @contentType;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

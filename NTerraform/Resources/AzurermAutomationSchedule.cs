@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Description = @description;
             @Timezone = @timezone;
+            base._validate_();
         }
 
         [TerraformProperty(name: "frequency", @out: false, min: 1, max: 1)]

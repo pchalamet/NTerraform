@@ -24,6 +24,7 @@ namespace NTerraform.Providers
             @KeyFile = @keyFile;
             @Scheme = @scheme;
             @Token = @token;
+            base._validate_();
         }
 
         [TerraformProperty(name: "address", @out: false, min: 0, max: 1)]

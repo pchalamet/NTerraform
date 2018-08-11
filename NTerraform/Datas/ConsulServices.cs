@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class consul_services : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "services")]
-        public sealed class services
+        public sealed class services: NTerraform.structure
         {
             public services()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
@@ -17,7 +18,7 @@ namespace NTerraform.Datas
         }
 
         [TerraformStructure(category: "", typeName: "query_options")]
-        public sealed class query_options
+        public sealed class query_options: NTerraform.structure
         {
             public query_options(bool? @allowStale = null,
                                  string @datacenter = null,
@@ -36,6 +37,7 @@ namespace NTerraform.Datas
                 @Token = @token;
                 @WaitIndex = @waitIndex;
                 @WaitTime = @waitTime;
+                base._validate_();
             }
 
             [TerraformProperty(name: "allow_stale", @out: false, min: 0, max: 1)]
@@ -68,6 +70,7 @@ namespace NTerraform.Datas
         {
             @QueryOptions = @queryOptions;
             @Services = @services;
+            base._validate_();
         }
 
         [TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]

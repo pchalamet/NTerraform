@@ -5,33 +5,11 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_container_group")]
     public sealed class azurerm_container_group : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "image_registry_credential")]
-        public sealed class image_registry_credential
-        {
-            public image_registry_credential(string @password,
-                                             string @server,
-                                             string @username)
-            {
-                @Password = @password;
-                @Server = @server;
-                @Username = @username;
-            }
-
-            [TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-            public string @Password { get; }
-
-            [TerraformProperty(name: "server", @out: false, min: 1, max: 1)]
-            public string @Server { get; }
-
-            [TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
-            public string @Username { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "container")]
-        public sealed class container
+        public sealed class container: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "volume")]
-            public sealed class volume
+            public sealed class volume: NTerraform.structure
             {
                 public volume(string @mountPath,
                               string @name,
@@ -46,6 +24,7 @@ namespace NTerraform.Resources
                     @StorageAccountKey = @storageAccountKey;
                     @StorageAccountName = @storageAccountName;
                     @ReadOnly = @readOnly;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "mount_path", @out: false, min: 1, max: 1)]
@@ -86,6 +65,7 @@ namespace NTerraform.Resources
                 @Port = @port;
                 @Protocol = @protocol;
                 @Volume = @volume;
+                base._validate_();
             }
 
             [TerraformProperty(name: "cpu", @out: false, min: 1, max: 1)]
@@ -116,6 +96,29 @@ namespace NTerraform.Resources
             public volume[] @Volume { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "image_registry_credential")]
+        public sealed class image_registry_credential: NTerraform.structure
+        {
+            public image_registry_credential(string @password,
+                                             string @server,
+                                             string @username)
+            {
+                @Password = @password;
+                @Server = @server;
+                @Username = @username;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+            public string @Password { get; }
+
+            [TerraformProperty(name: "server", @out: false, min: 1, max: 1)]
+            public string @Server { get; }
+
+            [TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
+            public string @Username { get; }
+        }
+
         public azurerm_container_group(container[] @container,
                                        string @location,
                                        string @name,
@@ -135,6 +138,7 @@ namespace NTerraform.Resources
             @ImageRegistryCredential = @imageRegistryCredential;
             @IpAddressType = @ipAddressType;
             @RestartPolicy = @restartPolicy;
+            base._validate_();
         }
 
         [TerraformProperty(name: "container", @out: false, min: 1, max: 0)]

@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @PathPrefix = @pathPrefix;
             @Subkeys = @subkeys;
             @Token = @token;
+            base._validate_();
         }
 
         [TerraformProperty(name: "path_prefix", @out: false, min: 1, max: 1)]

@@ -6,13 +6,14 @@ namespace NTerraform.Resources
     public sealed class azurerm_role_definition : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "permissions")]
-        public sealed class permissions
+        public sealed class permissions: NTerraform.structure
         {
             public permissions(string[] @actions = null,
                                string[] @notActions = null)
             {
                 @Actions = @actions;
                 @NotActions = @notActions;
+                base._validate_();
             }
 
             [TerraformProperty(name: "actions", @out: false, min: 0, max: 1)]
@@ -33,6 +34,7 @@ namespace NTerraform.Resources
             @Permissions = @permissions;
             @Scope = @scope;
             @Description = @description;
+            base._validate_();
         }
 
         [TerraformProperty(name: "assignable_scopes", @out: false, min: 1, max: 1)]

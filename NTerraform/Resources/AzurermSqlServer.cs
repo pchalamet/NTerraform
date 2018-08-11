@@ -18,6 +18,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @Version = @version;
+            base._validate_();
         }
 
         [TerraformProperty(name: "administrator_login", @out: false, min: 1, max: 1)]

@@ -12,6 +12,7 @@ namespace NTerraform.Datas
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @VirtualNetworkName = @virtualNetworkName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

@@ -5,43 +5,15 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "consul_prepared_query")]
     public sealed class consul_prepared_query : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "dns")]
-        public sealed class dns
-        {
-            public dns(string @ttl = null)
-            {
-                @Ttl = @ttl;
-            }
-
-            [TerraformProperty(name: "ttl", @out: false, min: 0, max: 1)]
-            public string @Ttl { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "template")]
-        public sealed class template
-        {
-            public template(string @regexp,
-                            string @type)
-            {
-                @Regexp = @regexp;
-                @Type = @type;
-            }
-
-            [TerraformProperty(name: "regexp", @out: false, min: 1, max: 1)]
-            public string @Regexp { get; }
-
-            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "failover")]
-        public sealed class failover
+        public sealed class failover: NTerraform.structure
         {
             public failover(string[] @datacenters = null,
                             int? @nearestN = null)
             {
                 @Datacenters = @datacenters;
                 @NearestN = @nearestN;
+                base._validate_();
             }
 
             [TerraformProperty(name: "datacenters", @out: false, min: 0, max: 1)]
@@ -49,6 +21,37 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "nearest_n", @out: false, min: 0, max: 1)]
             public int? @NearestN { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "dns")]
+        public sealed class dns: NTerraform.structure
+        {
+            public dns(string @ttl = null)
+            {
+                @Ttl = @ttl;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "ttl", @out: false, min: 0, max: 1)]
+            public string @Ttl { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "template")]
+        public sealed class template: NTerraform.structure
+        {
+            public template(string @regexp,
+                            string @type)
+            {
+                @Regexp = @regexp;
+                @Type = @type;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "regexp", @out: false, min: 1, max: 1)]
+            public string @Regexp { get; }
+
+            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
         }
 
         public consul_prepared_query(string @name,
@@ -76,6 +79,7 @@ namespace NTerraform.Resources
             @Tags = @tags;
             @Template = @template;
             @Token = @token;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

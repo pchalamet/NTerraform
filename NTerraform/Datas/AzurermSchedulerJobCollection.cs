@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_scheduler_job_collection : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "quota")]
-        public sealed class quota
+        public sealed class quota: NTerraform.structure
         {
             public quota()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "max_job_count", @out: true, min: 0, max: 1)]
@@ -32,6 +33,7 @@ namespace NTerraform.Datas
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @Quota = @quota;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

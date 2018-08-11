@@ -6,13 +6,14 @@ namespace NTerraform.Datas
     public sealed class azurerm_snapshot : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "encryption_settings")]
-        public sealed class encryption_settings
+        public sealed class encryption_settings: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "disk_encryption_key")]
-            public sealed class disk_encryption_key
+            public sealed class disk_encryption_key: NTerraform.structure
             {
                 public disk_encryption_key()
                 {
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "secret_url", @out: true, min: 0, max: 1)]
@@ -23,10 +24,11 @@ namespace NTerraform.Datas
             }
 
             [TerraformStructure(category: "", typeName: "key_encryption_key")]
-            public sealed class key_encryption_key
+            public sealed class key_encryption_key: NTerraform.structure
             {
                 public key_encryption_key()
                 {
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "key_url", @out: true, min: 0, max: 1)]
@@ -41,6 +43,7 @@ namespace NTerraform.Datas
             {
                 @DiskEncryptionKey = @diskEncryptionKey;
                 @KeyEncryptionKey = @keyEncryptionKey;
+                base._validate_();
             }
 
             [TerraformProperty(name: "disk_encryption_key", @out: false, min: 0, max: 0)]
@@ -60,6 +63,7 @@ namespace NTerraform.Datas
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @EncryptionSettings = @encryptionSettings;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

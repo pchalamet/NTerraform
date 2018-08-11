@@ -28,6 +28,7 @@ namespace NTerraform.Resources
             @Source = @source;
             @SourceUri = @sourceUri;
             @Type = @type;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

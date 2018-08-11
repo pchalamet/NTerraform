@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @ServerName = @serverName;
             @StartIpAddress = @startIpAddress;
+            base._validate_();
         }
 
         [TerraformProperty(name: "end_ip_address", @out: false, min: 1, max: 1)]

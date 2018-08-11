@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_public_ips : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "public_ips")]
-        public sealed class public_ips
+        public sealed class public_ips: NTerraform.structure
         {
             public public_ips()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "domain_name_label", @out: true, min: 0, max: 1)]
@@ -39,6 +40,7 @@ namespace NTerraform.Datas
             @Attached = @attached;
             @NamePrefix = @namePrefix;
             @PublicIps = @publicIps;
+            base._validate_();
         }
 
         [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]

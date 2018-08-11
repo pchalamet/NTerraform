@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_builtin_role_definition : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "permissions")]
-        public sealed class permissions
+        public sealed class permissions: NTerraform.structure
         {
             public permissions()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "actions", @out: true, min: 0, max: 1)]
@@ -24,6 +25,7 @@ namespace NTerraform.Datas
         {
             @Name = @name;
             @Permissions = @permissions;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

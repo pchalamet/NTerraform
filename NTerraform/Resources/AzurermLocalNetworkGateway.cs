@@ -6,13 +6,14 @@ namespace NTerraform.Resources
     public sealed class azurerm_local_network_gateway : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "bgp_settings")]
-        public sealed class bgp_settings
+        public sealed class bgp_settings: NTerraform.structure
         {
             public bgp_settings(int @asn,
                                 string @bgpPeeringAddress)
             {
                 @Asn = @asn;
                 @BgpPeeringAddress = @bgpPeeringAddress;
+                base._validate_();
             }
 
             [TerraformProperty(name: "asn", @out: false, min: 1, max: 1)]
@@ -38,6 +39,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @BgpSettings = @bgpSettings;
+            base._validate_();
         }
 
         [TerraformProperty(name: "address_space", @out: false, min: 1, max: 1)]

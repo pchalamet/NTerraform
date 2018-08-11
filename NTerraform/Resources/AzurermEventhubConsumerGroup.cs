@@ -18,6 +18,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Location = @location;
             @UserMetadata = @userMetadata;
+            base._validate_();
         }
 
         [TerraformProperty(name: "eventhub_name", @out: false, min: 1, max: 1)]

@@ -5,67 +5,34 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_autoscale_setting")]
     public sealed class azurerm_autoscale_setting : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "notification")]
-        public sealed class notification
-        {
-            [TerraformStructure(category: "", typeName: "email")]
-            public sealed class email
-            {
-                public email(string[] @customEmails = null,
-                             bool? @sendToSubscriptionAdministrator = null,
-                             bool? @sendToSubscriptionCoAdministrator = null)
-                {
-                    @CustomEmails = @customEmails;
-                    @SendToSubscriptionAdministrator = @sendToSubscriptionAdministrator;
-                    @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
-                }
-
-                [TerraformProperty(name: "custom_emails", @out: false, min: 0, max: 1)]
-                public string[] @CustomEmails { get; }
-
-                [TerraformProperty(name: "send_to_subscription_administrator", @out: false, min: 0, max: 1)]
-                public bool? @SendToSubscriptionAdministrator { get; }
-
-                [TerraformProperty(name: "send_to_subscription_co_administrator", @out: false, min: 0, max: 1)]
-                public bool? @SendToSubscriptionCoAdministrator { get; }
-            }
-
-            [TerraformStructure(category: "", typeName: "webhook")]
-            public sealed class webhook
-            {
-                public webhook(string @serviceUri,
-                               Dictionary<string,string> @properties = null)
-                {
-                    @ServiceUri = @serviceUri;
-                    @Properties = @properties;
-                }
-
-                [TerraformProperty(name: "service_uri", @out: false, min: 1, max: 1)]
-                public string @ServiceUri { get; }
-
-                [TerraformProperty(name: "properties", @out: false, min: 0, max: 1)]
-                public Dictionary<string,string> @Properties { get; }
-            }
-
-            public notification(email[] @email = null,
-                                webhook[] @webhook = null)
-            {
-                @Email = @email;
-                @Webhook = @webhook;
-            }
-
-            [TerraformProperty(name: "email", @out: false, min: 0, max: 1)]
-            public email[] @Email { get; }
-
-            [TerraformProperty(name: "webhook", @out: false, min: 0, max: 0)]
-            public webhook[] @Webhook { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "profile")]
-        public sealed class profile
+        public sealed class profile: NTerraform.structure
         {
+            [TerraformStructure(category: "", typeName: "fixed_date")]
+            public sealed class fixed_date: NTerraform.structure
+            {
+                public fixed_date(string @end,
+                                  string @start,
+                                  string @timezone = null)
+                {
+                    @End = @end;
+                    @Start = @start;
+                    @Timezone = @timezone;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "end", @out: false, min: 1, max: 1)]
+                public string @End { get; }
+
+                [TerraformProperty(name: "start", @out: false, min: 1, max: 1)]
+                public string @Start { get; }
+
+                [TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
+                public string @Timezone { get; }
+            }
+
             [TerraformStructure(category: "", typeName: "recurrence")]
-            public sealed class recurrence
+            public sealed class recurrence: NTerraform.structure
             {
                 public recurrence(string[] @days,
                                   int[] @hours,
@@ -76,6 +43,7 @@ namespace NTerraform.Resources
                     @Hours = @hours;
                     @Minutes = @minutes;
                     @Timezone = @timezone;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "days", @out: false, min: 1, max: 1)]
@@ -92,7 +60,7 @@ namespace NTerraform.Resources
             }
 
             [TerraformStructure(category: "", typeName: "capacity")]
-            public sealed class capacity
+            public sealed class capacity: NTerraform.structure
             {
                 public capacity(int @default,
                                 int @maximum,
@@ -101,6 +69,7 @@ namespace NTerraform.Resources
                     @Default = @default;
                     @Maximum = @maximum;
                     @Minimum = @minimum;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "default", @out: false, min: 1, max: 1)]
@@ -114,10 +83,38 @@ namespace NTerraform.Resources
             }
 
             [TerraformStructure(category: "", typeName: "rule")]
-            public sealed class rule
+            public sealed class rule: NTerraform.structure
             {
+                [TerraformStructure(category: "", typeName: "scale_action")]
+                public sealed class scale_action: NTerraform.structure
+                {
+                    public scale_action(string @cooldown,
+                                        string @direction,
+                                        string @type,
+                                        int @value)
+                    {
+                        @Cooldown = @cooldown;
+                        @Direction = @direction;
+                        @Type = @type;
+                        @Value = @value;
+                        base._validate_();
+                    }
+
+                    [TerraformProperty(name: "cooldown", @out: false, min: 1, max: 1)]
+                    public string @Cooldown { get; }
+
+                    [TerraformProperty(name: "direction", @out: false, min: 1, max: 1)]
+                    public string @Direction { get; }
+
+                    [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+                    public string @Type { get; }
+
+                    [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+                    public int @Value { get; }
+                }
+
                 [TerraformStructure(category: "", typeName: "metric_trigger")]
-                public sealed class metric_trigger
+                public sealed class metric_trigger: NTerraform.structure
                 {
                     public metric_trigger(string @metricName,
                                           string @metricResourceId,
@@ -136,6 +133,7 @@ namespace NTerraform.Resources
                         @TimeAggregation = @timeAggregation;
                         @TimeGrain = @timeGrain;
                         @TimeWindow = @timeWindow;
+                        base._validate_();
                     }
 
                     [TerraformProperty(name: "metric_name", @out: false, min: 1, max: 1)]
@@ -163,38 +161,12 @@ namespace NTerraform.Resources
                     public string @TimeWindow { get; }
                 }
 
-                [TerraformStructure(category: "", typeName: "scale_action")]
-                public sealed class scale_action
-                {
-                    public scale_action(string @cooldown,
-                                        string @direction,
-                                        string @type,
-                                        int @value)
-                    {
-                        @Cooldown = @cooldown;
-                        @Direction = @direction;
-                        @Type = @type;
-                        @Value = @value;
-                    }
-
-                    [TerraformProperty(name: "cooldown", @out: false, min: 1, max: 1)]
-                    public string @Cooldown { get; }
-
-                    [TerraformProperty(name: "direction", @out: false, min: 1, max: 1)]
-                    public string @Direction { get; }
-
-                    [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-                    public string @Type { get; }
-
-                    [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
-                    public int @Value { get; }
-                }
-
                 public rule(metric_trigger[] @metricTrigger,
                             scale_action[] @scaleAction)
                 {
                     @MetricTrigger = @metricTrigger;
                     @ScaleAction = @scaleAction;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "metric_trigger", @out: false, min: 1, max: 1)]
@@ -202,28 +174,6 @@ namespace NTerraform.Resources
 
                 [TerraformProperty(name: "scale_action", @out: false, min: 1, max: 1)]
                 public scale_action[] @ScaleAction { get; }
-            }
-
-            [TerraformStructure(category: "", typeName: "fixed_date")]
-            public sealed class fixed_date
-            {
-                public fixed_date(string @end,
-                                  string @start,
-                                  string @timezone = null)
-                {
-                    @End = @end;
-                    @Start = @start;
-                    @Timezone = @timezone;
-                }
-
-                [TerraformProperty(name: "end", @out: false, min: 1, max: 1)]
-                public string @End { get; }
-
-                [TerraformProperty(name: "start", @out: false, min: 1, max: 1)]
-                public string @Start { get; }
-
-                [TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
-                public string @Timezone { get; }
             }
 
             public profile(capacity[] @capacity,
@@ -237,6 +187,7 @@ namespace NTerraform.Resources
                 @FixedDate = @fixedDate;
                 @Recurrence = @recurrence;
                 @Rule = @rule;
+                base._validate_();
             }
 
             [TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
@@ -255,6 +206,65 @@ namespace NTerraform.Resources
             public rule[] @Rule { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "notification")]
+        public sealed class notification: NTerraform.structure
+        {
+            [TerraformStructure(category: "", typeName: "email")]
+            public sealed class email: NTerraform.structure
+            {
+                public email(string[] @customEmails = null,
+                             bool? @sendToSubscriptionAdministrator = null,
+                             bool? @sendToSubscriptionCoAdministrator = null)
+                {
+                    @CustomEmails = @customEmails;
+                    @SendToSubscriptionAdministrator = @sendToSubscriptionAdministrator;
+                    @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "custom_emails", @out: false, min: 0, max: 1)]
+                public string[] @CustomEmails { get; }
+
+                [TerraformProperty(name: "send_to_subscription_administrator", @out: false, min: 0, max: 1)]
+                public bool? @SendToSubscriptionAdministrator { get; }
+
+                [TerraformProperty(name: "send_to_subscription_co_administrator", @out: false, min: 0, max: 1)]
+                public bool? @SendToSubscriptionCoAdministrator { get; }
+            }
+
+            [TerraformStructure(category: "", typeName: "webhook")]
+            public sealed class webhook: NTerraform.structure
+            {
+                public webhook(string @serviceUri,
+                               Dictionary<string,string> @properties = null)
+                {
+                    @ServiceUri = @serviceUri;
+                    @Properties = @properties;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "service_uri", @out: false, min: 1, max: 1)]
+                public string @ServiceUri { get; }
+
+                [TerraformProperty(name: "properties", @out: false, min: 0, max: 1)]
+                public Dictionary<string,string> @Properties { get; }
+            }
+
+            public notification(email[] @email = null,
+                                webhook[] @webhook = null)
+            {
+                @Email = @email;
+                @Webhook = @webhook;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "email", @out: false, min: 0, max: 1)]
+            public email[] @Email { get; }
+
+            [TerraformProperty(name: "webhook", @out: false, min: 0, max: 0)]
+            public webhook[] @Webhook { get; }
+        }
+
         public azurerm_autoscale_setting(string @location,
                                          string @name,
                                          profile[] @profile,
@@ -270,6 +280,7 @@ namespace NTerraform.Resources
             @TargetResourceId = @targetResourceId;
             @Enabled = @enabled;
             @Notification = @notification;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

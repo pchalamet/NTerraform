@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Ttl = @ttl;
             @ZoneName = @zoneName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

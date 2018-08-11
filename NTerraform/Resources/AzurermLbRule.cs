@@ -24,6 +24,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @EnableFloatingIp = @enableFloatingIp;
             @Location = @location;
+            base._validate_();
         }
 
         [TerraformProperty(name: "backend_port", @out: false, min: 1, max: 1)]

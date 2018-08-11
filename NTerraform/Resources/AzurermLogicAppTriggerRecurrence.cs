@@ -14,6 +14,7 @@ namespace NTerraform.Resources
             @Interval = @interval;
             @LogicAppId = @logicAppId;
             @Name = @name;
+            base._validate_();
         }
 
         [TerraformProperty(name: "frequency", @out: false, min: 1, max: 1)]

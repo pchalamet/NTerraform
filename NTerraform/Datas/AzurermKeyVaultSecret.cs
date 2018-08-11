@@ -10,6 +10,7 @@ namespace NTerraform.Datas
         {
             @Name = @name;
             @VaultUri = @vaultUri;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

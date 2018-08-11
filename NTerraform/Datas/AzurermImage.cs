@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_image : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "os_disk")]
-        public sealed class os_disk
+        public sealed class os_disk: NTerraform.structure
         {
             public os_disk()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
@@ -32,10 +33,11 @@ namespace NTerraform.Datas
         }
 
         [TerraformStructure(category: "", typeName: "data_disk")]
-        public sealed class data_disk
+        public sealed class data_disk: NTerraform.structure
         {
             public data_disk()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
@@ -67,6 +69,7 @@ namespace NTerraform.Datas
             @NameRegex = @nameRegex;
             @OsDisk = @osDisk;
             @SortDescending = @sortDescending;
+            base._validate_();
         }
 
         [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]

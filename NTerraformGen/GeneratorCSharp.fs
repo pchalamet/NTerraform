@@ -82,7 +82,7 @@ let rec generateType tfType tfName fields =
             let className = name
             let category, baseClass = match tfType with
                                       | Some x -> x, sprintf " : NTerraform.%s" x
-                                      | _ -> "", ""
+                                      | _ -> "", ": NTerraform.structure"
             let parameters = fields |> List.filter (fun x -> x.Cardinality.Min <> 0)
             let optParameters = fields |> List.filter (fun x -> x.Cardinality.Min = 0)
             let orderedParameters = (parameters |> List.sortBy (fun x -> x.Name))
@@ -128,6 +128,7 @@ let rec generateType tfType tfName fields =
             yield! ctorPrms
             yield sprintf "%s{" space8
             yield! ctorInit
+            yield sprintf "%sbase._validate_();" space12
             yield sprintf "%s}" space8
             for attrXmember in attrXmembers do
                 yield ""

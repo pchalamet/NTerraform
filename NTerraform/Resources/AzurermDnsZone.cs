@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @RegistrationVirtualNetworkIds = @registrationVirtualNetworkIds;
             @ResolutionVirtualNetworkIds = @resolutionVirtualNetworkIds;
             @ZoneType = @zoneType;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

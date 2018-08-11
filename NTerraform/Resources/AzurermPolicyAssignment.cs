@@ -18,6 +18,7 @@ namespace NTerraform.Resources
             @Description = @description;
             @DisplayName = @displayName;
             @Parameters = @parameters;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

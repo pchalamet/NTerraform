@@ -20,6 +20,7 @@ namespace NTerraform.Resources
             @GeoMappings = @geoMappings;
             @MinChildEndpoints = @minChildEndpoints;
             @TargetResourceId = @targetResourceId;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

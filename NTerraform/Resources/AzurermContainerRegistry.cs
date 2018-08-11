@@ -6,13 +6,14 @@ namespace NTerraform.Resources
     public sealed class azurerm_container_registry : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "storage_account")]
-        public sealed class storage_account
+        public sealed class storage_account: NTerraform.structure
         {
             public storage_account(string @accessKey,
                                    string @name)
             {
                 @AccessKey = @accessKey;
                 @Name = @name;
+                base._validate_();
             }
 
             [TerraformProperty(name: "access_key", @out: false, min: 1, max: 1)]
@@ -37,6 +38,7 @@ namespace NTerraform.Resources
             @Sku = @sku;
             @StorageAccount = @storageAccount;
             @StorageAccountId = @storageAccountId;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

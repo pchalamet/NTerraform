@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Parameters = @parameters;
             @ParametersBody = @parametersBody;
+            base._validate_();
         }
 
         [TerraformProperty(name: "deployment_mode", @out: false, min: 1, max: 1)]

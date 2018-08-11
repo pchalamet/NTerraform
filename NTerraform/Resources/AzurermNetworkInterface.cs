@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_network_interface : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "ip_configuration")]
-        public sealed class ip_configuration
+        public sealed class ip_configuration: NTerraform.structure
         {
             public ip_configuration(string @name,
                                     string @privateIpAddressAllocation,
@@ -19,6 +19,7 @@ namespace NTerraform.Resources
                 @SubnetId = @subnetId;
                 @PrivateIpAddress = @privateIpAddress;
                 @PublicIpAddressId = @publicIpAddressId;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -67,6 +68,7 @@ namespace NTerraform.Resources
             @EnableAcceleratedNetworking = @enableAcceleratedNetworking;
             @EnableIpForwarding = @enableIpForwarding;
             @NetworkSecurityGroupId = @networkSecurityGroupId;
+            base._validate_();
         }
 
         [TerraformProperty(name: "ip_configuration", @out: false, min: 1, max: 0)]

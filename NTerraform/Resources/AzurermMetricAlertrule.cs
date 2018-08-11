@@ -5,26 +5,13 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_metric_alertrule")]
     public sealed class azurerm_metric_alertrule : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "email_action")]
-        public sealed class email_action
-        {
-            public email_action()
-            {
-            }
-
-            [TerraformProperty(name: "custom_emails", @out: true, min: 0, max: 1)]
-            public string[] @CustomEmails { get; }
-
-            [TerraformProperty(name: "send_to_service_owners", @out: true, min: 0, max: 1)]
-            public bool? @SendToServiceOwners { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "webhook_action")]
-        public sealed class webhook_action
+        public sealed class webhook_action: NTerraform.structure
         {
             public webhook_action(string @serviceUri)
             {
                 @ServiceUri = @serviceUri;
+                base._validate_();
             }
 
             [TerraformProperty(name: "service_uri", @out: false, min: 1, max: 1)]
@@ -32,6 +19,21 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "properties", @out: true, min: 0, max: 1)]
             public Dictionary<string,string> @Properties { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "email_action")]
+        public sealed class email_action: NTerraform.structure
+        {
+            public email_action()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "custom_emails", @out: true, min: 0, max: 1)]
+            public string[] @CustomEmails { get; }
+
+            [TerraformProperty(name: "send_to_service_owners", @out: true, min: 0, max: 1)]
+            public bool? @SendToServiceOwners { get; }
         }
 
         public azurerm_metric_alertrule(string @aggregation,
@@ -59,6 +61,7 @@ namespace NTerraform.Resources
             @EmailAction = @emailAction;
             @Enabled = @enabled;
             @WebhookAction = @webhookAction;
+            base._validate_();
         }
 
         [TerraformProperty(name: "aggregation", @out: false, min: 1, max: 1)]

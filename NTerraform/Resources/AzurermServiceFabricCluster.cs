@@ -5,8 +5,49 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_service_fabric_cluster")]
     public sealed class azurerm_service_fabric_cluster : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "certificate")]
+        public sealed class certificate: NTerraform.structure
+        {
+            public certificate(string @thumbprint,
+                               string @x509StoreName,
+                               string @thumbprintSecondary = null)
+            {
+                @Thumbprint = @thumbprint;
+                @X509StoreName = @x509StoreName;
+                @ThumbprintSecondary = @thumbprintSecondary;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
+            public string @Thumbprint { get; }
+
+            [TerraformProperty(name: "x509_store_name", @out: false, min: 1, max: 1)]
+            public string @X509StoreName { get; }
+
+            [TerraformProperty(name: "thumbprint_secondary", @out: false, min: 0, max: 1)]
+            public string @ThumbprintSecondary { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "client_certificate_thumbprint")]
+        public sealed class client_certificate_thumbprint: NTerraform.structure
+        {
+            public client_certificate_thumbprint(bool @isAdmin,
+                                                 string @thumbprint)
+            {
+                @IsAdmin = @isAdmin;
+                @Thumbprint = @thumbprint;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "is_admin", @out: false, min: 1, max: 1)]
+            public bool @IsAdmin { get; }
+
+            [TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
+            public string @Thumbprint { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "diagnostics_config")]
-        public sealed class diagnostics_config
+        public sealed class diagnostics_config: NTerraform.structure
         {
             public diagnostics_config(string @blobEndpoint,
                                       string @protectedAccountKeyName,
@@ -19,6 +60,7 @@ namespace NTerraform.Resources
                 @QueueEndpoint = @queueEndpoint;
                 @StorageAccountName = @storageAccountName;
                 @TableEndpoint = @tableEndpoint;
+                base._validate_();
             }
 
             [TerraformProperty(name: "blob_endpoint", @out: false, min: 1, max: 1)]
@@ -37,73 +79,18 @@ namespace NTerraform.Resources
             public string @TableEndpoint { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "fabric_settings")]
-        public sealed class fabric_settings
-        {
-            public fabric_settings(string @name,
-                                   Dictionary<string,string> @parameters = null)
-            {
-                @Name = @name;
-                @Parameters = @parameters;
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
-            public Dictionary<string,string> @Parameters { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "certificate")]
-        public sealed class certificate
-        {
-            public certificate(string @thumbprint,
-                               string @x509StoreName,
-                               string @thumbprintSecondary = null)
-            {
-                @Thumbprint = @thumbprint;
-                @X509StoreName = @x509StoreName;
-                @ThumbprintSecondary = @thumbprintSecondary;
-            }
-
-            [TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
-            public string @Thumbprint { get; }
-
-            [TerraformProperty(name: "x509_store_name", @out: false, min: 1, max: 1)]
-            public string @X509StoreName { get; }
-
-            [TerraformProperty(name: "thumbprint_secondary", @out: false, min: 0, max: 1)]
-            public string @ThumbprintSecondary { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "client_certificate_thumbprint")]
-        public sealed class client_certificate_thumbprint
-        {
-            public client_certificate_thumbprint(bool @isAdmin,
-                                                 string @thumbprint)
-            {
-                @IsAdmin = @isAdmin;
-                @Thumbprint = @thumbprint;
-            }
-
-            [TerraformProperty(name: "is_admin", @out: false, min: 1, max: 1)]
-            public bool @IsAdmin { get; }
-
-            [TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
-            public string @Thumbprint { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "node_type")]
-        public sealed class node_type
+        public sealed class node_type: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "application_ports")]
-            public sealed class application_ports
+            public sealed class application_ports: NTerraform.structure
             {
                 public application_ports(int @endPort,
                                          int @startPort)
                 {
                     @EndPort = @endPort;
                     @StartPort = @startPort;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "end_port", @out: false, min: 1, max: 1)]
@@ -114,13 +101,14 @@ namespace NTerraform.Resources
             }
 
             [TerraformStructure(category: "", typeName: "ephemeral_ports")]
-            public sealed class ephemeral_ports
+            public sealed class ephemeral_ports: NTerraform.structure
             {
                 public ephemeral_ports(int @endPort,
                                        int @startPort)
                 {
                     @EndPort = @endPort;
                     @StartPort = @startPort;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "end_port", @out: false, min: 1, max: 1)]
@@ -147,6 +135,7 @@ namespace NTerraform.Resources
                 @ApplicationPorts = @applicationPorts;
                 @DurabilityLevel = @durabilityLevel;
                 @EphemeralPorts = @ephemeralPorts;
+                base._validate_();
             }
 
             [TerraformProperty(name: "client_endpoint_port", @out: false, min: 1, max: 1)]
@@ -172,6 +161,24 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "ephemeral_ports", @out: false, min: 0, max: 1)]
             public ephemeral_ports[] @EphemeralPorts { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "fabric_settings")]
+        public sealed class fabric_settings: NTerraform.structure
+        {
+            public fabric_settings(string @name,
+                                   Dictionary<string,string> @parameters = null)
+            {
+                @Name = @name;
+                @Parameters = @parameters;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
+            public Dictionary<string,string> @Parameters { get; }
         }
 
         public azurerm_service_fabric_cluster(string @location,
@@ -201,6 +208,7 @@ namespace NTerraform.Resources
             @ClientCertificateThumbprint = @clientCertificateThumbprint;
             @DiagnosticsConfig = @diagnosticsConfig;
             @FabricSettings = @fabricSettings;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

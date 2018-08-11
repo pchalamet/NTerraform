@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @ServerName = @serverName;
             @TenantId = @tenantId;
+            base._validate_();
         }
 
         [TerraformProperty(name: "login", @out: false, min: 1, max: 1)]

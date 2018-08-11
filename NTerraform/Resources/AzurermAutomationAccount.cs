@@ -6,11 +6,12 @@ namespace NTerraform.Resources
     public sealed class azurerm_automation_account : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku
+        public sealed class sku: NTerraform.structure
         {
             public sku(string @name = null)
             {
                 @Name = @name;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
@@ -26,6 +27,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @Sku = @sku;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

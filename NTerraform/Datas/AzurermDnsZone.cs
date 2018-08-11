@@ -8,6 +8,7 @@ namespace NTerraform.Datas
         public azurerm_dns_zone(string @name)
         {
             @Name = @name;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

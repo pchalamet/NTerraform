@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @AccountName = @accountName;
             @LocalFilePath = @localFilePath;
             @RemoteFilePath = @remoteFilePath;
+            base._validate_();
         }
 
         [TerraformProperty(name: "account_name", @out: false, min: 1, max: 1)]

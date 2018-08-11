@@ -18,6 +18,7 @@ namespace NTerraform.Resources
             @Uri = @uri;
             @Body = @body;
             @Headers = @headers;
+            base._validate_();
         }
 
         [TerraformProperty(name: "logic_app_id", @out: false, min: 1, max: 1)]

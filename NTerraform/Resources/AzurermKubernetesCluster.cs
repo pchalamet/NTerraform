@@ -5,37 +5,8 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_kubernetes_cluster")]
     public sealed class azurerm_kubernetes_cluster : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "linux_profile")]
-        public sealed class linux_profile
-        {
-            [TerraformStructure(category: "", typeName: "ssh_key")]
-            public sealed class ssh_key
-            {
-                public ssh_key(string @keyData)
-                {
-                    @KeyData = @keyData;
-                }
-
-                [TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
-                public string @KeyData { get; }
-            }
-
-            public linux_profile(string @adminUsername,
-                                 ssh_key[] @sshKey)
-            {
-                @AdminUsername = @adminUsername;
-                @SshKey = @sshKey;
-            }
-
-            [TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
-            public string @AdminUsername { get; }
-
-            [TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 0)]
-            public ssh_key[] @SshKey { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "agent_pool_profile")]
-        public sealed class agent_pool_profile
+        public sealed class agent_pool_profile: NTerraform.structure
         {
             public agent_pool_profile(string @name,
                                       string @vmSize,
@@ -50,6 +21,7 @@ namespace NTerraform.Resources
                 @OsDiskSizeGb = @osDiskSizeGb;
                 @OsType = @osType;
                 @VnetSubnetId = @vnetSubnetId;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -77,52 +49,12 @@ namespace NTerraform.Resources
             public string @VnetSubnetId { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "network_profile")]
-        public sealed class network_profile
-        {
-            public network_profile(string @networkPlugin)
-            {
-                @NetworkPlugin = @networkPlugin;
-            }
-
-            [TerraformProperty(name: "network_plugin", @out: false, min: 1, max: 1)]
-            public string @NetworkPlugin { get; }
-
-            [TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
-            public string @DnsServiceIp { get; }
-
-            [TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
-            public string @DockerBridgeCidr { get; }
-
-            [TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
-            public string @PodCidr { get; }
-
-            [TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
-            public string @ServiceCidr { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "service_principal")]
-        public sealed class service_principal
-        {
-            public service_principal(string @clientId,
-                                     string @clientSecret)
-            {
-                @ClientId = @clientId;
-                @ClientSecret = @clientSecret;
-            }
-
-            [TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
-            public string @ClientId { get; }
-
-            [TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
-            public string @ClientSecret { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "kube_config")]
-        public sealed class kube_config
+        public sealed class kube_config: NTerraform.structure
         {
             public kube_config()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
@@ -144,6 +76,80 @@ namespace NTerraform.Resources
             public string @Username { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "service_principal")]
+        public sealed class service_principal: NTerraform.structure
+        {
+            public service_principal(string @clientId,
+                                     string @clientSecret)
+            {
+                @ClientId = @clientId;
+                @ClientSecret = @clientSecret;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
+            public string @ClientId { get; }
+
+            [TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
+            public string @ClientSecret { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "network_profile")]
+        public sealed class network_profile: NTerraform.structure
+        {
+            public network_profile(string @networkPlugin)
+            {
+                @NetworkPlugin = @networkPlugin;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "network_plugin", @out: false, min: 1, max: 1)]
+            public string @NetworkPlugin { get; }
+
+            [TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
+            public string @DnsServiceIp { get; }
+
+            [TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
+            public string @DockerBridgeCidr { get; }
+
+            [TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
+            public string @PodCidr { get; }
+
+            [TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
+            public string @ServiceCidr { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "linux_profile")]
+        public sealed class linux_profile: NTerraform.structure
+        {
+            [TerraformStructure(category: "", typeName: "ssh_key")]
+            public sealed class ssh_key: NTerraform.structure
+            {
+                public ssh_key(string @keyData)
+                {
+                    @KeyData = @keyData;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
+                public string @KeyData { get; }
+            }
+
+            public linux_profile(string @adminUsername,
+                                 ssh_key[] @sshKey)
+            {
+                @AdminUsername = @adminUsername;
+                @SshKey = @sshKey;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
+            public string @AdminUsername { get; }
+
+            [TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 0)]
+            public ssh_key[] @SshKey { get; }
+        }
+
         public azurerm_kubernetes_cluster(agent_pool_profile[] @agentPoolProfile,
                                           string @dnsPrefix,
                                           linux_profile[] @linuxProfile,
@@ -163,6 +169,7 @@ namespace NTerraform.Resources
             @ServicePrincipal = @servicePrincipal;
             @KubeConfig = @kubeConfig;
             @NetworkProfile = @networkProfile;
+            base._validate_();
         }
 
         [TerraformProperty(name: "agent_pool_profile", @out: false, min: 1, max: 1)]

@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_route_table : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "route")]
-        public sealed class route
+        public sealed class route: NTerraform.structure
         {
             public route(string @addressPrefix,
                          string @name,
@@ -15,6 +15,7 @@ namespace NTerraform.Resources
                 @AddressPrefix = @addressPrefix;
                 @Name = @name;
                 @NextHopType = @nextHopType;
+                base._validate_();
             }
 
             [TerraformProperty(name: "address_prefix", @out: false, min: 1, max: 1)]
@@ -41,6 +42,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @DisableBgpRoutePropagation = @disableBgpRoutePropagation;
             @Route = @route;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

@@ -6,27 +6,14 @@ namespace NTerraform.Datas
     public sealed class azurerm_virtual_network_gateway : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "vpn_client_configuration")]
-        public sealed class vpn_client_configuration
+        public sealed class vpn_client_configuration: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "revoked_certificate")]
-            public sealed class revoked_certificate
-            {
-                public revoked_certificate()
-                {
-                }
-
-                [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-                public string @Name { get; }
-
-                [TerraformProperty(name: "thumbprint", @out: true, min: 0, max: 1)]
-                public string @Thumbprint { get; }
-            }
-
             [TerraformStructure(category: "", typeName: "root_certificate")]
-            public sealed class root_certificate
+            public sealed class root_certificate: NTerraform.structure
             {
                 public root_certificate()
                 {
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
@@ -36,11 +23,27 @@ namespace NTerraform.Datas
                 public string @PublicCertData { get; }
             }
 
+            [TerraformStructure(category: "", typeName: "revoked_certificate")]
+            public sealed class revoked_certificate: NTerraform.structure
+            {
+                public revoked_certificate()
+                {
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+                public string @Name { get; }
+
+                [TerraformProperty(name: "thumbprint", @out: true, min: 0, max: 1)]
+                public string @Thumbprint { get; }
+            }
+
             public vpn_client_configuration(revoked_certificate[] @revokedCertificate = null,
                                             root_certificate[] @rootCertificate = null)
             {
                 @RevokedCertificate = @revokedCertificate;
                 @RootCertificate = @rootCertificate;
+                base._validate_();
             }
 
             [TerraformProperty(name: "address_space", @out: true, min: 0, max: 1)]
@@ -63,10 +66,11 @@ namespace NTerraform.Datas
         }
 
         [TerraformStructure(category: "", typeName: "ip_configuration")]
-        public sealed class ip_configuration
+        public sealed class ip_configuration: NTerraform.structure
         {
             public ip_configuration()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
@@ -83,10 +87,11 @@ namespace NTerraform.Datas
         }
 
         [TerraformStructure(category: "", typeName: "bgp_settings")]
-        public sealed class bgp_settings
+        public sealed class bgp_settings: NTerraform.structure
         {
             public bgp_settings()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "asn", @out: true, min: 0, max: 1)]
@@ -110,6 +115,7 @@ namespace NTerraform.Datas
             @BgpSettings = @bgpSettings;
             @IpConfiguration = @ipConfiguration;
             @VpnClientConfiguration = @vpnClientConfiguration;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

@@ -28,6 +28,7 @@ namespace NTerraform.Resources
             @ForwardTo = @forwardTo;
             @Location = @location;
             @RequiresSession = @requiresSession;
+            base._validate_();
         }
 
         [TerraformProperty(name: "max_delivery_count", @out: false, min: 1, max: 1)]

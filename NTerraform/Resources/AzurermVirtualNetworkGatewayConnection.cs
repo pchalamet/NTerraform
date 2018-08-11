@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_virtual_network_gateway_connection : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "ipsec_policy")]
-        public sealed class ipsec_policy
+        public sealed class ipsec_policy: NTerraform.structure
         {
             public ipsec_policy(string @dhGroup,
                                 string @ikeEncryption,
@@ -21,6 +21,7 @@ namespace NTerraform.Resources
                 @IpsecEncryption = @ipsecEncryption;
                 @IpsecIntegrity = @ipsecIntegrity;
                 @PfsGroup = @pfsGroup;
+                base._validate_();
             }
 
             [TerraformProperty(name: "dh_group", @out: false, min: 1, max: 1)]
@@ -71,6 +72,7 @@ namespace NTerraform.Resources
             @LocalNetworkGatewayId = @localNetworkGatewayId;
             @PeerVirtualNetworkGatewayId = @peerVirtualNetworkGatewayId;
             @SharedKey = @sharedKey;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

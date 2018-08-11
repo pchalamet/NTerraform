@@ -18,6 +18,7 @@ namespace NTerraform.Resources
             @Sku = @sku;
             @AutoInflateEnabled = @autoInflateEnabled;
             @Capacity = @capacity;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

@@ -6,13 +6,14 @@ namespace NTerraform.Resources
     public sealed class azurerm_dns_mx_record : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "record")]
-        public sealed class record
+        public sealed class record: NTerraform.structure
         {
             public record(string @exchange,
                           string @preference)
             {
                 @Exchange = @exchange;
                 @Preference = @preference;
+                base._validate_();
             }
 
             [TerraformProperty(name: "exchange", @out: false, min: 1, max: 1)]
@@ -33,6 +34,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Ttl = @ttl;
             @ZoneName = @zoneName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

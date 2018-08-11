@@ -14,6 +14,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @StorageAccountName = @storageAccountName;
             @Quota = @quota;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

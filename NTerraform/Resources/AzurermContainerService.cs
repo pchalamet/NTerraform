@@ -5,8 +5,39 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_container_service")]
     public sealed class azurerm_container_service : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "linux_profile")]
+        public sealed class linux_profile: NTerraform.structure
+        {
+            [TerraformStructure(category: "", typeName: "ssh_key")]
+            public sealed class ssh_key: NTerraform.structure
+            {
+                public ssh_key(string @keyData)
+                {
+                    @KeyData = @keyData;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
+                public string @KeyData { get; }
+            }
+
+            public linux_profile(string @adminUsername,
+                                 ssh_key[] @sshKey)
+            {
+                @AdminUsername = @adminUsername;
+                @SshKey = @sshKey;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
+            public string @AdminUsername { get; }
+
+            [TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 1)]
+            public ssh_key[] @SshKey { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "agent_pool_profile")]
-        public sealed class agent_pool_profile
+        public sealed class agent_pool_profile: NTerraform.structure
         {
             public agent_pool_profile(string @dnsPrefix,
                                       string @name,
@@ -17,6 +48,7 @@ namespace NTerraform.Resources
                 @Name = @name;
                 @VmSize = @vmSize;
                 @Count = @count;
+                base._validate_();
             }
 
             [TerraformProperty(name: "dns_prefix", @out: false, min: 1, max: 1)]
@@ -35,14 +67,33 @@ namespace NTerraform.Resources
             public string @Fqdn { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "service_principal")]
+        public sealed class service_principal: NTerraform.structure
+        {
+            public service_principal(string @clientId,
+                                     string @clientSecret)
+            {
+                @ClientId = @clientId;
+                @ClientSecret = @clientSecret;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
+            public string @ClientId { get; }
+
+            [TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
+            public string @ClientSecret { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "master_profile")]
-        public sealed class master_profile
+        public sealed class master_profile: NTerraform.structure
         {
             public master_profile(string @dnsPrefix,
                                   int? @count = null)
             {
                 @DnsPrefix = @dnsPrefix;
                 @Count = @count;
+                base._validate_();
             }
 
             [TerraformProperty(name: "dns_prefix", @out: false, min: 1, max: 1)]
@@ -55,29 +106,13 @@ namespace NTerraform.Resources
             public string @Fqdn { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "service_principal")]
-        public sealed class service_principal
-        {
-            public service_principal(string @clientId,
-                                     string @clientSecret)
-            {
-                @ClientId = @clientId;
-                @ClientSecret = @clientSecret;
-            }
-
-            [TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
-            public string @ClientId { get; }
-
-            [TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
-            public string @ClientSecret { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "diagnostics_profile")]
-        public sealed class diagnostics_profile
+        public sealed class diagnostics_profile: NTerraform.structure
         {
             public diagnostics_profile(bool @enabled)
             {
                 @Enabled = @enabled;
+                base._validate_();
             }
 
             [TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
@@ -85,35 +120,6 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "storage_uri", @out: true, min: 0, max: 1)]
             public string @StorageUri { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "linux_profile")]
-        public sealed class linux_profile
-        {
-            [TerraformStructure(category: "", typeName: "ssh_key")]
-            public sealed class ssh_key
-            {
-                public ssh_key(string @keyData)
-                {
-                    @KeyData = @keyData;
-                }
-
-                [TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
-                public string @KeyData { get; }
-            }
-
-            public linux_profile(string @adminUsername,
-                                 ssh_key[] @sshKey)
-            {
-                @AdminUsername = @adminUsername;
-                @SshKey = @sshKey;
-            }
-
-            [TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
-            public string @AdminUsername { get; }
-
-            [TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 1)]
-            public ssh_key[] @SshKey { get; }
         }
 
         public azurerm_container_service(agent_pool_profile[] @agentPoolProfile,
@@ -135,6 +141,7 @@ namespace NTerraform.Resources
             @OrchestrationPlatform = @orchestrationPlatform;
             @ResourceGroupName = @resourceGroupName;
             @ServicePrincipal = @servicePrincipal;
+            base._validate_();
         }
 
         [TerraformProperty(name: "agent_pool_profile", @out: false, min: 1, max: 1)]

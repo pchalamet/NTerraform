@@ -14,6 +14,7 @@ namespace NTerraform.Datas
             @Offer = @offer;
             @Publisher = @publisher;
             @Sku = @sku;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

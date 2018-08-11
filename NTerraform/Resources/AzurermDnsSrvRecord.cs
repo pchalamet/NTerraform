@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_dns_srv_record : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "record")]
-        public sealed class record
+        public sealed class record: NTerraform.structure
         {
             public record(int @port,
                           int @priority,
@@ -17,6 +17,7 @@ namespace NTerraform.Resources
                 @Priority = @priority;
                 @Target = @target;
                 @Weight = @weight;
+                base._validate_();
             }
 
             [TerraformProperty(name: "port", @out: false, min: 1, max: 1)]
@@ -43,6 +44,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Ttl = @ttl;
             @ZoneName = @zoneName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

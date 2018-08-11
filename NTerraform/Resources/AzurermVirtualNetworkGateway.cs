@@ -5,34 +5,46 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_virtual_network_gateway")]
     public sealed class azurerm_virtual_network_gateway : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "vpn_client_configuration")]
-        public sealed class vpn_client_configuration
+        [TerraformStructure(category: "", typeName: "ip_configuration")]
+        public sealed class ip_configuration: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "root_certificate")]
-            public sealed class root_certificate
+            public ip_configuration(string @subnetId,
+                                    string @name = null,
+                                    string @privateIpAddressAllocation = null,
+                                    string @publicIpAddressId = null)
             {
-                public root_certificate(string @name,
-                                        string @publicCertData)
-                {
-                    @Name = @name;
-                    @PublicCertData = @publicCertData;
-                }
-
-                [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-                public string @Name { get; }
-
-                [TerraformProperty(name: "public_cert_data", @out: false, min: 1, max: 1)]
-                public string @PublicCertData { get; }
+                @SubnetId = @subnetId;
+                @Name = @name;
+                @PrivateIpAddressAllocation = @privateIpAddressAllocation;
+                @PublicIpAddressId = @publicIpAddressId;
+                base._validate_();
             }
 
+            [TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
+            public string @SubnetId { get; }
+
+            [TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "private_ip_address_allocation", @out: false, min: 0, max: 1)]
+            public string @PrivateIpAddressAllocation { get; }
+
+            [TerraformProperty(name: "public_ip_address_id", @out: false, min: 0, max: 1)]
+            public string @PublicIpAddressId { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "vpn_client_configuration")]
+        public sealed class vpn_client_configuration: NTerraform.structure
+        {
             [TerraformStructure(category: "", typeName: "revoked_certificate")]
-            public sealed class revoked_certificate
+            public sealed class revoked_certificate: NTerraform.structure
             {
                 public revoked_certificate(string @name,
                                            string @thumbprint)
                 {
                     @Name = @name;
                     @Thumbprint = @thumbprint;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -40,6 +52,24 @@ namespace NTerraform.Resources
 
                 [TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
                 public string @Thumbprint { get; }
+            }
+
+            [TerraformStructure(category: "", typeName: "root_certificate")]
+            public sealed class root_certificate: NTerraform.structure
+            {
+                public root_certificate(string @name,
+                                        string @publicCertData)
+                {
+                    @Name = @name;
+                    @PublicCertData = @publicCertData;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+                public string @Name { get; }
+
+                [TerraformProperty(name: "public_cert_data", @out: false, min: 1, max: 1)]
+                public string @PublicCertData { get; }
             }
 
             public vpn_client_configuration(string[] @addressSpace,
@@ -55,6 +85,7 @@ namespace NTerraform.Resources
                 @RevokedCertificate = @revokedCertificate;
                 @RootCertificate = @rootCertificate;
                 @VpnClientProtocols = @vpnClientProtocols;
+                base._validate_();
             }
 
             [TerraformProperty(name: "address_space", @out: false, min: 1, max: 1)]
@@ -76,41 +107,15 @@ namespace NTerraform.Resources
             public string[] @VpnClientProtocols { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "ip_configuration")]
-        public sealed class ip_configuration
-        {
-            public ip_configuration(string @subnetId,
-                                    string @name = null,
-                                    string @privateIpAddressAllocation = null,
-                                    string @publicIpAddressId = null)
-            {
-                @SubnetId = @subnetId;
-                @Name = @name;
-                @PrivateIpAddressAllocation = @privateIpAddressAllocation;
-                @PublicIpAddressId = @publicIpAddressId;
-            }
-
-            [TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
-            public string @SubnetId { get; }
-
-            [TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "private_ip_address_allocation", @out: false, min: 0, max: 1)]
-            public string @PrivateIpAddressAllocation { get; }
-
-            [TerraformProperty(name: "public_ip_address_id", @out: false, min: 0, max: 1)]
-            public string @PublicIpAddressId { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "bgp_settings")]
-        public sealed class bgp_settings
+        public sealed class bgp_settings: NTerraform.structure
         {
             public bgp_settings(int? @asn = null,
                                 int? @peerWeight = null)
             {
                 @Asn = @asn;
                 @PeerWeight = @peerWeight;
+                base._validate_();
             }
 
             [TerraformProperty(name: "asn", @out: false, min: 0, max: 1)]
@@ -144,6 +149,7 @@ namespace NTerraform.Resources
             @DefaultLocalNetworkGatewayId = @defaultLocalNetworkGatewayId;
             @VpnClientConfiguration = @vpnClientConfiguration;
             @VpnType = @vpnType;
+            base._validate_();
         }
 
         [TerraformProperty(name: "ip_configuration", @out: false, min: 1, max: 2)]

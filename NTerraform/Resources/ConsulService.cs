@@ -14,6 +14,7 @@ namespace NTerraform.Resources
             @Node = @node;
             @Port = @port;
             @Tags = @tags;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

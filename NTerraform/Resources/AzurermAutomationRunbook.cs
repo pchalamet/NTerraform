@@ -6,16 +6,17 @@ namespace NTerraform.Resources
     public sealed class azurerm_automation_runbook : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "publish_content_link")]
-        public sealed class publish_content_link
+        public sealed class publish_content_link: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "hash")]
-            public sealed class hash
+            public sealed class hash: NTerraform.structure
             {
                 public hash(string @algorithm,
                             string @value)
                 {
                     @Algorithm = @algorithm;
                     @Value = @value;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "algorithm", @out: false, min: 1, max: 1)]
@@ -32,6 +33,7 @@ namespace NTerraform.Resources
                 @Uri = @uri;
                 @Hash = @hash;
                 @Version = @version;
+                base._validate_();
             }
 
             [TerraformProperty(name: "uri", @out: false, min: 1, max: 1)]
@@ -63,6 +65,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @RunbookType = @runbookType;
             @Description = @description;
+            base._validate_();
         }
 
         [TerraformProperty(name: "account_name", @out: false, min: 1, max: 1)]

@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_app_service_plan : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku
+        public sealed class sku: NTerraform.structure
         {
             public sku()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "capacity", @out: true, min: 0, max: 1)]
@@ -23,10 +24,11 @@ namespace NTerraform.Datas
         }
 
         [TerraformStructure(category: "", typeName: "properties")]
-        public sealed class properties
+        public sealed class properties: NTerraform.structure
         {
             public properties()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "app_service_environment_id", @out: true, min: 0, max: 1)]
@@ -48,6 +50,7 @@ namespace NTerraform.Datas
             @ResourceGroupName = @resourceGroupName;
             @Properties = @properties;
             @Sku = @sku;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

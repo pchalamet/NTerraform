@@ -24,6 +24,7 @@ namespace NTerraform.Resources
             @Protocol = @protocol;
             @ResourceGroupName = @resourceGroupName;
             @Location = @location;
+            base._validate_();
         }
 
         [TerraformProperty(name: "backend_port", @out: false, min: 1, max: 1)]

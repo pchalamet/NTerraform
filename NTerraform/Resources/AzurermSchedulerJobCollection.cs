@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_scheduler_job_collection : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "quota")]
-        public sealed class quota
+        public sealed class quota: NTerraform.structure
         {
             public quota(string @maxRecurrenceFrequency,
                          int? @maxJobCount = null,
@@ -15,6 +15,7 @@ namespace NTerraform.Resources
                 @MaxRecurrenceFrequency = @maxRecurrenceFrequency;
                 @MaxJobCount = @maxJobCount;
                 @MaxRecurrenceInterval = @maxRecurrenceInterval;
+                base._validate_();
             }
 
             [TerraformProperty(name: "max_recurrence_frequency", @out: false, min: 1, max: 1)]
@@ -43,6 +44,7 @@ namespace NTerraform.Resources
             @Sku = @sku;
             @Quota = @quota;
             @State = @state;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

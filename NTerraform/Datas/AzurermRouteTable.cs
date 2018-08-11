@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_route_table : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "route")]
-        public sealed class route
+        public sealed class route: NTerraform.structure
         {
             public route()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "address_prefix", @out: true, min: 0, max: 1)]
@@ -32,6 +33,7 @@ namespace NTerraform.Datas
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @Route = @route;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

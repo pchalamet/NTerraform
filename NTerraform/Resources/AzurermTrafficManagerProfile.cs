@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_traffic_manager_profile : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "monitor_config")]
-        public sealed class monitor_config
+        public sealed class monitor_config: NTerraform.structure
         {
             public monitor_config(int @port,
                                   string @protocol,
@@ -15,6 +15,7 @@ namespace NTerraform.Resources
                 @Port = @port;
                 @Protocol = @protocol;
                 @Path = @path;
+                base._validate_();
             }
 
             [TerraformProperty(name: "port", @out: false, min: 1, max: 1)]
@@ -28,13 +29,14 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "dns_config")]
-        public sealed class dns_config
+        public sealed class dns_config: NTerraform.structure
         {
             public dns_config(string @relativeName,
                               int @ttl)
             {
                 @RelativeName = @relativeName;
                 @Ttl = @ttl;
+                base._validate_();
             }
 
             [TerraformProperty(name: "relative_name", @out: false, min: 1, max: 1)]
@@ -55,6 +57,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @TrafficRoutingMethod = @trafficRoutingMethod;
+            base._validate_();
         }
 
         [TerraformProperty(name: "dns_config", @out: false, min: 1, max: 0)]

@@ -5,22 +5,8 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "site_credential")]
-        public sealed class site_credential
-        {
-            public site_credential()
-            {
-            }
-
-            [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "connection_string")]
-        public sealed class connection_string
+        public sealed class connection_string: NTerraform.structure
         {
             public connection_string(string @name,
                                      string @type,
@@ -29,6 +15,7 @@ namespace NTerraform.Resources
                 @Name = @name;
                 @Type = @type;
                 @Value = @value;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -42,10 +29,11 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "source_control")]
-        public sealed class source_control
+        public sealed class source_control: NTerraform.structure
         {
             public source_control()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
@@ -55,35 +43,18 @@ namespace NTerraform.Resources
             public string @RepoUrl { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "identity")]
-        public sealed class identity
-        {
-            public identity(string @type)
-            {
-                @Type = @type;
-            }
-
-            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
-
-            [TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-            public string @TenantId { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "site_config")]
-        public sealed class site_config
+        public sealed class site_config: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "ip_restriction")]
-            public sealed class ip_restriction
+            public sealed class ip_restriction: NTerraform.structure
             {
                 public ip_restriction(string @ipAddress,
                                       string @subnetMask = null)
                 {
                     @IpAddress = @ipAddress;
                     @SubnetMask = @subnetMask;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "ip_address", @out: false, min: 1, max: 1)]
@@ -118,6 +89,7 @@ namespace NTerraform.Resources
                 @PythonVersion = @pythonVersion;
                 @RemoteDebuggingEnabled = @remoteDebuggingEnabled;
                 @ScmType = @scmType;
+                base._validate_();
             }
 
             [TerraformProperty(name: "always_on", @out: false, min: 0, max: 1)]
@@ -181,6 +153,40 @@ namespace NTerraform.Resources
             public bool? @WebsocketsEnabled { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "site_credential")]
+        public sealed class site_credential: NTerraform.structure
+        {
+            public site_credential()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
+
+            [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "identity")]
+        public sealed class identity: NTerraform.structure
+        {
+            public identity(string @type)
+            {
+                @Type = @type;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
+            public string @PrincipalId { get; }
+
+            [TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
+            public string @TenantId { get; }
+        }
+
         public azurerm_app_service(string @appServicePlanId,
                                    string @location,
                                    string @name,
@@ -204,6 +210,7 @@ namespace NTerraform.Resources
             @SiteConfig = @siteConfig;
             @SiteCredential = @siteCredential;
             @SourceControl = @sourceControl;
+            base._validate_();
         }
 
         [TerraformProperty(name: "app_service_plan_id", @out: false, min: 1, max: 1)]

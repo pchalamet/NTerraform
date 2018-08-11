@@ -10,6 +10,7 @@ namespace NTerraform.Resources
         {
             @Location = @location;
             @Name = @name;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

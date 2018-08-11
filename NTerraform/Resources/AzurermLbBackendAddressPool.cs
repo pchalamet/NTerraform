@@ -14,6 +14,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @Location = @location;
+            base._validate_();
         }
 
         [TerraformProperty(name: "loadbalancer_id", @out: false, min: 1, max: 1)]

@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @ServerName = @serverName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "charset", @out: false, min: 1, max: 1)]

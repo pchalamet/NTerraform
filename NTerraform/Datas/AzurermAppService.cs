@@ -5,42 +5,12 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : NTerraform.data
     {
-        [TerraformStructure(category: "", typeName: "source_control")]
-        public sealed class source_control
-        {
-            public source_control()
-            {
-            }
-
-            [TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
-            public string @Branch { get; }
-
-            [TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
-            public string @RepoUrl { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "connection_string")]
-        public sealed class connection_string
-        {
-            public connection_string()
-            {
-            }
-
-            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
-            public string @Type { get; }
-
-            [TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
-            public string @Value { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "site_credential")]
-        public sealed class site_credential
+        public sealed class site_credential: NTerraform.structure
         {
             public site_credential()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
@@ -50,17 +20,33 @@ namespace NTerraform.Datas
             public string @Username { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "source_control")]
+        public sealed class source_control: NTerraform.structure
+        {
+            public source_control()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
+            public string @Branch { get; }
+
+            [TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
+            public string @RepoUrl { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "site_config")]
-        public sealed class site_config
+        public sealed class site_config: NTerraform.structure
         {
             [TerraformStructure(category: "", typeName: "ip_restriction")]
-            public sealed class ip_restriction
+            public sealed class ip_restriction: NTerraform.structure
             {
                 public ip_restriction(string @ipAddress,
                                       string @subnetMask = null)
                 {
                     @IpAddress = @ipAddress;
                     @SubnetMask = @subnetMask;
+                    base._validate_();
                 }
 
                 [TerraformProperty(name: "ip_address", @out: false, min: 1, max: 1)]
@@ -95,6 +81,7 @@ namespace NTerraform.Datas
                 @PythonVersion = @pythonVersion;
                 @RemoteDebuggingEnabled = @remoteDebuggingEnabled;
                 @ScmType = @scmType;
+                base._validate_();
             }
 
             [TerraformProperty(name: "always_on", @out: false, min: 0, max: 1)]
@@ -158,6 +145,24 @@ namespace NTerraform.Datas
             public bool? @WebsocketsEnabled { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "connection_string")]
+        public sealed class connection_string: NTerraform.structure
+        {
+            public connection_string()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
+            public string @Type { get; }
+
+            [TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
+            public string @Value { get; }
+        }
+
         public azurerm_app_service(string @name,
                                    string @resourceGroupName,
                                    connection_string[] @connectionString = null,
@@ -171,6 +176,7 @@ namespace NTerraform.Datas
             @SiteConfig = @siteConfig;
             @SiteCredential = @siteCredential;
             @SourceControl = @sourceControl;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

@@ -6,11 +6,12 @@ namespace NTerraform.Resources
     public sealed class azurerm_key_vault : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku
+        public sealed class sku: NTerraform.structure
         {
             public sku(string @name)
             {
                 @Name = @name;
+                base._validate_();
             }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
@@ -18,7 +19,7 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "access_policy")]
-        public sealed class access_policy
+        public sealed class access_policy: NTerraform.structure
         {
             public access_policy(string[] @keyPermissions,
                                  string @objectId,
@@ -33,6 +34,7 @@ namespace NTerraform.Resources
                 @TenantId = @tenantId;
                 @ApplicationId = @applicationId;
                 @CertificatePermissions = @certificatePermissions;
+                base._validate_();
             }
 
             [TerraformProperty(name: "key_permissions", @out: false, min: 1, max: 1)]
@@ -73,6 +75,7 @@ namespace NTerraform.Resources
             @EnabledForDeployment = @enabledForDeployment;
             @EnabledForDiskEncryption = @enabledForDiskEncryption;
             @EnabledForTemplateDeployment = @enabledForTemplateDeployment;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

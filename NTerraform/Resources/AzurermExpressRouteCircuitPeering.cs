@@ -6,11 +6,12 @@ namespace NTerraform.Resources
     public sealed class azurerm_express_route_circuit_peering : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "microsoft_peering_config")]
-        public sealed class microsoft_peering_config
+        public sealed class microsoft_peering_config: NTerraform.structure
         {
             public microsoft_peering_config(string[] @advertisedPublicPrefixes)
             {
                 @AdvertisedPublicPrefixes = @advertisedPublicPrefixes;
+                base._validate_();
             }
 
             [TerraformProperty(name: "advertised_public_prefixes", @out: false, min: 1, max: 1)]
@@ -34,6 +35,7 @@ namespace NTerraform.Resources
             @VlanId = @vlanId;
             @MicrosoftPeeringConfig = @microsoftPeeringConfig;
             @SharedKey = @sharedKey;
+            base._validate_();
         }
 
         [TerraformProperty(name: "express_route_circuit_name", @out: false, min: 1, max: 1)]

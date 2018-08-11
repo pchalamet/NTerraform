@@ -6,10 +6,11 @@ namespace NTerraform.Datas
     public sealed class azurerm_network_interface : NTerraform.data
     {
         [TerraformStructure(category: "", typeName: "ip_configuration")]
-        public sealed class ip_configuration
+        public sealed class ip_configuration: NTerraform.structure
         {
             public ip_configuration()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "application_gateway_backend_address_pools_ids", @out: true, min: 0, max: 1)]
@@ -47,6 +48,7 @@ namespace NTerraform.Datas
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @IpConfiguration = @ipConfiguration;
+            base._validate_();
         }
 
         [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]

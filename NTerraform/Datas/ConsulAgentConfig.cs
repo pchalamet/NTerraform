@@ -7,6 +7,7 @@ namespace NTerraform.Datas
     {
         public consul_agent_config()
         {
+            base._validate_();
         }
 
         [TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]

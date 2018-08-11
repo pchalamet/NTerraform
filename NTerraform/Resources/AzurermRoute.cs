@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @NextHopType = @nextHopType;
             @ResourceGroupName = @resourceGroupName;
             @RouteTableName = @routeTableName;
+            base._validate_();
         }
 
         [TerraformProperty(name: "address_prefix", @out: false, min: 1, max: 1)]

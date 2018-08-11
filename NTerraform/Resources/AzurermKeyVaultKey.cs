@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @KeyType = @keyType;
             @Name = @name;
             @VaultUri = @vaultUri;
+            base._validate_();
         }
 
         [TerraformProperty(name: "key_opts", @out: false, min: 1, max: 1)]

@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_iothub : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku
+        public sealed class sku: NTerraform.structure
         {
             public sku(int @capacity,
                        string @name,
@@ -15,6 +15,7 @@ namespace NTerraform.Resources
                 @Capacity = @capacity;
                 @Name = @name;
                 @Tier = @tier;
+                base._validate_();
             }
 
             [TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
@@ -28,10 +29,11 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "shared_access_policy")]
-        public sealed class shared_access_policy
+        public sealed class shared_access_policy: NTerraform.structure
         {
             public shared_access_policy()
             {
+                base._validate_();
             }
 
             [TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
@@ -58,6 +60,7 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
             @Sku = @sku;
             @SharedAccessPolicy = @sharedAccessPolicy;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

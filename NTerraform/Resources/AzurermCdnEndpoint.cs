@@ -6,7 +6,7 @@ namespace NTerraform.Resources
     public sealed class azurerm_cdn_endpoint : NTerraform.resource
     {
         [TerraformStructure(category: "", typeName: "origin")]
-        public sealed class origin
+        public sealed class origin: NTerraform.structure
         {
             public origin(string @hostName,
                           string @name,
@@ -17,6 +17,7 @@ namespace NTerraform.Resources
                 @Name = @name;
                 @HttpPort = @httpPort;
                 @HttpsPort = @httpsPort;
+                base._validate_();
             }
 
             [TerraformProperty(name: "host_name", @out: false, min: 1, max: 1)]
@@ -33,7 +34,7 @@ namespace NTerraform.Resources
         }
 
         [TerraformStructure(category: "", typeName: "geo_filter")]
-        public sealed class geo_filter
+        public sealed class geo_filter: NTerraform.structure
         {
             public geo_filter(string @action,
                               string[] @countryCodes,
@@ -42,6 +43,7 @@ namespace NTerraform.Resources
                 @Action = @action;
                 @CountryCodes = @countryCodes;
                 @RelativePath = @relativePath;
+                base._validate_();
             }
 
             [TerraformProperty(name: "action", @out: false, min: 1, max: 1)]
@@ -77,6 +79,7 @@ namespace NTerraform.Resources
             @IsHttpsAllowed = @isHttpsAllowed;
             @OptimizationType = @optimizationType;
             @QuerystringCachingBehaviour = @querystringCachingBehaviour;
+            base._validate_();
         }
 
         [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]

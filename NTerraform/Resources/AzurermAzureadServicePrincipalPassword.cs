@@ -12,6 +12,7 @@ namespace NTerraform.Resources
             @EndDate = @endDate;
             @ServicePrincipalId = @servicePrincipalId;
             @Value = @value;
+            base._validate_();
         }
 
         [TerraformProperty(name: "end_date", @out: false, min: 1, max: 1)]

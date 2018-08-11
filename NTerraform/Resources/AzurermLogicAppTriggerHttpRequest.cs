@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @Schema = @schema;
             @Method = @method;
             @RelativePath = @relativePath;
+            base._validate_();
         }
 
         [TerraformProperty(name: "logic_app_id", @out: false, min: 1, max: 1)]

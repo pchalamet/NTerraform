@@ -8,6 +8,7 @@ namespace NTerraform.Resources
         public azurerm_azuread_service_principal(string @applicationId)
         {
             @ApplicationId = @applicationId;
+            base._validate_();
         }
 
         [TerraformProperty(name: "application_id", @out: false, min: 1, max: 1)]

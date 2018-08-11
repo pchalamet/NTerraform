@@ -24,6 +24,7 @@ namespace NTerraform.Providers
             @SubscriptionId = @subscriptionId;
             @TenantId = @tenantId;
             @UseMsi = @useMsi;
+            base._validate_();
         }
 
         [TerraformProperty(name: "environment", @out: false, min: 1, max: 1)]

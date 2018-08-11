@@ -16,6 +16,7 @@ namespace NTerraform.Resources
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @Tier = @tier;
+            base._validate_();
         }
 
         [TerraformProperty(name: "default_store_account_name", @out: false, min: 1, max: 1)]
