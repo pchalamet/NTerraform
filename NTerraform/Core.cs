@@ -47,6 +47,9 @@ namespace NTerraform
             foreach (var prop in GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
                 var propAttribute = prop.GetCustomAttribute<TerraformPropertyAttribute>();
+                if (propAttribute.Out)
+                    continue;
+
                 var value = prop.GetValue(this);
 
                 if (propAttribute.Min != 0 && null == value)
@@ -139,6 +142,9 @@ namespace NTerraform
             foreach (var prop in var.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
                 var propAttribute = prop.GetCustomAttribute<TerraformPropertyAttribute>();
+                if (propAttribute.Out)
+                    continue;
+
                 var value = prop.GetValue(var);
                 switch (Format(value))
                 {
