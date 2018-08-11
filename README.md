@@ -2,15 +2,16 @@
 NTerraform aims at writing C# or F# instead of *terraform* syntax. It's a POC as of now but looks really promising.
 Note that as of now, no tf file is generated - this has to be implemented ;-) but this will come soon !
 
-Advantages:
+Pros:
 * C# or F# syntax is easier to grasp
 * fully typed and completion ready
 
-Drawbacks:
+Cons:
 * it's merely a new layer on top of terraform
 * output can only be processed in terraform and not in NTerraform app
 
-For example, following terraform definition (from https://www.terraform.io/docs/providers/azurerm/index.html):
+# Example
+Here is a terraform definition (from https://www.terraform.io/docs/providers/azurerm/index.html):
 
 ```
 # Configure the Azure Provider
@@ -48,7 +49,7 @@ resource "azurerm_virtual_network" "network" {
 }
 ```
 
-can be written in C# like this:
+This can be written in C# like this:
 ```
 var provider = new azurerm(environment: "production");
 var networkrg = new azurerm_resource_group(name: "production",
@@ -66,8 +67,9 @@ var network = new azurerm_virtual_network(name: "production-network",
 NTerraform.schema.Build();
 ```
 
-# Dependencies
+The idea is to run this script in C# script or FSI (F#).
 
+# Dependencies
 * TFSchema: use this version https://github.com/pchalamet/tfschema, required for deterministic tf schema support
 * Terraform
 
