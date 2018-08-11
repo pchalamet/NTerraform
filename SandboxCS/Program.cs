@@ -10,7 +10,7 @@ namespace SandboxCS
     {
         static void Main(string[] args)
         {
-            var provider = new azurerm("dev");
+            var provider = new azurerm(environment: "dev");
             var networkrg = new azurerm_resource_group(name: "production",
                                                        location: "West US");
 

@@ -5,7 +5,9 @@ For example, following terraform definition (from https://www.terraform.io/docs/
 
 ````
 # Configure the Azure Provider
-provider "azurerm" { }
+provider "azurerm" { 
+  environment = "production"
+}
 
 # Create a resource group
 resource "azurerm_resource_group" "network" {
@@ -38,8 +40,8 @@ resource "azurerm_virtual_network" "network" {
 ```
 
 can be written in C# like this:
-````
-var provider = new azurerm("dev");
+```
+var provider = new azurerm(environment: "production");
 var networkrg = new azurerm_resource_group(name: "production",
                                            location: "West US");
 
@@ -79,3 +81,6 @@ For example, C# script support `#r "nuget"` syntax. FSI does not for the moment 
 
 3. Command line parameters forwarding
 NTerraform app should be the entry point and delegate everything to real terraform then in schema.Build().
+
+4. Implement terraform type provider (F#)
+Import definition directly from a type provider without requiring prio NTerraform support library reference or compilation.
