@@ -1,9 +1,9 @@
 # NTerraform
-NTerraform aims at writing C# or F# instead of *terraform* syntax. It's a POC as of now but looks really promising.
+NTerraform aims at writing F# instead of *terraform* syntax. It's a POC as of now but looks really promising.
 
 Pros:
-* C# or F# syntax is easier to grasp
-* fully typed and completion ready
+* F# syntax is easier to grasp and open new configuration opportunities
+* fully typed and completion ready !
 
 Cons:
 * it's merely a new layer on top of terraform
@@ -99,3 +99,5 @@ Also should be able to support outputs by parsing terraform output.
 
 4. Implement terraform type provider (F#): 
 Import definition directly from a type provider without requiring prior NTerraform support library reference or compilation. Could be slow.
+
+5. Switch to a fully F# type model. F# has a showstopper as of now: no support for nested class. Optional support is weak unfortunately.
