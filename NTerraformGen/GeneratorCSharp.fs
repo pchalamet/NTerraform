@@ -1,18 +1,10 @@
 ﻿module GeneratorCSharp
+
 open TerraformSchema
-open System.IO
 open System
 open StringHelpers
 open Collections
 
-
-//let pluralize (field : Field) name =
-    //match field with
-    //| { Name = _
-    //    Modifier = _
-    //    Cardinality = Cardinality.Range _
-    //    Type = _ } -> name + "s"
-    //| _ -> name
 
 // C# 8.0
 //let toNullable = function
@@ -93,7 +85,6 @@ let rec generateType tfType tfName fields =
                                       | Some x -> x, sprintf " : NTerraform.%s" x
                                       | _ -> "", ""
             let parameters = fields |> List.filter (fun x -> x.Cardinality.Min <> 0)
-
             let optParameters = fields |> List.filter (fun x -> x.Cardinality.Min = 0)
             let orderedParameters = (parameters |> List.sortBy (fun x -> x.Name))
                                     @ (optParameters |> List.sortBy (fun x -> x.Name))

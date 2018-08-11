@@ -4,6 +4,14 @@ using NTerraform.Resources;
 using NTerraform.Providers;
 
 
+public class Toto
+{
+    public class Titi
+    {
+    }
+}
+
+
 namespace SandboxCS
 {
     class Program
