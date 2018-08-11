@@ -113,6 +113,8 @@ namespace NTerraform
                 switch (Format(value))
                 {
                     case null:
+                        if (propAttribute.Min != 0)
+                            throw new ApplicationException($"Expecting value for property {prop.Name}");
                         break;
 
                     case string s:
@@ -120,6 +122,11 @@ namespace NTerraform
                         break;
 
                     case object[] arr:
+                        if (propAttribute.Min != 0 && arr.Length < propAttribute.Min)
+                            throw new ApplicationException($"Expecting at least {propAttribute.Min} items for property {prop.Name}");
+                        if (propAttribute.Max != 0 && propAttribute.Max < arr.Length)
+                            throw new ApplicationException($"Expecting at most {propAttribute.Max} items for property {prop.Name}");
+
                         foreach (var item in arr)
                         {
                             var s = Format(item);
