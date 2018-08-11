@@ -5,68 +5,9 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_key_vault_certificate")]
     public sealed class azurerm_key_vault_certificate : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "certificate")]
-        public sealed class certificate: NTerraform.structure
-        {
-            public certificate(string @contents,
-                               string @password = null)
-            {
-                @Contents = @contents;
-                @Password = @password;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "contents", @out: false, min: 1, max: 1)]
-            public string @Contents { get; }
-
-            [TerraformProperty(name: "password", @out: false, min: 0, max: 1)]
-            public string @Password { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "certificate_policy")]
         public sealed class certificate_policy: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "issuer_parameters")]
-            public sealed class issuer_parameters: NTerraform.structure
-            {
-                public issuer_parameters(string @name)
-                {
-                    @Name = @name;
-                    base._validate_();
-                }
-
-                [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-                public string @Name { get; }
-            }
-
-            [TerraformStructure(category: "", typeName: "key_properties")]
-            public sealed class key_properties: NTerraform.structure
-            {
-                public key_properties(bool @exportable,
-                                      int @keySize,
-                                      string @keyType,
-                                      bool @reuseKey)
-                {
-                    @Exportable = @exportable;
-                    @KeySize = @keySize;
-                    @KeyType = @keyType;
-                    @ReuseKey = @reuseKey;
-                    base._validate_();
-                }
-
-                [TerraformProperty(name: "exportable", @out: false, min: 1, max: 1)]
-                public bool @Exportable { get; }
-
-                [TerraformProperty(name: "key_size", @out: false, min: 1, max: 1)]
-                public int @KeySize { get; }
-
-                [TerraformProperty(name: "key_type", @out: false, min: 1, max: 1)]
-                public string @KeyType { get; }
-
-                [TerraformProperty(name: "reuse_key", @out: false, min: 1, max: 1)]
-                public bool @ReuseKey { get; }
-            }
-
             [TerraformStructure(category: "", typeName: "lifetime_action")]
             public sealed class lifetime_action: NTerraform.structure
             {
@@ -152,6 +93,47 @@ namespace NTerraform.Resources
                 public int @ValidityInMonths { get; }
             }
 
+            [TerraformStructure(category: "", typeName: "issuer_parameters")]
+            public sealed class issuer_parameters: NTerraform.structure
+            {
+                public issuer_parameters(string @name)
+                {
+                    @Name = @name;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+                public string @Name { get; }
+            }
+
+            [TerraformStructure(category: "", typeName: "key_properties")]
+            public sealed class key_properties: NTerraform.structure
+            {
+                public key_properties(bool @exportable,
+                                      int @keySize,
+                                      string @keyType,
+                                      bool @reuseKey)
+                {
+                    @Exportable = @exportable;
+                    @KeySize = @keySize;
+                    @KeyType = @keyType;
+                    @ReuseKey = @reuseKey;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "exportable", @out: false, min: 1, max: 1)]
+                public bool @Exportable { get; }
+
+                [TerraformProperty(name: "key_size", @out: false, min: 1, max: 1)]
+                public int @KeySize { get; }
+
+                [TerraformProperty(name: "key_type", @out: false, min: 1, max: 1)]
+                public string @KeyType { get; }
+
+                [TerraformProperty(name: "reuse_key", @out: false, min: 1, max: 1)]
+                public bool @ReuseKey { get; }
+            }
+
             public certificate_policy(issuer_parameters[] @issuerParameters,
                                       key_properties[] @keyProperties,
                                       secret_properties[] @secretProperties,
@@ -180,6 +162,24 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "x509_certificate_properties", @out: false, min: 0, max: 1)]
             public x509_certificate_properties[] @X509CertificateProperties { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "certificate")]
+        public sealed class certificate: NTerraform.structure
+        {
+            public certificate(string @contents,
+                               string @password = null)
+            {
+                @Contents = @contents;
+                @Password = @password;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "contents", @out: false, min: 1, max: 1)]
+            public string @Contents { get; }
+
+            [TerraformProperty(name: "password", @out: false, min: 0, max: 1)]
+            public string @Password { get; }
         }
 
         public azurerm_key_vault_certificate(certificate_policy[] @certificatePolicy,

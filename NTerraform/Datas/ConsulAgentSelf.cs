@@ -5,22 +5,118 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "consul_agent_self")]
     public sealed class consul_agent_self : NTerraform.data
     {
-        [TerraformStructure(category: "", typeName: "retry_join_ec2")]
-        public sealed class retry_join_ec2: NTerraform.structure
+        [TerraformStructure(category: "", typeName: "tagged_addresses")]
+        public sealed class tagged_addresses: NTerraform.structure
         {
-            public retry_join_ec2()
+            public tagged_addresses()
             {
                 base._validate_();
             }
 
-            [TerraformProperty(name: "region", @out: true, min: 0, max: 1)]
-            public string @Region { get; }
+            [TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
+            public string @Lan { get; }
 
-            [TerraformProperty(name: "tag_key", @out: true, min: 0, max: 1)]
-            public string @TagKey { get; }
+            [TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
+            public string @Wan { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "dns")]
+        public sealed class dns: NTerraform.structure
+        {
+            public dns()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "allow_stale", @out: true, min: 0, max: 1)]
+            public bool? @AllowStale { get; }
+
+            [TerraformProperty(name: "enable_compression", @out: true, min: 0, max: 1)]
+            public bool? @EnableCompression { get; }
+
+            [TerraformProperty(name: "enable_truncate", @out: true, min: 0, max: 1)]
+            public bool? @EnableTruncate { get; }
+
+            [TerraformProperty(name: "max_stale", @out: true, min: 0, max: 1)]
+            public string @MaxStale { get; }
+
+            [TerraformProperty(name: "node_ttl", @out: true, min: 0, max: 1)]
+            public string @NodeTtl { get; }
+
+            [TerraformProperty(name: "only_passing", @out: true, min: 0, max: 1)]
+            public bool? @OnlyPassing { get; }
+
+            [TerraformProperty(name: "recursor_timeout", @out: true, min: 0, max: 1)]
+            public string @RecursorTimeout { get; }
+
+            [TerraformProperty(name: "service_ttl", @out: true, min: 0, max: 1)]
+            public string @ServiceTtl { get; }
+
+            [TerraformProperty(name: "udp_answer_limit", @out: true, min: 0, max: 1)]
+            public int? @UdpAnswerLimit { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "performance")]
+        public sealed class performance: NTerraform.structure
+        {
+            public performance()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "raft_multiplier", @out: true, min: 0, max: 1)]
+            public string @RaftMultiplier { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "ports")]
+        public sealed class ports: NTerraform.structure
+        {
+            public ports()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "dns", @out: true, min: 0, max: 1)]
+            public int? @Dns { get; }
+
+            [TerraformProperty(name: "http", @out: true, min: 0, max: 1)]
+            public int? @Http { get; }
+
+            [TerraformProperty(name: "https", @out: true, min: 0, max: 1)]
+            public int? @Https { get; }
+
+            [TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
+            public int? @Rpc { get; }
+
+            [TerraformProperty(name: "serf_lan", @out: true, min: 0, max: 1)]
+            public int? @SerfLan { get; }
+
+            [TerraformProperty(name: "serf_wan", @out: true, min: 0, max: 1)]
+            public int? @SerfWan { get; }
+
+            [TerraformProperty(name: "server", @out: true, min: 0, max: 1)]
+            public int? @Server { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "retry_join_gce")]
+        public sealed class retry_join_gce: NTerraform.structure
+        {
+            public retry_join_gce()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "credentials_file", @out: true, min: 0, max: 1)]
+            public string @CredentialsFile { get; }
+
+            [TerraformProperty(name: "project_name", @out: true, min: 0, max: 1)]
+            public string @ProjectName { get; }
 
             [TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
             public string @TagValue { get; }
+
+            [TerraformProperty(name: "zone_pattern", @out: true, min: 0, max: 1)]
+            public string @ZonePattern { get; }
         }
 
         [TerraformStructure(category: "", typeName: "addresses")]
@@ -60,108 +156,6 @@ namespace NTerraform.Datas
 
             [TerraformProperty(name: "user", @out: true, min: 0, max: 1)]
             public string @User { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "retry_join_gce")]
-        public sealed class retry_join_gce: NTerraform.structure
-        {
-            public retry_join_gce()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "credentials_file", @out: true, min: 0, max: 1)]
-            public string @CredentialsFile { get; }
-
-            [TerraformProperty(name: "project_name", @out: true, min: 0, max: 1)]
-            public string @ProjectName { get; }
-
-            [TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
-            public string @TagValue { get; }
-
-            [TerraformProperty(name: "zone_pattern", @out: true, min: 0, max: 1)]
-            public string @ZonePattern { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "performance")]
-        public sealed class performance: NTerraform.structure
-        {
-            public performance()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "raft_multiplier", @out: true, min: 0, max: 1)]
-            public string @RaftMultiplier { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "advertise_addrs")]
-        public sealed class advertise_addrs: NTerraform.structure
-        {
-            public advertise_addrs()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
-            public string @Rpc { get; }
-
-            [TerraformProperty(name: "serf_lan", @out: true, min: 0, max: 1)]
-            public string @SerfLan { get; }
-
-            [TerraformProperty(name: "serf_wan", @out: true, min: 0, max: 1)]
-            public string @SerfWan { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "dns")]
-        public sealed class dns: NTerraform.structure
-        {
-            public dns()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "allow_stale", @out: true, min: 0, max: 1)]
-            public bool? @AllowStale { get; }
-
-            [TerraformProperty(name: "enable_compression", @out: true, min: 0, max: 1)]
-            public bool? @EnableCompression { get; }
-
-            [TerraformProperty(name: "enable_truncate", @out: true, min: 0, max: 1)]
-            public bool? @EnableTruncate { get; }
-
-            [TerraformProperty(name: "max_stale", @out: true, min: 0, max: 1)]
-            public string @MaxStale { get; }
-
-            [TerraformProperty(name: "node_ttl", @out: true, min: 0, max: 1)]
-            public string @NodeTtl { get; }
-
-            [TerraformProperty(name: "only_passing", @out: true, min: 0, max: 1)]
-            public bool? @OnlyPassing { get; }
-
-            [TerraformProperty(name: "recursor_timeout", @out: true, min: 0, max: 1)]
-            public string @RecursorTimeout { get; }
-
-            [TerraformProperty(name: "service_ttl", @out: true, min: 0, max: 1)]
-            public string @ServiceTtl { get; }
-
-            [TerraformProperty(name: "udp_answer_limit", @out: true, min: 0, max: 1)]
-            public int? @UdpAnswerLimit { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "tagged_addresses")]
-        public sealed class tagged_addresses: NTerraform.structure
-        {
-            public tagged_addresses()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
-            public string @Lan { get; }
-
-            [TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
-            public string @Wan { get; }
         }
 
         [TerraformStructure(category: "", typeName: "telemetry")]
@@ -230,34 +224,40 @@ namespace NTerraform.Datas
             public string @StatsitePrefix { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "ports")]
-        public sealed class ports: NTerraform.structure
+        [TerraformStructure(category: "", typeName: "advertise_addrs")]
+        public sealed class advertise_addrs: NTerraform.structure
         {
-            public ports()
+            public advertise_addrs()
             {
                 base._validate_();
             }
 
-            [TerraformProperty(name: "dns", @out: true, min: 0, max: 1)]
-            public int? @Dns { get; }
-
-            [TerraformProperty(name: "http", @out: true, min: 0, max: 1)]
-            public int? @Http { get; }
-
-            [TerraformProperty(name: "https", @out: true, min: 0, max: 1)]
-            public int? @Https { get; }
-
             [TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
-            public int? @Rpc { get; }
+            public string @Rpc { get; }
 
             [TerraformProperty(name: "serf_lan", @out: true, min: 0, max: 1)]
-            public int? @SerfLan { get; }
+            public string @SerfLan { get; }
 
             [TerraformProperty(name: "serf_wan", @out: true, min: 0, max: 1)]
-            public int? @SerfWan { get; }
+            public string @SerfWan { get; }
+        }
 
-            [TerraformProperty(name: "server", @out: true, min: 0, max: 1)]
-            public int? @Server { get; }
+        [TerraformStructure(category: "", typeName: "retry_join_ec2")]
+        public sealed class retry_join_ec2: NTerraform.structure
+        {
+            public retry_join_ec2()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "region", @out: true, min: 0, max: 1)]
+            public string @Region { get; }
+
+            [TerraformProperty(name: "tag_key", @out: true, min: 0, max: 1)]
+            public string @TagKey { get; }
+
+            [TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
+            public string @TagValue { get; }
         }
 
         public consul_agent_self(Dictionary<string,addresses> @addresses = null,

@@ -5,21 +5,6 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : NTerraform.data
     {
-        [TerraformStructure(category: "", typeName: "site_credential")]
-        public sealed class site_credential: NTerraform.structure
-        {
-            public site_credential()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "source_control")]
         public sealed class source_control: NTerraform.structure
         {
@@ -33,6 +18,24 @@ namespace NTerraform.Datas
 
             [TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
             public string @RepoUrl { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "connection_string")]
+        public sealed class connection_string: NTerraform.structure
+        {
+            public connection_string()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
+            public string @Type { get; }
+
+            [TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
+            public string @Value { get; }
         }
 
         [TerraformStructure(category: "", typeName: "site_config")]
@@ -145,22 +148,19 @@ namespace NTerraform.Datas
             public bool? @WebsocketsEnabled { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "connection_string")]
-        public sealed class connection_string: NTerraform.structure
+        [TerraformStructure(category: "", typeName: "site_credential")]
+        public sealed class site_credential: NTerraform.structure
         {
-            public connection_string()
+            public site_credential()
             {
                 base._validate_();
             }
 
-            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
 
-            [TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
-            public string @Type { get; }
-
-            [TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
-            public string @Value { get; }
+            [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
         }
 
         public azurerm_app_service(string @name,

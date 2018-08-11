@@ -5,77 +5,6 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_kubernetes_cluster")]
     public sealed class azurerm_kubernetes_cluster : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "agent_pool_profile")]
-        public sealed class agent_pool_profile: NTerraform.structure
-        {
-            public agent_pool_profile(string @name,
-                                      string @vmSize,
-                                      int? @count = null,
-                                      int? @osDiskSizeGb = null,
-                                      string @osType = null,
-                                      string @vnetSubnetId = null)
-            {
-                @Name = @name;
-                @VmSize = @vmSize;
-                @Count = @count;
-                @OsDiskSizeGb = @osDiskSizeGb;
-                @OsType = @osType;
-                @VnetSubnetId = @vnetSubnetId;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "vm_size", @out: false, min: 1, max: 1)]
-            public string @VmSize { get; }
-
-            [TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
-            public int? @Count { get; }
-
-            [TerraformProperty(name: "dns_prefix", @out: true, min: 0, max: 1)]
-            public string @DnsPrefix { get; }
-
-            [TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
-            public string @Fqdn { get; }
-
-            [TerraformProperty(name: "os_disk_size_gb", @out: false, min: 0, max: 1)]
-            public int? @OsDiskSizeGb { get; }
-
-            [TerraformProperty(name: "os_type", @out: false, min: 0, max: 1)]
-            public string @OsType { get; }
-
-            [TerraformProperty(name: "vnet_subnet_id", @out: false, min: 0, max: 1)]
-            public string @VnetSubnetId { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "kube_config")]
-        public sealed class kube_config: NTerraform.structure
-        {
-            public kube_config()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
-            public string @ClientCertificate { get; }
-
-            [TerraformProperty(name: "client_key", @out: true, min: 0, max: 1)]
-            public string @ClientKey { get; }
-
-            [TerraformProperty(name: "cluster_ca_certificate", @out: true, min: 0, max: 1)]
-            public string @ClusterCaCertificate { get; }
-
-            [TerraformProperty(name: "host", @out: true, min: 0, max: 1)]
-            public string @Host { get; }
-
-            [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "service_principal")]
         public sealed class service_principal: NTerraform.structure
         {
@@ -119,6 +48,33 @@ namespace NTerraform.Resources
             public string @ServiceCidr { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "kube_config")]
+        public sealed class kube_config: NTerraform.structure
+        {
+            public kube_config()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
+            public string @ClientCertificate { get; }
+
+            [TerraformProperty(name: "client_key", @out: true, min: 0, max: 1)]
+            public string @ClientKey { get; }
+
+            [TerraformProperty(name: "cluster_ca_certificate", @out: true, min: 0, max: 1)]
+            public string @ClusterCaCertificate { get; }
+
+            [TerraformProperty(name: "host", @out: true, min: 0, max: 1)]
+            public string @Host { get; }
+
+            [TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
+
+            [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "linux_profile")]
         public sealed class linux_profile: NTerraform.structure
         {
@@ -148,6 +104,50 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 0)]
             public ssh_key[] @SshKey { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "agent_pool_profile")]
+        public sealed class agent_pool_profile: NTerraform.structure
+        {
+            public agent_pool_profile(string @name,
+                                      string @vmSize,
+                                      int? @count = null,
+                                      int? @osDiskSizeGb = null,
+                                      string @osType = null,
+                                      string @vnetSubnetId = null)
+            {
+                @Name = @name;
+                @VmSize = @vmSize;
+                @Count = @count;
+                @OsDiskSizeGb = @osDiskSizeGb;
+                @OsType = @osType;
+                @VnetSubnetId = @vnetSubnetId;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "vm_size", @out: false, min: 1, max: 1)]
+            public string @VmSize { get; }
+
+            [TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
+            public int? @Count { get; }
+
+            [TerraformProperty(name: "dns_prefix", @out: true, min: 0, max: 1)]
+            public string @DnsPrefix { get; }
+
+            [TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
+            public string @Fqdn { get; }
+
+            [TerraformProperty(name: "os_disk_size_gb", @out: false, min: 0, max: 1)]
+            public int? @OsDiskSizeGb { get; }
+
+            [TerraformProperty(name: "os_type", @out: false, min: 0, max: 1)]
+            public string @OsType { get; }
+
+            [TerraformProperty(name: "vnet_subnet_id", @out: false, min: 0, max: 1)]
+            public string @VnetSubnetId { get; }
         }
 
         public azurerm_kubernetes_cluster(agent_pool_profile[] @agentPoolProfile,

@@ -5,24 +5,6 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_storage_account")]
     public sealed class azurerm_storage_account : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "custom_domain")]
-        public sealed class custom_domain: NTerraform.structure
-        {
-            public custom_domain(string @name,
-                                 bool? @useSubdomain = null)
-            {
-                @Name = @name;
-                @UseSubdomain = @useSubdomain;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "use_subdomain", @out: false, min: 0, max: 1)]
-            public bool? @UseSubdomain { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "network_rules")]
         public sealed class network_rules: NTerraform.structure
         {
@@ -61,6 +43,24 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
             public string @TenantId { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "custom_domain")]
+        public sealed class custom_domain: NTerraform.structure
+        {
+            public custom_domain(string @name,
+                                 bool? @useSubdomain = null)
+            {
+                @Name = @name;
+                @UseSubdomain = @useSubdomain;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "use_subdomain", @out: false, min: 0, max: 1)]
+            public bool? @UseSubdomain { get; }
         }
 
         public azurerm_storage_account(string @accountReplicationType,

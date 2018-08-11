@@ -8,21 +8,6 @@ namespace NTerraform.Datas
         [TerraformStructure(category: "", typeName: "encryption_settings")]
         public sealed class encryption_settings: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "disk_encryption_key")]
-            public sealed class disk_encryption_key: NTerraform.structure
-            {
-                public disk_encryption_key()
-                {
-                    base._validate_();
-                }
-
-                [TerraformProperty(name: "secret_url", @out: true, min: 0, max: 1)]
-                public string @SecretUrl { get; }
-
-                [TerraformProperty(name: "source_vault_id", @out: true, min: 0, max: 1)]
-                public string @SourceVaultId { get; }
-            }
-
             [TerraformStructure(category: "", typeName: "key_encryption_key")]
             public sealed class key_encryption_key: NTerraform.structure
             {
@@ -33,6 +18,21 @@ namespace NTerraform.Datas
 
                 [TerraformProperty(name: "key_url", @out: true, min: 0, max: 1)]
                 public string @KeyUrl { get; }
+
+                [TerraformProperty(name: "source_vault_id", @out: true, min: 0, max: 1)]
+                public string @SourceVaultId { get; }
+            }
+
+            [TerraformStructure(category: "", typeName: "disk_encryption_key")]
+            public sealed class disk_encryption_key: NTerraform.structure
+            {
+                public disk_encryption_key()
+                {
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "secret_url", @out: true, min: 0, max: 1)]
+                public string @SecretUrl { get; }
 
                 [TerraformProperty(name: "source_vault_id", @out: true, min: 0, max: 1)]
                 public string @SourceVaultId { get; }

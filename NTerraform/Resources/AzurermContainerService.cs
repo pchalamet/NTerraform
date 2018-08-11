@@ -5,6 +5,27 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_container_service")]
     public sealed class azurerm_container_service : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "master_profile")]
+        public sealed class master_profile: NTerraform.structure
+        {
+            public master_profile(string @dnsPrefix,
+                                  int? @count = null)
+            {
+                @DnsPrefix = @dnsPrefix;
+                @Count = @count;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "dns_prefix", @out: false, min: 1, max: 1)]
+            public string @DnsPrefix { get; }
+
+            [TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
+            public int? @Count { get; }
+
+            [TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
+            public string @Fqdn { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "linux_profile")]
         public sealed class linux_profile: NTerraform.structure
         {
@@ -83,27 +104,6 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
             public string @ClientSecret { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "master_profile")]
-        public sealed class master_profile: NTerraform.structure
-        {
-            public master_profile(string @dnsPrefix,
-                                  int? @count = null)
-            {
-                @DnsPrefix = @dnsPrefix;
-                @Count = @count;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "dns_prefix", @out: false, min: 1, max: 1)]
-            public string @DnsPrefix { get; }
-
-            [TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
-            public int? @Count { get; }
-
-            [TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
-            public string @Fqdn { get; }
         }
 
         [TerraformStructure(category: "", typeName: "diagnostics_profile")]

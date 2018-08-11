@@ -8,29 +8,6 @@ namespace NTerraform.Resources
         [TerraformStructure(category: "", typeName: "profile")]
         public sealed class profile: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "fixed_date")]
-            public sealed class fixed_date: NTerraform.structure
-            {
-                public fixed_date(string @end,
-                                  string @start,
-                                  string @timezone = null)
-                {
-                    @End = @end;
-                    @Start = @start;
-                    @Timezone = @timezone;
-                    base._validate_();
-                }
-
-                [TerraformProperty(name: "end", @out: false, min: 1, max: 1)]
-                public string @End { get; }
-
-                [TerraformProperty(name: "start", @out: false, min: 1, max: 1)]
-                public string @Start { get; }
-
-                [TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
-                public string @Timezone { get; }
-            }
-
             [TerraformStructure(category: "", typeName: "recurrence")]
             public sealed class recurrence: NTerraform.structure
             {
@@ -85,34 +62,6 @@ namespace NTerraform.Resources
             [TerraformStructure(category: "", typeName: "rule")]
             public sealed class rule: NTerraform.structure
             {
-                [TerraformStructure(category: "", typeName: "scale_action")]
-                public sealed class scale_action: NTerraform.structure
-                {
-                    public scale_action(string @cooldown,
-                                        string @direction,
-                                        string @type,
-                                        int @value)
-                    {
-                        @Cooldown = @cooldown;
-                        @Direction = @direction;
-                        @Type = @type;
-                        @Value = @value;
-                        base._validate_();
-                    }
-
-                    [TerraformProperty(name: "cooldown", @out: false, min: 1, max: 1)]
-                    public string @Cooldown { get; }
-
-                    [TerraformProperty(name: "direction", @out: false, min: 1, max: 1)]
-                    public string @Direction { get; }
-
-                    [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-                    public string @Type { get; }
-
-                    [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
-                    public int @Value { get; }
-                }
-
                 [TerraformStructure(category: "", typeName: "metric_trigger")]
                 public sealed class metric_trigger: NTerraform.structure
                 {
@@ -161,6 +110,34 @@ namespace NTerraform.Resources
                     public string @TimeWindow { get; }
                 }
 
+                [TerraformStructure(category: "", typeName: "scale_action")]
+                public sealed class scale_action: NTerraform.structure
+                {
+                    public scale_action(string @cooldown,
+                                        string @direction,
+                                        string @type,
+                                        int @value)
+                    {
+                        @Cooldown = @cooldown;
+                        @Direction = @direction;
+                        @Type = @type;
+                        @Value = @value;
+                        base._validate_();
+                    }
+
+                    [TerraformProperty(name: "cooldown", @out: false, min: 1, max: 1)]
+                    public string @Cooldown { get; }
+
+                    [TerraformProperty(name: "direction", @out: false, min: 1, max: 1)]
+                    public string @Direction { get; }
+
+                    [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+                    public string @Type { get; }
+
+                    [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+                    public int @Value { get; }
+                }
+
                 public rule(metric_trigger[] @metricTrigger,
                             scale_action[] @scaleAction)
                 {
@@ -174,6 +151,29 @@ namespace NTerraform.Resources
 
                 [TerraformProperty(name: "scale_action", @out: false, min: 1, max: 1)]
                 public scale_action[] @ScaleAction { get; }
+            }
+
+            [TerraformStructure(category: "", typeName: "fixed_date")]
+            public sealed class fixed_date: NTerraform.structure
+            {
+                public fixed_date(string @end,
+                                  string @start,
+                                  string @timezone = null)
+                {
+                    @End = @end;
+                    @Start = @start;
+                    @Timezone = @timezone;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "end", @out: false, min: 1, max: 1)]
+                public string @End { get; }
+
+                [TerraformProperty(name: "start", @out: false, min: 1, max: 1)]
+                public string @Start { get; }
+
+                [TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
+                public string @Timezone { get; }
             }
 
             public profile(capacity[] @capacity,

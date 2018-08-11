@@ -8,24 +8,6 @@ namespace NTerraform.Resources
         [TerraformStructure(category: "", typeName: "encryption_settings")]
         public sealed class encryption_settings: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "key_encryption_key")]
-            public sealed class key_encryption_key: NTerraform.structure
-            {
-                public key_encryption_key(string @keyUrl,
-                                          string @sourceVaultId)
-                {
-                    @KeyUrl = @keyUrl;
-                    @SourceVaultId = @sourceVaultId;
-                    base._validate_();
-                }
-
-                [TerraformProperty(name: "key_url", @out: false, min: 1, max: 1)]
-                public string @KeyUrl { get; }
-
-                [TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
-                public string @SourceVaultId { get; }
-            }
-
             [TerraformStructure(category: "", typeName: "disk_encryption_key")]
             public sealed class disk_encryption_key: NTerraform.structure
             {
@@ -39,6 +21,24 @@ namespace NTerraform.Resources
 
                 [TerraformProperty(name: "secret_url", @out: false, min: 1, max: 1)]
                 public string @SecretUrl { get; }
+
+                [TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
+                public string @SourceVaultId { get; }
+            }
+
+            [TerraformStructure(category: "", typeName: "key_encryption_key")]
+            public sealed class key_encryption_key: NTerraform.structure
+            {
+                public key_encryption_key(string @keyUrl,
+                                          string @sourceVaultId)
+                {
+                    @KeyUrl = @keyUrl;
+                    @SourceVaultId = @sourceVaultId;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "key_url", @out: false, min: 1, max: 1)]
+                public string @KeyUrl { get; }
 
                 [TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
                 public string @SourceVaultId { get; }

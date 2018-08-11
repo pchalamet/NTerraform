@@ -5,18 +5,6 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "consul_services")]
     public sealed class consul_services : NTerraform.data
     {
-        [TerraformStructure(category: "", typeName: "services")]
-        public sealed class services: NTerraform.structure
-        {
-            public services()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-            public string[] @Tags { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "query_options")]
         public sealed class query_options: NTerraform.structure
         {
@@ -63,6 +51,18 @@ namespace NTerraform.Datas
 
             [TerraformProperty(name: "wait_time", @out: false, min: 0, max: 1)]
             public string @WaitTime { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "services")]
+        public sealed class services: NTerraform.structure
+        {
+            public services()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
+            public string[] @Tags { get; }
         }
 
         public consul_services(query_options[] @queryOptions = null,

@@ -5,6 +5,54 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "azurerm_storage_account_sas")]
     public sealed class azurerm_storage_account_sas : NTerraform.data
     {
+        [TerraformStructure(category: "", typeName: "permissions")]
+        public sealed class permissions: NTerraform.structure
+        {
+            public permissions(bool @add,
+                               bool @create,
+                               bool @delete,
+                               bool @list,
+                               bool @process,
+                               bool @read,
+                               bool @update,
+                               bool @write)
+            {
+                @Add = @add;
+                @Create = @create;
+                @Delete = @delete;
+                @List = @list;
+                @Process = @process;
+                @Read = @read;
+                @Update = @update;
+                @Write = @write;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "add", @out: false, min: 1, max: 1)]
+            public bool @Add { get; }
+
+            [TerraformProperty(name: "create", @out: false, min: 1, max: 1)]
+            public bool @Create { get; }
+
+            [TerraformProperty(name: "delete", @out: false, min: 1, max: 1)]
+            public bool @Delete { get; }
+
+            [TerraformProperty(name: "list", @out: false, min: 1, max: 1)]
+            public bool @List { get; }
+
+            [TerraformProperty(name: "process", @out: false, min: 1, max: 1)]
+            public bool @Process { get; }
+
+            [TerraformProperty(name: "read", @out: false, min: 1, max: 1)]
+            public bool @Read { get; }
+
+            [TerraformProperty(name: "update", @out: false, min: 1, max: 1)]
+            public bool @Update { get; }
+
+            [TerraformProperty(name: "write", @out: false, min: 1, max: 1)]
+            public bool @Write { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "services")]
         public sealed class services: NTerraform.structure
         {
@@ -54,54 +102,6 @@ namespace NTerraform.Datas
 
             [TerraformProperty(name: "service", @out: false, min: 1, max: 1)]
             public bool @Service { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "permissions")]
-        public sealed class permissions: NTerraform.structure
-        {
-            public permissions(bool @add,
-                               bool @create,
-                               bool @delete,
-                               bool @list,
-                               bool @process,
-                               bool @read,
-                               bool @update,
-                               bool @write)
-            {
-                @Add = @add;
-                @Create = @create;
-                @Delete = @delete;
-                @List = @list;
-                @Process = @process;
-                @Read = @read;
-                @Update = @update;
-                @Write = @write;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "add", @out: false, min: 1, max: 1)]
-            public bool @Add { get; }
-
-            [TerraformProperty(name: "create", @out: false, min: 1, max: 1)]
-            public bool @Create { get; }
-
-            [TerraformProperty(name: "delete", @out: false, min: 1, max: 1)]
-            public bool @Delete { get; }
-
-            [TerraformProperty(name: "list", @out: false, min: 1, max: 1)]
-            public bool @List { get; }
-
-            [TerraformProperty(name: "process", @out: false, min: 1, max: 1)]
-            public bool @Process { get; }
-
-            [TerraformProperty(name: "read", @out: false, min: 1, max: 1)]
-            public bool @Read { get; }
-
-            [TerraformProperty(name: "update", @out: false, min: 1, max: 1)]
-            public bool @Update { get; }
-
-            [TerraformProperty(name: "write", @out: false, min: 1, max: 1)]
-            public bool @Write { get; }
         }
 
         public azurerm_storage_account_sas(string @connectionString,

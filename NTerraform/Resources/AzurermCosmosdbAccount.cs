@@ -5,6 +5,40 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_cosmosdb_account")]
     public sealed class azurerm_cosmosdb_account : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "failover_policy")]
+        public sealed class failover_policy: NTerraform.structure
+        {
+            public failover_policy(string @location,
+                                   int @priority)
+            {
+                @Location = @location;
+                @Priority = @priority;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
+            public string @Location { get; }
+
+            [TerraformProperty(name: "priority", @out: false, min: 1, max: 1)]
+            public int @Priority { get; }
+
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "capabilities")]
+        public sealed class capabilities: NTerraform.structure
+        {
+            public capabilities(string @name)
+            {
+                @Name = @name;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "consistency_policy")]
         public sealed class consistency_policy: NTerraform.structure
         {
@@ -52,40 +86,6 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "prefix", @out: false, min: 0, max: 1)]
             public string @Prefix { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "failover_policy")]
-        public sealed class failover_policy: NTerraform.structure
-        {
-            public failover_policy(string @location,
-                                   int @priority)
-            {
-                @Location = @location;
-                @Priority = @priority;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
-            public string @Location { get; }
-
-            [TerraformProperty(name: "priority", @out: false, min: 1, max: 1)]
-            public int @Priority { get; }
-
-            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "capabilities")]
-        public sealed class capabilities: NTerraform.structure
-        {
-            public capabilities(string @name)
-            {
-                @Name = @name;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
         }
 
         public azurerm_cosmosdb_account(consistency_policy[] @consistencyPolicy,

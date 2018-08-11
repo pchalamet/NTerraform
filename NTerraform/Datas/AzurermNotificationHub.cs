@@ -5,18 +5,6 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "azurerm_notification_hub")]
     public sealed class azurerm_notification_hub : NTerraform.data
     {
-        [TerraformStructure(category: "", typeName: "gcm_credential")]
-        public sealed class gcm_credential: NTerraform.structure
-        {
-            public gcm_credential()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "api_key", @out: true, min: 0, max: 1)]
-            public string @ApiKey { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "apns_credential")]
         public sealed class apns_credential: NTerraform.structure
         {
@@ -39,6 +27,18 @@ namespace NTerraform.Datas
 
             [TerraformProperty(name: "token", @out: true, min: 0, max: 1)]
             public string @Token { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "gcm_credential")]
+        public sealed class gcm_credential: NTerraform.structure
+        {
+            public gcm_credential()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "api_key", @out: true, min: 0, max: 1)]
+            public string @ApiKey { get; }
         }
 
         public azurerm_notification_hub(string @name,

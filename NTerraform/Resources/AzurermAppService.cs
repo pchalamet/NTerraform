@@ -5,29 +5,6 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "connection_string")]
-        public sealed class connection_string: NTerraform.structure
-        {
-            public connection_string(string @name,
-                                     string @type,
-                                     string @value)
-            {
-                @Name = @name;
-                @Type = @type;
-                @Value = @value;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
-            public string @Value { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "source_control")]
         public sealed class source_control: NTerraform.structure
         {
@@ -41,6 +18,25 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
             public string @RepoUrl { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "identity")]
+        public sealed class identity: NTerraform.structure
+        {
+            public identity(string @type)
+            {
+                @Type = @type;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
+            public string @PrincipalId { get; }
+
+            [TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
+            public string @TenantId { get; }
         }
 
         [TerraformStructure(category: "", typeName: "site_config")]
@@ -153,6 +149,29 @@ namespace NTerraform.Resources
             public bool? @WebsocketsEnabled { get; }
         }
 
+        [TerraformStructure(category: "", typeName: "connection_string")]
+        public sealed class connection_string: NTerraform.structure
+        {
+            public connection_string(string @name,
+                                     string @type,
+                                     string @value)
+            {
+                @Name = @name;
+                @Type = @type;
+                @Value = @value;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+            public string @Value { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "site_credential")]
         public sealed class site_credential: NTerraform.structure
         {
@@ -166,25 +185,6 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
             public string @Username { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "identity")]
-        public sealed class identity: NTerraform.structure
-        {
-            public identity(string @type)
-            {
-                @Type = @type;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
-
-            [TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-            public string @TenantId { get; }
         }
 
         public azurerm_app_service(string @appServicePlanId,

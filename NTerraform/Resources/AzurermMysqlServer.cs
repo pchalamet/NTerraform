@@ -5,6 +5,29 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_mysql_server")]
     public sealed class azurerm_mysql_server : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "storage_profile")]
+        public sealed class storage_profile: NTerraform.structure
+        {
+            public storage_profile(int @storageMb,
+                                   int? @backupRetentionDays = null,
+                                   string @geoRedundantBackup = null)
+            {
+                @StorageMb = @storageMb;
+                @BackupRetentionDays = @backupRetentionDays;
+                @GeoRedundantBackup = @geoRedundantBackup;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "storage_mb", @out: false, min: 1, max: 1)]
+            public int @StorageMb { get; }
+
+            [TerraformProperty(name: "backup_retention_days", @out: false, min: 0, max: 1)]
+            public int? @BackupRetentionDays { get; }
+
+            [TerraformProperty(name: "geo_redundant_backup", @out: false, min: 0, max: 1)]
+            public string @GeoRedundantBackup { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "sku")]
         public sealed class sku: NTerraform.structure
         {
@@ -31,29 +54,6 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
             public string @Tier { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "storage_profile")]
-        public sealed class storage_profile: NTerraform.structure
-        {
-            public storage_profile(int @storageMb,
-                                   int? @backupRetentionDays = null,
-                                   string @geoRedundantBackup = null)
-            {
-                @StorageMb = @storageMb;
-                @BackupRetentionDays = @backupRetentionDays;
-                @GeoRedundantBackup = @geoRedundantBackup;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "storage_mb", @out: false, min: 1, max: 1)]
-            public int @StorageMb { get; }
-
-            [TerraformProperty(name: "backup_retention_days", @out: false, min: 0, max: 1)]
-            public int? @BackupRetentionDays { get; }
-
-            [TerraformProperty(name: "geo_redundant_backup", @out: false, min: 0, max: 1)]
-            public string @GeoRedundantBackup { get; }
         }
 
         public azurerm_mysql_server(string @administratorLogin,

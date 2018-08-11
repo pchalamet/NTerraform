@@ -36,24 +36,6 @@ namespace NTerraform.Resources
         [TerraformStructure(category: "", typeName: "vpn_client_configuration")]
         public sealed class vpn_client_configuration: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "revoked_certificate")]
-            public sealed class revoked_certificate: NTerraform.structure
-            {
-                public revoked_certificate(string @name,
-                                           string @thumbprint)
-                {
-                    @Name = @name;
-                    @Thumbprint = @thumbprint;
-                    base._validate_();
-                }
-
-                [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-                public string @Name { get; }
-
-                [TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
-                public string @Thumbprint { get; }
-            }
-
             [TerraformStructure(category: "", typeName: "root_certificate")]
             public sealed class root_certificate: NTerraform.structure
             {
@@ -70,6 +52,24 @@ namespace NTerraform.Resources
 
                 [TerraformProperty(name: "public_cert_data", @out: false, min: 1, max: 1)]
                 public string @PublicCertData { get; }
+            }
+
+            [TerraformStructure(category: "", typeName: "revoked_certificate")]
+            public sealed class revoked_certificate: NTerraform.structure
+            {
+                public revoked_certificate(string @name,
+                                           string @thumbprint)
+                {
+                    @Name = @name;
+                    @Thumbprint = @thumbprint;
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+                public string @Name { get; }
+
+                [TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
+                public string @Thumbprint { get; }
             }
 
             public vpn_client_configuration(string[] @addressSpace,

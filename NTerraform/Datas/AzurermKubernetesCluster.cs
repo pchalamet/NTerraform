@@ -35,30 +35,6 @@ namespace NTerraform.Datas
             public string @VnetSubnetId { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "network_profile")]
-        public sealed class network_profile: NTerraform.structure
-        {
-            public network_profile()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
-            public string @DnsServiceIp { get; }
-
-            [TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
-            public string @DockerBridgeCidr { get; }
-
-            [TerraformProperty(name: "network_plugin", @out: true, min: 0, max: 1)]
-            public string @NetworkPlugin { get; }
-
-            [TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
-            public string @PodCidr { get; }
-
-            [TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
-            public string @ServiceCidr { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "linux_profile")]
         public sealed class linux_profile: NTerraform.structure
         {
@@ -85,6 +61,30 @@ namespace NTerraform.Datas
 
             [TerraformProperty(name: "ssh_key", @out: false, min: 0, max: 0)]
             public ssh_key[] @SshKey { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "network_profile")]
+        public sealed class network_profile: NTerraform.structure
+        {
+            public network_profile()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
+            public string @DnsServiceIp { get; }
+
+            [TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
+            public string @DockerBridgeCidr { get; }
+
+            [TerraformProperty(name: "network_plugin", @out: true, min: 0, max: 1)]
+            public string @NetworkPlugin { get; }
+
+            [TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
+            public string @PodCidr { get; }
+
+            [TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
+            public string @ServiceCidr { get; }
         }
 
         [TerraformStructure(category: "", typeName: "service_principal")]

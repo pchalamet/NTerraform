@@ -5,6 +5,27 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_iothub")]
     public sealed class azurerm_iothub : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "shared_access_policy")]
+        public sealed class shared_access_policy: NTerraform.structure
+        {
+            public shared_access_policy()
+            {
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
+            public string @KeyName { get; }
+
+            [TerraformProperty(name: "permissions", @out: true, min: 0, max: 1)]
+            public string @Permissions { get; }
+
+            [TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
+            public string @PrimaryKey { get; }
+
+            [TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
+            public string @SecondaryKey { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "sku")]
         public sealed class sku: NTerraform.structure
         {
@@ -26,27 +47,6 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
             public string @Tier { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "shared_access_policy")]
-        public sealed class shared_access_policy: NTerraform.structure
-        {
-            public shared_access_policy()
-            {
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
-            public string @KeyName { get; }
-
-            [TerraformProperty(name: "permissions", @out: true, min: 0, max: 1)]
-            public string @Permissions { get; }
-
-            [TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
-            public string @PrimaryKey { get; }
-
-            [TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
-            public string @SecondaryKey { get; }
         }
 
         public azurerm_iothub(string @location,

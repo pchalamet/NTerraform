@@ -5,32 +5,153 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_application_gateway")]
     public sealed class azurerm_application_gateway : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "waf_configuration")]
-        public sealed class waf_configuration: NTerraform.structure
+        [TerraformStructure(category: "", typeName: "backend_address_pool")]
+        public sealed class backend_address_pool: NTerraform.structure
         {
-            public waf_configuration(bool @enabled,
-                                     string @firewallMode,
-                                     string @ruleSetVersion,
-                                     string @ruleSetType = null)
+            public backend_address_pool(string @name,
+                                        string[] @fqdnList = null,
+                                        string[] @ipAddressList = null)
             {
-                @Enabled = @enabled;
-                @FirewallMode = @firewallMode;
-                @RuleSetVersion = @ruleSetVersion;
-                @RuleSetType = @ruleSetType;
+                @Name = @name;
+                @FqdnList = @fqdnList;
+                @IpAddressList = @ipAddressList;
                 base._validate_();
             }
 
-            [TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
-            public bool @Enabled { get; }
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
 
-            [TerraformProperty(name: "firewall_mode", @out: false, min: 1, max: 1)]
-            public string @FirewallMode { get; }
+            [TerraformProperty(name: "fqdn_list", @out: false, min: 0, max: 1)]
+            public string[] @FqdnList { get; }
 
-            [TerraformProperty(name: "rule_set_version", @out: false, min: 1, max: 1)]
-            public string @RuleSetVersion { get; }
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
 
-            [TerraformProperty(name: "rule_set_type", @out: false, min: 0, max: 1)]
-            public string @RuleSetType { get; }
+            [TerraformProperty(name: "ip_address_list", @out: false, min: 0, max: 1)]
+            public string[] @IpAddressList { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "frontend_ip_configuration")]
+        public sealed class frontend_ip_configuration: NTerraform.structure
+        {
+            public frontend_ip_configuration(string @name)
+            {
+                @Name = @name;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [TerraformProperty(name: "private_ip_address", @out: true, min: 0, max: 1)]
+            public string @PrivateIpAddress { get; }
+
+            [TerraformProperty(name: "private_ip_address_allocation", @out: true, min: 0, max: 1)]
+            public string @PrivateIpAddressAllocation { get; }
+
+            [TerraformProperty(name: "public_ip_address_id", @out: true, min: 0, max: 1)]
+            public string @PublicIpAddressId { get; }
+
+            [TerraformProperty(name: "subnet_id", @out: true, min: 0, max: 1)]
+            public string @SubnetId { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "gateway_ip_configuration")]
+        public sealed class gateway_ip_configuration: NTerraform.structure
+        {
+            public gateway_ip_configuration(string @name,
+                                            string @subnetId)
+            {
+                @Name = @name;
+                @SubnetId = @subnetId;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
+            public string @SubnetId { get; }
+
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "frontend_port")]
+        public sealed class frontend_port: NTerraform.structure
+        {
+            public frontend_port(string @name,
+                                 int @port)
+            {
+                @Name = @name;
+                @Port = @port;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "port", @out: false, min: 1, max: 1)]
+            public int @Port { get; }
+
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "request_routing_rule")]
+        public sealed class request_routing_rule: NTerraform.structure
+        {
+            public request_routing_rule(string @httpListenerName,
+                                        string @name,
+                                        string @ruleType,
+                                        string @backendAddressPoolName = null,
+                                        string @backendHttpSettingsName = null,
+                                        string @urlPathMapName = null)
+            {
+                @HttpListenerName = @httpListenerName;
+                @Name = @name;
+                @RuleType = @ruleType;
+                @BackendAddressPoolName = @backendAddressPoolName;
+                @BackendHttpSettingsName = @backendHttpSettingsName;
+                @UrlPathMapName = @urlPathMapName;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "http_listener_name", @out: false, min: 1, max: 1)]
+            public string @HttpListenerName { get; }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "rule_type", @out: false, min: 1, max: 1)]
+            public string @RuleType { get; }
+
+            [TerraformProperty(name: "backend_address_pool_id", @out: true, min: 0, max: 1)]
+            public string @BackendAddressPoolId { get; }
+
+            [TerraformProperty(name: "backend_address_pool_name", @out: false, min: 0, max: 1)]
+            public string @BackendAddressPoolName { get; }
+
+            [TerraformProperty(name: "backend_http_settings_id", @out: true, min: 0, max: 1)]
+            public string @BackendHttpSettingsId { get; }
+
+            [TerraformProperty(name: "backend_http_settings_name", @out: false, min: 0, max: 1)]
+            public string @BackendHttpSettingsName { get; }
+
+            [TerraformProperty(name: "http_listener_id", @out: true, min: 0, max: 1)]
+            public string @HttpListenerId { get; }
+
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [TerraformProperty(name: "url_path_map_id", @out: true, min: 0, max: 1)]
+            public string @UrlPathMapId { get; }
+
+            [TerraformProperty(name: "url_path_map_name", @out: false, min: 0, max: 1)]
+            public string @UrlPathMapName { get; }
         }
 
         [TerraformStructure(category: "", typeName: "http_listener")]
@@ -88,104 +209,33 @@ namespace NTerraform.Resources
             public string @SslCertificateName { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "request_routing_rule")]
-        public sealed class request_routing_rule: NTerraform.structure
+        [TerraformStructure(category: "", typeName: "ssl_certificate")]
+        public sealed class ssl_certificate: NTerraform.structure
         {
-            public request_routing_rule(string @httpListenerName,
-                                        string @name,
-                                        string @ruleType,
-                                        string @backendAddressPoolName = null,
-                                        string @backendHttpSettingsName = null,
-                                        string @urlPathMapName = null)
+            public ssl_certificate(string @data,
+                                   string @name,
+                                   string @password)
             {
-                @HttpListenerName = @httpListenerName;
+                @Data = @data;
                 @Name = @name;
-                @RuleType = @ruleType;
-                @BackendAddressPoolName = @backendAddressPoolName;
-                @BackendHttpSettingsName = @backendHttpSettingsName;
-                @UrlPathMapName = @urlPathMapName;
+                @Password = @password;
                 base._validate_();
             }
 
-            [TerraformProperty(name: "http_listener_name", @out: false, min: 1, max: 1)]
-            public string @HttpListenerName { get; }
+            [TerraformProperty(name: "data", @out: false, min: 1, max: 1)]
+            public string @Data { get; }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [TerraformProperty(name: "rule_type", @out: false, min: 1, max: 1)]
-            public string @RuleType { get; }
-
-            [TerraformProperty(name: "backend_address_pool_id", @out: true, min: 0, max: 1)]
-            public string @BackendAddressPoolId { get; }
-
-            [TerraformProperty(name: "backend_address_pool_name", @out: false, min: 0, max: 1)]
-            public string @BackendAddressPoolName { get; }
-
-            [TerraformProperty(name: "backend_http_settings_id", @out: true, min: 0, max: 1)]
-            public string @BackendHttpSettingsId { get; }
-
-            [TerraformProperty(name: "backend_http_settings_name", @out: false, min: 0, max: 1)]
-            public string @BackendHttpSettingsName { get; }
-
-            [TerraformProperty(name: "http_listener_id", @out: true, min: 0, max: 1)]
-            public string @HttpListenerId { get; }
+            [TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+            public string @Password { get; }
 
             [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
             public string @Id { get; }
 
-            [TerraformProperty(name: "url_path_map_id", @out: true, min: 0, max: 1)]
-            public string @UrlPathMapId { get; }
-
-            [TerraformProperty(name: "url_path_map_name", @out: false, min: 0, max: 1)]
-            public string @UrlPathMapName { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "gateway_ip_configuration")]
-        public sealed class gateway_ip_configuration: NTerraform.structure
-        {
-            public gateway_ip_configuration(string @name,
-                                            string @subnetId)
-            {
-                @Name = @name;
-                @SubnetId = @subnetId;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
-            public string @SubnetId { get; }
-
-            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "backend_address_pool")]
-        public sealed class backend_address_pool: NTerraform.structure
-        {
-            public backend_address_pool(string @name,
-                                        string[] @fqdnList = null,
-                                        string[] @ipAddressList = null)
-            {
-                @Name = @name;
-                @FqdnList = @fqdnList;
-                @IpAddressList = @ipAddressList;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "fqdn_list", @out: false, min: 0, max: 1)]
-            public string[] @FqdnList { get; }
-
-            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [TerraformProperty(name: "ip_address_list", @out: false, min: 0, max: 1)]
-            public string[] @IpAddressList { get; }
+            [TerraformProperty(name: "public_cert_data", @out: true, min: 0, max: 1)]
+            public string @PublicCertData { get; }
         }
 
         [TerraformStructure(category: "", typeName: "url_path_map")]
@@ -262,25 +312,76 @@ namespace NTerraform.Resources
             public string @Id { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "frontend_port")]
-        public sealed class frontend_port: NTerraform.structure
+        [TerraformStructure(category: "", typeName: "sku")]
+        public sealed class sku: NTerraform.structure
         {
-            public frontend_port(string @name,
-                                 int @port)
+            public sku(int @capacity,
+                       string @name,
+                       string @tier)
             {
+                @Capacity = @capacity;
                 @Name = @name;
-                @Port = @port;
+                @Tier = @tier;
                 base._validate_();
             }
+
+            [TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
+            public int @Capacity { get; }
 
             [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [TerraformProperty(name: "port", @out: false, min: 1, max: 1)]
-            public int @Port { get; }
+            [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
+            public string @Tier { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "authentication_certificate")]
+        public sealed class authentication_certificate: NTerraform.structure
+        {
+            public authentication_certificate(string @data,
+                                              string @name)
+            {
+                @Data = @data;
+                @Name = @name;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "data", @out: false, min: 1, max: 1)]
+            public string @Data { get; }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
 
             [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
             public string @Id { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "waf_configuration")]
+        public sealed class waf_configuration: NTerraform.structure
+        {
+            public waf_configuration(bool @enabled,
+                                     string @firewallMode,
+                                     string @ruleSetVersion,
+                                     string @ruleSetType = null)
+            {
+                @Enabled = @enabled;
+                @FirewallMode = @firewallMode;
+                @RuleSetVersion = @ruleSetVersion;
+                @RuleSetType = @ruleSetType;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
+            public bool @Enabled { get; }
+
+            [TerraformProperty(name: "firewall_mode", @out: false, min: 1, max: 1)]
+            public string @FirewallMode { get; }
+
+            [TerraformProperty(name: "rule_set_version", @out: false, min: 1, max: 1)]
+            public string @RuleSetVersion { get; }
+
+            [TerraformProperty(name: "rule_set_type", @out: false, min: 0, max: 1)]
+            public string @RuleSetType { get; }
         }
 
         [TerraformStructure(category: "", typeName: "backend_http_settings")]
@@ -346,56 +447,6 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "request_timeout", @out: false, min: 0, max: 1)]
             public int? @RequestTimeout { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "authentication_certificate")]
-        public sealed class authentication_certificate: NTerraform.structure
-        {
-            public authentication_certificate(string @data,
-                                              string @name)
-            {
-                @Data = @data;
-                @Name = @name;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "data", @out: false, min: 1, max: 1)]
-            public string @Data { get; }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "ssl_certificate")]
-        public sealed class ssl_certificate: NTerraform.structure
-        {
-            public ssl_certificate(string @data,
-                                   string @name,
-                                   string @password)
-            {
-                @Data = @data;
-                @Name = @name;
-                @Password = @password;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "data", @out: false, min: 1, max: 1)]
-            public string @Data { get; }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-            public string @Password { get; }
-
-            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [TerraformProperty(name: "public_cert_data", @out: true, min: 0, max: 1)]
-            public string @PublicCertData { get; }
         }
 
         [TerraformStructure(category: "", typeName: "probe")]
@@ -470,57 +521,6 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "minimum_servers", @out: false, min: 0, max: 1)]
             public int? @MinimumServers { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "sku")]
-        public sealed class sku: NTerraform.structure
-        {
-            public sku(int @capacity,
-                       string @name,
-                       string @tier)
-            {
-                @Capacity = @capacity;
-                @Name = @name;
-                @Tier = @tier;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
-            public int @Capacity { get; }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
-            public string @Tier { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "frontend_ip_configuration")]
-        public sealed class frontend_ip_configuration: NTerraform.structure
-        {
-            public frontend_ip_configuration(string @name)
-            {
-                @Name = @name;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [TerraformProperty(name: "private_ip_address", @out: true, min: 0, max: 1)]
-            public string @PrivateIpAddress { get; }
-
-            [TerraformProperty(name: "private_ip_address_allocation", @out: true, min: 0, max: 1)]
-            public string @PrivateIpAddressAllocation { get; }
-
-            [TerraformProperty(name: "public_ip_address_id", @out: true, min: 0, max: 1)]
-            public string @PublicIpAddressId { get; }
-
-            [TerraformProperty(name: "subnet_id", @out: true, min: 0, max: 1)]
-            public string @SubnetId { get; }
         }
 
         public azurerm_application_gateway(backend_address_pool[] @backendAddressPool,

@@ -5,46 +5,6 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "consul_catalog_nodes")]
     public sealed class consul_catalog_nodes : NTerraform.data
     {
-        [TerraformStructure(category: "", typeName: "nodes")]
-        public sealed class nodes: NTerraform.structure
-        {
-            [TerraformStructure(category: "", typeName: "tagged_addresses")]
-            public sealed class tagged_addresses: NTerraform.structure
-            {
-                public tagged_addresses()
-                {
-                    base._validate_();
-                }
-
-                [TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
-                public string @Lan { get; }
-
-                [TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
-                public string @Wan { get; }
-            }
-
-            public nodes(Dictionary<string,tagged_addresses> @taggedAddresses = null)
-            {
-                @TaggedAddresses = @taggedAddresses;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
-            public string @Address { get; }
-
-            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [TerraformProperty(name: "meta", @out: true, min: 0, max: 1)]
-            public Dictionary<string,string> @Meta { get; }
-
-            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "tagged_addresses", @out: false, min: 0, max: 0)]
-            public Dictionary<string,tagged_addresses> @TaggedAddresses { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "query_options")]
         public sealed class query_options: NTerraform.structure
         {
@@ -91,6 +51,46 @@ namespace NTerraform.Datas
 
             [TerraformProperty(name: "wait_time", @out: false, min: 0, max: 1)]
             public string @WaitTime { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "nodes")]
+        public sealed class nodes: NTerraform.structure
+        {
+            [TerraformStructure(category: "", typeName: "tagged_addresses")]
+            public sealed class tagged_addresses: NTerraform.structure
+            {
+                public tagged_addresses()
+                {
+                    base._validate_();
+                }
+
+                [TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
+                public string @Lan { get; }
+
+                [TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
+                public string @Wan { get; }
+            }
+
+            public nodes(Dictionary<string,tagged_addresses> @taggedAddresses = null)
+            {
+                @TaggedAddresses = @taggedAddresses;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
+            public string @Address { get; }
+
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [TerraformProperty(name: "meta", @out: true, min: 0, max: 1)]
+            public Dictionary<string,string> @Meta { get; }
+
+            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "tagged_addresses", @out: false, min: 0, max: 0)]
+            public Dictionary<string,tagged_addresses> @TaggedAddresses { get; }
         }
 
         public consul_catalog_nodes(nodes[] @nodes = null,

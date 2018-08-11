@@ -46,47 +46,14 @@ namespace NTerraform.Resources
             public string @Thumbprint { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "diagnostics_config")]
-        public sealed class diagnostics_config: NTerraform.structure
-        {
-            public diagnostics_config(string @blobEndpoint,
-                                      string @protectedAccountKeyName,
-                                      string @queueEndpoint,
-                                      string @storageAccountName,
-                                      string @tableEndpoint)
-            {
-                @BlobEndpoint = @blobEndpoint;
-                @ProtectedAccountKeyName = @protectedAccountKeyName;
-                @QueueEndpoint = @queueEndpoint;
-                @StorageAccountName = @storageAccountName;
-                @TableEndpoint = @tableEndpoint;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "blob_endpoint", @out: false, min: 1, max: 1)]
-            public string @BlobEndpoint { get; }
-
-            [TerraformProperty(name: "protected_account_key_name", @out: false, min: 1, max: 1)]
-            public string @ProtectedAccountKeyName { get; }
-
-            [TerraformProperty(name: "queue_endpoint", @out: false, min: 1, max: 1)]
-            public string @QueueEndpoint { get; }
-
-            [TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
-            public string @StorageAccountName { get; }
-
-            [TerraformProperty(name: "table_endpoint", @out: false, min: 1, max: 1)]
-            public string @TableEndpoint { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "node_type")]
         public sealed class node_type: NTerraform.structure
         {
-            [TerraformStructure(category: "", typeName: "application_ports")]
-            public sealed class application_ports: NTerraform.structure
+            [TerraformStructure(category: "", typeName: "ephemeral_ports")]
+            public sealed class ephemeral_ports: NTerraform.structure
             {
-                public application_ports(int @endPort,
-                                         int @startPort)
+                public ephemeral_ports(int @endPort,
+                                       int @startPort)
                 {
                     @EndPort = @endPort;
                     @StartPort = @startPort;
@@ -100,11 +67,11 @@ namespace NTerraform.Resources
                 public int @StartPort { get; }
             }
 
-            [TerraformStructure(category: "", typeName: "ephemeral_ports")]
-            public sealed class ephemeral_ports: NTerraform.structure
+            [TerraformStructure(category: "", typeName: "application_ports")]
+            public sealed class application_ports: NTerraform.structure
             {
-                public ephemeral_ports(int @endPort,
-                                       int @startPort)
+                public application_ports(int @endPort,
+                                         int @startPort)
                 {
                     @EndPort = @endPort;
                     @StartPort = @startPort;
@@ -161,6 +128,39 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "ephemeral_ports", @out: false, min: 0, max: 1)]
             public ephemeral_ports[] @EphemeralPorts { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "diagnostics_config")]
+        public sealed class diagnostics_config: NTerraform.structure
+        {
+            public diagnostics_config(string @blobEndpoint,
+                                      string @protectedAccountKeyName,
+                                      string @queueEndpoint,
+                                      string @storageAccountName,
+                                      string @tableEndpoint)
+            {
+                @BlobEndpoint = @blobEndpoint;
+                @ProtectedAccountKeyName = @protectedAccountKeyName;
+                @QueueEndpoint = @queueEndpoint;
+                @StorageAccountName = @storageAccountName;
+                @TableEndpoint = @tableEndpoint;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "blob_endpoint", @out: false, min: 1, max: 1)]
+            public string @BlobEndpoint { get; }
+
+            [TerraformProperty(name: "protected_account_key_name", @out: false, min: 1, max: 1)]
+            public string @ProtectedAccountKeyName { get; }
+
+            [TerraformProperty(name: "queue_endpoint", @out: false, min: 1, max: 1)]
+            public string @QueueEndpoint { get; }
+
+            [TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
+            public string @StorageAccountName { get; }
+
+            [TerraformProperty(name: "table_endpoint", @out: false, min: 1, max: 1)]
+            public string @TableEndpoint { get; }
         }
 
         [TerraformStructure(category: "", typeName: "fabric_settings")]

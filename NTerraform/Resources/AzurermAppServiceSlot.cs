@@ -24,29 +24,6 @@ namespace NTerraform.Resources
             public string @TenantId { get; }
         }
 
-        [TerraformStructure(category: "", typeName: "connection_string")]
-        public sealed class connection_string: NTerraform.structure
-        {
-            public connection_string(string @name,
-                                     string @type,
-                                     string @value)
-            {
-                @Name = @name;
-                @Type = @type;
-                @Value = @value;
-                base._validate_();
-            }
-
-            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
-            public string @Value { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "site_config")]
         public sealed class site_config: NTerraform.structure
         {
@@ -155,6 +132,29 @@ namespace NTerraform.Resources
 
             [TerraformProperty(name: "websockets_enabled", @out: true, min: 0, max: 1)]
             public bool? @WebsocketsEnabled { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "connection_string")]
+        public sealed class connection_string: NTerraform.structure
+        {
+            public connection_string(string @name,
+                                     string @type,
+                                     string @value)
+            {
+                @Name = @name;
+                @Type = @type;
+                @Value = @value;
+                base._validate_();
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+            public string @Value { get; }
         }
 
         public azurerm_app_service_slot(string @appServiceName,
