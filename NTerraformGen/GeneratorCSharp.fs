@@ -24,9 +24,8 @@ let toNullable (field : Field) =
     //| Cardinality.Range (None, _) -> " = null"
     //| _ -> ""     
 
-let initNullable (field : Field) =
-    match field.Type, field.Cardinality with
-    | _, { Min = 0; Max = _ } -> " = null"
+let initNullable = function
+    | { Min = 0; Max = _ } -> " = null"
     | _ -> ""
 
 let nullableIntValue = function
@@ -96,7 +95,7 @@ let rec generateType tfType tfName fields =
                                |> List.map (fun x -> sprintf "%s%s @%s%s" (toTypeName x.Name x.Type)
                                                                           (toNullable x)
                                                                           (x.Name |> toCamlCase)
-                                                                          (initNullable x))
+                                                                          (initNullable x.Cardinality))
                                |> generateCtor ctor ctorIndent ")"
 
             let ctorInit = orderedParameters
