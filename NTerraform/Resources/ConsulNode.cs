@@ -14,16 +14,16 @@ namespace NTerraform.Resources
             @Token = @token;
         }
 
-        [TerraformProperty(name: "address", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "address", @out: false, min: 1, max: 1)]
         public string @Address { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "datacenter", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
         public string @Datacenter { get; }
 
-        [TerraformProperty(name: "token", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }
     }
 

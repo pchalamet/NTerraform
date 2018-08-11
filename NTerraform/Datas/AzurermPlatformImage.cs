@@ -16,19 +16,19 @@ namespace NTerraform.Datas
             @Sku = @sku;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "offer", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "offer", @out: false, min: 1, max: 1)]
         public string @Offer { get; }
 
-        [TerraformProperty(name: "publisher", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "publisher", @out: false, min: 1, max: 1)]
         public string @Publisher { get; }
 
-        [TerraformProperty(name: "sku", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
         public string @Sku { get; }
 
-        [TerraformProperty(name: "version", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
         public string @Version { get; }
     }
 

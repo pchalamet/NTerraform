@@ -18,19 +18,19 @@ namespace NTerraform.Resources
             @RelativePath = @relativePath;
         }
 
-        [TerraformProperty(name: "logic_app_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "logic_app_id", @out: false, min: 1, max: 1)]
         public string @LogicAppId { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "schema", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "schema", @out: false, min: 1, max: 1)]
         public string @Schema { get; }
 
-        [TerraformProperty(name: "method", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "method", @out: false, min: 0, max: 1)]
         public string @Method { get; }
 
-        [TerraformProperty(name: "relative_path", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "relative_path", @out: false, min: 0, max: 1)]
         public string @RelativePath { get; }
     }
 

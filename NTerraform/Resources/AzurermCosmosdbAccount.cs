@@ -17,26 +17,14 @@ namespace NTerraform.Resources
                 @MaxStalenessPrefix = @maxStalenessPrefix;
             }
 
-            [TerraformProperty(name: "consistency_level", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "consistency_level", @out: false, min: 1, max: 1)]
             public string @ConsistencyLevel { get; }
 
-            [TerraformProperty(name: "max_interval_in_seconds", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "max_interval_in_seconds", @out: false, min: 0, max: 1)]
             public int? @MaxIntervalInSeconds { get; }
 
-            [TerraformProperty(name: "max_staleness_prefix", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "max_staleness_prefix", @out: false, min: 0, max: 1)]
             public int? @MaxStalenessPrefix { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "capabilities")]
-        public sealed class capabilities
-        {
-            public capabilities(string @name)
-            {
-                @Name = @name;
-            }
-
-            [TerraformProperty(name: "name", @out: false, nested: false, min: 1, max: 1)]
-            public string @Name { get; }
         }
 
         [TerraformStructure(category: "", typeName: "geo_location")]
@@ -51,17 +39,29 @@ namespace NTerraform.Resources
                 @Prefix = @prefix;
             }
 
-            [TerraformProperty(name: "failover_priority", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "failover_priority", @out: false, min: 1, max: 1)]
             public int @FailoverPriority { get; }
 
-            [TerraformProperty(name: "location", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
             public string @Location { get; }
 
-            [TerraformProperty(name: "id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
             public string @Id { get; }
 
-            [TerraformProperty(name: "prefix", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "prefix", @out: false, min: 0, max: 1)]
             public string @Prefix { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "capabilities")]
+        public sealed class capabilities
+        {
+            public capabilities(string @name)
+            {
+                @Name = @name;
+            }
+
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
         }
 
         [TerraformStructure(category: "", typeName: "failover_policy")]
@@ -74,13 +74,13 @@ namespace NTerraform.Resources
                 @Priority = @priority;
             }
 
-            [TerraformProperty(name: "location", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
             public string @Location { get; }
 
-            [TerraformProperty(name: "priority", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "priority", @out: false, min: 1, max: 1)]
             public int @Priority { get; }
 
-            [TerraformProperty(name: "id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
             public string @Id { get; }
         }
 
@@ -109,64 +109,64 @@ namespace NTerraform.Resources
             @Kind = @kind;
         }
 
-        [TerraformProperty(name: "consistency_policy", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "consistency_policy", @out: false, min: 1, max: 1)]
         public consistency_policy[] @ConsistencyPolicy { get; }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "offer_type", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "offer_type", @out: false, min: 1, max: 1)]
         public string @OfferType { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "capabilities", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "capabilities", @out: false, min: 0, max: 0)]
         public capabilities[] @Capabilities { get; }
 
-        [TerraformProperty(name: "connection_strings", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "connection_strings", @out: true, min: 0, max: 1)]
         public string[] @ConnectionStrings { get; }
 
-        [TerraformProperty(name: "enable_automatic_failover", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "enable_automatic_failover", @out: false, min: 0, max: 1)]
         public bool? @EnableAutomaticFailover { get; }
 
-        [TerraformProperty(name: "endpoint", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "endpoint", @out: true, min: 0, max: 1)]
         public string @Endpoint { get; }
 
-        [TerraformProperty(name: "failover_policy", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "failover_policy", @out: false, min: 0, max: 0)]
         public failover_policy[] @FailoverPolicy { get; }
 
-        [TerraformProperty(name: "geo_location", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "geo_location", @out: false, min: 0, max: 0)]
         public geo_location[] @GeoLocation { get; }
 
-        [TerraformProperty(name: "ip_range_filter", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "ip_range_filter", @out: false, min: 0, max: 1)]
         public string @IpRangeFilter { get; }
 
-        [TerraformProperty(name: "kind", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "kind", @out: false, min: 0, max: 1)]
         public string @Kind { get; }
 
-        [TerraformProperty(name: "primary_master_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "primary_master_key", @out: true, min: 0, max: 1)]
         public string @PrimaryMasterKey { get; }
 
-        [TerraformProperty(name: "primary_readonly_master_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "primary_readonly_master_key", @out: true, min: 0, max: 1)]
         public string @PrimaryReadonlyMasterKey { get; }
 
-        [TerraformProperty(name: "read_endpoints", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "read_endpoints", @out: true, min: 0, max: 1)]
         public string[] @ReadEndpoints { get; }
 
-        [TerraformProperty(name: "secondary_master_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "secondary_master_key", @out: true, min: 0, max: 1)]
         public string @SecondaryMasterKey { get; }
 
-        [TerraformProperty(name: "secondary_readonly_master_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "secondary_readonly_master_key", @out: true, min: 0, max: 1)]
         public string @SecondaryReadonlyMasterKey { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [TerraformProperty(name: "write_endpoints", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "write_endpoints", @out: true, min: 0, max: 1)]
         public string[] @WriteEndpoints { get; }
     }
 

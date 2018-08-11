@@ -26,40 +26,40 @@ namespace NTerraform.Resources
             @Zones = @zones;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "public_ip_address_allocation", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "public_ip_address_allocation", @out: false, min: 1, max: 1)]
         public string @PublicIpAddressAllocation { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "domain_name_label", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "domain_name_label", @out: false, min: 0, max: 1)]
         public string @DomainNameLabel { get; }
 
-        [TerraformProperty(name: "fqdn", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
         public string @Fqdn { get; }
 
-        [TerraformProperty(name: "idle_timeout_in_minutes", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "idle_timeout_in_minutes", @out: false, min: 0, max: 1)]
         public int? @IdleTimeoutInMinutes { get; }
 
-        [TerraformProperty(name: "ip_address", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "ip_address", @out: true, min: 0, max: 1)]
         public string @IpAddress { get; }
 
-        [TerraformProperty(name: "reverse_fqdn", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "reverse_fqdn", @out: false, min: 0, max: 1)]
         public string @ReverseFqdn { get; }
 
-        [TerraformProperty(name: "sku", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "sku", @out: false, min: 0, max: 1)]
         public string @Sku { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [TerraformProperty(name: "zones", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "zones", @out: false, min: 0, max: 1)]
         public string[] @Zones { get; }
     }
 

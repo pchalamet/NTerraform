@@ -9,22 +9,22 @@ namespace NTerraform.Datas
         {
         }
 
-        [TerraformProperty(name: "display_name", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "display_name", @out: true, min: 0, max: 1)]
         public string @DisplayName { get; }
 
-        [TerraformProperty(name: "location_placement_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location_placement_id", @out: true, min: 0, max: 1)]
         public string @LocationPlacementId { get; }
 
-        [TerraformProperty(name: "quota_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "quota_id", @out: true, min: 0, max: 1)]
         public string @QuotaId { get; }
 
-        [TerraformProperty(name: "spending_limit", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "spending_limit", @out: true, min: 0, max: 1)]
         public string @SpendingLimit { get; }
 
-        [TerraformProperty(name: "state", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "state", @out: true, min: 0, max: 1)]
         public string @State { get; }
 
-        [TerraformProperty(name: "subscription_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "subscription_id", @out: true, min: 0, max: 1)]
         public string @SubscriptionId { get; }
     }
 

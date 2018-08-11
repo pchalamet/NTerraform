@@ -10,10 +10,10 @@ namespace NTerraform.Resources
             @ApplicationId = @applicationId;
         }
 
-        [TerraformProperty(name: "application_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "application_id", @out: false, min: 1, max: 1)]
         public string @ApplicationId { get; }
 
-        [TerraformProperty(name: "display_name", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "display_name", @out: true, min: 0, max: 1)]
         public string @DisplayName { get; }
     }
 

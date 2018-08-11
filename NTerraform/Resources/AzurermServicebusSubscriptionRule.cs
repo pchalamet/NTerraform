@@ -27,28 +27,28 @@ namespace NTerraform.Resources
                 @To = @to;
             }
 
-            [TerraformProperty(name: "content_type", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "content_type", @out: false, min: 0, max: 1)]
             public string @ContentType { get; }
 
-            [TerraformProperty(name: "correlation_id", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "correlation_id", @out: false, min: 0, max: 1)]
             public string @CorrelationId { get; }
 
-            [TerraformProperty(name: "label", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "label", @out: false, min: 0, max: 1)]
             public string @Label { get; }
 
-            [TerraformProperty(name: "message_id", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "message_id", @out: false, min: 0, max: 1)]
             public string @MessageId { get; }
 
-            [TerraformProperty(name: "reply_to", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "reply_to", @out: false, min: 0, max: 1)]
             public string @ReplyTo { get; }
 
-            [TerraformProperty(name: "reply_to_session_id", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "reply_to_session_id", @out: false, min: 0, max: 1)]
             public string @ReplyToSessionId { get; }
 
-            [TerraformProperty(name: "session_id", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "session_id", @out: false, min: 0, max: 1)]
             public string @SessionId { get; }
 
-            [TerraformProperty(name: "to", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "to", @out: false, min: 0, max: 1)]
             public string @To { get; }
         }
 
@@ -73,31 +73,31 @@ namespace NTerraform.Resources
             @SqlFilter = @sqlFilter;
         }
 
-        [TerraformProperty(name: "filter_type", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "filter_type", @out: false, min: 1, max: 1)]
         public string @FilterType { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "namespace_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "namespace_name", @out: false, min: 1, max: 1)]
         public string @NamespaceName { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "subscription_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "subscription_name", @out: false, min: 1, max: 1)]
         public string @SubscriptionName { get; }
 
-        [TerraformProperty(name: "topic_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "topic_name", @out: false, min: 1, max: 1)]
         public string @TopicName { get; }
 
-        [TerraformProperty(name: "action", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "action", @out: false, min: 0, max: 1)]
         public string @Action { get; }
 
-        [TerraformProperty(name: "correlation_filter", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "correlation_filter", @out: false, min: 0, max: 1)]
         public correlation_filter[] @CorrelationFilter { get; }
 
-        [TerraformProperty(name: "sql_filter", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "sql_filter", @out: false, min: 0, max: 1)]
         public string @SqlFilter { get; }
     }
 

@@ -16,25 +16,25 @@ namespace NTerraform.Resources
             @Tags = @tags;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "node", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "node", @out: false, min: 1, max: 1)]
         public string @Node { get; }
 
-        [TerraformProperty(name: "address", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
         public string @Address { get; }
 
-        [TerraformProperty(name: "datacenter", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
         public string @Datacenter { get; }
 
-        [TerraformProperty(name: "port", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "port", @out: false, min: 0, max: 1)]
         public int? @Port { get; }
 
-        [TerraformProperty(name: "service_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "service_id", @out: true, min: 0, max: 1)]
         public string @ServiceId { get; }
 
-        [TerraformProperty(name: "tags", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
         public string[] @Tags { get; }
     }
 

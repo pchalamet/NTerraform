@@ -105,11 +105,10 @@ let rec generateType tfType tfName fields =
                                                                             (x.Name |> toCamlCase))
                                                                             
             let attributes = orderedParameters
-                                |> List.map (fun x -> sprintf "%s[TerraformProperty(name: %A, @out: %s, nested: %s, min: %d, max: %d)]"
+                                |> List.map (fun x -> sprintf "%s[TerraformProperty(name: %A, @out: %s, min: %d, max: %d)]"
                                                             space8
                                                             x.Name
                                                             ((x.Modifier = Modifier.Out) ? ("true", "false"))
-                                                            (tfType.IsSome ? ("true", "false"))
                                                             x.Cardinality.Min x.Cardinality.Max)
 
             let members = orderedParameters

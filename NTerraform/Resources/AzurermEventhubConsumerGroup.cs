@@ -20,22 +20,22 @@ namespace NTerraform.Resources
             @UserMetadata = @userMetadata;
         }
 
-        [TerraformProperty(name: "eventhub_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "eventhub_name", @out: false, min: 1, max: 1)]
         public string @EventhubName { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "namespace_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "namespace_name", @out: false, min: 1, max: 1)]
         public string @NamespaceName { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "user_metadata", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "user_metadata", @out: false, min: 0, max: 1)]
         public string @UserMetadata { get; }
     }
 

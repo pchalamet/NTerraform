@@ -18,10 +18,10 @@ namespace NTerraform.Resources
                     @SourceVaultId = @sourceVaultId;
                 }
 
-                [TerraformProperty(name: "secret_url", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "secret_url", @out: false, min: 1, max: 1)]
                 public string @SecretUrl { get; }
 
-                [TerraformProperty(name: "source_vault_id", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
                 public string @SourceVaultId { get; }
             }
 
@@ -35,10 +35,10 @@ namespace NTerraform.Resources
                     @SourceVaultId = @sourceVaultId;
                 }
 
-                [TerraformProperty(name: "key_url", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "key_url", @out: false, min: 1, max: 1)]
                 public string @KeyUrl { get; }
 
-                [TerraformProperty(name: "source_vault_id", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
                 public string @SourceVaultId { get; }
             }
 
@@ -51,13 +51,13 @@ namespace NTerraform.Resources
                 @KeyEncryptionKey = @keyEncryptionKey;
             }
 
-            [TerraformProperty(name: "enabled", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
             public bool @Enabled { get; }
 
-            [TerraformProperty(name: "disk_encryption_key", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "disk_encryption_key", @out: false, min: 0, max: 1)]
             public disk_encryption_key[] @DiskEncryptionKey { get; }
 
-            [TerraformProperty(name: "key_encryption_key", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "key_encryption_key", @out: false, min: 0, max: 1)]
             public key_encryption_key[] @KeyEncryptionKey { get; }
         }
 
@@ -80,34 +80,34 @@ namespace NTerraform.Resources
             @StorageAccountId = @storageAccountId;
         }
 
-        [TerraformProperty(name: "create_option", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "create_option", @out: false, min: 1, max: 1)]
         public string @CreateOption { get; }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "disk_size_gb", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "disk_size_gb", @out: true, min: 0, max: 1)]
         public int? @DiskSizeGb { get; }
 
-        [TerraformProperty(name: "encryption_settings", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "encryption_settings", @out: false, min: 0, max: 1)]
         public encryption_settings[] @EncryptionSettings { get; }
 
-        [TerraformProperty(name: "source_resource_id", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "source_resource_id", @out: false, min: 0, max: 1)]
         public string @SourceResourceId { get; }
 
-        [TerraformProperty(name: "source_uri", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "source_uri", @out: false, min: 0, max: 1)]
         public string @SourceUri { get; }
 
-        [TerraformProperty(name: "storage_account_id", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "storage_account_id", @out: false, min: 0, max: 1)]
         public string @StorageAccountId { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

@@ -17,16 +17,16 @@ namespace NTerraform.Resources
                 @PromotionCode = @promotionCode;
             }
 
-            [TerraformProperty(name: "product", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "product", @out: false, min: 1, max: 1)]
             public string @Product { get; }
 
-            [TerraformProperty(name: "publisher", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "publisher", @out: false, min: 1, max: 1)]
             public string @Publisher { get; }
 
-            [TerraformProperty(name: "name", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
             public string @Name { get; }
 
-            [TerraformProperty(name: "promotion_code", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "promotion_code", @out: false, min: 0, max: 1)]
             public string @PromotionCode { get; }
         }
 
@@ -45,22 +45,22 @@ namespace NTerraform.Resources
             @WorkspaceResourceId = @workspaceResourceId;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "plan", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "plan", @out: false, min: 1, max: 1)]
         public plan[] @Plan { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "solution_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "solution_name", @out: false, min: 1, max: 1)]
         public string @SolutionName { get; }
 
-        [TerraformProperty(name: "workspace_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "workspace_name", @out: false, min: 1, max: 1)]
         public string @WorkspaceName { get; }
 
-        [TerraformProperty(name: "workspace_resource_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "workspace_resource_id", @out: false, min: 1, max: 1)]
         public string @WorkspaceResourceId { get; }
     }
 

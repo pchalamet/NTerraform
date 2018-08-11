@@ -12,22 +12,22 @@ namespace NTerraform.Datas
             @ResourceGroupName = @resourceGroupName;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "address_spaces", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "address_spaces", @out: true, min: 0, max: 1)]
         public string[] @AddressSpaces { get; }
 
-        [TerraformProperty(name: "dns_servers", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "dns_servers", @out: true, min: 0, max: 1)]
         public string[] @DnsServers { get; }
 
-        [TerraformProperty(name: "subnets", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "subnets", @out: true, min: 0, max: 1)]
         public string[] @Subnets { get; }
 
-        [TerraformProperty(name: "vnet_peerings", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "vnet_peerings", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @VnetPeerings { get; }
     }
 

@@ -22,16 +22,16 @@ namespace NTerraform.Resources
                     @StorageAccountId = @storageAccountId;
                 }
 
-                [TerraformProperty(name: "archive_name_format", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "archive_name_format", @out: false, min: 1, max: 1)]
                 public string @ArchiveNameFormat { get; }
 
-                [TerraformProperty(name: "blob_container_name", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "blob_container_name", @out: false, min: 1, max: 1)]
                 public string @BlobContainerName { get; }
 
-                [TerraformProperty(name: "name", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
                 public string @Name { get; }
 
-                [TerraformProperty(name: "storage_account_id", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "storage_account_id", @out: false, min: 1, max: 1)]
                 public string @StorageAccountId { get; }
             }
 
@@ -48,19 +48,19 @@ namespace NTerraform.Resources
                 @SizeLimitInBytes = @sizeLimitInBytes;
             }
 
-            [TerraformProperty(name: "destination", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "destination", @out: false, min: 1, max: 1)]
             public destination[] @Destination { get; }
 
-            [TerraformProperty(name: "enabled", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
             public bool @Enabled { get; }
 
-            [TerraformProperty(name: "encoding", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "encoding", @out: false, min: 1, max: 1)]
             public string @Encoding { get; }
 
-            [TerraformProperty(name: "interval_in_seconds", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "interval_in_seconds", @out: false, min: 0, max: 1)]
             public int? @IntervalInSeconds { get; }
 
-            [TerraformProperty(name: "size_limit_in_bytes", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "size_limit_in_bytes", @out: false, min: 0, max: 1)]
             public int? @SizeLimitInBytes { get; }
         }
 
@@ -81,28 +81,28 @@ namespace NTerraform.Resources
             @Location = @location;
         }
 
-        [TerraformProperty(name: "message_retention", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "message_retention", @out: false, min: 1, max: 1)]
         public int @MessageRetention { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "namespace_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "namespace_name", @out: false, min: 1, max: 1)]
         public string @NamespaceName { get; }
 
-        [TerraformProperty(name: "partition_count", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "partition_count", @out: false, min: 1, max: 1)]
         public int @PartitionCount { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "capture_description", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "capture_description", @out: false, min: 0, max: 1)]
         public capture_description[] @CaptureDescription { get; }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "partition_ids", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "partition_ids", @out: true, min: 0, max: 1)]
         public string[] @PartitionIds { get; }
     }
 

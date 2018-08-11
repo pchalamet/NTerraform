@@ -15,13 +15,13 @@ namespace NTerraform.Resources
                 @Tier = @tier;
             }
 
-            [TerraformProperty(name: "size", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "size", @out: false, min: 1, max: 1)]
             public string @Size { get; }
 
-            [TerraformProperty(name: "tier", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
             public string @Tier { get; }
 
-            [TerraformProperty(name: "capacity", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "capacity", @out: true, min: 0, max: 1)]
             public int? @Capacity { get; }
         }
 
@@ -37,13 +37,13 @@ namespace NTerraform.Resources
                 @Reserved = @reserved;
             }
 
-            [TerraformProperty(name: "app_service_environment_id", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "app_service_environment_id", @out: false, min: 0, max: 1)]
             public string @AppServiceEnvironmentId { get; }
 
-            [TerraformProperty(name: "per_site_scaling", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "per_site_scaling", @out: false, min: 0, max: 1)]
             public bool? @PerSiteScaling { get; }
 
-            [TerraformProperty(name: "reserved", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "reserved", @out: false, min: 0, max: 1)]
             public bool? @Reserved { get; }
         }
 
@@ -62,28 +62,28 @@ namespace NTerraform.Resources
             @Properties = @properties;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "sku", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
         public sku[] @Sku { get; }
 
-        [TerraformProperty(name: "kind", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "kind", @out: false, min: 0, max: 1)]
         public string @Kind { get; }
 
-        [TerraformProperty(name: "maximum_number_of_workers", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "maximum_number_of_workers", @out: true, min: 0, max: 1)]
         public int? @MaximumNumberOfWorkers { get; }
 
-        [TerraformProperty(name: "properties", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "properties", @out: false, min: 0, max: 1)]
         public properties[] @Properties { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

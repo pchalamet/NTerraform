@@ -17,13 +17,13 @@ namespace NTerraform.Resources
                 @SecurityGroup = @securityGroup;
             }
 
-            [TerraformProperty(name: "address_prefix", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "address_prefix", @out: false, min: 1, max: 1)]
             public string @AddressPrefix { get; }
 
-            [TerraformProperty(name: "name", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [TerraformProperty(name: "security_group", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "security_group", @out: false, min: 0, max: 1)]
             public string @SecurityGroup { get; }
         }
 
@@ -42,25 +42,25 @@ namespace NTerraform.Resources
             @Subnet = @subnet;
         }
 
-        [TerraformProperty(name: "address_space", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "address_space", @out: false, min: 1, max: 1)]
         public string[] @AddressSpace { get; }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "dns_servers", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "dns_servers", @out: false, min: 0, max: 1)]
         public string[] @DnsServers { get; }
 
-        [TerraformProperty(name: "subnet", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "subnet", @out: false, min: 0, max: 0)]
         public subnet[] @Subnet { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

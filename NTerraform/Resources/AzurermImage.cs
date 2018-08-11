@@ -17,22 +17,22 @@ namespace NTerraform.Resources
                 @OsType = @osType;
             }
 
-            [TerraformProperty(name: "blob_uri", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
             public string @BlobUri { get; }
 
-            [TerraformProperty(name: "caching", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "caching", @out: false, min: 0, max: 1)]
             public string @Caching { get; }
 
-            [TerraformProperty(name: "managed_disk_id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "managed_disk_id", @out: true, min: 0, max: 1)]
             public string @ManagedDiskId { get; }
 
-            [TerraformProperty(name: "os_state", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "os_state", @out: false, min: 0, max: 1)]
             public string @OsState { get; }
 
-            [TerraformProperty(name: "os_type", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "os_type", @out: false, min: 0, max: 1)]
             public string @OsType { get; }
 
-            [TerraformProperty(name: "size_gb", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
             public int? @SizeGb { get; }
         }
 
@@ -48,19 +48,19 @@ namespace NTerraform.Resources
                 @ManagedDiskId = @managedDiskId;
             }
 
-            [TerraformProperty(name: "blob_uri", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
             public string @BlobUri { get; }
 
-            [TerraformProperty(name: "caching", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "caching", @out: false, min: 0, max: 1)]
             public string @Caching { get; }
 
-            [TerraformProperty(name: "lun", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "lun", @out: false, min: 0, max: 1)]
             public int? @Lun { get; }
 
-            [TerraformProperty(name: "managed_disk_id", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "managed_disk_id", @out: false, min: 0, max: 1)]
             public string @ManagedDiskId { get; }
 
-            [TerraformProperty(name: "size_gb", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
             public int? @SizeGb { get; }
         }
 
@@ -79,25 +79,25 @@ namespace NTerraform.Resources
             @SourceVirtualMachineId = @sourceVirtualMachineId;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "data_disk", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "data_disk", @out: false, min: 0, max: 0)]
         public data_disk[] @DataDisk { get; }
 
-        [TerraformProperty(name: "os_disk", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "os_disk", @out: false, min: 0, max: 1)]
         public os_disk[] @OsDisk { get; }
 
-        [TerraformProperty(name: "source_virtual_machine_id", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "source_virtual_machine_id", @out: false, min: 0, max: 1)]
         public string @SourceVirtualMachineId { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

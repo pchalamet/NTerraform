@@ -16,19 +16,19 @@ namespace NTerraform.Resources
             @ContainerAccessType = @containerAccessType;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "storage_account_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
         public string @StorageAccountName { get; }
 
-        [TerraformProperty(name: "container_access_type", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "container_access_type", @out: false, min: 0, max: 1)]
         public string @ContainerAccessType { get; }
 
-        [TerraformProperty(name: "properties", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "properties", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Properties { get; }
     }
 

@@ -14,25 +14,25 @@ namespace NTerraform.Datas
             @VirtualNetworkName = @virtualNetworkName;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "virtual_network_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "virtual_network_name", @out: false, min: 1, max: 1)]
         public string @VirtualNetworkName { get; }
 
-        [TerraformProperty(name: "address_prefix", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "address_prefix", @out: true, min: 0, max: 1)]
         public string @AddressPrefix { get; }
 
-        [TerraformProperty(name: "ip_configurations", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "ip_configurations", @out: true, min: 0, max: 1)]
         public string[] @IpConfigurations { get; }
 
-        [TerraformProperty(name: "network_security_group_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "network_security_group_id", @out: true, min: 0, max: 1)]
         public string @NetworkSecurityGroupId { get; }
 
-        [TerraformProperty(name: "route_table_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "route_table_id", @out: true, min: 0, max: 1)]
         public string @RouteTableId { get; }
     }
 

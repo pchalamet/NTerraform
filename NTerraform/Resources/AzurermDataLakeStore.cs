@@ -22,31 +22,31 @@ namespace NTerraform.Resources
             @Tier = @tier;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "encryption_state", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "encryption_state", @out: false, min: 0, max: 1)]
         public string @EncryptionState { get; }
 
-        [TerraformProperty(name: "encryption_type", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "encryption_type", @out: true, min: 0, max: 1)]
         public string @EncryptionType { get; }
 
-        [TerraformProperty(name: "firewall_allow_azure_ips", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "firewall_allow_azure_ips", @out: false, min: 0, max: 1)]
         public string @FirewallAllowAzureIps { get; }
 
-        [TerraformProperty(name: "firewall_state", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "firewall_state", @out: false, min: 0, max: 1)]
         public string @FirewallState { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [TerraformProperty(name: "tier", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tier", @out: false, min: 0, max: 1)]
         public string @Tier { get; }
     }
 

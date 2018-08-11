@@ -12,19 +12,19 @@ namespace NTerraform.Datas
             {
             }
 
-            [TerraformProperty(name: "application_mode", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "application_mode", @out: true, min: 0, max: 1)]
             public string @ApplicationMode { get; }
 
-            [TerraformProperty(name: "bundle_id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "bundle_id", @out: true, min: 0, max: 1)]
             public string @BundleId { get; }
 
-            [TerraformProperty(name: "key_id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "key_id", @out: true, min: 0, max: 1)]
             public string @KeyId { get; }
 
-            [TerraformProperty(name: "team_id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "team_id", @out: true, min: 0, max: 1)]
             public string @TeamId { get; }
 
-            [TerraformProperty(name: "token", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "token", @out: true, min: 0, max: 1)]
             public string @Token { get; }
         }
 
@@ -35,7 +35,7 @@ namespace NTerraform.Datas
             {
             }
 
-            [TerraformProperty(name: "api_key", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "api_key", @out: true, min: 0, max: 1)]
             public string @ApiKey { get; }
         }
 
@@ -52,22 +52,22 @@ namespace NTerraform.Datas
             @GcmCredential = @gcmCredential;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "namespace_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "namespace_name", @out: false, min: 1, max: 1)]
         public string @NamespaceName { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "apns_credential", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "apns_credential", @out: false, min: 0, max: 0)]
         public apns_credential[] @ApnsCredential { get; }
 
-        [TerraformProperty(name: "gcm_credential", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "gcm_credential", @out: false, min: 0, max: 0)]
         public gcm_credential[] @GcmCredential { get; }
 
-        [TerraformProperty(name: "location", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
         public string @Location { get; }
     }
 

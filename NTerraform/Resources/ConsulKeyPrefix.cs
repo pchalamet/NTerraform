@@ -14,16 +14,16 @@ namespace NTerraform.Resources
             @Token = @token;
         }
 
-        [TerraformProperty(name: "path_prefix", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "path_prefix", @out: false, min: 1, max: 1)]
         public string @PathPrefix { get; }
 
-        [TerraformProperty(name: "subkeys", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "subkeys", @out: false, min: 1, max: 1)]
         public Dictionary<string,string> @Subkeys { get; }
 
-        [TerraformProperty(name: "datacenter", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
         public string @Datacenter { get; }
 
-        [TerraformProperty(name: "token", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }
     }
 

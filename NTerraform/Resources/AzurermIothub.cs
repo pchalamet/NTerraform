@@ -5,26 +5,6 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_iothub")]
     public sealed class azurerm_iothub : NTerraform.resource
     {
-        [TerraformStructure(category: "", typeName: "shared_access_policy")]
-        public sealed class shared_access_policy
-        {
-            public shared_access_policy()
-            {
-            }
-
-            [TerraformProperty(name: "key_name", @out: true, nested: false, min: 0, max: 1)]
-            public string @KeyName { get; }
-
-            [TerraformProperty(name: "permissions", @out: true, nested: false, min: 0, max: 1)]
-            public string @Permissions { get; }
-
-            [TerraformProperty(name: "primary_key", @out: true, nested: false, min: 0, max: 1)]
-            public string @PrimaryKey { get; }
-
-            [TerraformProperty(name: "secondary_key", @out: true, nested: false, min: 0, max: 1)]
-            public string @SecondaryKey { get; }
-        }
-
         [TerraformStructure(category: "", typeName: "sku")]
         public sealed class sku
         {
@@ -37,14 +17,34 @@ namespace NTerraform.Resources
                 @Tier = @tier;
             }
 
-            [TerraformProperty(name: "capacity", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
             public int @Capacity { get; }
 
-            [TerraformProperty(name: "name", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [TerraformProperty(name: "tier", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
             public string @Tier { get; }
+        }
+
+        [TerraformStructure(category: "", typeName: "shared_access_policy")]
+        public sealed class shared_access_policy
+        {
+            public shared_access_policy()
+            {
+            }
+
+            [TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
+            public string @KeyName { get; }
+
+            [TerraformProperty(name: "permissions", @out: true, min: 0, max: 1)]
+            public string @Permissions { get; }
+
+            [TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
+            public string @PrimaryKey { get; }
+
+            [TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
+            public string @SecondaryKey { get; }
         }
 
         public azurerm_iothub(string @location,
@@ -60,28 +60,28 @@ namespace NTerraform.Resources
             @SharedAccessPolicy = @sharedAccessPolicy;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "sku", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
         public sku[] @Sku { get; }
 
-        [TerraformProperty(name: "hostname", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "hostname", @out: true, min: 0, max: 1)]
         public string @Hostname { get; }
 
-        [TerraformProperty(name: "shared_access_policy", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "shared_access_policy", @out: false, min: 0, max: 0)]
         public shared_access_policy[] @SharedAccessPolicy { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [TerraformProperty(name: "type", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
         public string @Type { get; }
     }
 

@@ -30,40 +30,40 @@ namespace NTerraform.Resources
             @Type = @type;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "storage_account_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
         public string @StorageAccountName { get; }
 
-        [TerraformProperty(name: "storage_container_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "storage_container_name", @out: false, min: 1, max: 1)]
         public string @StorageContainerName { get; }
 
-        [TerraformProperty(name: "attempts", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "attempts", @out: false, min: 0, max: 1)]
         public int? @Attempts { get; }
 
-        [TerraformProperty(name: "content_type", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "content_type", @out: false, min: 0, max: 1)]
         public string @ContentType { get; }
 
-        [TerraformProperty(name: "parallelism", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "parallelism", @out: false, min: 0, max: 1)]
         public int? @Parallelism { get; }
 
-        [TerraformProperty(name: "size", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "size", @out: false, min: 0, max: 1)]
         public int? @Size { get; }
 
-        [TerraformProperty(name: "source", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "source", @out: false, min: 0, max: 1)]
         public string @Source { get; }
 
-        [TerraformProperty(name: "source_uri", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "source_uri", @out: false, min: 0, max: 1)]
         public string @SourceUri { get; }
 
-        [TerraformProperty(name: "type", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "type", @out: false, min: 0, max: 1)]
         public string @Type { get; }
 
-        [TerraformProperty(name: "url", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "url", @out: true, min: 0, max: 1)]
         public string @Url { get; }
     }
 

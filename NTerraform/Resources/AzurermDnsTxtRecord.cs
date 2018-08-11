@@ -13,7 +13,7 @@ namespace NTerraform.Resources
                 @Value = @value;
             }
 
-            [TerraformProperty(name: "value", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
             public string @Value { get; }
         }
 
@@ -30,22 +30,22 @@ namespace NTerraform.Resources
             @ZoneName = @zoneName;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "record", @out: false, nested: true, min: 1, max: 0)]
+        [TerraformProperty(name: "record", @out: false, min: 1, max: 0)]
         public record[] @Record { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "ttl", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "ttl", @out: false, min: 1, max: 1)]
         public int @Ttl { get; }
 
-        [TerraformProperty(name: "zone_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "zone_name", @out: false, min: 1, max: 1)]
         public string @ZoneName { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

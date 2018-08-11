@@ -16,34 +16,34 @@ namespace NTerraform.Resources
             @Sku = @sku;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "sku", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
         public string @Sku { get; }
 
-        [TerraformProperty(name: "portal_url", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "portal_url", @out: true, min: 0, max: 1)]
         public string @PortalUrl { get; }
 
-        [TerraformProperty(name: "primary_shared_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "primary_shared_key", @out: true, min: 0, max: 1)]
         public string @PrimarySharedKey { get; }
 
-        [TerraformProperty(name: "retention_in_days", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "retention_in_days", @out: true, min: 0, max: 1)]
         public int? @RetentionInDays { get; }
 
-        [TerraformProperty(name: "secondary_shared_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "secondary_shared_key", @out: true, min: 0, max: 1)]
         public string @SecondarySharedKey { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [TerraformProperty(name: "workspace_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "workspace_id", @out: true, min: 0, max: 1)]
         public string @WorkspaceId { get; }
     }
 

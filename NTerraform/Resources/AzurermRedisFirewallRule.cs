@@ -18,19 +18,19 @@ namespace NTerraform.Resources
             @StartIp = @startIp;
         }
 
-        [TerraformProperty(name: "end_ip", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "end_ip", @out: false, min: 1, max: 1)]
         public string @EndIp { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "redis_cache_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "redis_cache_name", @out: false, min: 1, max: 1)]
         public string @RedisCacheName { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "start_ip", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "start_ip", @out: false, min: 1, max: 1)]
         public string @StartIp { get; }
     }
 

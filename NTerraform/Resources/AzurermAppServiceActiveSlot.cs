@@ -14,13 +14,13 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
         }
 
-        [TerraformProperty(name: "app_service_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "app_service_name", @out: false, min: 1, max: 1)]
         public string @AppServiceName { get; }
 
-        [TerraformProperty(name: "app_service_slot_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "app_service_slot_name", @out: false, min: 1, max: 1)]
         public string @AppServiceSlotName { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
     }
 

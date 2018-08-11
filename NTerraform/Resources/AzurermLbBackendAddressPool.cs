@@ -16,22 +16,22 @@ namespace NTerraform.Resources
             @Location = @location;
         }
 
-        [TerraformProperty(name: "loadbalancer_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "loadbalancer_id", @out: false, min: 1, max: 1)]
         public string @LoadbalancerId { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "backend_ip_configurations", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "backend_ip_configurations", @out: true, min: 0, max: 1)]
         public string[] @BackendIpConfigurations { get; }
 
-        [TerraformProperty(name: "load_balancing_rules", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "load_balancing_rules", @out: true, min: 0, max: 1)]
         public string[] @LoadBalancingRules { get; }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
         public string @Location { get; }
     }
 

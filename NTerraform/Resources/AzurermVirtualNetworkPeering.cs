@@ -16,28 +16,28 @@ namespace NTerraform.Resources
             @VirtualNetworkName = @virtualNetworkName;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "remote_virtual_network_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "remote_virtual_network_id", @out: false, min: 1, max: 1)]
         public string @RemoteVirtualNetworkId { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "virtual_network_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "virtual_network_name", @out: false, min: 1, max: 1)]
         public string @VirtualNetworkName { get; }
 
-        [TerraformProperty(name: "allow_forwarded_traffic", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "allow_forwarded_traffic", @out: true, min: 0, max: 1)]
         public bool? @AllowForwardedTraffic { get; }
 
-        [TerraformProperty(name: "allow_gateway_transit", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "allow_gateway_transit", @out: true, min: 0, max: 1)]
         public bool? @AllowGatewayTransit { get; }
 
-        [TerraformProperty(name: "allow_virtual_network_access", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "allow_virtual_network_access", @out: true, min: 0, max: 1)]
         public bool? @AllowVirtualNetworkAccess { get; }
 
-        [TerraformProperty(name: "use_remote_gateways", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "use_remote_gateways", @out: true, min: 0, max: 1)]
         public bool? @UseRemoteGateways { get; }
     }
 

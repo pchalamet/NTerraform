@@ -12,16 +12,16 @@ namespace NTerraform.Datas
             {
             }
 
-            [TerraformProperty(name: "max_job_count", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "max_job_count", @out: true, min: 0, max: 1)]
             public int? @MaxJobCount { get; }
 
-            [TerraformProperty(name: "max_recurrence_frequency", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "max_recurrence_frequency", @out: true, min: 0, max: 1)]
             public string @MaxRecurrenceFrequency { get; }
 
-            [TerraformProperty(name: "max_recurrence_interval", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "max_recurrence_interval", @out: true, min: 0, max: 1)]
             public int? @MaxRecurrenceInterval { get; }
 
-            [TerraformProperty(name: "max_retry_interval", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "max_retry_interval", @out: true, min: 0, max: 1)]
             public int? @MaxRetryInterval { get; }
         }
 
@@ -34,25 +34,25 @@ namespace NTerraform.Datas
             @Quota = @quota;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "location", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "quota", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "quota", @out: false, min: 0, max: 0)]
         public quota[] @Quota { get; }
 
-        [TerraformProperty(name: "sku", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "sku", @out: true, min: 0, max: 1)]
         public string @Sku { get; }
 
-        [TerraformProperty(name: "state", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "state", @out: true, min: 0, max: 1)]
         public string @State { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

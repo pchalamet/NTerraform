@@ -18,19 +18,19 @@ namespace NTerraform.Resources
             @TenantId = @tenantId;
         }
 
-        [TerraformProperty(name: "login", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "login", @out: false, min: 1, max: 1)]
         public string @Login { get; }
 
-        [TerraformProperty(name: "object_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "object_id", @out: false, min: 1, max: 1)]
         public string @ObjectId { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "server_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "server_name", @out: false, min: 1, max: 1)]
         public string @ServerName { get; }
 
-        [TerraformProperty(name: "tenant_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
         public string @TenantId { get; }
     }
 

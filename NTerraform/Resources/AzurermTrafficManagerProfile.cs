@@ -17,13 +17,13 @@ namespace NTerraform.Resources
                 @Path = @path;
             }
 
-            [TerraformProperty(name: "port", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "port", @out: false, min: 1, max: 1)]
             public int @Port { get; }
 
-            [TerraformProperty(name: "protocol", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "protocol", @out: false, min: 1, max: 1)]
             public string @Protocol { get; }
 
-            [TerraformProperty(name: "path", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "path", @out: false, min: 0, max: 1)]
             public string @Path { get; }
         }
 
@@ -37,10 +37,10 @@ namespace NTerraform.Resources
                 @Ttl = @ttl;
             }
 
-            [TerraformProperty(name: "relative_name", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "relative_name", @out: false, min: 1, max: 1)]
             public string @RelativeName { get; }
 
-            [TerraformProperty(name: "ttl", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "ttl", @out: false, min: 1, max: 1)]
             public int @Ttl { get; }
         }
 
@@ -57,28 +57,28 @@ namespace NTerraform.Resources
             @TrafficRoutingMethod = @trafficRoutingMethod;
         }
 
-        [TerraformProperty(name: "dns_config", @out: false, nested: true, min: 1, max: 0)]
+        [TerraformProperty(name: "dns_config", @out: false, min: 1, max: 0)]
         public dns_config[] @DnsConfig { get; }
 
-        [TerraformProperty(name: "monitor_config", @out: false, nested: true, min: 1, max: 0)]
+        [TerraformProperty(name: "monitor_config", @out: false, min: 1, max: 0)]
         public monitor_config[] @MonitorConfig { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "traffic_routing_method", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "traffic_routing_method", @out: false, min: 1, max: 1)]
         public string @TrafficRoutingMethod { get; }
 
-        [TerraformProperty(name: "fqdn", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
         public string @Fqdn { get; }
 
-        [TerraformProperty(name: "profile_status", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "profile_status", @out: true, min: 0, max: 1)]
         public string @ProfileStatus { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

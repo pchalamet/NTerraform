@@ -10,16 +10,16 @@ namespace NTerraform.Datas
             @Name = @name;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "certificate_permissions", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "certificate_permissions", @out: true, min: 0, max: 1)]
         public string[] @CertificatePermissions { get; }
 
-        [TerraformProperty(name: "key_permissions", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "key_permissions", @out: true, min: 0, max: 1)]
         public string[] @KeyPermissions { get; }
 
-        [TerraformProperty(name: "secret_permissions", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "secret_permissions", @out: true, min: 0, max: 1)]
         public string[] @SecretPermissions { get; }
     }
 

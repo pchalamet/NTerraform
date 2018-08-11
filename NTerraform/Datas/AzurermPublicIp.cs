@@ -12,25 +12,25 @@ namespace NTerraform.Datas
             @ResourceGroupName = @resourceGroupName;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "domain_name_label", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "domain_name_label", @out: true, min: 0, max: 1)]
         public string @DomainNameLabel { get; }
 
-        [TerraformProperty(name: "fqdn", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
         public string @Fqdn { get; }
 
-        [TerraformProperty(name: "idle_timeout_in_minutes", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "idle_timeout_in_minutes", @out: true, min: 0, max: 1)]
         public int? @IdleTimeoutInMinutes { get; }
 
-        [TerraformProperty(name: "ip_address", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "ip_address", @out: true, min: 0, max: 1)]
         public string @IpAddress { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

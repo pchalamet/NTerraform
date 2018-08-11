@@ -12,31 +12,31 @@ namespace NTerraform.Datas
             {
             }
 
-            [TerraformProperty(name: "application_gateway_backend_address_pools_ids", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "application_gateway_backend_address_pools_ids", @out: true, min: 0, max: 1)]
             public string[] @ApplicationGatewayBackendAddressPoolsIds { get; }
 
-            [TerraformProperty(name: "load_balancer_backend_address_pools_ids", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "load_balancer_backend_address_pools_ids", @out: true, min: 0, max: 1)]
             public string[] @LoadBalancerBackendAddressPoolsIds { get; }
 
-            [TerraformProperty(name: "load_balancer_inbound_nat_rules_ids", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "load_balancer_inbound_nat_rules_ids", @out: true, min: 0, max: 1)]
             public string[] @LoadBalancerInboundNatRulesIds { get; }
 
-            [TerraformProperty(name: "name", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
             public string @Name { get; }
 
-            [TerraformProperty(name: "primary", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "primary", @out: true, min: 0, max: 1)]
             public bool? @Primary { get; }
 
-            [TerraformProperty(name: "private_ip_address", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "private_ip_address", @out: true, min: 0, max: 1)]
             public string @PrivateIpAddress { get; }
 
-            [TerraformProperty(name: "private_ip_address_allocation", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "private_ip_address_allocation", @out: true, min: 0, max: 1)]
             public string @PrivateIpAddressAllocation { get; }
 
-            [TerraformProperty(name: "public_ip_address_id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "public_ip_address_id", @out: true, min: 0, max: 1)]
             public string @PublicIpAddressId { get; }
 
-            [TerraformProperty(name: "subnet_id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "subnet_id", @out: true, min: 0, max: 1)]
             public string @SubnetId { get; }
         }
 
@@ -49,52 +49,52 @@ namespace NTerraform.Datas
             @IpConfiguration = @ipConfiguration;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "applied_dns_servers", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "applied_dns_servers", @out: true, min: 0, max: 1)]
         public string[] @AppliedDnsServers { get; }
 
-        [TerraformProperty(name: "dns_servers", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "dns_servers", @out: true, min: 0, max: 1)]
         public string[] @DnsServers { get; }
 
-        [TerraformProperty(name: "enable_accelerated_networking", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "enable_accelerated_networking", @out: true, min: 0, max: 1)]
         public bool? @EnableAcceleratedNetworking { get; }
 
-        [TerraformProperty(name: "enable_ip_forwarding", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "enable_ip_forwarding", @out: true, min: 0, max: 1)]
         public bool? @EnableIpForwarding { get; }
 
-        [TerraformProperty(name: "internal_dns_name_label", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "internal_dns_name_label", @out: true, min: 0, max: 1)]
         public string @InternalDnsNameLabel { get; }
 
-        [TerraformProperty(name: "internal_fqdn", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "internal_fqdn", @out: true, min: 0, max: 1)]
         public string @InternalFqdn { get; }
 
-        [TerraformProperty(name: "ip_configuration", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "ip_configuration", @out: false, min: 0, max: 0)]
         public ip_configuration[] @IpConfiguration { get; }
 
-        [TerraformProperty(name: "location", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "mac_address", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "mac_address", @out: true, min: 0, max: 1)]
         public string @MacAddress { get; }
 
-        [TerraformProperty(name: "network_security_group_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "network_security_group_id", @out: true, min: 0, max: 1)]
         public string @NetworkSecurityGroupId { get; }
 
-        [TerraformProperty(name: "private_ip_address", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "private_ip_address", @out: true, min: 0, max: 1)]
         public string @PrivateIpAddress { get; }
 
-        [TerraformProperty(name: "private_ip_addresses", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "private_ip_addresses", @out: true, min: 0, max: 1)]
         public string[] @PrivateIpAddresses { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [TerraformProperty(name: "virtual_machine_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "virtual_machine_id", @out: true, min: 0, max: 1)]
         public string @VirtualMachineId { get; }
     }
 

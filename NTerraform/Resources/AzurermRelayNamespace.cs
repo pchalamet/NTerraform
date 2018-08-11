@@ -13,7 +13,7 @@ namespace NTerraform.Resources
                 @Name = @name;
             }
 
-            [TerraformProperty(name: "name", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
         }
 
@@ -28,34 +28,34 @@ namespace NTerraform.Resources
             @Sku = @sku;
         }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "sku", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
         public sku[] @Sku { get; }
 
-        [TerraformProperty(name: "metric_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "metric_id", @out: true, min: 0, max: 1)]
         public string @MetricId { get; }
 
-        [TerraformProperty(name: "primary_connection_string", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "primary_connection_string", @out: true, min: 0, max: 1)]
         public string @PrimaryConnectionString { get; }
 
-        [TerraformProperty(name: "primary_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
         public string @PrimaryKey { get; }
 
-        [TerraformProperty(name: "secondary_connection_string", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "secondary_connection_string", @out: true, min: 0, max: 1)]
         public string @SecondaryConnectionString { get; }
 
-        [TerraformProperty(name: "secondary_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
         public string @SecondaryKey { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

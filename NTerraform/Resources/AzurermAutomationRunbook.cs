@@ -18,10 +18,10 @@ namespace NTerraform.Resources
                     @Value = @value;
                 }
 
-                [TerraformProperty(name: "algorithm", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "algorithm", @out: false, min: 1, max: 1)]
                 public string @Algorithm { get; }
 
-                [TerraformProperty(name: "value", @out: false, nested: false, min: 1, max: 1)]
+                [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
                 public string @Value { get; }
             }
 
@@ -34,13 +34,13 @@ namespace NTerraform.Resources
                 @Version = @version;
             }
 
-            [TerraformProperty(name: "uri", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "uri", @out: false, min: 1, max: 1)]
             public string @Uri { get; }
 
-            [TerraformProperty(name: "hash", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "hash", @out: false, min: 0, max: 1)]
             public hash[] @Hash { get; }
 
-            [TerraformProperty(name: "version", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "version", @out: false, min: 0, max: 1)]
             public string @Version { get; }
         }
 
@@ -65,34 +65,34 @@ namespace NTerraform.Resources
             @Description = @description;
         }
 
-        [TerraformProperty(name: "account_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "account_name", @out: false, min: 1, max: 1)]
         public string @AccountName { get; }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "log_progress", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "log_progress", @out: false, min: 1, max: 1)]
         public bool @LogProgress { get; }
 
-        [TerraformProperty(name: "log_verbose", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "log_verbose", @out: false, min: 1, max: 1)]
         public bool @LogVerbose { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "publish_content_link", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "publish_content_link", @out: false, min: 1, max: 1)]
         public publish_content_link[] @PublishContentLink { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "runbook_type", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "runbook_type", @out: false, min: 1, max: 1)]
         public string @RunbookType { get; }
 
-        [TerraformProperty(name: "description", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

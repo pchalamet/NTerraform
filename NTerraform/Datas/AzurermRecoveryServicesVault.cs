@@ -12,19 +12,19 @@ namespace NTerraform.Datas
             @ResourceGroupName = @resourceGroupName;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "location", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "sku", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "sku", @out: true, min: 0, max: 1)]
         public string @Sku { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

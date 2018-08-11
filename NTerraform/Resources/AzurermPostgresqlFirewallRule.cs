@@ -18,19 +18,19 @@ namespace NTerraform.Resources
             @StartIpAddress = @startIpAddress;
         }
 
-        [TerraformProperty(name: "end_ip_address", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "end_ip_address", @out: false, min: 1, max: 1)]
         public string @EndIpAddress { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "server_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "server_name", @out: false, min: 1, max: 1)]
         public string @ServerName { get; }
 
-        [TerraformProperty(name: "start_ip_address", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "start_ip_address", @out: false, min: 1, max: 1)]
         public string @StartIpAddress { get; }
     }
 

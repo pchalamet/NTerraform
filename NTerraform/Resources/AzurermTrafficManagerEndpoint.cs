@@ -22,43 +22,43 @@ namespace NTerraform.Resources
             @TargetResourceId = @targetResourceId;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "profile_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "profile_name", @out: false, min: 1, max: 1)]
         public string @ProfileName { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "type", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
         public string @Type { get; }
 
-        [TerraformProperty(name: "endpoint_location", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "endpoint_location", @out: true, min: 0, max: 1)]
         public string @EndpointLocation { get; }
 
-        [TerraformProperty(name: "endpoint_monitor_status", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "endpoint_monitor_status", @out: true, min: 0, max: 1)]
         public string @EndpointMonitorStatus { get; }
 
-        [TerraformProperty(name: "endpoint_status", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "endpoint_status", @out: true, min: 0, max: 1)]
         public string @EndpointStatus { get; }
 
-        [TerraformProperty(name: "geo_mappings", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "geo_mappings", @out: false, min: 0, max: 1)]
         public string[] @GeoMappings { get; }
 
-        [TerraformProperty(name: "min_child_endpoints", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "min_child_endpoints", @out: false, min: 0, max: 1)]
         public int? @MinChildEndpoints { get; }
 
-        [TerraformProperty(name: "priority", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "priority", @out: true, min: 0, max: 1)]
         public int? @Priority { get; }
 
-        [TerraformProperty(name: "target", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "target", @out: true, min: 0, max: 1)]
         public string @Target { get; }
 
-        [TerraformProperty(name: "target_resource_id", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "target_resource_id", @out: false, min: 0, max: 1)]
         public string @TargetResourceId { get; }
 
-        [TerraformProperty(name: "weight", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "weight", @out: true, min: 0, max: 1)]
         public int? @Weight { get; }
     }
 

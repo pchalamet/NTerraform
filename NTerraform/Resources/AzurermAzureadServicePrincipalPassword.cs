@@ -14,19 +14,19 @@ namespace NTerraform.Resources
             @Value = @value;
         }
 
-        [TerraformProperty(name: "end_date", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "end_date", @out: false, min: 1, max: 1)]
         public string @EndDate { get; }
 
-        [TerraformProperty(name: "service_principal_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "service_principal_id", @out: false, min: 1, max: 1)]
         public string @ServicePrincipalId { get; }
 
-        [TerraformProperty(name: "value", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
         public string @Value { get; }
 
-        [TerraformProperty(name: "key_id", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "key_id", @out: true, min: 0, max: 1)]
         public string @KeyId { get; }
 
-        [TerraformProperty(name: "start_date", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "start_date", @out: true, min: 0, max: 1)]
         public string @StartDate { get; }
     }
 

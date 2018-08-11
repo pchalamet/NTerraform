@@ -12,19 +12,19 @@ namespace NTerraform.Datas
             {
             }
 
-            [TerraformProperty(name: "domain_name_label", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "domain_name_label", @out: true, min: 0, max: 1)]
             public string @DomainNameLabel { get; }
 
-            [TerraformProperty(name: "fqdn", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
             public string @Fqdn { get; }
 
-            [TerraformProperty(name: "id", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
             public string @Id { get; }
 
-            [TerraformProperty(name: "ip_address", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "ip_address", @out: true, min: 0, max: 1)]
             public string @IpAddress { get; }
 
-            [TerraformProperty(name: "name", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
             public string @Name { get; }
         }
 
@@ -41,19 +41,19 @@ namespace NTerraform.Datas
             @PublicIps = @publicIps;
         }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "allocation_type", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "allocation_type", @out: false, min: 0, max: 1)]
         public string @AllocationType { get; }
 
-        [TerraformProperty(name: "attached", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "attached", @out: false, min: 0, max: 1)]
         public bool? @Attached { get; }
 
-        [TerraformProperty(name: "name_prefix", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "name_prefix", @out: false, min: 0, max: 1)]
         public string @NamePrefix { get; }
 
-        [TerraformProperty(name: "public_ips", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "public_ips", @out: false, min: 0, max: 0)]
         public public_ips[] @PublicIps { get; }
     }
 

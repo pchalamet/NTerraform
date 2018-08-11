@@ -10,7 +10,7 @@ namespace NTerraform.Datas
             @Name = @name;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
     }
 

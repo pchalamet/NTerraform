@@ -14,19 +14,19 @@ namespace NTerraform.Resources
             @ResourceGroupName = @resourceGroupName;
         }
 
-        [TerraformProperty(name: "express_route_circuit_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "express_route_circuit_name", @out: false, min: 1, max: 1)]
         public string @ExpressRouteCircuitName { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "authorization_key", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "authorization_key", @out: true, min: 0, max: 1)]
         public string @AuthorizationKey { get; }
 
-        [TerraformProperty(name: "authorization_use_status", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "authorization_use_status", @out: true, min: 0, max: 1)]
         public string @AuthorizationUseStatus { get; }
     }
 

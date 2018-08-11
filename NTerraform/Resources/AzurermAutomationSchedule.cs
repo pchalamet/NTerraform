@@ -18,34 +18,34 @@ namespace NTerraform.Resources
             @Timezone = @timezone;
         }
 
-        [TerraformProperty(name: "frequency", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "frequency", @out: false, min: 1, max: 1)]
         public string @Frequency { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "account_name", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "account_name", @out: true, min: 0, max: 1)]
         public string @AccountName { get; }
 
-        [TerraformProperty(name: "automation_account_name", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "automation_account_name", @out: true, min: 0, max: 1)]
         public string @AutomationAccountName { get; }
 
-        [TerraformProperty(name: "description", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
 
-        [TerraformProperty(name: "expiry_time", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "expiry_time", @out: true, min: 0, max: 1)]
         public string @ExpiryTime { get; }
 
-        [TerraformProperty(name: "interval", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "interval", @out: true, min: 0, max: 1)]
         public int? @Interval { get; }
 
-        [TerraformProperty(name: "start_time", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "start_time", @out: true, min: 0, max: 1)]
         public string @StartTime { get; }
 
-        [TerraformProperty(name: "timezone", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
         public string @Timezone { get; }
     }
 

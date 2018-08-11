@@ -13,7 +13,7 @@ namespace NTerraform.Resources
                 @AdvertisedPublicPrefixes = @advertisedPublicPrefixes;
             }
 
-            [TerraformProperty(name: "advertised_public_prefixes", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "advertised_public_prefixes", @out: false, min: 1, max: 1)]
             public string[] @AdvertisedPublicPrefixes { get; }
         }
 
@@ -36,40 +36,40 @@ namespace NTerraform.Resources
             @SharedKey = @sharedKey;
         }
 
-        [TerraformProperty(name: "express_route_circuit_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "express_route_circuit_name", @out: false, min: 1, max: 1)]
         public string @ExpressRouteCircuitName { get; }
 
-        [TerraformProperty(name: "peering_type", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "peering_type", @out: false, min: 1, max: 1)]
         public string @PeeringType { get; }
 
-        [TerraformProperty(name: "primary_peer_address_prefix", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "primary_peer_address_prefix", @out: false, min: 1, max: 1)]
         public string @PrimaryPeerAddressPrefix { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "secondary_peer_address_prefix", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "secondary_peer_address_prefix", @out: false, min: 1, max: 1)]
         public string @SecondaryPeerAddressPrefix { get; }
 
-        [TerraformProperty(name: "vlan_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "vlan_id", @out: false, min: 1, max: 1)]
         public int @VlanId { get; }
 
-        [TerraformProperty(name: "azure_asn", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "azure_asn", @out: true, min: 0, max: 1)]
         public int? @AzureAsn { get; }
 
-        [TerraformProperty(name: "microsoft_peering_config", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "microsoft_peering_config", @out: false, min: 0, max: 1)]
         public microsoft_peering_config[] @MicrosoftPeeringConfig { get; }
 
-        [TerraformProperty(name: "peer_asn", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "peer_asn", @out: true, min: 0, max: 1)]
         public int? @PeerAsn { get; }
 
-        [TerraformProperty(name: "primary_azure_port", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "primary_azure_port", @out: true, min: 0, max: 1)]
         public string @PrimaryAzurePort { get; }
 
-        [TerraformProperty(name: "secondary_azure_port", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "secondary_azure_port", @out: true, min: 0, max: 1)]
         public string @SecondaryAzurePort { get; }
 
-        [TerraformProperty(name: "shared_key", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "shared_key", @out: false, min: 0, max: 1)]
         public string @SharedKey { get; }
     }
 

@@ -5,6 +5,20 @@ namespace NTerraform.Resources
     [TerraformStructure(category: "resource", typeName: "azurerm_metric_alertrule")]
     public sealed class azurerm_metric_alertrule : NTerraform.resource
     {
+        [TerraformStructure(category: "", typeName: "email_action")]
+        public sealed class email_action
+        {
+            public email_action()
+            {
+            }
+
+            [TerraformProperty(name: "custom_emails", @out: true, min: 0, max: 1)]
+            public string[] @CustomEmails { get; }
+
+            [TerraformProperty(name: "send_to_service_owners", @out: true, min: 0, max: 1)]
+            public bool? @SendToServiceOwners { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "webhook_action")]
         public sealed class webhook_action
         {
@@ -13,25 +27,11 @@ namespace NTerraform.Resources
                 @ServiceUri = @serviceUri;
             }
 
-            [TerraformProperty(name: "service_uri", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "service_uri", @out: false, min: 1, max: 1)]
             public string @ServiceUri { get; }
 
-            [TerraformProperty(name: "properties", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "properties", @out: true, min: 0, max: 1)]
             public Dictionary<string,string> @Properties { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "email_action")]
-        public sealed class email_action
-        {
-            public email_action()
-            {
-            }
-
-            [TerraformProperty(name: "custom_emails", @out: true, nested: false, min: 0, max: 1)]
-            public string[] @CustomEmails { get; }
-
-            [TerraformProperty(name: "send_to_service_owners", @out: true, nested: false, min: 0, max: 1)]
-            public bool? @SendToServiceOwners { get; }
         }
 
         public azurerm_metric_alertrule(string @aggregation,
@@ -61,46 +61,46 @@ namespace NTerraform.Resources
             @WebhookAction = @webhookAction;
         }
 
-        [TerraformProperty(name: "aggregation", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "aggregation", @out: false, min: 1, max: 1)]
         public string @Aggregation { get; }
 
-        [TerraformProperty(name: "location", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "metric_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "metric_name", @out: false, min: 1, max: 1)]
         public string @MetricName { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "operator", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "operator", @out: false, min: 1, max: 1)]
         public string @Operator { get; }
 
-        [TerraformProperty(name: "period", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "period", @out: false, min: 1, max: 1)]
         public string @Period { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "resource_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_id", @out: false, min: 1, max: 1)]
         public string @ResourceId { get; }
 
-        [TerraformProperty(name: "threshold", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "threshold", @out: false, min: 1, max: 1)]
         public int @Threshold { get; }
 
-        [TerraformProperty(name: "description", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "description", @out: true, min: 0, max: 1)]
         public string @Description { get; }
 
-        [TerraformProperty(name: "email_action", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "email_action", @out: false, min: 0, max: 1)]
         public email_action[] @EmailAction { get; }
 
-        [TerraformProperty(name: "enabled", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
         public bool? @Enabled { get; }
 
-        [TerraformProperty(name: "tags", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [TerraformProperty(name: "webhook_action", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "webhook_action", @out: false, min: 0, max: 1)]
         public webhook_action[] @WebhookAction { get; }
     }
 

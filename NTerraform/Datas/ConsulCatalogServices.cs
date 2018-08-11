@@ -5,6 +5,17 @@ namespace NTerraform.Datas
     [TerraformStructure(category: "data", typeName: "consul_catalog_services")]
     public sealed class consul_catalog_services : NTerraform.data
     {
+        [TerraformStructure(category: "", typeName: "services")]
+        public sealed class services
+        {
+            public services()
+            {
+            }
+
+            [TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
+            public string[] @Tags { get; }
+        }
+
         [TerraformStructure(category: "", typeName: "query_options")]
         public sealed class query_options
         {
@@ -27,40 +38,29 @@ namespace NTerraform.Datas
                 @WaitTime = @waitTime;
             }
 
-            [TerraformProperty(name: "allow_stale", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "allow_stale", @out: false, min: 0, max: 1)]
             public bool? @AllowStale { get; }
 
-            [TerraformProperty(name: "datacenter", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "datacenter", @out: false, min: 0, max: 1)]
             public string @Datacenter { get; }
 
-            [TerraformProperty(name: "near", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "near", @out: false, min: 0, max: 1)]
             public string @Near { get; }
 
-            [TerraformProperty(name: "node_meta", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "node_meta", @out: false, min: 0, max: 1)]
             public Dictionary<string,string> @NodeMeta { get; }
 
-            [TerraformProperty(name: "require_consistent", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "require_consistent", @out: false, min: 0, max: 1)]
             public bool? @RequireConsistent { get; }
 
-            [TerraformProperty(name: "token", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
             public string @Token { get; }
 
-            [TerraformProperty(name: "wait_index", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "wait_index", @out: false, min: 0, max: 1)]
             public int? @WaitIndex { get; }
 
-            [TerraformProperty(name: "wait_time", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "wait_time", @out: false, min: 0, max: 1)]
             public string @WaitTime { get; }
-        }
-
-        [TerraformStructure(category: "", typeName: "services")]
-        public sealed class services
-        {
-            public services()
-            {
-            }
-
-            [TerraformProperty(name: "tags", @out: true, nested: false, min: 0, max: 1)]
-            public string[] @Tags { get; }
         }
 
         public consul_catalog_services(query_options[] @queryOptions = null,
@@ -70,16 +70,16 @@ namespace NTerraform.Datas
             @Services = @services;
         }
 
-        [TerraformProperty(name: "datacenter", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
         public string @Datacenter { get; }
 
-        [TerraformProperty(name: "names", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "names", @out: true, min: 0, max: 1)]
         public string[] @Names { get; }
 
-        [TerraformProperty(name: "query_options", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "query_options", @out: false, min: 0, max: 0)]
         public query_options[] @QueryOptions { get; }
 
-        [TerraformProperty(name: "services", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "services", @out: false, min: 0, max: 0)]
         public Dictionary<string,services> @Services { get; }
     }
 

@@ -20,22 +20,22 @@ namespace NTerraform.Resources
             @Parameters = @parameters;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "policy_definition_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "policy_definition_id", @out: false, min: 1, max: 1)]
         public string @PolicyDefinitionId { get; }
 
-        [TerraformProperty(name: "scope", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "scope", @out: false, min: 1, max: 1)]
         public string @Scope { get; }
 
-        [TerraformProperty(name: "description", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
 
-        [TerraformProperty(name: "display_name", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "display_name", @out: false, min: 0, max: 1)]
         public string @DisplayName { get; }
 
-        [TerraformProperty(name: "parameters", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
         public string @Parameters { get; }
     }
 

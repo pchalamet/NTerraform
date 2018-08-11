@@ -17,13 +17,13 @@ namespace NTerraform.Datas
                 @Default = @default;
             }
 
-            [TerraformProperty(name: "name", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [TerraformProperty(name: "path", @out: false, nested: false, min: 1, max: 1)]
+            [TerraformProperty(name: "path", @out: false, min: 1, max: 1)]
             public string @Path { get; }
 
-            [TerraformProperty(name: "default", @out: false, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "default", @out: false, min: 0, max: 1)]
             public string @Default { get; }
         }
 
@@ -36,22 +36,22 @@ namespace NTerraform.Datas
             @Token = @token;
         }
 
-        [TerraformProperty(name: "path_prefix", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "path_prefix", @out: false, min: 1, max: 1)]
         public string @PathPrefix { get; }
 
-        [TerraformProperty(name: "datacenter", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
         public string @Datacenter { get; }
 
-        [TerraformProperty(name: "subkey", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "subkey", @out: false, min: 0, max: 0)]
         public subkey[] @Subkey { get; }
 
-        [TerraformProperty(name: "subkeys", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "subkeys", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Subkeys { get; }
 
-        [TerraformProperty(name: "token", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }
 
-        [TerraformProperty(name: "var", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "var", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Var { get; }
     }
 

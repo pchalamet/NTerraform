@@ -16,16 +16,16 @@ namespace NTerraform.Resources
             @Notes = @notes;
         }
 
-        [TerraformProperty(name: "lock_level", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "lock_level", @out: false, min: 1, max: 1)]
         public string @LockLevel { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "scope", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "scope", @out: false, min: 1, max: 1)]
         public string @Scope { get; }
 
-        [TerraformProperty(name: "notes", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "notes", @out: false, min: 0, max: 1)]
         public string @Notes { get; }
     }
 

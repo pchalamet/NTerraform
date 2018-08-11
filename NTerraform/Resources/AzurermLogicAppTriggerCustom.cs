@@ -14,13 +14,13 @@ namespace NTerraform.Resources
             @Name = @name;
         }
 
-        [TerraformProperty(name: "body", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "body", @out: false, min: 1, max: 1)]
         public string @Body { get; }
 
-        [TerraformProperty(name: "logic_app_id", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "logic_app_id", @out: false, min: 1, max: 1)]
         public string @LogicAppId { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
     }
 

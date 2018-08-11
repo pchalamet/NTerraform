@@ -12,7 +12,7 @@ namespace NTerraform.Datas
             {
             }
 
-            [TerraformProperty(name: "name", @out: true, nested: false, min: 0, max: 1)]
+            [TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
             public string @Name { get; }
         }
 
@@ -25,25 +25,25 @@ namespace NTerraform.Datas
             @Sku = @sku;
         }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "enabled", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "enabled", @out: true, min: 0, max: 1)]
         public bool? @Enabled { get; }
 
-        [TerraformProperty(name: "location", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
         public string @Location { get; }
 
-        [TerraformProperty(name: "namespace_type", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "namespace_type", @out: true, min: 0, max: 1)]
         public string @NamespaceType { get; }
 
-        [TerraformProperty(name: "servicebus_endpoint", @out: true, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "servicebus_endpoint", @out: true, min: 0, max: 1)]
         public string @ServicebusEndpoint { get; }
 
-        [TerraformProperty(name: "sku", @out: false, nested: true, min: 0, max: 0)]
+        [TerraformProperty(name: "sku", @out: false, min: 0, max: 0)]
         public sku[] @Sku { get; }
     }
 

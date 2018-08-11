@@ -20,22 +20,22 @@ namespace NTerraform.Resources
             @Description = @description;
         }
 
-        [TerraformProperty(name: "account_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "account_name", @out: false, min: 1, max: 1)]
         public string @AccountName { get; }
 
-        [TerraformProperty(name: "name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [TerraformProperty(name: "password", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
         public string @Password { get; }
 
-        [TerraformProperty(name: "resource_group_name", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [TerraformProperty(name: "username", @out: false, nested: true, min: 1, max: 1)]
+        [TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
         public string @Username { get; }
 
-        [TerraformProperty(name: "description", @out: false, nested: true, min: 0, max: 1)]
+        [TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
     }
 
