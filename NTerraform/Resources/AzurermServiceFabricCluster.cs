@@ -2,78 +2,14 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_service_fabric_cluster : NTerraform.resource
+    public sealed class azurerm_service_fabric_cluster : NTerraform.resource
     {
-        public class certificate
+        public sealed class node_type
         {
-            public certificate(string @thumbprint,
-                               string @x509StoreName,
-                               string @thumbprintSecondary = null)
+            public sealed class application_ports
             {
-                @Thumbprint = @thumbprint;
-                @X509StoreName = @x509StoreName;
-                @ThumbprintSecondary = @thumbprintSecondary;
-            }
-
-            public string @Thumbprint { get; }
-            public string @X509StoreName { get; }
-            public string @ThumbprintSecondary { get; }
-        }
-
-        public class diagnostics_config
-        {
-            public diagnostics_config(string @blobEndpoint,
-                                      string @protectedAccountKeyName,
-                                      string @queueEndpoint,
-                                      string @storageAccountName,
-                                      string @tableEndpoint)
-            {
-                @BlobEndpoint = @blobEndpoint;
-                @ProtectedAccountKeyName = @protectedAccountKeyName;
-                @QueueEndpoint = @queueEndpoint;
-                @StorageAccountName = @storageAccountName;
-                @TableEndpoint = @tableEndpoint;
-            }
-
-            public string @BlobEndpoint { get; }
-            public string @ProtectedAccountKeyName { get; }
-            public string @QueueEndpoint { get; }
-            public string @StorageAccountName { get; }
-            public string @TableEndpoint { get; }
-        }
-
-        public class fabric_settings
-        {
-            public fabric_settings(string @name,
-                                   Dictionary<string,string> @parameters = null)
-            {
-                @Name = @name;
-                @Parameters = @parameters;
-            }
-
-            public string @Name { get; }
-            public Dictionary<string,string> @Parameters { get; }
-        }
-
-        public class client_certificate_thumbprint
-        {
-            public client_certificate_thumbprint(bool @isAdmin,
-                                                 string @thumbprint)
-            {
-                @IsAdmin = @isAdmin;
-                @Thumbprint = @thumbprint;
-            }
-
-            public bool @IsAdmin { get; }
-            public string @Thumbprint { get; }
-        }
-
-        public class node_type
-        {
-            public class ephemeral_ports
-            {
-                public ephemeral_ports(int @endPort,
-                                       int @startPort)
+                public application_ports(int @endPort,
+                                         int @startPort)
                 {
                     @EndPort = @endPort;
                     @StartPort = @startPort;
@@ -83,10 +19,10 @@ namespace NTerraform.Resources
                 public int @StartPort { get; }
             }
 
-            public class application_ports
+            public sealed class ephemeral_ports
             {
-                public application_ports(int @endPort,
-                                         int @startPort)
+                public ephemeral_ports(int @endPort,
+                                       int @startPort)
                 {
                     @EndPort = @endPort;
                     @StartPort = @startPort;
@@ -123,6 +59,70 @@ namespace NTerraform.Resources
             public application_ports[] @ApplicationPorts { get; }
             public string @DurabilityLevel { get; }
             public ephemeral_ports[] @EphemeralPorts { get; }
+        }
+
+        public sealed class certificate
+        {
+            public certificate(string @thumbprint,
+                               string @x509StoreName,
+                               string @thumbprintSecondary = null)
+            {
+                @Thumbprint = @thumbprint;
+                @X509StoreName = @x509StoreName;
+                @ThumbprintSecondary = @thumbprintSecondary;
+            }
+
+            public string @Thumbprint { get; }
+            public string @X509StoreName { get; }
+            public string @ThumbprintSecondary { get; }
+        }
+
+        public sealed class diagnostics_config
+        {
+            public diagnostics_config(string @blobEndpoint,
+                                      string @protectedAccountKeyName,
+                                      string @queueEndpoint,
+                                      string @storageAccountName,
+                                      string @tableEndpoint)
+            {
+                @BlobEndpoint = @blobEndpoint;
+                @ProtectedAccountKeyName = @protectedAccountKeyName;
+                @QueueEndpoint = @queueEndpoint;
+                @StorageAccountName = @storageAccountName;
+                @TableEndpoint = @tableEndpoint;
+            }
+
+            public string @BlobEndpoint { get; }
+            public string @ProtectedAccountKeyName { get; }
+            public string @QueueEndpoint { get; }
+            public string @StorageAccountName { get; }
+            public string @TableEndpoint { get; }
+        }
+
+        public sealed class client_certificate_thumbprint
+        {
+            public client_certificate_thumbprint(bool @isAdmin,
+                                                 string @thumbprint)
+            {
+                @IsAdmin = @isAdmin;
+                @Thumbprint = @thumbprint;
+            }
+
+            public bool @IsAdmin { get; }
+            public string @Thumbprint { get; }
+        }
+
+        public sealed class fabric_settings
+        {
+            public fabric_settings(string @name,
+                                   Dictionary<string,string> @parameters = null)
+            {
+                @Name = @name;
+                @Parameters = @parameters;
+            }
+
+            public string @Name { get; }
+            public Dictionary<string,string> @Parameters { get; }
         }
 
         public azurerm_service_fabric_cluster(string @location,

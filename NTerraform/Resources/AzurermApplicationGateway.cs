@@ -2,23 +2,26 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_application_gateway : NTerraform.resource
+    public sealed class azurerm_application_gateway : NTerraform.resource
     {
-        public class gateway_ip_configuration
+        public sealed class backend_address_pool
         {
-            public gateway_ip_configuration(string @name,
-                                            string @subnetId)
+            public backend_address_pool(string @name,
+                                        string[] @fqdnList = null,
+                                        string[] @ipAddressList = null)
             {
                 @Name = @name;
-                @SubnetId = @subnetId;
+                @FqdnList = @fqdnList;
+                @IpAddressList = @ipAddressList;
             }
 
             public string @Name { get; }
-            public string @SubnetId { get; }
+            public string[] @FqdnList { get; }
             public string @Id { get; }
+            public string[] @IpAddressList { get; }
         }
 
-        public class http_listener
+        public sealed class http_listener
         {
             public http_listener(string @frontendIpConfigurationName,
                                  string @frontendPortName,
@@ -50,54 +53,41 @@ namespace NTerraform.Resources
             public string @SslCertificateName { get; }
         }
 
-        public class authentication_certificate
+        public sealed class ssl_certificate
         {
-            public authentication_certificate(string @data,
-                                              string @name)
+            public ssl_certificate(string @data,
+                                   string @name,
+                                   string @password)
             {
                 @Data = @data;
                 @Name = @name;
+                @Password = @password;
             }
 
             public string @Data { get; }
             public string @Name { get; }
+            public string @Password { get; }
             public string @Id { get; }
+            public string @PublicCertData { get; }
         }
 
-        public class sku
+        public sealed class gateway_ip_configuration
         {
-            public sku(int @capacity,
-                       string @name,
-                       string @tier)
-            {
-                @Capacity = @capacity;
-                @Name = @name;
-                @Tier = @tier;
-            }
-
-            public int @Capacity { get; }
-            public string @Name { get; }
-            public string @Tier { get; }
-        }
-
-        public class frontend_ip_configuration
-        {
-            public frontend_ip_configuration(string @name)
+            public gateway_ip_configuration(string @name,
+                                            string @subnetId)
             {
                 @Name = @name;
+                @SubnetId = @subnetId;
             }
 
             public string @Name { get; }
-            public string @Id { get; }
-            public string @PrivateIpAddress { get; }
-            public string @PrivateIpAddressAllocation { get; }
-            public string @PublicIpAddressId { get; }
             public string @SubnetId { get; }
+            public string @Id { get; }
         }
 
-        public class url_path_map
+        public sealed class url_path_map
         {
-            public class path_rule
+            public sealed class path_rule
             {
                 public path_rule(string @backendAddressPoolName,
                                  string @backendHttpSettingsName,
@@ -139,7 +129,57 @@ namespace NTerraform.Resources
             public string @Id { get; }
         }
 
-        public class request_routing_rule
+        public sealed class frontend_ip_configuration
+        {
+            public frontend_ip_configuration(string @name)
+            {
+                @Name = @name;
+            }
+
+            public string @Name { get; }
+            public string @Id { get; }
+            public string @PrivateIpAddress { get; }
+            public string @PrivateIpAddressAllocation { get; }
+            public string @PublicIpAddressId { get; }
+            public string @SubnetId { get; }
+        }
+
+        public sealed class sku
+        {
+            public sku(int @capacity,
+                       string @name,
+                       string @tier)
+            {
+                @Capacity = @capacity;
+                @Name = @name;
+                @Tier = @tier;
+            }
+
+            public int @Capacity { get; }
+            public string @Name { get; }
+            public string @Tier { get; }
+        }
+
+        public sealed class waf_configuration
+        {
+            public waf_configuration(bool @enabled,
+                                     string @firewallMode,
+                                     string @ruleSetVersion,
+                                     string @ruleSetType = null)
+            {
+                @Enabled = @enabled;
+                @FirewallMode = @firewallMode;
+                @RuleSetVersion = @ruleSetVersion;
+                @RuleSetType = @ruleSetType;
+            }
+
+            public bool @Enabled { get; }
+            public string @FirewallMode { get; }
+            public string @RuleSetVersion { get; }
+            public string @RuleSetType { get; }
+        }
+
+        public sealed class request_routing_rule
         {
             public request_routing_rule(string @httpListenerName,
                                         string @name,
@@ -169,9 +209,23 @@ namespace NTerraform.Resources
             public string @UrlPathMapName { get; }
         }
 
-        public class probe
+        public sealed class frontend_port
         {
-            public class match
+            public frontend_port(string @name,
+                                 int @port)
+            {
+                @Name = @name;
+                @Port = @port;
+            }
+
+            public string @Name { get; }
+            public int @Port { get; }
+            public string @Id { get; }
+        }
+
+        public sealed class probe
+        {
+            public sealed class match
             {
                 public match(string @body = null,
                              string[] @statusCode = null)
@@ -217,46 +271,23 @@ namespace NTerraform.Resources
             public int? @MinimumServers { get; }
         }
 
-        public class waf_configuration
+        public sealed class authentication_certificate
         {
-            public waf_configuration(bool @enabled,
-                                     string @firewallMode,
-                                     string @ruleSetVersion,
-                                     string @ruleSetType = null)
-            {
-                @Enabled = @enabled;
-                @FirewallMode = @firewallMode;
-                @RuleSetVersion = @ruleSetVersion;
-                @RuleSetType = @ruleSetType;
-            }
-
-            public bool @Enabled { get; }
-            public string @FirewallMode { get; }
-            public string @RuleSetVersion { get; }
-            public string @RuleSetType { get; }
-        }
-
-        public class ssl_certificate
-        {
-            public ssl_certificate(string @data,
-                                   string @name,
-                                   string @password)
+            public authentication_certificate(string @data,
+                                              string @name)
             {
                 @Data = @data;
                 @Name = @name;
-                @Password = @password;
             }
 
             public string @Data { get; }
             public string @Name { get; }
-            public string @Password { get; }
             public string @Id { get; }
-            public string @PublicCertData { get; }
         }
 
-        public class backend_http_settings
+        public sealed class backend_http_settings
         {
-            public class authentication_certificate
+            public sealed class authentication_certificate
             {
                 public authentication_certificate(string @name)
                 {
@@ -293,37 +324,6 @@ namespace NTerraform.Resources
             public string @ProbeId { get; }
             public string @ProbeName { get; }
             public int? @RequestTimeout { get; }
-        }
-
-        public class frontend_port
-        {
-            public frontend_port(string @name,
-                                 int @port)
-            {
-                @Name = @name;
-                @Port = @port;
-            }
-
-            public string @Name { get; }
-            public int @Port { get; }
-            public string @Id { get; }
-        }
-
-        public class backend_address_pool
-        {
-            public backend_address_pool(string @name,
-                                        string[] @fqdnList = null,
-                                        string[] @ipAddressList = null)
-            {
-                @Name = @name;
-                @FqdnList = @fqdnList;
-                @IpAddressList = @ipAddressList;
-            }
-
-            public string @Name { get; }
-            public string[] @FqdnList { get; }
-            public string @Id { get; }
-            public string[] @IpAddressList { get; }
         }
 
         public azurerm_application_gateway(backend_address_pool[] @backendAddressPool,

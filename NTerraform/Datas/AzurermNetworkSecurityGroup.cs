@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_network_security_group : NTerraform.data
+    public sealed class azurerm_network_security_group : NTerraform.data
     {
-        public class security_rule
+        public sealed class security_rule
         {
             public security_rule(string[] @destinationApplicationSecurityGroupIds = null,
                                  string[] @sourceApplicationSecurityGroupIds = null)

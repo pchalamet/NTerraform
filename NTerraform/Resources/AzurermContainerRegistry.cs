@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_container_registry : NTerraform.resource
+    public sealed class azurerm_container_registry : NTerraform.resource
     {
-        public class storage_account
+        public sealed class storage_account
         {
             public storage_account(string @accessKey,
                                    string @name)

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_dns_caa_record : NTerraform.resource
+    public sealed class azurerm_dns_caa_record : NTerraform.resource
     {
-        public class record
+        public sealed class record
         {
             public record(int @flags,
                           string @tag,

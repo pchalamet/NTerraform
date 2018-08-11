@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_express_route_circuit_authorization : NTerraform.resource
+    public sealed class azurerm_express_route_circuit_authorization : NTerraform.resource
     {
         public azurerm_express_route_circuit_authorization(string @expressRouteCircuitName,
                                                            string @name,

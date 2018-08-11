@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_subscriptions : NTerraform.data
+    public sealed class azurerm_subscriptions : NTerraform.data
     {
-        public class subscriptions
+        public sealed class subscriptions
         {
             public subscriptions()
             {

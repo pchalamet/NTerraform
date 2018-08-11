@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_virtual_network_gateway : NTerraform.data
+    public sealed class azurerm_virtual_network_gateway : NTerraform.data
     {
-        public class ip_configuration
+        public sealed class ip_configuration
         {
             public ip_configuration()
             {
@@ -16,20 +16,9 @@ namespace NTerraform.Datas
             public string @SubnetId { get; }
         }
 
-        public class bgp_settings
+        public sealed class vpn_client_configuration
         {
-            public bgp_settings()
-            {
-            }
-
-            public int? @Asn { get; }
-            public int? @PeerWeight { get; }
-            public string @PeeringAddress { get; }
-        }
-
-        public class vpn_client_configuration
-        {
-            public class root_certificate
+            public sealed class root_certificate
             {
                 public root_certificate()
                 {
@@ -39,7 +28,7 @@ namespace NTerraform.Datas
                 public string @PublicCertData { get; }
             }
 
-            public class revoked_certificate
+            public sealed class revoked_certificate
             {
                 public revoked_certificate()
                 {
@@ -62,6 +51,17 @@ namespace NTerraform.Datas
             public revoked_certificate[] @RevokedCertificate { get; }
             public root_certificate[] @RootCertificate { get; }
             public string[] @VpnClientProtocols { get; }
+        }
+
+        public sealed class bgp_settings
+        {
+            public bgp_settings()
+            {
+            }
+
+            public int? @Asn { get; }
+            public int? @PeerWeight { get; }
+            public string @PeeringAddress { get; }
         }
 
         public azurerm_virtual_network_gateway(string @name,

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_local_network_gateway : NTerraform.resource
+    public sealed class azurerm_local_network_gateway : NTerraform.resource
     {
-        public class bgp_settings
+        public sealed class bgp_settings
         {
             public bgp_settings(int @asn,
                                 string @bgpPeeringAddress)

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_virtual_network_gateway_connection : NTerraform.resource
+    public sealed class azurerm_virtual_network_gateway_connection : NTerraform.resource
     {
-        public class ipsec_policy
+        public sealed class ipsec_policy
         {
             public ipsec_policy(string @dhGroup,
                                 string @ikeEncryption,

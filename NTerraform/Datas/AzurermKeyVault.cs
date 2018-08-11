@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_key_vault : NTerraform.data
+    public sealed class azurerm_key_vault : NTerraform.data
     {
-        public class sku
+        public sealed class sku
         {
             public sku()
             {
@@ -13,7 +13,7 @@ namespace NTerraform.Datas
             public string @Name { get; }
         }
 
-        public class access_policy
+        public sealed class access_policy
         {
             public access_policy()
             {

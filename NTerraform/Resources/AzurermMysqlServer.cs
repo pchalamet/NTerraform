@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_mysql_server : NTerraform.resource
+    public sealed class azurerm_mysql_server : NTerraform.resource
     {
-        public class sku
+        public sealed class sku
         {
             public sku(int @capacity,
                        string @family,
@@ -23,7 +23,7 @@ namespace NTerraform.Resources
             public string @Tier { get; }
         }
 
-        public class storage_profile
+        public sealed class storage_profile
         {
             public storage_profile(int @storageMb,
                                    int? @backupRetentionDays = null,

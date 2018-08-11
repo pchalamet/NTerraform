@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_log_analytics_solution : NTerraform.resource
+    public sealed class azurerm_log_analytics_solution : NTerraform.resource
     {
-        public class plan
+        public sealed class plan
         {
             public plan(string @product,
                         string @publisher,

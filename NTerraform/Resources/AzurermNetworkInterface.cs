@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_network_interface : NTerraform.resource
+    public sealed class azurerm_network_interface : NTerraform.resource
     {
-        public class ip_configuration
+        public sealed class ip_configuration
         {
             public ip_configuration(string @name,
                                     string @privateIpAddressAllocation,

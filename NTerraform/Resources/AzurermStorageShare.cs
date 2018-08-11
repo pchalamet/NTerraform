@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_storage_share : NTerraform.resource
+    public sealed class azurerm_storage_share : NTerraform.resource
     {
         public azurerm_storage_share(string @name,
                                      string @resourceGroupName,

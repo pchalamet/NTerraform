@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Providers
 {
-    public class consul : NTerraform.provider
+    public sealed class consul : NTerraform.provider
     {
         public consul(string @address = null,
                       string @caFile = null,

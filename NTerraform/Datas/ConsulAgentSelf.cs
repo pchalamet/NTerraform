@@ -2,9 +2,58 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class consul_agent_self : NTerraform.data
+    public sealed class consul_agent_self : NTerraform.data
     {
-        public class performance
+        public sealed class unix_sockets
+        {
+            public unix_sockets()
+            {
+            }
+
+            public string @Group { get; }
+            public string @Mode { get; }
+            public string @User { get; }
+        }
+
+        public sealed class addresses
+        {
+            public addresses()
+            {
+            }
+
+            public string @Dns { get; }
+            public string @Http { get; }
+            public string @Https { get; }
+            public string @Rpc { get; }
+        }
+
+        public sealed class retry_join_ec2
+        {
+            public retry_join_ec2()
+            {
+            }
+
+            public string @Region { get; }
+            public string @TagKey { get; }
+            public string @TagValue { get; }
+        }
+
+        public sealed class ports
+        {
+            public ports()
+            {
+            }
+
+            public int? @Dns { get; }
+            public int? @Http { get; }
+            public int? @Https { get; }
+            public int? @Rpc { get; }
+            public int? @SerfLan { get; }
+            public int? @SerfWan { get; }
+            public int? @Server { get; }
+        }
+
+        public sealed class performance
         {
             public performance()
             {
@@ -13,7 +62,57 @@ namespace NTerraform.Datas
             public string @RaftMultiplier { get; }
         }
 
-        public class telemetry
+        public sealed class retry_join_gce
+        {
+            public retry_join_gce()
+            {
+            }
+
+            public string @CredentialsFile { get; }
+            public string @ProjectName { get; }
+            public string @TagValue { get; }
+            public string @ZonePattern { get; }
+        }
+
+        public sealed class dns
+        {
+            public dns()
+            {
+            }
+
+            public bool? @AllowStale { get; }
+            public bool? @EnableCompression { get; }
+            public bool? @EnableTruncate { get; }
+            public string @MaxStale { get; }
+            public string @NodeTtl { get; }
+            public bool? @OnlyPassing { get; }
+            public string @RecursorTimeout { get; }
+            public string @ServiceTtl { get; }
+            public int? @UdpAnswerLimit { get; }
+        }
+
+        public sealed class tagged_addresses
+        {
+            public tagged_addresses()
+            {
+            }
+
+            public string @Lan { get; }
+            public string @Wan { get; }
+        }
+
+        public sealed class advertise_addrs
+        {
+            public advertise_addrs()
+            {
+            }
+
+            public string @Rpc { get; }
+            public string @SerfLan { get; }
+            public string @SerfWan { get; }
+        }
+
+        public sealed class telemetry
         {
             public telemetry()
             {
@@ -38,105 +137,6 @@ namespace NTerraform.Datas
             public string @StatsdAddr { get; }
             public string @StatsiteAddr { get; }
             public string @StatsitePrefix { get; }
-        }
-
-        public class advertise_addrs
-        {
-            public advertise_addrs()
-            {
-            }
-
-            public string @Rpc { get; }
-            public string @SerfLan { get; }
-            public string @SerfWan { get; }
-        }
-
-        public class dns
-        {
-            public dns()
-            {
-            }
-
-            public bool? @AllowStale { get; }
-            public bool? @EnableCompression { get; }
-            public bool? @EnableTruncate { get; }
-            public string @MaxStale { get; }
-            public string @NodeTtl { get; }
-            public bool? @OnlyPassing { get; }
-            public string @RecursorTimeout { get; }
-            public string @ServiceTtl { get; }
-            public int? @UdpAnswerLimit { get; }
-        }
-
-        public class retry_join_ec2
-        {
-            public retry_join_ec2()
-            {
-            }
-
-            public string @Region { get; }
-            public string @TagKey { get; }
-            public string @TagValue { get; }
-        }
-
-        public class ports
-        {
-            public ports()
-            {
-            }
-
-            public int? @Dns { get; }
-            public int? @Http { get; }
-            public int? @Https { get; }
-            public int? @Rpc { get; }
-            public int? @SerfLan { get; }
-            public int? @SerfWan { get; }
-            public int? @Server { get; }
-        }
-
-        public class tagged_addresses
-        {
-            public tagged_addresses()
-            {
-            }
-
-            public string @Lan { get; }
-            public string @Wan { get; }
-        }
-
-        public class addresses
-        {
-            public addresses()
-            {
-            }
-
-            public string @Dns { get; }
-            public string @Http { get; }
-            public string @Https { get; }
-            public string @Rpc { get; }
-        }
-
-        public class retry_join_gce
-        {
-            public retry_join_gce()
-            {
-            }
-
-            public string @CredentialsFile { get; }
-            public string @ProjectName { get; }
-            public string @TagValue { get; }
-            public string @ZonePattern { get; }
-        }
-
-        public class unix_sockets
-        {
-            public unix_sockets()
-            {
-            }
-
-            public string @Group { get; }
-            public string @Mode { get; }
-            public string @User { get; }
         }
 
         public consul_agent_self(Dictionary<string,addresses> @addresses = null,

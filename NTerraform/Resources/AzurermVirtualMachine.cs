@@ -2,9 +2,76 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_virtual_machine : NTerraform.resource
+    public sealed class azurerm_virtual_machine : NTerraform.resource
     {
-        public class plan
+        public sealed class os_profile_windows_config
+        {
+            public sealed class additional_unattend_config
+            {
+                public additional_unattend_config(string @component,
+                                                  string @content,
+                                                  string @pass,
+                                                  string @settingName)
+                {
+                    @Component = @component;
+                    @Content = @content;
+                    @Pass = @pass;
+                    @SettingName = @settingName;
+                }
+
+                public string @Component { get; }
+                public string @Content { get; }
+                public string @Pass { get; }
+                public string @SettingName { get; }
+            }
+
+            public sealed class winrm
+            {
+                public winrm(string @protocol,
+                             string @certificateUrl = null)
+                {
+                    @Protocol = @protocol;
+                    @CertificateUrl = @certificateUrl;
+                }
+
+                public string @Protocol { get; }
+                public string @CertificateUrl { get; }
+            }
+
+            public os_profile_windows_config(additional_unattend_config[] @additionalUnattendConfig = null,
+                                             bool? @enableAutomaticUpgrades = null,
+                                             bool? @provisionVmAgent = null,
+                                             string @timezone = null,
+                                             winrm[] @winrm = null)
+            {
+                @AdditionalUnattendConfig = @additionalUnattendConfig;
+                @EnableAutomaticUpgrades = @enableAutomaticUpgrades;
+                @ProvisionVmAgent = @provisionVmAgent;
+                @Timezone = @timezone;
+                @Winrm = @winrm;
+            }
+
+            public additional_unattend_config[] @AdditionalUnattendConfig { get; }
+            public bool? @EnableAutomaticUpgrades { get; }
+            public bool? @ProvisionVmAgent { get; }
+            public string @Timezone { get; }
+            public winrm[] @Winrm { get; }
+        }
+
+        public sealed class boot_diagnostics
+        {
+            public boot_diagnostics(bool @enabled,
+                                    string @storageUri)
+            {
+                @Enabled = @enabled;
+                @StorageUri = @storageUri;
+            }
+
+            public bool @Enabled { get; }
+            public string @StorageUri { get; }
+        }
+
+        public sealed class plan
         {
             public plan(string @name,
                         string @product,
@@ -20,23 +87,26 @@ namespace NTerraform.Resources
             public string @Publisher { get; }
         }
 
-        public class identity
+        public sealed class os_profile
         {
-            public identity(string @type,
-                            string[] @identityIds = null)
+            public os_profile(string @adminUsername,
+                              string @computerName,
+                              string @adminPassword = null)
             {
-                @Type = @type;
-                @IdentityIds = @identityIds;
+                @AdminUsername = @adminUsername;
+                @ComputerName = @computerName;
+                @AdminPassword = @adminPassword;
             }
 
-            public string @Type { get; }
-            public string[] @IdentityIds { get; }
-            public string @PrincipalId { get; }
+            public string @AdminUsername { get; }
+            public string @ComputerName { get; }
+            public string @AdminPassword { get; }
+            public string @CustomData { get; }
         }
 
-        public class os_profile_secrets
+        public sealed class os_profile_secrets
         {
-            public class vault_certificates
+            public sealed class vault_certificates
             {
                 public vault_certificates(string @certificateUrl,
                                           string @certificateStore = null)
@@ -60,114 +130,7 @@ namespace NTerraform.Resources
             public vault_certificates[] @VaultCertificates { get; }
         }
 
-        public class os_profile_windows_config
-        {
-            public class winrm
-            {
-                public winrm(string @protocol,
-                             string @certificateUrl = null)
-                {
-                    @Protocol = @protocol;
-                    @CertificateUrl = @certificateUrl;
-                }
-
-                public string @Protocol { get; }
-                public string @CertificateUrl { get; }
-            }
-
-            public class additional_unattend_config
-            {
-                public additional_unattend_config(string @component,
-                                                  string @content,
-                                                  string @pass,
-                                                  string @settingName)
-                {
-                    @Component = @component;
-                    @Content = @content;
-                    @Pass = @pass;
-                    @SettingName = @settingName;
-                }
-
-                public string @Component { get; }
-                public string @Content { get; }
-                public string @Pass { get; }
-                public string @SettingName { get; }
-            }
-
-            public os_profile_windows_config(additional_unattend_config[] @additionalUnattendConfig = null,
-                                             bool? @enableAutomaticUpgrades = null,
-                                             bool? @provisionVmAgent = null,
-                                             string @timezone = null,
-                                             winrm[] @winrm = null)
-            {
-                @AdditionalUnattendConfig = @additionalUnattendConfig;
-                @EnableAutomaticUpgrades = @enableAutomaticUpgrades;
-                @ProvisionVmAgent = @provisionVmAgent;
-                @Timezone = @timezone;
-                @Winrm = @winrm;
-            }
-
-            public additional_unattend_config[] @AdditionalUnattendConfig { get; }
-            public bool? @EnableAutomaticUpgrades { get; }
-            public bool? @ProvisionVmAgent { get; }
-            public string @Timezone { get; }
-            public winrm[] @Winrm { get; }
-        }
-
-        public class os_profile_linux_config
-        {
-            public class ssh_keys
-            {
-                public ssh_keys(string @keyData,
-                                string @path)
-                {
-                    @KeyData = @keyData;
-                    @Path = @path;
-                }
-
-                public string @KeyData { get; }
-                public string @Path { get; }
-            }
-
-            public os_profile_linux_config(bool @disablePasswordAuthentication,
-                                           ssh_keys[] @sshKeys = null)
-            {
-                @DisablePasswordAuthentication = @disablePasswordAuthentication;
-                @SshKeys = @sshKeys;
-            }
-
-            public bool @DisablePasswordAuthentication { get; }
-            public ssh_keys[] @SshKeys { get; }
-        }
-
-        public class storage_os_disk
-        {
-            public storage_os_disk(string @createOption,
-                                   string @name,
-                                   string @imageUri = null,
-                                   string @vhdUri = null,
-                                   bool? @writeAcceleratorEnabled = null)
-            {
-                @CreateOption = @createOption;
-                @Name = @name;
-                @ImageUri = @imageUri;
-                @VhdUri = @vhdUri;
-                @WriteAcceleratorEnabled = @writeAcceleratorEnabled;
-            }
-
-            public string @CreateOption { get; }
-            public string @Name { get; }
-            public string @Caching { get; }
-            public int? @DiskSizeGb { get; }
-            public string @ImageUri { get; }
-            public string @ManagedDiskId { get; }
-            public string @ManagedDiskType { get; }
-            public string @OsType { get; }
-            public string @VhdUri { get; }
-            public bool? @WriteAcceleratorEnabled { get; }
-        }
-
-        public class storage_data_disk
+        public sealed class storage_data_disk
         {
             public storage_data_disk(string @createOption,
                                      int @lun,
@@ -193,24 +156,33 @@ namespace NTerraform.Resources
             public bool? @WriteAcceleratorEnabled { get; }
         }
 
-        public class os_profile
+        public sealed class os_profile_linux_config
         {
-            public os_profile(string @adminUsername,
-                              string @computerName,
-                              string @adminPassword = null)
+            public sealed class ssh_keys
             {
-                @AdminUsername = @adminUsername;
-                @ComputerName = @computerName;
-                @AdminPassword = @adminPassword;
+                public ssh_keys(string @keyData,
+                                string @path)
+                {
+                    @KeyData = @keyData;
+                    @Path = @path;
+                }
+
+                public string @KeyData { get; }
+                public string @Path { get; }
             }
 
-            public string @AdminUsername { get; }
-            public string @ComputerName { get; }
-            public string @AdminPassword { get; }
-            public string @CustomData { get; }
+            public os_profile_linux_config(bool @disablePasswordAuthentication,
+                                           ssh_keys[] @sshKeys = null)
+            {
+                @DisablePasswordAuthentication = @disablePasswordAuthentication;
+                @SshKeys = @sshKeys;
+            }
+
+            public bool @DisablePasswordAuthentication { get; }
+            public ssh_keys[] @SshKeys { get; }
         }
 
-        public class storage_image_reference
+        public sealed class storage_image_reference
         {
             public storage_image_reference(string @id = null,
                                            string @offer = null,
@@ -230,17 +202,45 @@ namespace NTerraform.Resources
             public string @Version { get; }
         }
 
-        public class boot_diagnostics
+        public sealed class identity
         {
-            public boot_diagnostics(bool @enabled,
-                                    string @storageUri)
+            public identity(string @type,
+                            string[] @identityIds = null)
             {
-                @Enabled = @enabled;
-                @StorageUri = @storageUri;
+                @Type = @type;
+                @IdentityIds = @identityIds;
             }
 
-            public bool @Enabled { get; }
-            public string @StorageUri { get; }
+            public string @Type { get; }
+            public string[] @IdentityIds { get; }
+            public string @PrincipalId { get; }
+        }
+
+        public sealed class storage_os_disk
+        {
+            public storage_os_disk(string @createOption,
+                                   string @name,
+                                   string @imageUri = null,
+                                   string @vhdUri = null,
+                                   bool? @writeAcceleratorEnabled = null)
+            {
+                @CreateOption = @createOption;
+                @Name = @name;
+                @ImageUri = @imageUri;
+                @VhdUri = @vhdUri;
+                @WriteAcceleratorEnabled = @writeAcceleratorEnabled;
+            }
+
+            public string @CreateOption { get; }
+            public string @Name { get; }
+            public string @Caching { get; }
+            public int? @DiskSizeGb { get; }
+            public string @ImageUri { get; }
+            public string @ManagedDiskId { get; }
+            public string @ManagedDiskType { get; }
+            public string @OsType { get; }
+            public string @VhdUri { get; }
+            public bool? @WriteAcceleratorEnabled { get; }
         }
 
         public azurerm_virtual_machine(string @location,

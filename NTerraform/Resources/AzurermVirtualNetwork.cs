@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_virtual_network : NTerraform.resource
+    public sealed class azurerm_virtual_network : NTerraform.resource
     {
-        public class subnet
+        public sealed class subnet
         {
             public subnet(string @addressPrefix,
                           string @name,

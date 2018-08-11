@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_traffic_manager_endpoint : NTerraform.resource
+    public sealed class azurerm_traffic_manager_endpoint : NTerraform.resource
     {
         public azurerm_traffic_manager_endpoint(string @name,
                                                 string @profileName,

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_key_vault_access_policy : NTerraform.resource
+    public sealed class azurerm_key_vault_access_policy : NTerraform.resource
     {
         public azurerm_key_vault_access_policy(string[] @keyPermissions,
                                                string @objectId,

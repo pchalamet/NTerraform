@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_network_security_group : NTerraform.resource
+    public sealed class azurerm_network_security_group : NTerraform.resource
     {
-        public class security_rule
+        public sealed class security_rule
         {
             public security_rule(string @access,
                                  string @direction,

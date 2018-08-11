@@ -2,9 +2,18 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_notification_hub : NTerraform.data
+    public sealed class azurerm_notification_hub : NTerraform.data
     {
-        public class apns_credential
+        public sealed class gcm_credential
+        {
+            public gcm_credential()
+            {
+            }
+
+            public string @ApiKey { get; }
+        }
+
+        public sealed class apns_credential
         {
             public apns_credential()
             {
@@ -15,15 +24,6 @@ namespace NTerraform.Datas
             public string @KeyId { get; }
             public string @TeamId { get; }
             public string @Token { get; }
-        }
-
-        public class gcm_credential
-        {
-            public gcm_credential()
-            {
-            }
-
-            public string @ApiKey { get; }
         }
 
         public azurerm_notification_hub(string @name,

@@ -2,19 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_notification_hub : NTerraform.resource
+    public sealed class azurerm_notification_hub : NTerraform.resource
     {
-        public class gcm_credential
-        {
-            public gcm_credential(string @apiKey)
-            {
-                @ApiKey = @apiKey;
-            }
-
-            public string @ApiKey { get; }
-        }
-
-        public class apns_credential
+        public sealed class apns_credential
         {
             public apns_credential(string @applicationMode,
                                    string @bundleId,
@@ -34,6 +24,16 @@ namespace NTerraform.Resources
             public string @KeyId { get; }
             public string @TeamId { get; }
             public string @Token { get; }
+        }
+
+        public sealed class gcm_credential
+        {
+            public gcm_credential(string @apiKey)
+            {
+                @ApiKey = @apiKey;
+            }
+
+            public string @ApiKey { get; }
         }
 
         public azurerm_notification_hub(string @location,

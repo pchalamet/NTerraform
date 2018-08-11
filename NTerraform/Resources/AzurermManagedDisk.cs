@@ -2,24 +2,11 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_managed_disk : NTerraform.resource
+    public sealed class azurerm_managed_disk : NTerraform.resource
     {
-        public class encryption_settings
+        public sealed class encryption_settings
         {
-            public class key_encryption_key
-            {
-                public key_encryption_key(string @keyUrl,
-                                          string @sourceVaultId)
-                {
-                    @KeyUrl = @keyUrl;
-                    @SourceVaultId = @sourceVaultId;
-                }
-
-                public string @KeyUrl { get; }
-                public string @SourceVaultId { get; }
-            }
-
-            public class disk_encryption_key
+            public sealed class disk_encryption_key
             {
                 public disk_encryption_key(string @secretUrl,
                                            string @sourceVaultId)
@@ -29,6 +16,19 @@ namespace NTerraform.Resources
                 }
 
                 public string @SecretUrl { get; }
+                public string @SourceVaultId { get; }
+            }
+
+            public sealed class key_encryption_key
+            {
+                public key_encryption_key(string @keyUrl,
+                                          string @sourceVaultId)
+                {
+                    @KeyUrl = @keyUrl;
+                    @SourceVaultId = @sourceVaultId;
+                }
+
+                public string @KeyUrl { get; }
                 public string @SourceVaultId { get; }
             }
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_container_registry : NTerraform.data
+    public sealed class azurerm_container_registry : NTerraform.data
     {
         public azurerm_container_registry(string @name,
                                           string @resourceGroupName)

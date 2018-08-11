@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class consul_keys : NTerraform.data
+    public sealed class consul_keys : NTerraform.data
     {
-        public class key
+        public sealed class key
         {
             public key(string @name,
                        string @path,

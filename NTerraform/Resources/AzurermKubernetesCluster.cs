@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_kubernetes_cluster : NTerraform.resource
+    public sealed class azurerm_kubernetes_cluster : NTerraform.resource
     {
-        public class agent_pool_profile
+        public sealed class agent_pool_profile
         {
             public agent_pool_profile(string @name,
                                       string @vmSize,
@@ -31,34 +31,7 @@ namespace NTerraform.Resources
             public string @VnetSubnetId { get; }
         }
 
-        public class service_principal
-        {
-            public service_principal(string @clientId,
-                                     string @clientSecret)
-            {
-                @ClientId = @clientId;
-                @ClientSecret = @clientSecret;
-            }
-
-            public string @ClientId { get; }
-            public string @ClientSecret { get; }
-        }
-
-        public class network_profile
-        {
-            public network_profile(string @networkPlugin)
-            {
-                @NetworkPlugin = @networkPlugin;
-            }
-
-            public string @NetworkPlugin { get; }
-            public string @DnsServiceIp { get; }
-            public string @DockerBridgeCidr { get; }
-            public string @PodCidr { get; }
-            public string @ServiceCidr { get; }
-        }
-
-        public class kube_config
+        public sealed class kube_config
         {
             public kube_config()
             {
@@ -72,9 +45,22 @@ namespace NTerraform.Resources
             public string @Username { get; }
         }
 
-        public class linux_profile
+        public sealed class service_principal
         {
-            public class ssh_key
+            public service_principal(string @clientId,
+                                     string @clientSecret)
+            {
+                @ClientId = @clientId;
+                @ClientSecret = @clientSecret;
+            }
+
+            public string @ClientId { get; }
+            public string @ClientSecret { get; }
+        }
+
+        public sealed class linux_profile
+        {
+            public sealed class ssh_key
             {
                 public ssh_key(string @keyData)
                 {
@@ -93,6 +79,20 @@ namespace NTerraform.Resources
 
             public string @AdminUsername { get; }
             public ssh_key[] @SshKey { get; }
+        }
+
+        public sealed class network_profile
+        {
+            public network_profile(string @networkPlugin)
+            {
+                @NetworkPlugin = @networkPlugin;
+            }
+
+            public string @NetworkPlugin { get; }
+            public string @DnsServiceIp { get; }
+            public string @DockerBridgeCidr { get; }
+            public string @PodCidr { get; }
+            public string @ServiceCidr { get; }
         }
 
         public azurerm_kubernetes_cluster(agent_pool_profile[] @agentPoolProfile,

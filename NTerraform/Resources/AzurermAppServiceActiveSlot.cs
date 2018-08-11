@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_app_service_active_slot : NTerraform.resource
+    public sealed class azurerm_app_service_active_slot : NTerraform.resource
     {
         public azurerm_app_service_active_slot(string @appServiceName,
                                                string @appServiceSlotName,

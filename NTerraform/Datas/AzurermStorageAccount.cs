@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_storage_account : NTerraform.data
+    public sealed class azurerm_storage_account : NTerraform.data
     {
-        public class custom_domain
+        public sealed class custom_domain
         {
             public custom_domain()
             {

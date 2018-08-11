@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_azuread_service_principal : NTerraform.data
+    public sealed class azurerm_azuread_service_principal : NTerraform.data
     {
         public azurerm_azuread_service_principal()
         {

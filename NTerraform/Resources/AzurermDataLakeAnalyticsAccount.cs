@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_data_lake_analytics_account : NTerraform.resource
+    public sealed class azurerm_data_lake_analytics_account : NTerraform.resource
     {
         public azurerm_data_lake_analytics_account(string @defaultStoreAccountName,
                                                    string @location,

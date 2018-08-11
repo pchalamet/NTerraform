@@ -2,9 +2,21 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_iothub : NTerraform.resource
+    public sealed class azurerm_iothub : NTerraform.resource
     {
-        public class sku
+        public sealed class shared_access_policy
+        {
+            public shared_access_policy()
+            {
+            }
+
+            public string @KeyName { get; }
+            public string @Permissions { get; }
+            public string @PrimaryKey { get; }
+            public string @SecondaryKey { get; }
+        }
+
+        public sealed class sku
         {
             public sku(int @capacity,
                        string @name,
@@ -18,18 +30,6 @@ namespace NTerraform.Resources
             public int @Capacity { get; }
             public string @Name { get; }
             public string @Tier { get; }
-        }
-
-        public class shared_access_policy
-        {
-            public shared_access_policy()
-            {
-            }
-
-            public string @KeyName { get; }
-            public string @Permissions { get; }
-            public string @PrimaryKey { get; }
-            public string @SecondaryKey { get; }
         }
 
         public azurerm_iothub(string @location,

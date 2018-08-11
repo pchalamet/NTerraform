@@ -1,4 +1,5 @@
-﻿open NTerraform.Providers
+﻿open System.Reflection
+open NTerraform.Providers
 open NTerraform.Resources
 
 [<EntryPoint>]

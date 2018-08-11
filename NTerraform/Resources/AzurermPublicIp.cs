@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_public_ip : NTerraform.resource
+    public sealed class azurerm_public_ip : NTerraform.resource
     {
         public azurerm_public_ip(string @location,
                                  string @name,

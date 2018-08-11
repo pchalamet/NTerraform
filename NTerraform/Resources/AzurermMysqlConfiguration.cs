@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_mysql_configuration : NTerraform.resource
+    public sealed class azurerm_mysql_configuration : NTerraform.resource
     {
         public azurerm_mysql_configuration(string @name,
                                            string @resourceGroupName,

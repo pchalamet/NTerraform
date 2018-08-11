@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class consul_agent_service : NTerraform.resource
+    public sealed class consul_agent_service : NTerraform.resource
     {
         public consul_agent_service(string @name,
                                     int? @port = null,

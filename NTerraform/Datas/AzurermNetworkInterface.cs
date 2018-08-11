@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_network_interface : NTerraform.data
+    public sealed class azurerm_network_interface : NTerraform.data
     {
-        public class ip_configuration
+        public sealed class ip_configuration
         {
             public ip_configuration()
             {

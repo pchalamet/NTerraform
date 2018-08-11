@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_client_config : NTerraform.data
+    public sealed class azurerm_client_config : NTerraform.data
     {
         public azurerm_client_config()
         {

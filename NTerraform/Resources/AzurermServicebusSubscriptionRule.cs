@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_servicebus_subscription_rule : NTerraform.resource
+    public sealed class azurerm_servicebus_subscription_rule : NTerraform.resource
     {
-        public class correlation_filter
+        public sealed class correlation_filter
         {
             public correlation_filter(string @contentType = null,
                                       string @correlationId = null,

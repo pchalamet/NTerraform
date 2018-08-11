@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_lb : NTerraform.resource
+    public sealed class azurerm_lb : NTerraform.resource
     {
-        public class frontend_ip_configuration
+        public sealed class frontend_ip_configuration
         {
             public frontend_ip_configuration(string @name,
                                              string[] @zones = null)

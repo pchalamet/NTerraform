@@ -2,31 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_kubernetes_cluster : NTerraform.data
+    public sealed class azurerm_kubernetes_cluster : NTerraform.data
     {
-        public class service_principal
-        {
-            public service_principal()
-            {
-            }
-
-            public string @ClientId { get; }
-        }
-
-        public class network_profile
-        {
-            public network_profile()
-            {
-            }
-
-            public string @DnsServiceIp { get; }
-            public string @DockerBridgeCidr { get; }
-            public string @NetworkPlugin { get; }
-            public string @PodCidr { get; }
-            public string @ServiceCidr { get; }
-        }
-
-        public class kube_config
+        public sealed class kube_config
         {
             public kube_config()
             {
@@ -40,9 +18,9 @@ namespace NTerraform.Datas
             public string @Username { get; }
         }
 
-        public class linux_profile
+        public sealed class linux_profile
         {
-            public class ssh_key
+            public sealed class ssh_key
             {
                 public ssh_key()
                 {
@@ -60,7 +38,7 @@ namespace NTerraform.Datas
             public ssh_key[] @SshKey { get; }
         }
 
-        public class agent_pool_profile
+        public sealed class agent_pool_profile
         {
             public agent_pool_profile()
             {
@@ -73,6 +51,28 @@ namespace NTerraform.Datas
             public string @OsType { get; }
             public string @VmSize { get; }
             public string @VnetSubnetId { get; }
+        }
+
+        public sealed class service_principal
+        {
+            public service_principal()
+            {
+            }
+
+            public string @ClientId { get; }
+        }
+
+        public sealed class network_profile
+        {
+            public network_profile()
+            {
+            }
+
+            public string @DnsServiceIp { get; }
+            public string @DockerBridgeCidr { get; }
+            public string @NetworkPlugin { get; }
+            public string @PodCidr { get; }
+            public string @ServiceCidr { get; }
         }
 
         public azurerm_kubernetes_cluster(string @name,

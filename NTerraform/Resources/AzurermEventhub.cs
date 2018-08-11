@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_eventhub : NTerraform.resource
+    public sealed class azurerm_eventhub : NTerraform.resource
     {
-        public class capture_description
+        public sealed class capture_description
         {
-            public class destination
+            public sealed class destination
             {
                 public destination(string @archiveNameFormat,
                                    string @blobContainerName,

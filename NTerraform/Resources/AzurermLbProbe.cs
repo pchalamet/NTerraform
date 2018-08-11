@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_lb_probe : NTerraform.resource
+    public sealed class azurerm_lb_probe : NTerraform.resource
     {
         public azurerm_lb_probe(string @loadbalancerId,
                                 string @name,

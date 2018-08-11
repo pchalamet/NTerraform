@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_express_route_circuit_peering : NTerraform.resource
+    public sealed class azurerm_express_route_circuit_peering : NTerraform.resource
     {
-        public class microsoft_peering_config
+        public sealed class microsoft_peering_config
         {
             public microsoft_peering_config(string[] @advertisedPublicPrefixes)
             {

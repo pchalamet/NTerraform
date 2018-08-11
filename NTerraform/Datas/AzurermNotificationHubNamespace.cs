@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_notification_hub_namespace : NTerraform.data
+    public sealed class azurerm_notification_hub_namespace : NTerraform.data
     {
-        public class sku
+        public sealed class sku
         {
             public sku()
             {

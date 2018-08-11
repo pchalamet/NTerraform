@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class consul_intention : NTerraform.resource
+    public sealed class consul_intention : NTerraform.resource
     {
         public consul_intention(string @action,
                                 string @destinationName,

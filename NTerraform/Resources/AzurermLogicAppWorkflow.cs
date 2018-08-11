@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_logic_app_workflow : NTerraform.resource
+    public sealed class azurerm_logic_app_workflow : NTerraform.resource
     {
         public azurerm_logic_app_workflow(string @location,
                                           string @name,

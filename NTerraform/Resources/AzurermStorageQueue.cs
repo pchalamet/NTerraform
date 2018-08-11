@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_storage_queue : NTerraform.resource
+    public sealed class azurerm_storage_queue : NTerraform.resource
     {
         public azurerm_storage_queue(string @name,
                                      string @resourceGroupName,

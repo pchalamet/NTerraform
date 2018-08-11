@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_app_service_custom_hostname_binding : NTerraform.resource
+    public sealed class azurerm_app_service_custom_hostname_binding : NTerraform.resource
     {
         public azurerm_app_service_custom_hostname_binding(string @appServiceName,
                                                            string @hostname,

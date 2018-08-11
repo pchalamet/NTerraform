@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_template_deployment : NTerraform.resource
+    public sealed class azurerm_template_deployment : NTerraform.resource
     {
         public azurerm_template_deployment(string @deploymentMode,
                                            string @name,

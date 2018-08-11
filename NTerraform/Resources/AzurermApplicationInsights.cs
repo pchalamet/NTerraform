@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_application_insights : NTerraform.resource
+    public sealed class azurerm_application_insights : NTerraform.resource
     {
         public azurerm_application_insights(string @applicationType,
                                             string @location,

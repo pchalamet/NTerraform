@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_cosmosdb_account : NTerraform.resource
+    public sealed class azurerm_cosmosdb_account : NTerraform.resource
     {
-        public class geo_location
+        public sealed class geo_location
         {
             public geo_location(int @failoverPriority,
                                 string @location,
@@ -21,7 +21,7 @@ namespace NTerraform.Resources
             public string @Prefix { get; }
         }
 
-        public class failover_policy
+        public sealed class failover_policy
         {
             public failover_policy(string @location,
                                    int @priority)
@@ -35,7 +35,7 @@ namespace NTerraform.Resources
             public string @Id { get; }
         }
 
-        public class consistency_policy
+        public sealed class consistency_policy
         {
             public consistency_policy(string @consistencyLevel,
                                       int? @maxIntervalInSeconds = null,
@@ -51,7 +51,7 @@ namespace NTerraform.Resources
             public int? @MaxStalenessPrefix { get; }
         }
 
-        public class capabilities
+        public sealed class capabilities
         {
             public capabilities(string @name)
             {

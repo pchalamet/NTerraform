@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_azuread_service_principal_password : NTerraform.resource
+    public sealed class azurerm_azuread_service_principal_password : NTerraform.resource
     {
         public azurerm_azuread_service_principal_password(string @endDate,
                                                           string @servicePrincipalId,

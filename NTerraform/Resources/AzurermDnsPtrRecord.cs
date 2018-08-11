@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_dns_ptr_record : NTerraform.resource
+    public sealed class azurerm_dns_ptr_record : NTerraform.resource
     {
         public azurerm_dns_ptr_record(string @name,
                                       string[] @records,

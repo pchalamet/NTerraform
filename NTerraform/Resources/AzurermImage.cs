@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_image : NTerraform.resource
+    public sealed class azurerm_image : NTerraform.resource
     {
-        public class os_disk
+        public sealed class os_disk
         {
             public os_disk(string @caching = null,
                            string @osState = null,
@@ -23,7 +23,7 @@ namespace NTerraform.Resources
             public int? @SizeGb { get; }
         }
 
-        public class data_disk
+        public sealed class data_disk
         {
             public data_disk(string @caching = null,
                              int? @lun = null,

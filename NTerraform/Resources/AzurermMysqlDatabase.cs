@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_mysql_database : NTerraform.resource
+    public sealed class azurerm_mysql_database : NTerraform.resource
     {
         public azurerm_mysql_database(string @charset,
                                       string @collation,

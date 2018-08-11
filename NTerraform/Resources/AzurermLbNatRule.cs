@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_lb_nat_rule : NTerraform.resource
+    public sealed class azurerm_lb_nat_rule : NTerraform.resource
     {
         public azurerm_lb_nat_rule(int @backendPort,
                                    string @frontendIpConfigurationName,

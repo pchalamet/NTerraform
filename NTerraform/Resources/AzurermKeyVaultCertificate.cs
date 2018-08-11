@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_key_vault_certificate : NTerraform.resource
+    public sealed class azurerm_key_vault_certificate : NTerraform.resource
     {
-        public class certificate
+        public sealed class certificate
         {
             public certificate(string @contents,
                                string @password = null)
@@ -17,19 +17,9 @@ namespace NTerraform.Resources
             public string @Password { get; }
         }
 
-        public class certificate_policy
+        public sealed class certificate_policy
         {
-            public class issuer_parameters
-            {
-                public issuer_parameters(string @name)
-                {
-                    @Name = @name;
-                }
-
-                public string @Name { get; }
-            }
-
-            public class key_properties
+            public sealed class key_properties
             {
                 public key_properties(bool @exportable,
                                       int @keySize,
@@ -48,9 +38,19 @@ namespace NTerraform.Resources
                 public bool @ReuseKey { get; }
             }
 
-            public class lifetime_action
+            public sealed class lifetime_action
             {
-                public class trigger
+                public sealed class action
+                {
+                    public action(string @actionType)
+                    {
+                        @ActionType = @actionType;
+                    }
+
+                    public string @ActionType { get; }
+                }
+
+                public sealed class trigger
                 {
                     public trigger(int? @daysBeforeExpiry = null,
                                    int? @lifetimePercentage = null)
@@ -61,16 +61,6 @@ namespace NTerraform.Resources
 
                     public int? @DaysBeforeExpiry { get; }
                     public int? @LifetimePercentage { get; }
-                }
-
-                public class action
-                {
-                    public action(string @actionType)
-                    {
-                        @ActionType = @actionType;
-                    }
-
-                    public string @ActionType { get; }
                 }
 
                 public lifetime_action(action[] @action,
@@ -84,7 +74,7 @@ namespace NTerraform.Resources
                 public trigger[] @Trigger { get; }
             }
 
-            public class secret_properties
+            public sealed class secret_properties
             {
                 public secret_properties(string @contentType)
                 {
@@ -94,7 +84,7 @@ namespace NTerraform.Resources
                 public string @ContentType { get; }
             }
 
-            public class x509_certificate_properties
+            public sealed class x509_certificate_properties
             {
                 public x509_certificate_properties(string[] @keyUsage,
                                                    string @subject,
@@ -108,6 +98,16 @@ namespace NTerraform.Resources
                 public string[] @KeyUsage { get; }
                 public string @Subject { get; }
                 public int @ValidityInMonths { get; }
+            }
+
+            public sealed class issuer_parameters
+            {
+                public issuer_parameters(string @name)
+                {
+                    @Name = @name;
+                }
+
+                public string @Name { get; }
             }
 
             public certificate_policy(issuer_parameters[] @issuerParameters,

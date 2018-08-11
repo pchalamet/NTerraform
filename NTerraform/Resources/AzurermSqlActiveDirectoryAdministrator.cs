@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_sql_active_directory_administrator : NTerraform.resource
+    public sealed class azurerm_sql_active_directory_administrator : NTerraform.resource
     {
         public azurerm_sql_active_directory_administrator(string @login,
                                                           string @objectId,

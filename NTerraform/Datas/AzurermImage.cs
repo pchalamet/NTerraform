@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_image : NTerraform.data
+    public sealed class azurerm_image : NTerraform.data
     {
-        public class os_disk
+        public sealed class os_disk
         {
             public os_disk()
             {
@@ -18,7 +18,7 @@ namespace NTerraform.Datas
             public int? @SizeGb { get; }
         }
 
-        public class data_disk
+        public sealed class data_disk
         {
             public data_disk()
             {

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_automation_runbook : NTerraform.resource
+    public sealed class azurerm_automation_runbook : NTerraform.resource
     {
-        public class publish_content_link
+        public sealed class publish_content_link
         {
-            public class hash
+            public sealed class hash
             {
                 public hash(string @algorithm,
                             string @value)

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_subnet : NTerraform.data
+    public sealed class azurerm_subnet : NTerraform.data
     {
         public azurerm_subnet(string @name,
                               string @resourceGroupName,

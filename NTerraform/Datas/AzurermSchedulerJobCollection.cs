@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_scheduler_job_collection : NTerraform.data
+    public sealed class azurerm_scheduler_job_collection : NTerraform.data
     {
-        public class quota
+        public sealed class quota
         {
             public quota()
             {

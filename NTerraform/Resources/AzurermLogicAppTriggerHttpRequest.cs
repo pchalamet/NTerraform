@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_logic_app_trigger_http_request : NTerraform.resource
+    public sealed class azurerm_logic_app_trigger_http_request : NTerraform.resource
     {
         public azurerm_logic_app_trigger_http_request(string @logicAppId,
                                                       string @name,

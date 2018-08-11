@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_express_route_circuit : NTerraform.resource
+    public sealed class azurerm_express_route_circuit : NTerraform.resource
     {
-        public class sku
+        public sealed class sku
         {
             public sku(string @family,
                        string @tier)

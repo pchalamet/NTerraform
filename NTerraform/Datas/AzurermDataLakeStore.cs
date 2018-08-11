@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_data_lake_store : NTerraform.data
+    public sealed class azurerm_data_lake_store : NTerraform.data
     {
         public azurerm_data_lake_store(string @name,
                                        string @resourceGroupName)

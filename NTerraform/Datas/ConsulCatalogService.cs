@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class consul_catalog_service : NTerraform.data
+    public sealed class consul_catalog_service : NTerraform.data
     {
-        public class query_options
+        public sealed class query_options
         {
             public query_options(bool? @allowStale = null,
                                  string @datacenter = null,
@@ -35,9 +35,9 @@ namespace NTerraform.Datas
             public string @WaitTime { get; }
         }
 
-        public class service
+        public sealed class service
         {
-            public class tagged_addresses
+            public sealed class tagged_addresses
             {
                 public tagged_addresses()
                 {

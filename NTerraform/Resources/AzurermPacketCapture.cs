@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_packet_capture : NTerraform.resource
+    public sealed class azurerm_packet_capture : NTerraform.resource
     {
-        public class storage_location
+        public sealed class storage_location
         {
             public storage_location(string @filePath = null,
                                     string @storageAccountId = null)
@@ -18,7 +18,7 @@ namespace NTerraform.Resources
             public string @StoragePath { get; }
         }
 
-        public class filter
+        public sealed class filter
         {
             public filter(string @protocol,
                           string @localIpAddress = null,

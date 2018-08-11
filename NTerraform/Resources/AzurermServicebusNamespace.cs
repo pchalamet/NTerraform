@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_servicebus_namespace : NTerraform.resource
+    public sealed class azurerm_servicebus_namespace : NTerraform.resource
     {
         public azurerm_servicebus_namespace(string @location,
                                             string @name,

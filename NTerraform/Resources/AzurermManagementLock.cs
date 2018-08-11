@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_management_lock : NTerraform.resource
+    public sealed class azurerm_management_lock : NTerraform.resource
     {
         public azurerm_management_lock(string @lockLevel,
                                        string @name,

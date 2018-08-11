@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_sql_elasticpool : NTerraform.resource
+    public sealed class azurerm_sql_elasticpool : NTerraform.resource
     {
         public azurerm_sql_elasticpool(int @dtu,
                                        string @edition,

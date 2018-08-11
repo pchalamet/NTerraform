@@ -2,23 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_app_service_plan : NTerraform.resource
+    public sealed class azurerm_app_service_plan : NTerraform.resource
     {
-        public class sku
-        {
-            public sku(string @size,
-                       string @tier)
-            {
-                @Size = @size;
-                @Tier = @tier;
-            }
-
-            public string @Size { get; }
-            public string @Tier { get; }
-            public int? @Capacity { get; }
-        }
-
-        public class properties
+        public sealed class properties
         {
             public properties(string @appServiceEnvironmentId = null,
                               bool? @perSiteScaling = null,
@@ -32,6 +18,20 @@ namespace NTerraform.Resources
             public string @AppServiceEnvironmentId { get; }
             public bool? @PerSiteScaling { get; }
             public bool? @Reserved { get; }
+        }
+
+        public sealed class sku
+        {
+            public sku(string @size,
+                       string @tier)
+            {
+                @Size = @size;
+                @Tier = @tier;
+            }
+
+            public string @Size { get; }
+            public string @Tier { get; }
+            public int? @Capacity { get; }
         }
 
         public azurerm_app_service_plan(string @location,

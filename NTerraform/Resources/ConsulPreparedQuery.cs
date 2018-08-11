@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class consul_prepared_query : NTerraform.resource
+    public sealed class consul_prepared_query : NTerraform.resource
     {
-        public class dns
+        public sealed class dns
         {
             public dns(string @ttl = null)
             {
@@ -14,7 +14,7 @@ namespace NTerraform.Resources
             public string @Ttl { get; }
         }
 
-        public class template
+        public sealed class template
         {
             public template(string @regexp,
                             string @type)
@@ -27,7 +27,7 @@ namespace NTerraform.Resources
             public string @Type { get; }
         }
 
-        public class failover
+        public sealed class failover
         {
             public failover(string[] @datacenters = null,
                             int? @nearestN = null)

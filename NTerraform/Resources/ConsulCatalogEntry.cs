@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class consul_catalog_entry : NTerraform.resource
+    public sealed class consul_catalog_entry : NTerraform.resource
     {
-        public class service
+        public sealed class service
         {
             public service(string @name,
                            string @address = null,

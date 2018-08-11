@@ -90,7 +90,7 @@ let rec generateType tfType tfName fields =
             let baseClass = match tfType with
                             | Some x -> sprintf " : NTerraform.%s" x
                             | _ -> ""
-            yield sprintf "%spublic class %s%s" space4 className baseClass
+            yield sprintf "%spublic sealed class %s%s" space4 className baseClass
             yield sprintf "%s{" space4
 
             yield! generateFields fields

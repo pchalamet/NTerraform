@@ -2,19 +2,25 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_function_app : NTerraform.resource
+    public sealed class azurerm_function_app : NTerraform.resource
     {
-        public class site_credential
+        public sealed class site_config
         {
-            public site_credential()
+            public site_config(bool? @alwaysOn = null,
+                               bool? @use32BitWorkerProcess = null,
+                               bool? @websocketsEnabled = null)
             {
+                @AlwaysOn = @alwaysOn;
+                @Use32BitWorkerProcess = @use32BitWorkerProcess;
+                @WebsocketsEnabled = @websocketsEnabled;
             }
 
-            public string @Password { get; }
-            public string @Username { get; }
+            public bool? @AlwaysOn { get; }
+            public bool? @Use32BitWorkerProcess { get; }
+            public bool? @WebsocketsEnabled { get; }
         }
 
-        public class identity
+        public sealed class identity
         {
             public identity(string @type)
             {
@@ -26,7 +32,7 @@ namespace NTerraform.Resources
             public string @TenantId { get; }
         }
 
-        public class connection_string
+        public sealed class connection_string
         {
             public connection_string(string @name,
                                      string @type,
@@ -42,20 +48,14 @@ namespace NTerraform.Resources
             public string @Value { get; }
         }
 
-        public class site_config
+        public sealed class site_credential
         {
-            public site_config(bool? @alwaysOn = null,
-                               bool? @use32BitWorkerProcess = null,
-                               bool? @websocketsEnabled = null)
+            public site_credential()
             {
-                @AlwaysOn = @alwaysOn;
-                @Use32BitWorkerProcess = @use32BitWorkerProcess;
-                @WebsocketsEnabled = @websocketsEnabled;
             }
 
-            public bool? @AlwaysOn { get; }
-            public bool? @Use32BitWorkerProcess { get; }
-            public bool? @WebsocketsEnabled { get; }
+            public string @Password { get; }
+            public string @Username { get; }
         }
 
         public azurerm_function_app(string @appServicePlanId,

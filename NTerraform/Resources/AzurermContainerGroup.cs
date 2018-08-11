@@ -2,27 +2,11 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_container_group : NTerraform.resource
+    public sealed class azurerm_container_group : NTerraform.resource
     {
-        public class image_registry_credential
+        public sealed class container
         {
-            public image_registry_credential(string @password,
-                                             string @server,
-                                             string @username)
-            {
-                @Password = @password;
-                @Server = @server;
-                @Username = @username;
-            }
-
-            public string @Password { get; }
-            public string @Server { get; }
-            public string @Username { get; }
-        }
-
-        public class container
-        {
-            public class volume
+            public sealed class volume
             {
                 public volume(string @mountPath,
                               string @name,
@@ -77,6 +61,22 @@ namespace NTerraform.Resources
             public int? @Port { get; }
             public string @Protocol { get; }
             public volume[] @Volume { get; }
+        }
+
+        public sealed class image_registry_credential
+        {
+            public image_registry_credential(string @password,
+                                             string @server,
+                                             string @username)
+            {
+                @Password = @password;
+                @Server = @server;
+                @Username = @username;
+            }
+
+            public string @Password { get; }
+            public string @Server { get; }
+            public string @Username { get; }
         }
 
         public azurerm_container_group(container[] @container,

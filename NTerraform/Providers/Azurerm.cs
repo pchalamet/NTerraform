@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Providers
 {
-    public class azurerm : NTerraform.provider
+    public sealed class azurerm : NTerraform.provider
     {
         public azurerm(string @environment,
                        string @clientId = null,

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class consul_catalog_nodes : NTerraform.data
+    public sealed class consul_catalog_nodes : NTerraform.data
     {
-        public class nodes
+        public sealed class nodes
         {
-            public class tagged_addresses
+            public sealed class tagged_addresses
             {
                 public tagged_addresses()
                 {
@@ -28,7 +28,7 @@ namespace NTerraform.Datas
             public Dictionary<string,tagged_addresses> @TaggedAddresses { get; }
         }
 
-        public class query_options
+        public sealed class query_options
         {
             public query_options(bool? @allowStale = null,
                                  string @datacenter = null,

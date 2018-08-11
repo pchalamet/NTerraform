@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_role_definition : NTerraform.resource
+    public sealed class azurerm_role_definition : NTerraform.resource
     {
-        public class permissions
+        public sealed class permissions
         {
             public permissions(string[] @actions = null,
                                string[] @notActions = null)

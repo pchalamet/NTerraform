@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class consul_key_prefix : NTerraform.resource
+    public sealed class consul_key_prefix : NTerraform.resource
     {
         public consul_key_prefix(string @pathPrefix,
                                  Dictionary<string,string> @subkeys,

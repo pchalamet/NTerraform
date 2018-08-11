@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_virtual_network_peering : NTerraform.resource
+    public sealed class azurerm_virtual_network_peering : NTerraform.resource
     {
         public azurerm_virtual_network_peering(string @name,
                                                string @remoteVirtualNetworkId,

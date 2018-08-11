@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_eventhub_namespace : NTerraform.resource
+    public sealed class azurerm_eventhub_namespace : NTerraform.resource
     {
         public azurerm_eventhub_namespace(string @location,
                                           string @name,

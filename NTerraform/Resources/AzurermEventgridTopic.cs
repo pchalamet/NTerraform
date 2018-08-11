@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_eventgrid_topic : NTerraform.resource
+    public sealed class azurerm_eventgrid_topic : NTerraform.resource
     {
         public azurerm_eventgrid_topic(string @location,
                                        string @name,

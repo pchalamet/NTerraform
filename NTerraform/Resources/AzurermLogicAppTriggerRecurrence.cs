@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_logic_app_trigger_recurrence : NTerraform.resource
+    public sealed class azurerm_logic_app_trigger_recurrence : NTerraform.resource
     {
         public azurerm_logic_app_trigger_recurrence(string @frequency,
                                                     int @interval,

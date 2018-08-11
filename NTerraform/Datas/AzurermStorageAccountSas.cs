@@ -2,9 +2,25 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_storage_account_sas : NTerraform.data
+    public sealed class azurerm_storage_account_sas : NTerraform.data
     {
-        public class permissions
+        public sealed class resource_types
+        {
+            public resource_types(bool @container,
+                                  bool @object,
+                                  bool @service)
+            {
+                @Container = @container;
+                @Object = @object;
+                @Service = @service;
+            }
+
+            public bool @Container { get; }
+            public bool @Object { get; }
+            public bool @Service { get; }
+        }
+
+        public sealed class permissions
         {
             public permissions(bool @add,
                                bool @create,
@@ -35,23 +51,7 @@ namespace NTerraform.Datas
             public bool @Write { get; }
         }
 
-        public class resource_types
-        {
-            public resource_types(bool @container,
-                                  bool @object,
-                                  bool @service)
-            {
-                @Container = @container;
-                @Object = @object;
-                @Service = @service;
-            }
-
-            public bool @Container { get; }
-            public bool @Object { get; }
-            public bool @Service { get; }
-        }
-
-        public class services
+        public sealed class services
         {
             public services(bool @blob,
                             bool @file,

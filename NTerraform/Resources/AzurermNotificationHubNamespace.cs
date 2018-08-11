@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_notification_hub_namespace : NTerraform.resource
+    public sealed class azurerm_notification_hub_namespace : NTerraform.resource
     {
-        public class sku
+        public sealed class sku
         {
             public sku(string @name)
             {

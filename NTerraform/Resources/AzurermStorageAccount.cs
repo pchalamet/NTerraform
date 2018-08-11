@@ -2,9 +2,22 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_storage_account : NTerraform.resource
+    public sealed class azurerm_storage_account : NTerraform.resource
     {
-        public class network_rules
+        public sealed class custom_domain
+        {
+            public custom_domain(string @name,
+                                 bool? @useSubdomain = null)
+            {
+                @Name = @name;
+                @UseSubdomain = @useSubdomain;
+            }
+
+            public string @Name { get; }
+            public bool? @UseSubdomain { get; }
+        }
+
+        public sealed class network_rules
         {
             public network_rules(string[] @ipRules = null,
                                  string[] @virtualNetworkSubnetIds = null)
@@ -18,7 +31,7 @@ namespace NTerraform.Resources
             public string[] @VirtualNetworkSubnetIds { get; }
         }
 
-        public class identity
+        public sealed class identity
         {
             public identity(string @type)
             {
@@ -28,19 +41,6 @@ namespace NTerraform.Resources
             public string @Type { get; }
             public string @PrincipalId { get; }
             public string @TenantId { get; }
-        }
-
-        public class custom_domain
-        {
-            public custom_domain(string @name,
-                                 bool? @useSubdomain = null)
-            {
-                @Name = @name;
-                @UseSubdomain = @useSubdomain;
-            }
-
-            public string @Name { get; }
-            public bool? @UseSubdomain { get; }
         }
 
         public azurerm_storage_account(string @accountReplicationType,

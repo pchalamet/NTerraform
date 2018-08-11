@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_automation_schedule : NTerraform.resource
+    public sealed class azurerm_automation_schedule : NTerraform.resource
     {
         public azurerm_automation_schedule(string @frequency,
                                            string @name,

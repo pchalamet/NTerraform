@@ -2,27 +2,27 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_snapshot : NTerraform.data
+    public sealed class azurerm_snapshot : NTerraform.data
     {
-        public class encryption_settings
+        public sealed class encryption_settings
         {
-            public class disk_encryption_key
-            {
-                public disk_encryption_key()
-                {
-                }
-
-                public string @SecretUrl { get; }
-                public string @SourceVaultId { get; }
-            }
-
-            public class key_encryption_key
+            public sealed class key_encryption_key
             {
                 public key_encryption_key()
                 {
                 }
 
                 public string @KeyUrl { get; }
+                public string @SourceVaultId { get; }
+            }
+
+            public sealed class disk_encryption_key
+            {
+                public disk_encryption_key()
+                {
+                }
+
+                public string @SecretUrl { get; }
                 public string @SourceVaultId { get; }
             }
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_availability_set : NTerraform.resource
+    public sealed class azurerm_availability_set : NTerraform.resource
     {
         public azurerm_availability_set(string @location,
                                         string @name,

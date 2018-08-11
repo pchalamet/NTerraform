@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_virtual_machine_data_disk_attachment : NTerraform.resource
+    public sealed class azurerm_virtual_machine_data_disk_attachment : NTerraform.resource
     {
         public azurerm_virtual_machine_data_disk_attachment(string @caching,
                                                             int @lun,

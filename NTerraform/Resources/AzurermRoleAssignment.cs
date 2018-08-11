@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_role_assignment : NTerraform.resource
+    public sealed class azurerm_role_assignment : NTerraform.resource
     {
         public azurerm_role_assignment(string @principalId,
                                        string @scope,

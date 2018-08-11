@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_traffic_manager_profile : NTerraform.resource
+    public sealed class azurerm_traffic_manager_profile : NTerraform.resource
     {
-        public class dns_config
+        public sealed class dns_config
         {
             public dns_config(string @relativeName,
                               int @ttl)
@@ -17,7 +17,7 @@ namespace NTerraform.Resources
             public int @Ttl { get; }
         }
 
-        public class monitor_config
+        public sealed class monitor_config
         {
             public monitor_config(int @port,
                                   string @protocol,

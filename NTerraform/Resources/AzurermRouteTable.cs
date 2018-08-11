@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_route_table : NTerraform.resource
+    public sealed class azurerm_route_table : NTerraform.resource
     {
-        public class route
+        public sealed class route
         {
             public route(string @addressPrefix,
                          string @name,

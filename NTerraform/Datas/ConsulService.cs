@@ -2,9 +2,41 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class consul_service : NTerraform.data
+    public sealed class consul_service : NTerraform.data
     {
-        public class query_options
+        public sealed class service
+        {
+            public sealed class tagged_addresses
+            {
+                public tagged_addresses()
+                {
+                }
+
+                public string @Lan { get; }
+                public string @Wan { get; }
+            }
+
+            public service(Dictionary<string,tagged_addresses> @taggedAddresses = null)
+            {
+                @TaggedAddresses = @taggedAddresses;
+            }
+
+            public string @Address { get; }
+            public string @CreateIndex { get; }
+            public string @EnableTagOverride { get; }
+            public string @Id { get; }
+            public string @ModifyIndex { get; }
+            public string @Name { get; }
+            public string @NodeAddress { get; }
+            public string @NodeId { get; }
+            public Dictionary<string,string> @NodeMeta { get; }
+            public string @NodeName { get; }
+            public string @Port { get; }
+            public Dictionary<string,tagged_addresses> @TaggedAddresses { get; }
+            public string[] @Tags { get; }
+        }
+
+        public sealed class query_options
         {
             public query_options(bool? @allowStale = null,
                                  string @datacenter = null,
@@ -33,38 +65,6 @@ namespace NTerraform.Datas
             public string @Token { get; }
             public int? @WaitIndex { get; }
             public string @WaitTime { get; }
-        }
-
-        public class service
-        {
-            public class tagged_addresses
-            {
-                public tagged_addresses()
-                {
-                }
-
-                public string @Lan { get; }
-                public string @Wan { get; }
-            }
-
-            public service(Dictionary<string,tagged_addresses> @taggedAddresses = null)
-            {
-                @TaggedAddresses = @taggedAddresses;
-            }
-
-            public string @Address { get; }
-            public string @CreateIndex { get; }
-            public string @EnableTagOverride { get; }
-            public string @Id { get; }
-            public string @ModifyIndex { get; }
-            public string @Name { get; }
-            public string @NodeAddress { get; }
-            public string @NodeId { get; }
-            public Dictionary<string,string> @NodeMeta { get; }
-            public string @NodeName { get; }
-            public string @Port { get; }
-            public Dictionary<string,tagged_addresses> @TaggedAddresses { get; }
-            public string[] @Tags { get; }
         }
 
         public consul_service(string @name,

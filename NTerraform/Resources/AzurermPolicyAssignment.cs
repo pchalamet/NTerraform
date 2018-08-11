@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_policy_assignment : NTerraform.resource
+    public sealed class azurerm_policy_assignment : NTerraform.resource
     {
         public azurerm_policy_assignment(string @name,
                                          string @policyDefinitionId,

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_cdn_profile : NTerraform.data
+    public sealed class azurerm_cdn_profile : NTerraform.data
     {
         public azurerm_cdn_profile(string @name,
                                    string @resourceGroupName)

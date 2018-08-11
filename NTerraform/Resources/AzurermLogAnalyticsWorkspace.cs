@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_log_analytics_workspace : NTerraform.resource
+    public sealed class azurerm_log_analytics_workspace : NTerraform.resource
     {
         public azurerm_log_analytics_workspace(string @location,
                                                string @name,

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_recovery_services_vault : NTerraform.resource
+    public sealed class azurerm_recovery_services_vault : NTerraform.resource
     {
         public azurerm_recovery_services_vault(string @location,
                                                string @name,

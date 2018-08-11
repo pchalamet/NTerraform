@@ -2,102 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_scheduler_job : NTerraform.resource
+    public sealed class azurerm_scheduler_job : NTerraform.resource
     {
-        public class action_storage_queue
-        {
-            public action_storage_queue(string @message,
-                                        string @sasToken,
-                                        string @storageAccountName,
-                                        string @storageQueueName)
-            {
-                @Message = @message;
-                @SasToken = @sasToken;
-                @StorageAccountName = @storageAccountName;
-                @StorageQueueName = @storageQueueName;
-            }
-
-            public string @Message { get; }
-            public string @SasToken { get; }
-            public string @StorageAccountName { get; }
-            public string @StorageQueueName { get; }
-        }
-
-        public class error_action_web
-        {
-            public class authentication_certificate
-            {
-                public authentication_certificate(string @password,
-                                                  string @pfx)
-                {
-                    @Password = @password;
-                    @Pfx = @pfx;
-                }
-
-                public string @Password { get; }
-                public string @Pfx { get; }
-                public string @Expiration { get; }
-                public string @SubjectName { get; }
-                public string @Thumbprint { get; }
-            }
-
-            public class authentication_active_directory
-            {
-                public authentication_active_directory(string @clientId,
-                                                       string @secret,
-                                                       string @tenantId)
-                {
-                    @ClientId = @clientId;
-                    @Secret = @secret;
-                    @TenantId = @tenantId;
-                }
-
-                public string @ClientId { get; }
-                public string @Secret { get; }
-                public string @TenantId { get; }
-                public string @Audience { get; }
-            }
-
-            public class authentication_basic
-            {
-                public authentication_basic(string @password,
-                                            string @username)
-                {
-                    @Password = @password;
-                    @Username = @username;
-                }
-
-                public string @Password { get; }
-                public string @Username { get; }
-            }
-
-            public error_action_web(string @method,
-                                    string @url,
-                                    authentication_active_directory[] @authenticationActiveDirectory = null,
-                                    authentication_basic[] @authenticationBasic = null,
-                                    authentication_certificate[] @authenticationCertificate = null,
-                                    string @body = null,
-                                    Dictionary<string,string> @headers = null)
-            {
-                @Method = @method;
-                @Url = @url;
-                @AuthenticationActiveDirectory = @authenticationActiveDirectory;
-                @AuthenticationBasic = @authenticationBasic;
-                @AuthenticationCertificate = @authenticationCertificate;
-                @Body = @body;
-                @Headers = @headers;
-            }
-
-            public string @Method { get; }
-            public string @Url { get; }
-            public authentication_active_directory[] @AuthenticationActiveDirectory { get; }
-            public authentication_basic[] @AuthenticationBasic { get; }
-            public authentication_certificate[] @AuthenticationCertificate { get; }
-            public string @Body { get; }
-            public Dictionary<string,string> @Headers { get; }
-        }
-
-        public class retry
+        public sealed class retry
         {
             public retry(int? @count = null,
                          string @interval = null)
@@ -110,9 +17,9 @@ namespace NTerraform.Resources
             public string @Interval { get; }
         }
 
-        public class recurrence
+        public sealed class recurrence
         {
-            public class monthly_occurrences
+            public sealed class monthly_occurrences
             {
                 public monthly_occurrences(string @day,
                                            int @occurrence)
@@ -155,7 +62,26 @@ namespace NTerraform.Resources
             public string[] @WeekDays { get; }
         }
 
-        public class error_action_storage_queue
+        public sealed class action_storage_queue
+        {
+            public action_storage_queue(string @message,
+                                        string @sasToken,
+                                        string @storageAccountName,
+                                        string @storageQueueName)
+            {
+                @Message = @message;
+                @SasToken = @sasToken;
+                @StorageAccountName = @storageAccountName;
+                @StorageQueueName = @storageQueueName;
+            }
+
+            public string @Message { get; }
+            public string @SasToken { get; }
+            public string @StorageAccountName { get; }
+            public string @StorageQueueName { get; }
+        }
+
+        public sealed class error_action_storage_queue
         {
             public error_action_storage_queue(string @message,
                                               string @sasToken,
@@ -174,9 +100,22 @@ namespace NTerraform.Resources
             public string @StorageQueueName { get; }
         }
 
-        public class action_web
+        public sealed class action_web
         {
-            public class authentication_certificate
+            public sealed class authentication_basic
+            {
+                public authentication_basic(string @password,
+                                            string @username)
+                {
+                    @Password = @password;
+                    @Username = @username;
+                }
+
+                public string @Password { get; }
+                public string @Username { get; }
+            }
+
+            public sealed class authentication_certificate
             {
                 public authentication_certificate(string @password,
                                                   string @pfx)
@@ -192,7 +131,7 @@ namespace NTerraform.Resources
                 public string @Thumbprint { get; }
             }
 
-            public class authentication_active_directory
+            public sealed class authentication_active_directory
             {
                 public authentication_active_directory(string @clientId,
                                                        string @secret,
@@ -209,7 +148,35 @@ namespace NTerraform.Resources
                 public string @Audience { get; }
             }
 
-            public class authentication_basic
+            public action_web(string @method,
+                              string @url,
+                              authentication_active_directory[] @authenticationActiveDirectory = null,
+                              authentication_basic[] @authenticationBasic = null,
+                              authentication_certificate[] @authenticationCertificate = null,
+                              string @body = null,
+                              Dictionary<string,string> @headers = null)
+            {
+                @Method = @method;
+                @Url = @url;
+                @AuthenticationActiveDirectory = @authenticationActiveDirectory;
+                @AuthenticationBasic = @authenticationBasic;
+                @AuthenticationCertificate = @authenticationCertificate;
+                @Body = @body;
+                @Headers = @headers;
+            }
+
+            public string @Method { get; }
+            public string @Url { get; }
+            public authentication_active_directory[] @AuthenticationActiveDirectory { get; }
+            public authentication_basic[] @AuthenticationBasic { get; }
+            public authentication_certificate[] @AuthenticationCertificate { get; }
+            public string @Body { get; }
+            public Dictionary<string,string> @Headers { get; }
+        }
+
+        public sealed class error_action_web
+        {
+            public sealed class authentication_basic
             {
                 public authentication_basic(string @password,
                                             string @username)
@@ -222,13 +189,46 @@ namespace NTerraform.Resources
                 public string @Username { get; }
             }
 
-            public action_web(string @method,
-                              string @url,
-                              authentication_active_directory[] @authenticationActiveDirectory = null,
-                              authentication_basic[] @authenticationBasic = null,
-                              authentication_certificate[] @authenticationCertificate = null,
-                              string @body = null,
-                              Dictionary<string,string> @headers = null)
+            public sealed class authentication_certificate
+            {
+                public authentication_certificate(string @password,
+                                                  string @pfx)
+                {
+                    @Password = @password;
+                    @Pfx = @pfx;
+                }
+
+                public string @Password { get; }
+                public string @Pfx { get; }
+                public string @Expiration { get; }
+                public string @SubjectName { get; }
+                public string @Thumbprint { get; }
+            }
+
+            public sealed class authentication_active_directory
+            {
+                public authentication_active_directory(string @clientId,
+                                                       string @secret,
+                                                       string @tenantId)
+                {
+                    @ClientId = @clientId;
+                    @Secret = @secret;
+                    @TenantId = @tenantId;
+                }
+
+                public string @ClientId { get; }
+                public string @Secret { get; }
+                public string @TenantId { get; }
+                public string @Audience { get; }
+            }
+
+            public error_action_web(string @method,
+                                    string @url,
+                                    authentication_active_directory[] @authenticationActiveDirectory = null,
+                                    authentication_basic[] @authenticationBasic = null,
+                                    authentication_certificate[] @authenticationCertificate = null,
+                                    string @body = null,
+                                    Dictionary<string,string> @headers = null)
             {
                 @Method = @method;
                 @Url = @url;

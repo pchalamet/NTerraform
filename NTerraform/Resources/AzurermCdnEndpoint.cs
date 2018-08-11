@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_cdn_endpoint : NTerraform.resource
+    public sealed class azurerm_cdn_endpoint : NTerraform.resource
     {
-        public class origin
+        public sealed class origin
         {
             public origin(string @hostName,
                           string @name,
@@ -23,7 +23,7 @@ namespace NTerraform.Resources
             public int? @HttpsPort { get; }
         }
 
-        public class geo_filter
+        public sealed class geo_filter
         {
             public geo_filter(string @action,
                               string[] @countryCodes,

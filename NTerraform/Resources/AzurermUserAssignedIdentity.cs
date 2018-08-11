@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_user_assigned_identity : NTerraform.resource
+    public sealed class azurerm_user_assigned_identity : NTerraform.resource
     {
         public azurerm_user_assigned_identity(string @location,
                                               string @name,

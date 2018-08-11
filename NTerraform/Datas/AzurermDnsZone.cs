@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_dns_zone : NTerraform.data
+    public sealed class azurerm_dns_zone : NTerraform.data
     {
         public azurerm_dns_zone(string @name)
         {

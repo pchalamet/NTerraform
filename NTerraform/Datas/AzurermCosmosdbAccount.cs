@@ -2,20 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_cosmosdb_account : NTerraform.data
+    public sealed class azurerm_cosmosdb_account : NTerraform.data
     {
-        public class geo_location
-        {
-            public geo_location()
-            {
-            }
-
-            public int? @FailoverPriority { get; }
-            public string @Id { get; }
-            public string @Location { get; }
-        }
-
-        public class capabilities
+        public sealed class capabilities
         {
             public capabilities()
             {
@@ -24,7 +13,7 @@ namespace NTerraform.Datas
             public string @Name { get; }
         }
 
-        public class consistency_policy
+        public sealed class consistency_policy
         {
             public consistency_policy()
             {
@@ -33,6 +22,17 @@ namespace NTerraform.Datas
             public string @ConsistencyLevel { get; }
             public int? @MaxIntervalInSeconds { get; }
             public int? @MaxStalenessPrefix { get; }
+        }
+
+        public sealed class geo_location
+        {
+            public geo_location()
+            {
+            }
+
+            public int? @FailoverPriority { get; }
+            public string @Id { get; }
+            public string @Location { get; }
         }
 
         public azurerm_cosmosdb_account(string @name,

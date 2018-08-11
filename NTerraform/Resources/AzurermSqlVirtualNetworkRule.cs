@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_sql_virtual_network_rule : NTerraform.resource
+    public sealed class azurerm_sql_virtual_network_rule : NTerraform.resource
     {
         public azurerm_sql_virtual_network_rule(string @name,
                                                 string @resourceGroupName,

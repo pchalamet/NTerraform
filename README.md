@@ -8,7 +8,6 @@ Pros:
 
 Cons:
 * it's merely a new layer on top of terraform
-* output can only be processed in terraform and not in NTerraform app
 
 # Example
 Here is a terraform definition (from https://www.terraform.io/docs/providers/azurerm/index.html):
@@ -110,6 +109,7 @@ For example, C# script support `#r "nuget"` syntax. FSI does not for the moment 
 
 3. Command line parameters forwarding
 NTerraform app should be the entry point and delegate everything to real terraform then in schema.Build().
+Also should be able to support outputs by parsing terraform output.
 
 4. Implement terraform type provider (F#)
 Import definition directly from a type provider without requiring prio NTerraform support library reference or compilation.

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_search_service : NTerraform.resource
+    public sealed class azurerm_search_service : NTerraform.resource
     {
         public azurerm_search_service(string @location,
                                       string @name,

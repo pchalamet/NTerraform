@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class consul_service : NTerraform.resource
+    public sealed class consul_service : NTerraform.resource
     {
         public consul_service(string @name,
                               string @node,

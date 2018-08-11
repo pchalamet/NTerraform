@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Program.fs" />
-    <None Include="Network.fsx" />
+    <None Include="Sample.fsx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NTerraform\NTerraform.csproj" />

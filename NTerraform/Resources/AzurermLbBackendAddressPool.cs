@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_lb_backend_address_pool : NTerraform.resource
+    public sealed class azurerm_lb_backend_address_pool : NTerraform.resource
     {
         public azurerm_lb_backend_address_pool(string @loadbalancerId,
                                                string @name,

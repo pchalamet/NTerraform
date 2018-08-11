@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_subnet : NTerraform.resource
+    public sealed class azurerm_subnet : NTerraform.resource
     {
         public azurerm_subnet(string @addressPrefix,
                               string @name,

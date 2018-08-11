@@ -2,9 +2,19 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_metric_alertrule : NTerraform.resource
+    public sealed class azurerm_metric_alertrule : NTerraform.resource
     {
-        public class webhook_action
+        public sealed class email_action
+        {
+            public email_action()
+            {
+            }
+
+            public string[] @CustomEmails { get; }
+            public bool? @SendToServiceOwners { get; }
+        }
+
+        public sealed class webhook_action
         {
             public webhook_action(string @serviceUri)
             {
@@ -13,16 +23,6 @@ namespace NTerraform.Resources
 
             public string @ServiceUri { get; }
             public Dictionary<string,string> @Properties { get; }
-        }
-
-        public class email_action
-        {
-            public email_action()
-            {
-            }
-
-            public string[] @CustomEmails { get; }
-            public bool? @SendToServiceOwners { get; }
         }
 
         public azurerm_metric_alertrule(string @aggregation,

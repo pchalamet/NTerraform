@@ -2,11 +2,88 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_autoscale_setting : NTerraform.resource
+    public sealed class azurerm_autoscale_setting : NTerraform.resource
     {
-        public class profile
+        public sealed class notification
         {
-            public class capacity
+            public sealed class webhook
+            {
+                public webhook(string @serviceUri,
+                               Dictionary<string,string> @properties = null)
+                {
+                    @ServiceUri = @serviceUri;
+                    @Properties = @properties;
+                }
+
+                public string @ServiceUri { get; }
+                public Dictionary<string,string> @Properties { get; }
+            }
+
+            public sealed class email
+            {
+                public email(string[] @customEmails = null,
+                             bool? @sendToSubscriptionAdministrator = null,
+                             bool? @sendToSubscriptionCoAdministrator = null)
+                {
+                    @CustomEmails = @customEmails;
+                    @SendToSubscriptionAdministrator = @sendToSubscriptionAdministrator;
+                    @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
+                }
+
+                public string[] @CustomEmails { get; }
+                public bool? @SendToSubscriptionAdministrator { get; }
+                public bool? @SendToSubscriptionCoAdministrator { get; }
+            }
+
+            public notification(email[] @email = null,
+                                webhook[] @webhook = null)
+            {
+                @Email = @email;
+                @Webhook = @webhook;
+            }
+
+            public email[] @Email { get; }
+            public webhook[] @Webhook { get; }
+        }
+
+        public sealed class profile
+        {
+            public sealed class fixed_date
+            {
+                public fixed_date(string @end,
+                                  string @start,
+                                  string @timezone = null)
+                {
+                    @End = @end;
+                    @Start = @start;
+                    @Timezone = @timezone;
+                }
+
+                public string @End { get; }
+                public string @Start { get; }
+                public string @Timezone { get; }
+            }
+
+            public sealed class recurrence
+            {
+                public recurrence(string[] @days,
+                                  int[] @hours,
+                                  int[] @minutes,
+                                  string @timezone = null)
+                {
+                    @Days = @days;
+                    @Hours = @hours;
+                    @Minutes = @minutes;
+                    @Timezone = @timezone;
+                }
+
+                public string[] @Days { get; }
+                public int[] @Hours { get; }
+                public int[] @Minutes { get; }
+                public string @Timezone { get; }
+            }
+
+            public sealed class capacity
             {
                 public capacity(int @default,
                                 int @maximum,
@@ -22,9 +99,9 @@ namespace NTerraform.Resources
                 public int @Minimum { get; }
             }
 
-            public class rule
+            public sealed class rule
             {
-                public class metric_trigger
+                public sealed class metric_trigger
                 {
                     public metric_trigger(string @metricName,
                                           string @metricResourceId,
@@ -55,7 +132,7 @@ namespace NTerraform.Resources
                     public string @TimeWindow { get; }
                 }
 
-                public class scale_action
+                public sealed class scale_action
                 {
                     public scale_action(string @cooldown,
                                         string @direction,
@@ -85,41 +162,6 @@ namespace NTerraform.Resources
                 public scale_action[] @ScaleAction { get; }
             }
 
-            public class fixed_date
-            {
-                public fixed_date(string @end,
-                                  string @start,
-                                  string @timezone = null)
-                {
-                    @End = @end;
-                    @Start = @start;
-                    @Timezone = @timezone;
-                }
-
-                public string @End { get; }
-                public string @Start { get; }
-                public string @Timezone { get; }
-            }
-
-            public class recurrence
-            {
-                public recurrence(string[] @days,
-                                  int[] @hours,
-                                  int[] @minutes,
-                                  string @timezone = null)
-                {
-                    @Days = @days;
-                    @Hours = @hours;
-                    @Minutes = @minutes;
-                    @Timezone = @timezone;
-                }
-
-                public string[] @Days { get; }
-                public int[] @Hours { get; }
-                public int[] @Minutes { get; }
-                public string @Timezone { get; }
-            }
-
             public profile(capacity[] @capacity,
                            string @name,
                            fixed_date[] @fixedDate = null,
@@ -138,48 +180,6 @@ namespace NTerraform.Resources
             public fixed_date[] @FixedDate { get; }
             public recurrence[] @Recurrence { get; }
             public rule[] @Rule { get; }
-        }
-
-        public class notification
-        {
-            public class email
-            {
-                public email(string[] @customEmails = null,
-                             bool? @sendToSubscriptionAdministrator = null,
-                             bool? @sendToSubscriptionCoAdministrator = null)
-                {
-                    @CustomEmails = @customEmails;
-                    @SendToSubscriptionAdministrator = @sendToSubscriptionAdministrator;
-                    @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
-                }
-
-                public string[] @CustomEmails { get; }
-                public bool? @SendToSubscriptionAdministrator { get; }
-                public bool? @SendToSubscriptionCoAdministrator { get; }
-            }
-
-            public class webhook
-            {
-                public webhook(string @serviceUri,
-                               Dictionary<string,string> @properties = null)
-                {
-                    @ServiceUri = @serviceUri;
-                    @Properties = @properties;
-                }
-
-                public string @ServiceUri { get; }
-                public Dictionary<string,string> @Properties { get; }
-            }
-
-            public notification(email[] @email = null,
-                                webhook[] @webhook = null)
-            {
-                @Email = @email;
-                @Webhook = @webhook;
-            }
-
-            public email[] @Email { get; }
-            public webhook[] @Webhook { get; }
         }
 
         public azurerm_autoscale_setting(string @location,

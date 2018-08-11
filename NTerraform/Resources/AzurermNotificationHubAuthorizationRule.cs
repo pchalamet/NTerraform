@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_notification_hub_authorization_rule : NTerraform.resource
+    public sealed class azurerm_notification_hub_authorization_rule : NTerraform.resource
     {
         public azurerm_notification_hub_authorization_rule(string @name,
                                                            string @namespaceName,

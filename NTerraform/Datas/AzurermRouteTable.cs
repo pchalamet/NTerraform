@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_route_table : NTerraform.data
+    public sealed class azurerm_route_table : NTerraform.data
     {
-        public class route
+        public sealed class route
         {
             public route()
             {

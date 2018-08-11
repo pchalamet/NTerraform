@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_redis_cache : NTerraform.resource
+    public sealed class azurerm_redis_cache : NTerraform.resource
     {
-        public class patch_schedule
+        public sealed class patch_schedule
         {
             public patch_schedule(string @dayOfWeek,
                                   int? @startHourUtc = null)
@@ -17,7 +17,7 @@ namespace NTerraform.Resources
             public int? @StartHourUtc { get; }
         }
 
-        public class redis_configuration
+        public sealed class redis_configuration
         {
             public redis_configuration(string @maxmemoryPolicy = null,
                                        string @notifyKeyspaceEvents = null,

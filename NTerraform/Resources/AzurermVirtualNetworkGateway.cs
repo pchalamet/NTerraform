@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_virtual_network_gateway : NTerraform.resource
+    public sealed class azurerm_virtual_network_gateway : NTerraform.resource
     {
-        public class ip_configuration
+        public sealed class ip_configuration
         {
             public ip_configuration(string @subnetId,
                                     string @name = null,
@@ -23,9 +23,23 @@ namespace NTerraform.Resources
             public string @PublicIpAddressId { get; }
         }
 
-        public class vpn_client_configuration
+        public sealed class bgp_settings
         {
-            public class root_certificate
+            public bgp_settings(int? @asn = null,
+                                int? @peerWeight = null)
+            {
+                @Asn = @asn;
+                @PeerWeight = @peerWeight;
+            }
+
+            public int? @Asn { get; }
+            public int? @PeerWeight { get; }
+            public string @PeeringAddress { get; }
+        }
+
+        public sealed class vpn_client_configuration
+        {
+            public sealed class root_certificate
             {
                 public root_certificate(string @name,
                                         string @publicCertData)
@@ -38,7 +52,7 @@ namespace NTerraform.Resources
                 public string @PublicCertData { get; }
             }
 
-            public class revoked_certificate
+            public sealed class revoked_certificate
             {
                 public revoked_certificate(string @name,
                                            string @thumbprint)
@@ -72,20 +86,6 @@ namespace NTerraform.Resources
             public revoked_certificate[] @RevokedCertificate { get; }
             public root_certificate[] @RootCertificate { get; }
             public string[] @VpnClientProtocols { get; }
-        }
-
-        public class bgp_settings
-        {
-            public bgp_settings(int? @asn = null,
-                                int? @peerWeight = null)
-            {
-                @Asn = @asn;
-                @PeerWeight = @peerWeight;
-            }
-
-            public int? @Asn { get; }
-            public int? @PeerWeight { get; }
-            public string @PeeringAddress { get; }
         }
 
         public azurerm_virtual_network_gateway(ip_configuration[] @ipConfiguration,

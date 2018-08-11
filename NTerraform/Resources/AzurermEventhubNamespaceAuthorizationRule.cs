@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_eventhub_namespace_authorization_rule : NTerraform.resource
+    public sealed class azurerm_eventhub_namespace_authorization_rule : NTerraform.resource
     {
         public azurerm_eventhub_namespace_authorization_rule(string @name,
                                                              string @namespaceName,

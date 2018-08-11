@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_public_ips : NTerraform.data
+    public sealed class azurerm_public_ips : NTerraform.data
     {
-        public class public_ips
+        public sealed class public_ips
         {
             public public_ips()
             {

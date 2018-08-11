@@ -2,21 +2,11 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class azurerm_app_service : NTerraform.data
+    public sealed class azurerm_app_service : NTerraform.data
     {
-        public class source_control
+        public sealed class site_config
         {
-            public source_control()
-            {
-            }
-
-            public string @Branch { get; }
-            public string @RepoUrl { get; }
-        }
-
-        public class site_config
-        {
-            public class ip_restriction
+            public sealed class ip_restriction
             {
                 public ip_restriction(string @ipAddress,
                                       string @subnetMask = null)
@@ -78,7 +68,17 @@ namespace NTerraform.Datas
             public bool? @WebsocketsEnabled { get; }
         }
 
-        public class connection_string
+        public sealed class source_control
+        {
+            public source_control()
+            {
+            }
+
+            public string @Branch { get; }
+            public string @RepoUrl { get; }
+        }
+
+        public sealed class connection_string
         {
             public connection_string()
             {
@@ -89,7 +89,7 @@ namespace NTerraform.Datas
             public string @Value { get; }
         }
 
-        public class site_credential
+        public sealed class site_credential
         {
             public site_credential()
             {

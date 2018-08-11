@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_dns_zone : NTerraform.resource
+    public sealed class azurerm_dns_zone : NTerraform.resource
     {
         public azurerm_dns_zone(string @name,
                                 string @resourceGroupName,

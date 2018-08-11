@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Datas
 {
-    public class consul_agent_config : NTerraform.data
+    public sealed class consul_agent_config : NTerraform.data
     {
         public consul_agent_config()
         {

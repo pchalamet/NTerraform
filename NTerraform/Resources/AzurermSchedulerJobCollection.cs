@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_scheduler_job_collection : NTerraform.resource
+    public sealed class azurerm_scheduler_job_collection : NTerraform.resource
     {
-        public class quota
+        public sealed class quota
         {
             public quota(string @maxRecurrenceFrequency,
                          int? @maxJobCount = null,

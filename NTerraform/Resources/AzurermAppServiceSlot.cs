@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_app_service_slot : NTerraform.resource
+    public sealed class azurerm_app_service_slot : NTerraform.resource
     {
-        public class identity
+        public sealed class identity
         {
             public identity(string @type)
             {
@@ -16,25 +16,9 @@ namespace NTerraform.Resources
             public string @TenantId { get; }
         }
 
-        public class connection_string
+        public sealed class site_config
         {
-            public connection_string(string @name,
-                                     string @type,
-                                     string @value)
-            {
-                @Name = @name;
-                @Type = @type;
-                @Value = @value;
-            }
-
-            public string @Name { get; }
-            public string @Type { get; }
-            public string @Value { get; }
-        }
-
-        public class site_config
-        {
-            public class ip_restriction
+            public sealed class ip_restriction
             {
                 public ip_restriction(string @ipAddress,
                                       string @subnetMask = null)
@@ -94,6 +78,22 @@ namespace NTerraform.Resources
             public string @ScmType { get; }
             public bool? @Use32BitWorkerProcess { get; }
             public bool? @WebsocketsEnabled { get; }
+        }
+
+        public sealed class connection_string
+        {
+            public connection_string(string @name,
+                                     string @type,
+                                     string @value)
+            {
+                @Name = @name;
+                @Type = @type;
+                @Value = @value;
+            }
+
+            public string @Name { get; }
+            public string @Type { get; }
+            public string @Value { get; }
         }
 
         public azurerm_app_service_slot(string @appServiceName,

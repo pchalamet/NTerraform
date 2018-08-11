@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_container_service : NTerraform.resource
+    public sealed class azurerm_container_service : NTerraform.resource
     {
-        public class master_profile
+        public sealed class master_profile
         {
             public master_profile(string @dnsPrefix,
                                   int? @count = null)
@@ -18,9 +18,20 @@ namespace NTerraform.Resources
             public string @Fqdn { get; }
         }
 
-        public class linux_profile
+        public sealed class diagnostics_profile
         {
-            public class ssh_key
+            public diagnostics_profile(bool @enabled)
+            {
+                @Enabled = @enabled;
+            }
+
+            public bool @Enabled { get; }
+            public string @StorageUri { get; }
+        }
+
+        public sealed class linux_profile
+        {
+            public sealed class ssh_key
             {
                 public ssh_key(string @keyData)
                 {
@@ -41,31 +52,7 @@ namespace NTerraform.Resources
             public ssh_key[] @SshKey { get; }
         }
 
-        public class diagnostics_profile
-        {
-            public diagnostics_profile(bool @enabled)
-            {
-                @Enabled = @enabled;
-            }
-
-            public bool @Enabled { get; }
-            public string @StorageUri { get; }
-        }
-
-        public class service_principal
-        {
-            public service_principal(string @clientId,
-                                     string @clientSecret)
-            {
-                @ClientId = @clientId;
-                @ClientSecret = @clientSecret;
-            }
-
-            public string @ClientId { get; }
-            public string @ClientSecret { get; }
-        }
-
-        public class agent_pool_profile
+        public sealed class agent_pool_profile
         {
             public agent_pool_profile(string @dnsPrefix,
                                       string @name,
@@ -83,6 +70,19 @@ namespace NTerraform.Resources
             public string @VmSize { get; }
             public int? @Count { get; }
             public string @Fqdn { get; }
+        }
+
+        public sealed class service_principal
+        {
+            public service_principal(string @clientId,
+                                     string @clientSecret)
+            {
+                @ClientId = @clientId;
+                @ClientSecret = @clientSecret;
+            }
+
+            public string @ClientId { get; }
+            public string @ClientSecret { get; }
         }
 
         public azurerm_container_service(agent_pool_profile[] @agentPoolProfile,

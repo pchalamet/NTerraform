@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace NTerraform.Resources
 {
-    public class azurerm_azuread_application : NTerraform.resource
+    public sealed class azurerm_azuread_application : NTerraform.resource
     {
         public azurerm_azuread_application(string @name,
                                            bool? @availableToOtherTenants = null,
