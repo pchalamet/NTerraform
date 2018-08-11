@@ -47,7 +47,7 @@ resource "azurerm_virtual_network" "network" {
 }
 ```
 
-This can be written in an F# script:
+Which can be rewritten as an F# script:
 ```fsharp
 open NTerraform.Providers
 open NTerraform.Resources
