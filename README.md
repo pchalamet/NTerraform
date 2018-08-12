@@ -2,7 +2,7 @@
 NTerraform aims at writing F# instead of *terraform* syntax. It's a POC as of now but looks really promising.
 
 Pros:
-* F# syntax is easier to grasp and offers new opportunities
+* F# syntax is easier to grasp and offers new world of opportunities
 * fully typed and completion ready !
 
 Cons:
@@ -49,25 +49,26 @@ resource "azurerm_virtual_network" "network" {
 
 Which can be rewritten as an F# script:
 ```fsharp
-open NTerraform.Providers
-open NTerraform.Resources
+open nterraform
+open nterraform.providers
+open nterraform.resources.azurerm
 
 let provider = azurerm(environment = "dev")
 
-let networkrg = azurerm_resource_group(name = "production",
-                                       location = "West US")
+let resgroup = azurerm_resource_group(name = "production",
+                                      location = "West US")
 
-let networkSubnets = [| azurerm_virtual_network.subnet(name = "subnet1", addressPrefix = "10.0.1.0/24")
-                        azurerm_virtual_network.subnet(name = "subnet2", addressPrefix = "10.0.2.0/24")
-                        azurerm_virtual_network.subnet(name = "subnet3", addressPrefix = "10.0.3.0/24") |]
+let subnets = [| azurerm_virtual_network.subnet(name = "subnet1", addressPrefix = "10.0.1.0/24")
+                 azurerm_virtual_network.subnet(name = "subnet2", addressPrefix = "10.0.2.0/24")
+                 azurerm_virtual_network.subnet(name = "subnet3", addressPrefix = "10.0.3.0/24") |]
 
 let network = azurerm_virtual_network(name = "production-network",
                                       addressSpace = [| "10.0.0.0/16" |],
-                                      location = networkrg.Location,
-                                      resourceGroupName = networkrg.Name,
-                                      subnet = networkSubnets)
+                                      location = resgroup.Location,
+                                      resourceGroupName = resgroup.Name,
+                                      subnet = subnets)
 
-NTerraform.schema.Build()
+configuration.build()
 ```
 
 This script can then be executed through FSI (it will write to stdout the terraform definition).
