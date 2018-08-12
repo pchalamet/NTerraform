@@ -83,22 +83,20 @@ Both tools must be on PATH.
 Script `NTerraform/build.ps1` can regenerate definitions. Update `NTerraform/providers.txt` accordingly.
 
 # Future
-This is a POC as stated before. Roadmap is for the moment:
+This is a POC as stated before. Following items are in sight:
 
-1. Generate tf files (DONE): 
-schema.Build() does nothing so it must detect context and generate tf files accordingly.
-Idea is to use either FSI (F# interactive) and C# script (https://github.com/filipw/dotnet-script): capture execution contexte and generate tf files.
-
-2. Generate Nugets: 
+## Generate Nuget
 NTerraform is just a bunch of code and not modular enough.
 Idea is to generate Nugets for each providers and be able to reference each Nuget in script.
 For example, C# script support `#r "nuget"` syntax. FSI does not for the moment but is planned.
 
-3. Command line parameters forwarding: 
-NTerraform app should be the entry point and delegate everything to real terraform then in schema.Build().
+## Forward command line parameters
+NTerraform script should be the entry point and delegate everything to real terraform then in configuration.build().
 Also should be able to support outputs by parsing terraform output.
 
-4. Implement terraform type provider (F#): 
-Import definition directly from a type provider without requiring prior NTerraform support library reference or compilation. Could be slow.
-
-5. Switch to a fully F# type model. F# has a showstopper as of now: no support for nested class. Optional support is weak unfortunately.
+## Switch to F# data model
+Type model is implemented in C# for the moment. F# does not support nested class nor easy module definition.
+There is already an F# generator but it miss module support so conflicts can arise.
+F# types would be far better
+* immutable collections & native F# collection (list, Map & Set)
+This is a low priority as C# host is still considered (using dotnet-script).
