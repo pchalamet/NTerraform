@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -29,11 +29,11 @@ namespace nterraform.datas
         }
 
         public consul_key_prefix(string @pathPrefix,
-                                 subkey[] @subkey = null,
+                                 FSharpList<subkey> @subkey = null,
                                  string @token = null)
         {
             @PathPrefix = @pathPrefix;
-            @Subkey = @subkey;
+            @Subkey = @subkey ?? FSharpList<subkey>.Empty;
             @Token = @token;
             base._validate_();
         }
@@ -45,16 +45,16 @@ namespace nterraform.datas
         public string @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "subkey", @out: false, min: 0, max: 0)]
-        public subkey[] @Subkey { get; }
+        public FSharpList<subkey> @Subkey { get; }
 
         [nterraform.Core.TerraformProperty(name: "subkeys", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Subkeys { get; }
+        public FSharpMap<string,string> @Subkeys { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }
 
         [nterraform.Core.TerraformProperty(name: "var", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Var { get; }
+        public FSharpMap<string,string> @Var { get; }
     }
 
 }

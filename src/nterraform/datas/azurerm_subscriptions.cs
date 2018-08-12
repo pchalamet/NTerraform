@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -32,14 +32,14 @@ namespace nterraform.datas
             public string @SubscriptionId { get; }
         }
 
-        public azurerm_subscriptions(subscriptions[] @subscriptions = null)
+        public azurerm_subscriptions(FSharpList<subscriptions> @subscriptions = null)
         {
-            @Subscriptions = @subscriptions;
+            @Subscriptions = @subscriptions ?? FSharpList<subscriptions>.Empty;
             base._validate_();
         }
 
         [nterraform.Core.TerraformProperty(name: "subscriptions", @out: false, min: 0, max: 0)]
-        public subscriptions[] @Subscriptions { get; }
+        public FSharpList<subscriptions> @Subscriptions { get; }
     }
 
 }

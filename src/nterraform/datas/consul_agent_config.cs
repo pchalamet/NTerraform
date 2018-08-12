@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {

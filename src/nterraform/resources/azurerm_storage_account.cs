@@ -1,10 +1,31 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_storage_account")]
     public sealed class azurerm_storage_account : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_rules")]
+        public sealed class network_rules : nterraform.Core.structure
+        {
+            public network_rules(FSharpList<string> @ipRules = null,
+                                 FSharpList<string> @virtualNetworkSubnetIds = null)
+            {
+                @IpRules = @ipRules ?? FSharpList<string>.Empty;
+                @VirtualNetworkSubnetIds = @virtualNetworkSubnetIds ?? FSharpList<string>.Empty;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "bypass", @out: true, min: 0, max: 1)]
+            public FSharpList<string> @Bypass { get; }
+
+            [nterraform.Core.TerraformProperty(name: "ip_rules", @out: false, min: 0, max: 1)]
+            public FSharpList<string> @IpRules { get; }
+
+            [nterraform.Core.TerraformProperty(name: "virtual_network_subnet_ids", @out: false, min: 0, max: 1)]
+            public FSharpList<string> @VirtualNetworkSubnetIds { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
         public sealed class identity : nterraform.Core.structure
         {
@@ -42,27 +63,6 @@ namespace nterraform.resources
             public bool? @UseSubdomain { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_rules")]
-        public sealed class network_rules : nterraform.Core.structure
-        {
-            public network_rules(string[] @ipRules = null,
-                                 string[] @virtualNetworkSubnetIds = null)
-            {
-                @IpRules = @ipRules;
-                @VirtualNetworkSubnetIds = @virtualNetworkSubnetIds;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "bypass", @out: true, min: 0, max: 1)]
-            public string[] @Bypass { get; }
-
-            [nterraform.Core.TerraformProperty(name: "ip_rules", @out: false, min: 0, max: 1)]
-            public string[] @IpRules { get; }
-
-            [nterraform.Core.TerraformProperty(name: "virtual_network_subnet_ids", @out: false, min: 0, max: 1)]
-            public string[] @VirtualNetworkSubnetIds { get; }
-        }
-
         public azurerm_storage_account(string @accountReplicationType,
                                        string @accountTier,
                                        string @location,
@@ -70,12 +70,12 @@ namespace nterraform.resources
                                        string @resourceGroupName,
                                        string @accountEncryptionSource = null,
                                        string @accountKind = null,
-                                       custom_domain[] @customDomain = null,
+                                       FSharpList<custom_domain> @customDomain = null,
                                        bool? @enableBlobEncryption = null,
                                        bool? @enableFileEncryption = null,
                                        bool? @enableHttpsTrafficOnly = null,
-                                       identity[] @identity = null,
-                                       network_rules[] @networkRules = null)
+                                       FSharpList<identity> @identity = null,
+                                       FSharpList<network_rules> @networkRules = null)
         {
             @AccountReplicationType = @accountReplicationType;
             @AccountTier = @accountTier;
@@ -84,12 +84,12 @@ namespace nterraform.resources
             @ResourceGroupName = @resourceGroupName;
             @AccountEncryptionSource = @accountEncryptionSource;
             @AccountKind = @accountKind;
-            @CustomDomain = @customDomain;
+            @CustomDomain = @customDomain ?? FSharpList<custom_domain>.Empty;
             @EnableBlobEncryption = @enableBlobEncryption;
             @EnableFileEncryption = @enableFileEncryption;
             @EnableHttpsTrafficOnly = @enableHttpsTrafficOnly;
-            @Identity = @identity;
-            @NetworkRules = @networkRules;
+            @Identity = @identity ?? FSharpList<identity>.Empty;
+            @NetworkRules = @networkRules ?? FSharpList<network_rules>.Empty;
             base._validate_();
         }
 
@@ -121,7 +121,7 @@ namespace nterraform.resources
         public string @AccountType { get; }
 
         [nterraform.Core.TerraformProperty(name: "custom_domain", @out: false, min: 0, max: 1)]
-        public custom_domain[] @CustomDomain { get; }
+        public FSharpList<custom_domain> @CustomDomain { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_blob_encryption", @out: false, min: 0, max: 1)]
         public bool? @EnableBlobEncryption { get; }
@@ -133,10 +133,10 @@ namespace nterraform.resources
         public bool? @EnableHttpsTrafficOnly { get; }
 
         [nterraform.Core.TerraformProperty(name: "identity", @out: false, min: 0, max: 1)]
-        public identity[] @Identity { get; }
+        public FSharpList<identity> @Identity { get; }
 
         [nterraform.Core.TerraformProperty(name: "network_rules", @out: false, min: 0, max: 1)]
-        public network_rules[] @NetworkRules { get; }
+        public FSharpList<network_rules> @NetworkRules { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_access_key", @out: true, min: 0, max: 1)]
         public string @PrimaryAccessKey { get; }
@@ -184,7 +184,7 @@ namespace nterraform.resources
         public string @SecondaryTableEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

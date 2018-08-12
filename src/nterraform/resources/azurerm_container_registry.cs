@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -28,7 +28,7 @@ namespace nterraform.resources
                                           string @resourceGroupName,
                                           bool? @adminEnabled = null,
                                           string @sku = null,
-                                          storage_account[] @storageAccount = null,
+                                          FSharpList<storage_account> @storageAccount = null,
                                           string @storageAccountId = null)
         {
             @Location = @location;
@@ -36,7 +36,7 @@ namespace nterraform.resources
             @ResourceGroupName = @resourceGroupName;
             @AdminEnabled = @adminEnabled;
             @Sku = @sku;
-            @StorageAccount = @storageAccount;
+            @StorageAccount = @storageAccount ?? FSharpList<storage_account>.Empty;
             @StorageAccountId = @storageAccountId;
             base._validate_();
         }
@@ -66,13 +66,13 @@ namespace nterraform.resources
         public string @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "storage_account", @out: false, min: 0, max: 1)]
-        public storage_account[] @StorageAccount { get; }
+        public FSharpList<storage_account> @StorageAccount { get; }
 
         [nterraform.Core.TerraformProperty(name: "storage_account_id", @out: false, min: 0, max: 1)]
         public string @StorageAccountId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

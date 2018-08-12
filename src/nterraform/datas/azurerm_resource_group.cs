@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -18,7 +18,7 @@ namespace nterraform.datas
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

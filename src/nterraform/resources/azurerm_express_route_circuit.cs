@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -29,7 +29,7 @@ namespace nterraform.resources
                                              string @peeringLocation,
                                              string @resourceGroupName,
                                              string @serviceProviderName,
-                                             sku[] @sku,
+                                             FSharpList<sku> @sku,
                                              bool? @allowClassicOperations = null)
         {
             @BandwidthInMbps = @bandwidthInMbps;
@@ -62,7 +62,7 @@ namespace nterraform.resources
         public string @ServiceProviderName { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
-        public sku[] @Sku { get; }
+        public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "allow_classic_operations", @out: false, min: 0, max: 1)]
         public bool? @AllowClassicOperations { get; }
@@ -74,7 +74,7 @@ namespace nterraform.resources
         public string @ServiceProviderProvisioningState { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

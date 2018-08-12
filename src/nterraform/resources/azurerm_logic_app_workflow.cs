@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -8,14 +8,14 @@ namespace nterraform.resources
         public azurerm_logic_app_workflow(string @location,
                                           string @name,
                                           string @resourceGroupName,
-                                          Dictionary<string,string> @parameters = null,
+                                          FSharpMap<string,string> @parameters = null,
                                           string @workflowSchema = null,
                                           string @workflowVersion = null)
         {
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @Parameters = @parameters;
+            @Parameters = @parameters ?? MapModule.Empty<string,string>();
             @WorkflowSchema = @workflowSchema;
             @WorkflowVersion = @workflowVersion;
             base._validate_();
@@ -34,10 +34,10 @@ namespace nterraform.resources
         public string @AccessEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
-        public Dictionary<string,string> @Parameters { get; }
+        public FSharpMap<string,string> @Parameters { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "workflow_schema", @out: false, min: 0, max: 1)]
         public string @WorkflowSchema { get; }

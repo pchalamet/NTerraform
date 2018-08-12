@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -14,13 +14,13 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "application_gateway_backend_address_pools_ids", @out: true, min: 0, max: 1)]
-            public string[] @ApplicationGatewayBackendAddressPoolsIds { get; }
+            public FSharpList<string> @ApplicationGatewayBackendAddressPoolsIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "load_balancer_backend_address_pools_ids", @out: true, min: 0, max: 1)]
-            public string[] @LoadBalancerBackendAddressPoolsIds { get; }
+            public FSharpList<string> @LoadBalancerBackendAddressPoolsIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "load_balancer_inbound_nat_rules_ids", @out: true, min: 0, max: 1)]
-            public string[] @LoadBalancerInboundNatRulesIds { get; }
+            public FSharpList<string> @LoadBalancerInboundNatRulesIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
             public string @Name { get; }
@@ -43,11 +43,11 @@ namespace nterraform.datas
 
         public azurerm_network_interface(string @name,
                                          string @resourceGroupName,
-                                         ip_configuration[] @ipConfiguration = null)
+                                         FSharpList<ip_configuration> @ipConfiguration = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @IpConfiguration = @ipConfiguration;
+            @IpConfiguration = @ipConfiguration ?? FSharpList<ip_configuration>.Empty;
             base._validate_();
         }
 
@@ -58,10 +58,10 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "applied_dns_servers", @out: true, min: 0, max: 1)]
-        public string[] @AppliedDnsServers { get; }
+        public FSharpList<string> @AppliedDnsServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns_servers", @out: true, min: 0, max: 1)]
-        public string[] @DnsServers { get; }
+        public FSharpList<string> @DnsServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_accelerated_networking", @out: true, min: 0, max: 1)]
         public bool? @EnableAcceleratedNetworking { get; }
@@ -76,7 +76,7 @@ namespace nterraform.datas
         public string @InternalFqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_configuration", @out: false, min: 0, max: 0)]
-        public ip_configuration[] @IpConfiguration { get; }
+        public FSharpList<ip_configuration> @IpConfiguration { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
         public string @Location { get; }
@@ -91,10 +91,10 @@ namespace nterraform.datas
         public string @PrivateIpAddress { get; }
 
         [nterraform.Core.TerraformProperty(name: "private_ip_addresses", @out: true, min: 0, max: 1)]
-        public string[] @PrivateIpAddresses { get; }
+        public FSharpList<string> @PrivateIpAddresses { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "virtual_machine_id", @out: true, min: 0, max: 1)]
         public string @VirtualMachineId { get; }

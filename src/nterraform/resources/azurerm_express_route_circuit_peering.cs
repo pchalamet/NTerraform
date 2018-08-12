@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -8,14 +8,14 @@ namespace nterraform.resources
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "microsoft_peering_config")]
         public sealed class microsoft_peering_config : nterraform.Core.structure
         {
-            public microsoft_peering_config(string[] @advertisedPublicPrefixes)
+            public microsoft_peering_config(FSharpList<string> @advertisedPublicPrefixes)
             {
                 @AdvertisedPublicPrefixes = @advertisedPublicPrefixes;
                 base._validate_();
             }
 
             [nterraform.Core.TerraformProperty(name: "advertised_public_prefixes", @out: false, min: 1, max: 1)]
-            public string[] @AdvertisedPublicPrefixes { get; }
+            public FSharpList<string> @AdvertisedPublicPrefixes { get; }
         }
 
         public azurerm_express_route_circuit_peering(string @expressRouteCircuitName,
@@ -24,7 +24,7 @@ namespace nterraform.resources
                                                      string @resourceGroupName,
                                                      string @secondaryPeerAddressPrefix,
                                                      int @vlanId,
-                                                     microsoft_peering_config[] @microsoftPeeringConfig = null,
+                                                     FSharpList<microsoft_peering_config> @microsoftPeeringConfig = null,
                                                      string @sharedKey = null)
         {
             @ExpressRouteCircuitName = @expressRouteCircuitName;
@@ -33,7 +33,7 @@ namespace nterraform.resources
             @ResourceGroupName = @resourceGroupName;
             @SecondaryPeerAddressPrefix = @secondaryPeerAddressPrefix;
             @VlanId = @vlanId;
-            @MicrosoftPeeringConfig = @microsoftPeeringConfig;
+            @MicrosoftPeeringConfig = @microsoftPeeringConfig ?? FSharpList<microsoft_peering_config>.Empty;
             @SharedKey = @sharedKey;
             base._validate_();
         }
@@ -60,7 +60,7 @@ namespace nterraform.resources
         public int? @AzureAsn { get; }
 
         [nterraform.Core.TerraformProperty(name: "microsoft_peering_config", @out: false, min: 0, max: 1)]
-        public microsoft_peering_config[] @MicrosoftPeeringConfig { get; }
+        public FSharpList<microsoft_peering_config> @MicrosoftPeeringConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "peer_asn", @out: true, min: 0, max: 1)]
         public int? @PeerAsn { get; }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -28,11 +28,11 @@ namespace nterraform.datas
 
         public azurerm_scheduler_job_collection(string @name,
                                                 string @resourceGroupName,
-                                                quota[] @quota = null)
+                                                FSharpList<quota> @quota = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @Quota = @quota;
+            @Quota = @quota ?? FSharpList<quota>.Empty;
             base._validate_();
         }
 
@@ -46,7 +46,7 @@ namespace nterraform.datas
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "quota", @out: false, min: 0, max: 0)]
-        public quota[] @Quota { get; }
+        public FSharpList<quota> @Quota { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: true, min: 0, max: 1)]
         public string @Sku { get; }
@@ -55,7 +55,7 @@ namespace nterraform.datas
         public string @State { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -32,7 +32,7 @@ namespace nterraform.resources
         }
 
         public azurerm_log_analytics_solution(string @location,
-                                              plan[] @plan,
+                                              FSharpList<plan> @plan,
                                               string @resourceGroupName,
                                               string @solutionName,
                                               string @workspaceName,
@@ -51,7 +51,7 @@ namespace nterraform.resources
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "plan", @out: false, min: 1, max: 1)]
-        public plan[] @Plan { get; }
+        public FSharpList<plan> @Plan { get; }
 
         [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }

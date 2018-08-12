@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -20,7 +20,7 @@ namespace nterraform.datas
         public string @Homepage { get; }
 
         [nterraform.Core.TerraformProperty(name: "identifier_uris", @out: true, min: 0, max: 1)]
-        public string[] @IdentifierUris { get; }
+        public FSharpList<string> @IdentifierUris { get; }
 
         [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
         public string @Name { get; }
@@ -32,7 +32,7 @@ namespace nterraform.datas
         public string @ObjectId { get; }
 
         [nterraform.Core.TerraformProperty(name: "reply_urls", @out: true, min: 0, max: 1)]
-        public string[] @ReplyUrls { get; }
+        public FSharpList<string> @ReplyUrls { get; }
     }
 
 }

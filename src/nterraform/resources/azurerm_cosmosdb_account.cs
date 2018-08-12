@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -44,27 +44,6 @@ namespace nterraform.resources
             public string @Name { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "failover_policy")]
-        public sealed class failover_policy : nterraform.Core.structure
-        {
-            public failover_policy(string @location,
-                                   int @priority)
-            {
-                @Location = @location;
-                @Priority = @priority;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
-            public string @Location { get; }
-
-            [nterraform.Core.TerraformProperty(name: "priority", @out: false, min: 1, max: 1)]
-            public int @Priority { get; }
-
-            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "consistency_policy")]
         public sealed class consistency_policy : nterraform.Core.structure
         {
@@ -88,15 +67,36 @@ namespace nterraform.resources
             public int? @MaxStalenessPrefix { get; }
         }
 
-        public azurerm_cosmosdb_account(consistency_policy[] @consistencyPolicy,
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "failover_policy")]
+        public sealed class failover_policy : nterraform.Core.structure
+        {
+            public failover_policy(string @location,
+                                   int @priority)
+            {
+                @Location = @location;
+                @Priority = @priority;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
+            public string @Location { get; }
+
+            [nterraform.Core.TerraformProperty(name: "priority", @out: false, min: 1, max: 1)]
+            public int @Priority { get; }
+
+            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+        }
+
+        public azurerm_cosmosdb_account(FSharpList<consistency_policy> @consistencyPolicy,
                                         string @location,
                                         string @name,
                                         string @offerType,
                                         string @resourceGroupName,
-                                        capabilities[] @capabilities = null,
+                                        FSharpList<capabilities> @capabilities = null,
                                         bool? @enableAutomaticFailover = null,
-                                        failover_policy[] @failoverPolicy = null,
-                                        geo_location[] @geoLocation = null,
+                                        FSharpList<failover_policy> @failoverPolicy = null,
+                                        FSharpList<geo_location> @geoLocation = null,
                                         string @ipRangeFilter = null,
                                         string @kind = null)
         {
@@ -105,17 +105,17 @@ namespace nterraform.resources
             @Name = @name;
             @OfferType = @offerType;
             @ResourceGroupName = @resourceGroupName;
-            @Capabilities = @capabilities;
+            @Capabilities = @capabilities ?? FSharpList<capabilities>.Empty;
             @EnableAutomaticFailover = @enableAutomaticFailover;
-            @FailoverPolicy = @failoverPolicy;
-            @GeoLocation = @geoLocation;
+            @FailoverPolicy = @failoverPolicy ?? FSharpList<failover_policy>.Empty;
+            @GeoLocation = @geoLocation ?? FSharpList<geo_location>.Empty;
             @IpRangeFilter = @ipRangeFilter;
             @Kind = @kind;
             base._validate_();
         }
 
         [nterraform.Core.TerraformProperty(name: "consistency_policy", @out: false, min: 1, max: 1)]
-        public consistency_policy[] @ConsistencyPolicy { get; }
+        public FSharpList<consistency_policy> @ConsistencyPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
@@ -130,10 +130,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "capabilities", @out: false, min: 0, max: 0)]
-        public capabilities[] @Capabilities { get; }
+        public FSharpList<capabilities> @Capabilities { get; }
 
         [nterraform.Core.TerraformProperty(name: "connection_strings", @out: true, min: 0, max: 1)]
-        public string[] @ConnectionStrings { get; }
+        public FSharpList<string> @ConnectionStrings { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_automatic_failover", @out: false, min: 0, max: 1)]
         public bool? @EnableAutomaticFailover { get; }
@@ -142,10 +142,10 @@ namespace nterraform.resources
         public string @Endpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "failover_policy", @out: false, min: 0, max: 0)]
-        public failover_policy[] @FailoverPolicy { get; }
+        public FSharpList<failover_policy> @FailoverPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "geo_location", @out: false, min: 0, max: 0)]
-        public geo_location[] @GeoLocation { get; }
+        public FSharpList<geo_location> @GeoLocation { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_range_filter", @out: false, min: 0, max: 1)]
         public string @IpRangeFilter { get; }
@@ -160,7 +160,7 @@ namespace nterraform.resources
         public string @PrimaryReadonlyMasterKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "read_endpoints", @out: true, min: 0, max: 1)]
-        public string[] @ReadEndpoints { get; }
+        public FSharpList<string> @ReadEndpoints { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_master_key", @out: true, min: 0, max: 1)]
         public string @SecondaryMasterKey { get; }
@@ -169,10 +169,10 @@ namespace nterraform.resources
         public string @SecondaryReadonlyMasterKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "write_endpoints", @out: true, min: 0, max: 1)]
-        public string[] @WriteEndpoints { get; }
+        public FSharpList<string> @WriteEndpoints { get; }
     }
 
 }

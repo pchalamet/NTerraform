@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -28,24 +28,24 @@ namespace nterraform.resources
             public string @SecurityGroup { get; }
         }
 
-        public azurerm_virtual_network(string[] @addressSpace,
+        public azurerm_virtual_network(FSharpList<string> @addressSpace,
                                        string @location,
                                        string @name,
                                        string @resourceGroupName,
-                                       string[] @dnsServers = null,
-                                       subnet[] @subnet = null)
+                                       FSharpList<string> @dnsServers = null,
+                                       FSharpList<subnet> @subnet = null)
         {
             @AddressSpace = @addressSpace;
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @DnsServers = @dnsServers;
-            @Subnet = @subnet;
+            @DnsServers = @dnsServers ?? FSharpList<string>.Empty;
+            @Subnet = @subnet ?? FSharpList<subnet>.Empty;
             base._validate_();
         }
 
         [nterraform.Core.TerraformProperty(name: "address_space", @out: false, min: 1, max: 1)]
-        public string[] @AddressSpace { get; }
+        public FSharpList<string> @AddressSpace { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
@@ -57,13 +57,13 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns_servers", @out: false, min: 0, max: 1)]
-        public string[] @DnsServers { get; }
+        public FSharpList<string> @DnsServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "subnet", @out: false, min: 0, max: 0)]
-        public subnet[] @Subnet { get; }
+        public FSharpList<subnet> @Subnet { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

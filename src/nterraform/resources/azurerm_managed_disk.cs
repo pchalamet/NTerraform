@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -8,24 +8,6 @@ namespace nterraform.resources
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "encryption_settings")]
         public sealed class encryption_settings : nterraform.Core.structure
         {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "disk_encryption_key")]
-            public sealed class disk_encryption_key : nterraform.Core.structure
-            {
-                public disk_encryption_key(string @secretUrl,
-                                           string @sourceVaultId)
-                {
-                    @SecretUrl = @secretUrl;
-                    @SourceVaultId = @sourceVaultId;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "secret_url", @out: false, min: 1, max: 1)]
-                public string @SecretUrl { get; }
-
-                [nterraform.Core.TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
-                public string @SourceVaultId { get; }
-            }
-
             [nterraform.Core.TerraformStructure(category: "resource", typeName: "key_encryption_key")]
             public sealed class key_encryption_key : nterraform.Core.structure
             {
@@ -44,13 +26,31 @@ namespace nterraform.resources
                 public string @SourceVaultId { get; }
             }
 
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "disk_encryption_key")]
+            public sealed class disk_encryption_key : nterraform.Core.structure
+            {
+                public disk_encryption_key(string @secretUrl,
+                                           string @sourceVaultId)
+                {
+                    @SecretUrl = @secretUrl;
+                    @SourceVaultId = @sourceVaultId;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "secret_url", @out: false, min: 1, max: 1)]
+                public string @SecretUrl { get; }
+
+                [nterraform.Core.TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
+                public string @SourceVaultId { get; }
+            }
+
             public encryption_settings(bool @enabled,
-                                       disk_encryption_key[] @diskEncryptionKey = null,
-                                       key_encryption_key[] @keyEncryptionKey = null)
+                                       FSharpList<disk_encryption_key> @diskEncryptionKey = null,
+                                       FSharpList<key_encryption_key> @keyEncryptionKey = null)
             {
                 @Enabled = @enabled;
-                @DiskEncryptionKey = @diskEncryptionKey;
-                @KeyEncryptionKey = @keyEncryptionKey;
+                @DiskEncryptionKey = @diskEncryptionKey ?? FSharpList<disk_encryption_key>.Empty;
+                @KeyEncryptionKey = @keyEncryptionKey ?? FSharpList<key_encryption_key>.Empty;
                 base._validate_();
             }
 
@@ -58,10 +58,10 @@ namespace nterraform.resources
             public bool @Enabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "disk_encryption_key", @out: false, min: 0, max: 1)]
-            public disk_encryption_key[] @DiskEncryptionKey { get; }
+            public FSharpList<disk_encryption_key> @DiskEncryptionKey { get; }
 
             [nterraform.Core.TerraformProperty(name: "key_encryption_key", @out: false, min: 0, max: 1)]
-            public key_encryption_key[] @KeyEncryptionKey { get; }
+            public FSharpList<key_encryption_key> @KeyEncryptionKey { get; }
         }
 
         public azurerm_managed_disk(string @createOption,
@@ -69,22 +69,22 @@ namespace nterraform.resources
                                     string @name,
                                     string @resourceGroupName,
                                     string @storageAccountType,
-                                    encryption_settings[] @encryptionSettings = null,
+                                    FSharpList<encryption_settings> @encryptionSettings = null,
                                     string @imageReferenceId = null,
                                     string @osType = null,
                                     string @sourceResourceId = null,
-                                    string[] @zones = null)
+                                    FSharpList<string> @zones = null)
         {
             @CreateOption = @createOption;
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @StorageAccountType = @storageAccountType;
-            @EncryptionSettings = @encryptionSettings;
+            @EncryptionSettings = @encryptionSettings ?? FSharpList<encryption_settings>.Empty;
             @ImageReferenceId = @imageReferenceId;
             @OsType = @osType;
             @SourceResourceId = @sourceResourceId;
-            @Zones = @zones;
+            @Zones = @zones ?? FSharpList<string>.Empty;
             base._validate_();
         }
 
@@ -107,7 +107,7 @@ namespace nterraform.resources
         public int? @DiskSizeGb { get; }
 
         [nterraform.Core.TerraformProperty(name: "encryption_settings", @out: false, min: 0, max: 1)]
-        public encryption_settings[] @EncryptionSettings { get; }
+        public FSharpList<encryption_settings> @EncryptionSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "image_reference_id", @out: false, min: 0, max: 1)]
         public string @ImageReferenceId { get; }
@@ -122,10 +122,10 @@ namespace nterraform.resources
         public string @SourceUri { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "zones", @out: false, min: 0, max: 1)]
-        public string[] @Zones { get; }
+        public FSharpList<string> @Zones { get; }
     }
 
 }

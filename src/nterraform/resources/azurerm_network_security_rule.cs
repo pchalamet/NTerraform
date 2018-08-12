@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -14,15 +14,15 @@ namespace nterraform.resources
                                              string @resourceGroupName,
                                              string @description = null,
                                              string @destinationAddressPrefix = null,
-                                             string[] @destinationAddressPrefixes = null,
-                                             string[] @destinationApplicationSecurityGroupIds = null,
+                                             FSharpList<string> @destinationAddressPrefixes = null,
+                                             FSharpList<string> @destinationApplicationSecurityGroupIds = null,
                                              string @destinationPortRange = null,
-                                             string[] @destinationPortRanges = null,
+                                             FSharpList<string> @destinationPortRanges = null,
                                              string @sourceAddressPrefix = null,
-                                             string[] @sourceAddressPrefixes = null,
-                                             string[] @sourceApplicationSecurityGroupIds = null,
+                                             FSharpList<string> @sourceAddressPrefixes = null,
+                                             FSharpList<string> @sourceApplicationSecurityGroupIds = null,
                                              string @sourcePortRange = null,
-                                             string[] @sourcePortRanges = null)
+                                             FSharpList<string> @sourcePortRanges = null)
         {
             @Access = @access;
             @Direction = @direction;
@@ -33,15 +33,15 @@ namespace nterraform.resources
             @ResourceGroupName = @resourceGroupName;
             @Description = @description;
             @DestinationAddressPrefix = @destinationAddressPrefix;
-            @DestinationAddressPrefixes = @destinationAddressPrefixes;
-            @DestinationApplicationSecurityGroupIds = @destinationApplicationSecurityGroupIds;
+            @DestinationAddressPrefixes = @destinationAddressPrefixes ?? FSharpList<string>.Empty;
+            @DestinationApplicationSecurityGroupIds = @destinationApplicationSecurityGroupIds ?? FSharpList<string>.Empty;
             @DestinationPortRange = @destinationPortRange;
-            @DestinationPortRanges = @destinationPortRanges;
+            @DestinationPortRanges = @destinationPortRanges ?? FSharpList<string>.Empty;
             @SourceAddressPrefix = @sourceAddressPrefix;
-            @SourceAddressPrefixes = @sourceAddressPrefixes;
-            @SourceApplicationSecurityGroupIds = @sourceApplicationSecurityGroupIds;
+            @SourceAddressPrefixes = @sourceAddressPrefixes ?? FSharpList<string>.Empty;
+            @SourceApplicationSecurityGroupIds = @sourceApplicationSecurityGroupIds ?? FSharpList<string>.Empty;
             @SourcePortRange = @sourcePortRange;
-            @SourcePortRanges = @sourcePortRanges;
+            @SourcePortRanges = @sourcePortRanges ?? FSharpList<string>.Empty;
             base._validate_();
         }
 
@@ -73,31 +73,31 @@ namespace nterraform.resources
         public string @DestinationAddressPrefix { get; }
 
         [nterraform.Core.TerraformProperty(name: "destination_address_prefixes", @out: false, min: 0, max: 1)]
-        public string[] @DestinationAddressPrefixes { get; }
+        public FSharpList<string> @DestinationAddressPrefixes { get; }
 
         [nterraform.Core.TerraformProperty(name: "destination_application_security_group_ids", @out: false, min: 0, max: 1)]
-        public string[] @DestinationApplicationSecurityGroupIds { get; }
+        public FSharpList<string> @DestinationApplicationSecurityGroupIds { get; }
 
         [nterraform.Core.TerraformProperty(name: "destination_port_range", @out: false, min: 0, max: 1)]
         public string @DestinationPortRange { get; }
 
         [nterraform.Core.TerraformProperty(name: "destination_port_ranges", @out: false, min: 0, max: 1)]
-        public string[] @DestinationPortRanges { get; }
+        public FSharpList<string> @DestinationPortRanges { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_address_prefix", @out: false, min: 0, max: 1)]
         public string @SourceAddressPrefix { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_address_prefixes", @out: false, min: 0, max: 1)]
-        public string[] @SourceAddressPrefixes { get; }
+        public FSharpList<string> @SourceAddressPrefixes { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_application_security_group_ids", @out: false, min: 0, max: 1)]
-        public string[] @SourceApplicationSecurityGroupIds { get; }
+        public FSharpList<string> @SourceApplicationSecurityGroupIds { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_port_range", @out: false, min: 0, max: 1)]
         public string @SourcePortRange { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_port_ranges", @out: false, min: 0, max: 1)]
-        public string[] @SourcePortRanges { get; }
+        public FSharpList<string> @SourcePortRanges { get; }
     }
 
 }

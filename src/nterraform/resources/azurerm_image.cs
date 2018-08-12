@@ -1,10 +1,39 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_image")]
     public sealed class azurerm_image : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "data_disk")]
+        public sealed class data_disk : nterraform.Core.structure
+        {
+            public data_disk(string @caching = null,
+                             int? @lun = null,
+                             string @managedDiskId = null)
+            {
+                @Caching = @caching;
+                @Lun = @lun;
+                @ManagedDiskId = @managedDiskId;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
+            public string @BlobUri { get; }
+
+            [nterraform.Core.TerraformProperty(name: "caching", @out: false, min: 0, max: 1)]
+            public string @Caching { get; }
+
+            [nterraform.Core.TerraformProperty(name: "lun", @out: false, min: 0, max: 1)]
+            public int? @Lun { get; }
+
+            [nterraform.Core.TerraformProperty(name: "managed_disk_id", @out: false, min: 0, max: 1)]
+            public string @ManagedDiskId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
+            public int? @SizeGb { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "os_disk")]
         public sealed class os_disk : nterraform.Core.structure
         {
@@ -37,47 +66,18 @@ namespace nterraform.resources
             public int? @SizeGb { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "data_disk")]
-        public sealed class data_disk : nterraform.Core.structure
-        {
-            public data_disk(string @caching = null,
-                             int? @lun = null,
-                             string @managedDiskId = null)
-            {
-                @Caching = @caching;
-                @Lun = @lun;
-                @ManagedDiskId = @managedDiskId;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
-            public string @BlobUri { get; }
-
-            [nterraform.Core.TerraformProperty(name: "caching", @out: false, min: 0, max: 1)]
-            public string @Caching { get; }
-
-            [nterraform.Core.TerraformProperty(name: "lun", @out: false, min: 0, max: 1)]
-            public int? @Lun { get; }
-
-            [nterraform.Core.TerraformProperty(name: "managed_disk_id", @out: false, min: 0, max: 1)]
-            public string @ManagedDiskId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
-            public int? @SizeGb { get; }
-        }
-
         public azurerm_image(string @location,
                              string @name,
                              string @resourceGroupName,
-                             data_disk[] @dataDisk = null,
-                             os_disk[] @osDisk = null,
+                             FSharpList<data_disk> @dataDisk = null,
+                             FSharpList<os_disk> @osDisk = null,
                              string @sourceVirtualMachineId = null)
         {
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @DataDisk = @dataDisk;
-            @OsDisk = @osDisk;
+            @DataDisk = @dataDisk ?? FSharpList<data_disk>.Empty;
+            @OsDisk = @osDisk ?? FSharpList<os_disk>.Empty;
             @SourceVirtualMachineId = @sourceVirtualMachineId;
             base._validate_();
         }
@@ -92,16 +92,16 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "data_disk", @out: false, min: 0, max: 0)]
-        public data_disk[] @DataDisk { get; }
+        public FSharpList<data_disk> @DataDisk { get; }
 
         [nterraform.Core.TerraformProperty(name: "os_disk", @out: false, min: 0, max: 1)]
-        public os_disk[] @OsDisk { get; }
+        public FSharpList<os_disk> @OsDisk { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_virtual_machine_id", @out: false, min: 0, max: 1)]
         public string @SourceVirtualMachineId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

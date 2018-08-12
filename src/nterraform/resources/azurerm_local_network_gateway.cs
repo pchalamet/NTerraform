@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -26,24 +26,24 @@ namespace nterraform.resources
             public int? @PeerWeight { get; }
         }
 
-        public azurerm_local_network_gateway(string[] @addressSpace,
+        public azurerm_local_network_gateway(FSharpList<string> @addressSpace,
                                              string @gatewayAddress,
                                              string @location,
                                              string @name,
                                              string @resourceGroupName,
-                                             bgp_settings[] @bgpSettings = null)
+                                             FSharpList<bgp_settings> @bgpSettings = null)
         {
             @AddressSpace = @addressSpace;
             @GatewayAddress = @gatewayAddress;
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @BgpSettings = @bgpSettings;
+            @BgpSettings = @bgpSettings ?? FSharpList<bgp_settings>.Empty;
             base._validate_();
         }
 
         [nterraform.Core.TerraformProperty(name: "address_space", @out: false, min: 1, max: 1)]
-        public string[] @AddressSpace { get; }
+        public FSharpList<string> @AddressSpace { get; }
 
         [nterraform.Core.TerraformProperty(name: "gateway_address", @out: false, min: 1, max: 1)]
         public string @GatewayAddress { get; }
@@ -58,10 +58,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "bgp_settings", @out: false, min: 0, max: 1)]
-        public bgp_settings[] @BgpSettings { get; }
+        public FSharpList<bgp_settings> @BgpSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

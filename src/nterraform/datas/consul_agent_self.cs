@@ -1,10 +1,112 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "consul_agent_self")]
     public sealed class consul_agent_self : nterraform.Core.data
     {
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "addresses")]
+        public sealed class addresses : nterraform.Core.structure
+        {
+            public addresses()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "dns", @out: true, min: 0, max: 1)]
+            public string @Dns { get; }
+
+            [nterraform.Core.TerraformProperty(name: "http", @out: true, min: 0, max: 1)]
+            public string @Http { get; }
+
+            [nterraform.Core.TerraformProperty(name: "https", @out: true, min: 0, max: 1)]
+            public string @Https { get; }
+
+            [nterraform.Core.TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
+            public string @Rpc { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "tagged_addresses")]
+        public sealed class tagged_addresses : nterraform.Core.structure
+        {
+            public tagged_addresses()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
+            public string @Lan { get; }
+
+            [nterraform.Core.TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
+            public string @Wan { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "retry_join_ec2")]
+        public sealed class retry_join_ec2 : nterraform.Core.structure
+        {
+            public retry_join_ec2()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "region", @out: true, min: 0, max: 1)]
+            public string @Region { get; }
+
+            [nterraform.Core.TerraformProperty(name: "tag_key", @out: true, min: 0, max: 1)]
+            public string @TagKey { get; }
+
+            [nterraform.Core.TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
+            public string @TagValue { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "ports")]
+        public sealed class ports : nterraform.Core.structure
+        {
+            public ports()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "dns", @out: true, min: 0, max: 1)]
+            public int? @Dns { get; }
+
+            [nterraform.Core.TerraformProperty(name: "http", @out: true, min: 0, max: 1)]
+            public int? @Http { get; }
+
+            [nterraform.Core.TerraformProperty(name: "https", @out: true, min: 0, max: 1)]
+            public int? @Https { get; }
+
+            [nterraform.Core.TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
+            public int? @Rpc { get; }
+
+            [nterraform.Core.TerraformProperty(name: "serf_lan", @out: true, min: 0, max: 1)]
+            public int? @SerfLan { get; }
+
+            [nterraform.Core.TerraformProperty(name: "serf_wan", @out: true, min: 0, max: 1)]
+            public int? @SerfWan { get; }
+
+            [nterraform.Core.TerraformProperty(name: "server", @out: true, min: 0, max: 1)]
+            public int? @Server { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "unix_sockets")]
+        public sealed class unix_sockets : nterraform.Core.structure
+        {
+            public unix_sockets()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "group", @out: true, min: 0, max: 1)]
+            public string @Group { get; }
+
+            [nterraform.Core.TerraformProperty(name: "mode", @out: true, min: 0, max: 1)]
+            public string @Mode { get; }
+
+            [nterraform.Core.TerraformProperty(name: "user", @out: true, min: 0, max: 1)]
+            public string @User { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "data", typeName: "dns")]
         public sealed class dns : nterraform.Core.structure
         {
@@ -39,120 +141,6 @@ namespace nterraform.datas
 
             [nterraform.Core.TerraformProperty(name: "udp_answer_limit", @out: true, min: 0, max: 1)]
             public int? @UdpAnswerLimit { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "ports")]
-        public sealed class ports : nterraform.Core.structure
-        {
-            public ports()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "dns", @out: true, min: 0, max: 1)]
-            public int? @Dns { get; }
-
-            [nterraform.Core.TerraformProperty(name: "http", @out: true, min: 0, max: 1)]
-            public int? @Http { get; }
-
-            [nterraform.Core.TerraformProperty(name: "https", @out: true, min: 0, max: 1)]
-            public int? @Https { get; }
-
-            [nterraform.Core.TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
-            public int? @Rpc { get; }
-
-            [nterraform.Core.TerraformProperty(name: "serf_lan", @out: true, min: 0, max: 1)]
-            public int? @SerfLan { get; }
-
-            [nterraform.Core.TerraformProperty(name: "serf_wan", @out: true, min: 0, max: 1)]
-            public int? @SerfWan { get; }
-
-            [nterraform.Core.TerraformProperty(name: "server", @out: true, min: 0, max: 1)]
-            public int? @Server { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "tagged_addresses")]
-        public sealed class tagged_addresses : nterraform.Core.structure
-        {
-            public tagged_addresses()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
-            public string @Lan { get; }
-
-            [nterraform.Core.TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
-            public string @Wan { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "unix_sockets")]
-        public sealed class unix_sockets : nterraform.Core.structure
-        {
-            public unix_sockets()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "group", @out: true, min: 0, max: 1)]
-            public string @Group { get; }
-
-            [nterraform.Core.TerraformProperty(name: "mode", @out: true, min: 0, max: 1)]
-            public string @Mode { get; }
-
-            [nterraform.Core.TerraformProperty(name: "user", @out: true, min: 0, max: 1)]
-            public string @User { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "performance")]
-        public sealed class performance : nterraform.Core.structure
-        {
-            public performance()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "raft_multiplier", @out: true, min: 0, max: 1)]
-            public string @RaftMultiplier { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "retry_join_gce")]
-        public sealed class retry_join_gce : nterraform.Core.structure
-        {
-            public retry_join_gce()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "credentials_file", @out: true, min: 0, max: 1)]
-            public string @CredentialsFile { get; }
-
-            [nterraform.Core.TerraformProperty(name: "project_name", @out: true, min: 0, max: 1)]
-            public string @ProjectName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
-            public string @TagValue { get; }
-
-            [nterraform.Core.TerraformProperty(name: "zone_pattern", @out: true, min: 0, max: 1)]
-            public string @ZonePattern { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "retry_join_ec2")]
-        public sealed class retry_join_ec2 : nterraform.Core.structure
-        {
-            public retry_join_ec2()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "region", @out: true, min: 0, max: 1)]
-            public string @Region { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tag_key", @out: true, min: 0, max: 1)]
-            public string @TagKey { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
-            public string @TagValue { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "telemetry")]
@@ -206,7 +194,7 @@ namespace nterraform.datas
             public string @DogstatsdAddr { get; }
 
             [nterraform.Core.TerraformProperty(name: "dogstatsd_tags", @out: true, min: 0, max: 1)]
-            public string[] @DogstatsdTags { get; }
+            public FSharpList<string> @DogstatsdTags { get; }
 
             [nterraform.Core.TerraformProperty(name: "enable_hostname", @out: true, min: 0, max: 1)]
             public string @EnableHostname { get; }
@@ -239,48 +227,60 @@ namespace nterraform.datas
             public string @SerfWan { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "addresses")]
-        public sealed class addresses : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "retry_join_gce")]
+        public sealed class retry_join_gce : nterraform.Core.structure
         {
-            public addresses()
+            public retry_join_gce()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "dns", @out: true, min: 0, max: 1)]
-            public string @Dns { get; }
+            [nterraform.Core.TerraformProperty(name: "credentials_file", @out: true, min: 0, max: 1)]
+            public string @CredentialsFile { get; }
 
-            [nterraform.Core.TerraformProperty(name: "http", @out: true, min: 0, max: 1)]
-            public string @Http { get; }
+            [nterraform.Core.TerraformProperty(name: "project_name", @out: true, min: 0, max: 1)]
+            public string @ProjectName { get; }
 
-            [nterraform.Core.TerraformProperty(name: "https", @out: true, min: 0, max: 1)]
-            public string @Https { get; }
+            [nterraform.Core.TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
+            public string @TagValue { get; }
 
-            [nterraform.Core.TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
-            public string @Rpc { get; }
+            [nterraform.Core.TerraformProperty(name: "zone_pattern", @out: true, min: 0, max: 1)]
+            public string @ZonePattern { get; }
         }
 
-        public consul_agent_self(Dictionary<string,addresses> @addresses = null,
-                                 Dictionary<string,advertise_addrs> @advertiseAddrs = null,
-                                 Dictionary<string,dns> @dns = null,
-                                 Dictionary<string,performance> @performance = null,
-                                 Dictionary<string,ports> @ports = null,
-                                 Dictionary<string,retry_join_ec2> @retryJoinEc2 = null,
-                                 Dictionary<string,retry_join_gce> @retryJoinGce = null,
-                                 Dictionary<string,tagged_addresses> @taggedAddresses = null,
-                                 Dictionary<string,telemetry> @telemetry = null,
-                                 Dictionary<string,unix_sockets> @unixSockets = null)
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "performance")]
+        public sealed class performance : nterraform.Core.structure
         {
-            @Addresses = @addresses;
-            @AdvertiseAddrs = @advertiseAddrs;
-            @Dns = @dns;
-            @Performance = @performance;
-            @Ports = @ports;
-            @RetryJoinEc2 = @retryJoinEc2;
-            @RetryJoinGce = @retryJoinGce;
-            @TaggedAddresses = @taggedAddresses;
-            @Telemetry = @telemetry;
-            @UnixSockets = @unixSockets;
+            public performance()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "raft_multiplier", @out: true, min: 0, max: 1)]
+            public string @RaftMultiplier { get; }
+        }
+
+        public consul_agent_self(FSharpMap<string,addresses> @addresses = null,
+                                 FSharpMap<string,advertise_addrs> @advertiseAddrs = null,
+                                 FSharpMap<string,dns> @dns = null,
+                                 FSharpMap<string,performance> @performance = null,
+                                 FSharpMap<string,ports> @ports = null,
+                                 FSharpMap<string,retry_join_ec2> @retryJoinEc2 = null,
+                                 FSharpMap<string,retry_join_gce> @retryJoinGce = null,
+                                 FSharpMap<string,tagged_addresses> @taggedAddresses = null,
+                                 FSharpMap<string,telemetry> @telemetry = null,
+                                 FSharpMap<string,unix_sockets> @unixSockets = null)
+        {
+            @Addresses = @addresses ?? MapModule.Empty<string,addresses>();
+            @AdvertiseAddrs = @advertiseAddrs ?? MapModule.Empty<string,advertise_addrs>();
+            @Dns = @dns ?? MapModule.Empty<string,dns>();
+            @Performance = @performance ?? MapModule.Empty<string,performance>();
+            @Ports = @ports ?? MapModule.Empty<string,ports>();
+            @RetryJoinEc2 = @retryJoinEc2 ?? MapModule.Empty<string,retry_join_ec2>();
+            @RetryJoinGce = @retryJoinGce ?? MapModule.Empty<string,retry_join_gce>();
+            @TaggedAddresses = @taggedAddresses ?? MapModule.Empty<string,tagged_addresses>();
+            @Telemetry = @telemetry ?? MapModule.Empty<string,telemetry>();
+            @UnixSockets = @unixSockets ?? MapModule.Empty<string,unix_sockets>();
             base._validate_();
         }
 
@@ -303,7 +303,7 @@ namespace nterraform.datas
         public string @AclTtl { get; }
 
         [nterraform.Core.TerraformProperty(name: "addresses", @out: false, min: 0, max: 0)]
-        public Dictionary<string,addresses> @Addresses { get; }
+        public FSharpMap<string,addresses> @Addresses { get; }
 
         [nterraform.Core.TerraformProperty(name: "advertise_addr", @out: true, min: 0, max: 1)]
         public string @AdvertiseAddr { get; }
@@ -312,7 +312,7 @@ namespace nterraform.datas
         public string @AdvertiseAddrWan { get; }
 
         [nterraform.Core.TerraformProperty(name: "advertise_addrs", @out: false, min: 0, max: 0)]
-        public Dictionary<string,advertise_addrs> @AdvertiseAddrs { get; }
+        public FSharpMap<string,advertise_addrs> @AdvertiseAddrs { get; }
 
         [nterraform.Core.TerraformProperty(name: "atlas_join", @out: true, min: 0, max: 1)]
         public bool? @AtlasJoin { get; }
@@ -348,10 +348,10 @@ namespace nterraform.datas
         public bool? @DevMode { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns", @out: false, min: 0, max: 0)]
-        public Dictionary<string,dns> @Dns { get; }
+        public FSharpMap<string,dns> @Dns { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns_recursors", @out: true, min: 0, max: 1)]
-        public string[] @DnsRecursors { get; }
+        public FSharpList<string> @DnsRecursors { get; }
 
         [nterraform.Core.TerraformProperty(name: "domain", @out: true, min: 0, max: 1)]
         public string @Domain { get; }
@@ -393,13 +393,13 @@ namespace nterraform.datas
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "performance", @out: false, min: 0, max: 0)]
-        public Dictionary<string,performance> @Performance { get; }
+        public FSharpMap<string,performance> @Performance { get; }
 
         [nterraform.Core.TerraformProperty(name: "pid_file", @out: true, min: 0, max: 1)]
         public string @PidFile { get; }
 
         [nterraform.Core.TerraformProperty(name: "ports", @out: false, min: 0, max: 0)]
-        public Dictionary<string,ports> @Ports { get; }
+        public FSharpMap<string,ports> @Ports { get; }
 
         [nterraform.Core.TerraformProperty(name: "protocol_version", @out: true, min: 0, max: 1)]
         public int? @ProtocolVersion { get; }
@@ -414,16 +414,16 @@ namespace nterraform.datas
         public bool? @RejoinAfterLeave { get; }
 
         [nterraform.Core.TerraformProperty(name: "retry_join", @out: true, min: 0, max: 1)]
-        public string[] @RetryJoin { get; }
+        public FSharpList<string> @RetryJoin { get; }
 
         [nterraform.Core.TerraformProperty(name: "retry_join_ec2", @out: false, min: 0, max: 0)]
-        public Dictionary<string,retry_join_ec2> @RetryJoinEc2 { get; }
+        public FSharpMap<string,retry_join_ec2> @RetryJoinEc2 { get; }
 
         [nterraform.Core.TerraformProperty(name: "retry_join_gce", @out: false, min: 0, max: 0)]
-        public Dictionary<string,retry_join_gce> @RetryJoinGce { get; }
+        public FSharpMap<string,retry_join_gce> @RetryJoinGce { get; }
 
         [nterraform.Core.TerraformProperty(name: "retry_join_wan", @out: true, min: 0, max: 1)]
-        public string[] @RetryJoinWan { get; }
+        public FSharpList<string> @RetryJoinWan { get; }
 
         [nterraform.Core.TerraformProperty(name: "retry_max_attempts", @out: true, min: 0, max: 1)]
         public int? @RetryMaxAttempts { get; }
@@ -447,19 +447,19 @@ namespace nterraform.datas
         public string @SessionTtlMin { get; }
 
         [nterraform.Core.TerraformProperty(name: "start_join", @out: true, min: 0, max: 1)]
-        public string[] @StartJoin { get; }
+        public FSharpList<string> @StartJoin { get; }
 
         [nterraform.Core.TerraformProperty(name: "start_join_wan", @out: true, min: 0, max: 1)]
-        public string[] @StartJoinWan { get; }
+        public FSharpList<string> @StartJoinWan { get; }
 
         [nterraform.Core.TerraformProperty(name: "syslog_facility", @out: true, min: 0, max: 1)]
         public string @SyslogFacility { get; }
 
         [nterraform.Core.TerraformProperty(name: "tagged_addresses", @out: false, min: 0, max: 0)]
-        public Dictionary<string,tagged_addresses> @TaggedAddresses { get; }
+        public FSharpMap<string,tagged_addresses> @TaggedAddresses { get; }
 
         [nterraform.Core.TerraformProperty(name: "telemetry", @out: false, min: 0, max: 0)]
-        public Dictionary<string,telemetry> @Telemetry { get; }
+        public FSharpMap<string,telemetry> @Telemetry { get; }
 
         [nterraform.Core.TerraformProperty(name: "tls_ca_file", @out: true, min: 0, max: 1)]
         public string @TlsCaFile { get; }
@@ -489,7 +489,7 @@ namespace nterraform.datas
         public string @UiDir { get; }
 
         [nterraform.Core.TerraformProperty(name: "unix_sockets", @out: false, min: 0, max: 0)]
-        public Dictionary<string,unix_sockets> @UnixSockets { get; }
+        public FSharpMap<string,unix_sockets> @UnixSockets { get; }
 
         [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
         public string @Version { get; }

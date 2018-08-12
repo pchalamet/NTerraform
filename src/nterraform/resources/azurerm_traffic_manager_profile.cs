@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -46,8 +46,8 @@ namespace nterraform.resources
             public string @Path { get; }
         }
 
-        public azurerm_traffic_manager_profile(dns_config[] @dnsConfig,
-                                               monitor_config[] @monitorConfig,
+        public azurerm_traffic_manager_profile(FSharpList<dns_config> @dnsConfig,
+                                               FSharpList<monitor_config> @monitorConfig,
                                                string @name,
                                                string @resourceGroupName,
                                                string @trafficRoutingMethod)
@@ -61,10 +61,10 @@ namespace nterraform.resources
         }
 
         [nterraform.Core.TerraformProperty(name: "dns_config", @out: false, min: 1, max: 0)]
-        public dns_config[] @DnsConfig { get; }
+        public FSharpList<dns_config> @DnsConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "monitor_config", @out: false, min: 1, max: 0)]
-        public monitor_config[] @MonitorConfig { get; }
+        public FSharpList<monitor_config> @MonitorConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
@@ -82,7 +82,7 @@ namespace nterraform.resources
         public string @ProfileStatus { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -27,10 +27,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "backend_ip_configurations", @out: true, min: 0, max: 1)]
-        public string[] @BackendIpConfigurations { get; }
+        public FSharpList<string> @BackendIpConfigurations { get; }
 
         [nterraform.Core.TerraformProperty(name: "load_balancing_rules", @out: true, min: 0, max: 1)]
-        public string[] @LoadBalancingRules { get; }
+        public FSharpList<string> @LoadBalancingRules { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
         public string @Location { get; }

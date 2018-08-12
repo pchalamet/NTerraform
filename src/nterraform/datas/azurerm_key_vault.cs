@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -17,16 +17,16 @@ namespace nterraform.datas
             public string @ApplicationId { get; }
 
             [nterraform.Core.TerraformProperty(name: "certificate_permissions", @out: true, min: 0, max: 1)]
-            public string[] @CertificatePermissions { get; }
+            public FSharpList<string> @CertificatePermissions { get; }
 
             [nterraform.Core.TerraformProperty(name: "key_permissions", @out: true, min: 0, max: 1)]
-            public string[] @KeyPermissions { get; }
+            public FSharpList<string> @KeyPermissions { get; }
 
             [nterraform.Core.TerraformProperty(name: "object_id", @out: true, min: 0, max: 1)]
             public string @ObjectId { get; }
 
             [nterraform.Core.TerraformProperty(name: "secret_permissions", @out: true, min: 0, max: 1)]
-            public string[] @SecretPermissions { get; }
+            public FSharpList<string> @SecretPermissions { get; }
 
             [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
             public string @TenantId { get; }
@@ -46,13 +46,13 @@ namespace nterraform.datas
 
         public azurerm_key_vault(string @name,
                                  string @resourceGroupName,
-                                 access_policy[] @accessPolicy = null,
-                                 sku[] @sku = null)
+                                 FSharpList<access_policy> @accessPolicy = null,
+                                 FSharpList<sku> @sku = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @AccessPolicy = @accessPolicy;
-            @Sku = @sku;
+            @AccessPolicy = @accessPolicy ?? FSharpList<access_policy>.Empty;
+            @Sku = @sku ?? FSharpList<sku>.Empty;
             base._validate_();
         }
 
@@ -63,7 +63,7 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "access_policy", @out: false, min: 0, max: 0)]
-        public access_policy[] @AccessPolicy { get; }
+        public FSharpList<access_policy> @AccessPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled_for_deployment", @out: true, min: 0, max: 1)]
         public bool? @EnabledForDeployment { get; }
@@ -78,10 +78,10 @@ namespace nterraform.datas
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 0, max: 0)]
-        public sku[] @Sku { get; }
+        public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
         public string @TenantId { get; }

@@ -1,10 +1,28 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_redis_cache")]
     public sealed class azurerm_redis_cache : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "patch_schedule")]
+        public sealed class patch_schedule : nterraform.Core.structure
+        {
+            public patch_schedule(string @dayOfWeek,
+                                  int? @startHourUtc = null)
+            {
+                @DayOfWeek = @dayOfWeek;
+                @StartHourUtc = @startHourUtc;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "day_of_week", @out: false, min: 1, max: 1)]
+            public string @DayOfWeek { get; }
+
+            [nterraform.Core.TerraformProperty(name: "start_hour_utc", @out: false, min: 0, max: 1)]
+            public int? @StartHourUtc { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "redis_configuration")]
         public sealed class redis_configuration : nterraform.Core.structure
         {
@@ -52,33 +70,15 @@ namespace nterraform.resources
             public string @RdbStorageConnectionString { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "patch_schedule")]
-        public sealed class patch_schedule : nterraform.Core.structure
-        {
-            public patch_schedule(string @dayOfWeek,
-                                  int? @startHourUtc = null)
-            {
-                @DayOfWeek = @dayOfWeek;
-                @StartHourUtc = @startHourUtc;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "day_of_week", @out: false, min: 1, max: 1)]
-            public string @DayOfWeek { get; }
-
-            [nterraform.Core.TerraformProperty(name: "start_hour_utc", @out: false, min: 0, max: 1)]
-            public int? @StartHourUtc { get; }
-        }
-
         public azurerm_redis_cache(int @capacity,
                                    string @family,
                                    string @location,
                                    string @name,
-                                   redis_configuration[] @redisConfiguration,
+                                   FSharpList<redis_configuration> @redisConfiguration,
                                    string @resourceGroupName,
                                    string @skuName,
                                    bool? @enableNonSslPort = null,
-                                   patch_schedule[] @patchSchedule = null,
+                                   FSharpList<patch_schedule> @patchSchedule = null,
                                    int? @shardCount = null,
                                    string @subnetId = null)
         {
@@ -90,7 +90,7 @@ namespace nterraform.resources
             @ResourceGroupName = @resourceGroupName;
             @SkuName = @skuName;
             @EnableNonSslPort = @enableNonSslPort;
-            @PatchSchedule = @patchSchedule;
+            @PatchSchedule = @patchSchedule ?? FSharpList<patch_schedule>.Empty;
             @ShardCount = @shardCount;
             @SubnetId = @subnetId;
             base._validate_();
@@ -109,7 +109,7 @@ namespace nterraform.resources
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "redis_configuration", @out: false, min: 1, max: 1)]
-        public redis_configuration[] @RedisConfiguration { get; }
+        public FSharpList<redis_configuration> @RedisConfiguration { get; }
 
         [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
@@ -124,7 +124,7 @@ namespace nterraform.resources
         public string @Hostname { get; }
 
         [nterraform.Core.TerraformProperty(name: "patch_schedule", @out: false, min: 0, max: 0)]
-        public patch_schedule[] @PatchSchedule { get; }
+        public FSharpList<patch_schedule> @PatchSchedule { get; }
 
         [nterraform.Core.TerraformProperty(name: "port", @out: true, min: 0, max: 1)]
         public int? @Port { get; }
@@ -148,7 +148,7 @@ namespace nterraform.resources
         public string @SubnetId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

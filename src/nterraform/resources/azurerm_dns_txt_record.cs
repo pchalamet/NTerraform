@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -19,7 +19,7 @@ namespace nterraform.resources
         }
 
         public azurerm_dns_txt_record(string @name,
-                                      record[] @record,
+                                      FSharpList<record> @record,
                                       string @resourceGroupName,
                                       int @ttl,
                                       string @zoneName)
@@ -36,7 +36,7 @@ namespace nterraform.resources
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "record", @out: false, min: 1, max: 0)]
-        public record[] @Record { get; }
+        public FSharpList<record> @Record { get; }
 
         [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
@@ -48,7 +48,7 @@ namespace nterraform.resources
         public string @ZoneName { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

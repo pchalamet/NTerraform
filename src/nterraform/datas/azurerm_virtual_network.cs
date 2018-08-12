@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -20,16 +20,16 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "address_spaces", @out: true, min: 0, max: 1)]
-        public string[] @AddressSpaces { get; }
+        public FSharpList<string> @AddressSpaces { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns_servers", @out: true, min: 0, max: 1)]
-        public string[] @DnsServers { get; }
+        public FSharpList<string> @DnsServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "subnets", @out: true, min: 0, max: 1)]
-        public string[] @Subnets { get; }
+        public FSharpList<string> @Subnets { get; }
 
         [nterraform.Core.TerraformProperty(name: "vnet_peerings", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @VnetPeerings { get; }
+        public FSharpMap<string,string> @VnetPeerings { get; }
     }
 
 }

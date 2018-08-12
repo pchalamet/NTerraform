@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -13,7 +13,7 @@ namespace nterraform.resources
                                  int? @idleTimeoutInMinutes = null,
                                  string @reverseFqdn = null,
                                  string @sku = null,
-                                 string[] @zones = null)
+                                 FSharpList<string> @zones = null)
         {
             @Location = @location;
             @Name = @name;
@@ -23,7 +23,7 @@ namespace nterraform.resources
             @IdleTimeoutInMinutes = @idleTimeoutInMinutes;
             @ReverseFqdn = @reverseFqdn;
             @Sku = @sku;
-            @Zones = @zones;
+            @Zones = @zones ?? FSharpList<string>.Empty;
             base._validate_();
         }
 
@@ -58,10 +58,10 @@ namespace nterraform.resources
         public string @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "zones", @out: false, min: 0, max: 1)]
-        public string[] @Zones { get; }
+        public FSharpList<string> @Zones { get; }
     }
 
 }

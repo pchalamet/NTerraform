@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -53,14 +53,14 @@ namespace nterraform.resources
                                     string @resourceGroupName,
                                     string @serverName,
                                     string @createMode = null,
-                                    import[] @import = null)
+                                    FSharpList<import> @import = null)
         {
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @ServerName = @serverName;
             @CreateMode = @createMode;
-            @Import = @import;
+            @Import = @import ?? FSharpList<import>.Empty;
             base._validate_();
         }
 
@@ -98,7 +98,7 @@ namespace nterraform.resources
         public string @Encryption { get; }
 
         [nterraform.Core.TerraformProperty(name: "import", @out: false, min: 0, max: 1)]
-        public import[] @Import { get; }
+        public FSharpList<import> @Import { get; }
 
         [nterraform.Core.TerraformProperty(name: "max_size_bytes", @out: true, min: 0, max: 1)]
         public string @MaxSizeBytes { get; }
@@ -119,7 +119,7 @@ namespace nterraform.resources
         public string @SourceDatabaseId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

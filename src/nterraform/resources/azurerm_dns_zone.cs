@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -7,14 +7,14 @@ namespace nterraform.resources
     {
         public azurerm_dns_zone(string @name,
                                 string @resourceGroupName,
-                                string[] @registrationVirtualNetworkIds = null,
-                                string[] @resolutionVirtualNetworkIds = null,
+                                FSharpList<string> @registrationVirtualNetworkIds = null,
+                                FSharpList<string> @resolutionVirtualNetworkIds = null,
                                 string @zoneType = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @RegistrationVirtualNetworkIds = @registrationVirtualNetworkIds;
-            @ResolutionVirtualNetworkIds = @resolutionVirtualNetworkIds;
+            @RegistrationVirtualNetworkIds = @registrationVirtualNetworkIds ?? FSharpList<string>.Empty;
+            @ResolutionVirtualNetworkIds = @resolutionVirtualNetworkIds ?? FSharpList<string>.Empty;
             @ZoneType = @zoneType;
             base._validate_();
         }
@@ -29,19 +29,19 @@ namespace nterraform.resources
         public string @MaxNumberOfRecordSets { get; }
 
         [nterraform.Core.TerraformProperty(name: "name_servers", @out: true, min: 0, max: 1)]
-        public string[] @NameServers { get; }
+        public FSharpList<string> @NameServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "number_of_record_sets", @out: true, min: 0, max: 1)]
         public string @NumberOfRecordSets { get; }
 
         [nterraform.Core.TerraformProperty(name: "registration_virtual_network_ids", @out: false, min: 0, max: 1)]
-        public string[] @RegistrationVirtualNetworkIds { get; }
+        public FSharpList<string> @RegistrationVirtualNetworkIds { get; }
 
         [nterraform.Core.TerraformProperty(name: "resolution_virtual_network_ids", @out: false, min: 0, max: 1)]
-        public string[] @ResolutionVirtualNetworkIds { get; }
+        public FSharpList<string> @ResolutionVirtualNetworkIds { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "zone_type", @out: false, min: 0, max: 1)]
         public string @ZoneType { get; }

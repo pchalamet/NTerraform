@@ -1,61 +1,10 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_storage_account_sas")]
     public sealed class azurerm_storage_account_sas : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "services")]
-        public sealed class services : nterraform.Core.structure
-        {
-            public services(bool @blob,
-                            bool @file,
-                            bool @queue,
-                            bool @table)
-            {
-                @Blob = @blob;
-                @File = @file;
-                @Queue = @queue;
-                @Table = @table;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "blob", @out: false, min: 1, max: 1)]
-            public bool @Blob { get; }
-
-            [nterraform.Core.TerraformProperty(name: "file", @out: false, min: 1, max: 1)]
-            public bool @File { get; }
-
-            [nterraform.Core.TerraformProperty(name: "queue", @out: false, min: 1, max: 1)]
-            public bool @Queue { get; }
-
-            [nterraform.Core.TerraformProperty(name: "table", @out: false, min: 1, max: 1)]
-            public bool @Table { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "resource_types")]
-        public sealed class resource_types : nterraform.Core.structure
-        {
-            public resource_types(bool @container,
-                                  bool @object,
-                                  bool @service)
-            {
-                @Container = @container;
-                @Object = @object;
-                @Service = @service;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "container", @out: false, min: 1, max: 1)]
-            public bool @Container { get; }
-
-            [nterraform.Core.TerraformProperty(name: "object", @out: false, min: 1, max: 1)]
-            public bool @Object { get; }
-
-            [nterraform.Core.TerraformProperty(name: "service", @out: false, min: 1, max: 1)]
-            public bool @Service { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "permissions")]
         public sealed class permissions : nterraform.Core.structure
         {
@@ -104,11 +53,62 @@ namespace nterraform.datas
             public bool @Write { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "resource_types")]
+        public sealed class resource_types : nterraform.Core.structure
+        {
+            public resource_types(bool @container,
+                                  bool @object,
+                                  bool @service)
+            {
+                @Container = @container;
+                @Object = @object;
+                @Service = @service;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "container", @out: false, min: 1, max: 1)]
+            public bool @Container { get; }
+
+            [nterraform.Core.TerraformProperty(name: "object", @out: false, min: 1, max: 1)]
+            public bool @Object { get; }
+
+            [nterraform.Core.TerraformProperty(name: "service", @out: false, min: 1, max: 1)]
+            public bool @Service { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "services")]
+        public sealed class services : nterraform.Core.structure
+        {
+            public services(bool @blob,
+                            bool @file,
+                            bool @queue,
+                            bool @table)
+            {
+                @Blob = @blob;
+                @File = @file;
+                @Queue = @queue;
+                @Table = @table;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "blob", @out: false, min: 1, max: 1)]
+            public bool @Blob { get; }
+
+            [nterraform.Core.TerraformProperty(name: "file", @out: false, min: 1, max: 1)]
+            public bool @File { get; }
+
+            [nterraform.Core.TerraformProperty(name: "queue", @out: false, min: 1, max: 1)]
+            public bool @Queue { get; }
+
+            [nterraform.Core.TerraformProperty(name: "table", @out: false, min: 1, max: 1)]
+            public bool @Table { get; }
+        }
+
         public azurerm_storage_account_sas(string @connectionString,
                                            string @expiry,
-                                           permissions[] @permissions,
-                                           resource_types[] @resourceTypes,
-                                           services[] @services,
+                                           FSharpList<permissions> @permissions,
+                                           FSharpList<resource_types> @resourceTypes,
+                                           FSharpList<services> @services,
                                            string @start,
                                            bool? @httpsOnly = null)
         {
@@ -129,13 +129,13 @@ namespace nterraform.datas
         public string @Expiry { get; }
 
         [nterraform.Core.TerraformProperty(name: "permissions", @out: false, min: 1, max: 1)]
-        public permissions[] @Permissions { get; }
+        public FSharpList<permissions> @Permissions { get; }
 
         [nterraform.Core.TerraformProperty(name: "resource_types", @out: false, min: 1, max: 1)]
-        public resource_types[] @ResourceTypes { get; }
+        public FSharpList<resource_types> @ResourceTypes { get; }
 
         [nterraform.Core.TerraformProperty(name: "services", @out: false, min: 1, max: 1)]
-        public services[] @Services { get; }
+        public FSharpList<services> @Services { get; }
 
         [nterraform.Core.TerraformProperty(name: "start", @out: false, min: 1, max: 1)]
         public string @Start { get; }

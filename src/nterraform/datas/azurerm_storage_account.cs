@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -19,11 +19,11 @@ namespace nterraform.datas
 
         public azurerm_storage_account(string @name,
                                        string @resourceGroupName,
-                                       custom_domain[] @customDomain = null)
+                                       FSharpList<custom_domain> @customDomain = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @CustomDomain = @customDomain;
+            @CustomDomain = @customDomain ?? FSharpList<custom_domain>.Empty;
             base._validate_();
         }
 
@@ -49,7 +49,7 @@ namespace nterraform.datas
         public string @AccountTier { get; }
 
         [nterraform.Core.TerraformProperty(name: "custom_domain", @out: false, min: 0, max: 1)]
-        public custom_domain[] @CustomDomain { get; }
+        public FSharpList<custom_domain> @CustomDomain { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_blob_encryption", @out: true, min: 0, max: 1)]
         public bool? @EnableBlobEncryption { get; }
@@ -109,7 +109,7 @@ namespace nterraform.datas
         public string @SecondaryTableEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

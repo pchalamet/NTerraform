@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -56,7 +56,7 @@ namespace nterraform.resources
                                                           string @virtualNetworkGatewayId,
                                                           string @authorizationKey = null,
                                                           string @expressRouteCircuitId = null,
-                                                          ipsec_policy[] @ipsecPolicy = null,
+                                                          FSharpList<ipsec_policy> @ipsecPolicy = null,
                                                           string @localNetworkGatewayId = null,
                                                           string @peerVirtualNetworkGatewayId = null,
                                                           string @sharedKey = null)
@@ -68,7 +68,7 @@ namespace nterraform.resources
             @VirtualNetworkGatewayId = @virtualNetworkGatewayId;
             @AuthorizationKey = @authorizationKey;
             @ExpressRouteCircuitId = @expressRouteCircuitId;
-            @IpsecPolicy = @ipsecPolicy;
+            @IpsecPolicy = @ipsecPolicy ?? FSharpList<ipsec_policy>.Empty;
             @LocalNetworkGatewayId = @localNetworkGatewayId;
             @PeerVirtualNetworkGatewayId = @peerVirtualNetworkGatewayId;
             @SharedKey = @sharedKey;
@@ -100,7 +100,7 @@ namespace nterraform.resources
         public string @ExpressRouteCircuitId { get; }
 
         [nterraform.Core.TerraformProperty(name: "ipsec_policy", @out: false, min: 0, max: 1)]
-        public ipsec_policy[] @IpsecPolicy { get; }
+        public FSharpList<ipsec_policy> @IpsecPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "local_network_gateway_id", @out: false, min: 0, max: 1)]
         public string @LocalNetworkGatewayId { get; }
@@ -115,7 +115,7 @@ namespace nterraform.resources
         public string @SharedKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "use_policy_based_traffic_selectors", @out: true, min: 0, max: 1)]
         public bool? @UsePolicyBasedTrafficSelectors { get; }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -6,7 +6,7 @@ namespace nterraform.resources
     public sealed class consul_key_prefix : nterraform.Core.resource
     {
         public consul_key_prefix(string @pathPrefix,
-                                 Dictionary<string,string> @subkeys,
+                                 FSharpMap<string,string> @subkeys,
                                  string @token = null)
         {
             @PathPrefix = @pathPrefix;
@@ -19,7 +19,7 @@ namespace nterraform.resources
         public string @PathPrefix { get; }
 
         [nterraform.Core.TerraformProperty(name: "subkeys", @out: false, min: 1, max: 1)]
-        public Dictionary<string,string> @Subkeys { get; }
+        public FSharpMap<string,string> @Subkeys { get; }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
         public string @Datacenter { get; }

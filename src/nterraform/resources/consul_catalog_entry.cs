@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -11,12 +11,12 @@ namespace nterraform.resources
             public service(string @name,
                            string @address = null,
                            int? @port = null,
-                           string[] @tags = null)
+                           FSharpList<string> @tags = null)
             {
                 @Name = @name;
                 @Address = @address;
                 @Port = @port;
-                @Tags = @tags;
+                @Tags = @tags ?? FSharpList<string>.Empty;
                 base._validate_();
             }
 
@@ -33,17 +33,17 @@ namespace nterraform.resources
             public int? @Port { get; }
 
             [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
-            public string[] @Tags { get; }
+            public FSharpList<string> @Tags { get; }
         }
 
         public consul_catalog_entry(string @address,
                                     string @node,
-                                    service[] @service = null,
+                                    FSharpList<service> @service = null,
                                     string @token = null)
         {
             @Address = @address;
             @Node = @node;
-            @Service = @service;
+            @Service = @service ?? FSharpList<service>.Empty;
             @Token = @token;
             base._validate_();
         }
@@ -58,7 +58,7 @@ namespace nterraform.resources
         public string @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "service", @out: false, min: 0, max: 0)]
-        public service[] @Service { get; }
+        public FSharpList<service> @Service { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }

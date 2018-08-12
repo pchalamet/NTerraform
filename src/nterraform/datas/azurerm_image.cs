@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -57,17 +57,17 @@ namespace nterraform.datas
         }
 
         public azurerm_image(string @resourceGroupName,
-                             data_disk[] @dataDisk = null,
+                             FSharpList<data_disk> @dataDisk = null,
                              string @name = null,
                              string @nameRegex = null,
-                             os_disk[] @osDisk = null,
+                             FSharpList<os_disk> @osDisk = null,
                              bool? @sortDescending = null)
         {
             @ResourceGroupName = @resourceGroupName;
-            @DataDisk = @dataDisk;
+            @DataDisk = @dataDisk ?? FSharpList<data_disk>.Empty;
             @Name = @name;
             @NameRegex = @nameRegex;
-            @OsDisk = @osDisk;
+            @OsDisk = @osDisk ?? FSharpList<os_disk>.Empty;
             @SortDescending = @sortDescending;
             base._validate_();
         }
@@ -76,7 +76,7 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "data_disk", @out: false, min: 0, max: 0)]
-        public data_disk[] @DataDisk { get; }
+        public FSharpList<data_disk> @DataDisk { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
         public string @Location { get; }
@@ -88,13 +88,13 @@ namespace nterraform.datas
         public string @NameRegex { get; }
 
         [nterraform.Core.TerraformProperty(name: "os_disk", @out: false, min: 0, max: 0)]
-        public os_disk[] @OsDisk { get; }
+        public FSharpList<os_disk> @OsDisk { get; }
 
         [nterraform.Core.TerraformProperty(name: "sort_descending", @out: false, min: 0, max: 1)]
         public bool? @SortDescending { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

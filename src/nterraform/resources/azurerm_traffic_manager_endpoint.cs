@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -9,7 +9,7 @@ namespace nterraform.resources
                                                 string @profileName,
                                                 string @resourceGroupName,
                                                 string @type,
-                                                string[] @geoMappings = null,
+                                                FSharpList<string> @geoMappings = null,
                                                 int? @minChildEndpoints = null,
                                                 string @targetResourceId = null)
         {
@@ -17,7 +17,7 @@ namespace nterraform.resources
             @ProfileName = @profileName;
             @ResourceGroupName = @resourceGroupName;
             @Type = @type;
-            @GeoMappings = @geoMappings;
+            @GeoMappings = @geoMappings ?? FSharpList<string>.Empty;
             @MinChildEndpoints = @minChildEndpoints;
             @TargetResourceId = @targetResourceId;
             base._validate_();
@@ -45,7 +45,7 @@ namespace nterraform.resources
         public string @EndpointStatus { get; }
 
         [nterraform.Core.TerraformProperty(name: "geo_mappings", @out: false, min: 0, max: 1)]
-        public string[] @GeoMappings { get; }
+        public FSharpList<string> @GeoMappings { get; }
 
         [nterraform.Core.TerraformProperty(name: "min_child_endpoints", @out: false, min: 0, max: 1)]
         public int? @MinChildEndpoints { get; }

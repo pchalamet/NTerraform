@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -62,9 +62,9 @@ namespace nterraform.resources
         public azurerm_packet_capture(string @name,
                                       string @networkWatcherName,
                                       string @resourceGroupName,
-                                      storage_location[] @storageLocation,
+                                      FSharpList<storage_location> @storageLocation,
                                       string @targetResourceId,
-                                      filter[] @filter = null,
+                                      FSharpList<filter> @filter = null,
                                       int? @maximumBytesPerPacket = null,
                                       int? @maximumBytesPerSession = null,
                                       int? @maximumCaptureDuration = null)
@@ -74,7 +74,7 @@ namespace nterraform.resources
             @ResourceGroupName = @resourceGroupName;
             @StorageLocation = @storageLocation;
             @TargetResourceId = @targetResourceId;
-            @Filter = @filter;
+            @Filter = @filter ?? FSharpList<filter>.Empty;
             @MaximumBytesPerPacket = @maximumBytesPerPacket;
             @MaximumBytesPerSession = @maximumBytesPerSession;
             @MaximumCaptureDuration = @maximumCaptureDuration;
@@ -91,13 +91,13 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "storage_location", @out: false, min: 1, max: 1)]
-        public storage_location[] @StorageLocation { get; }
+        public FSharpList<storage_location> @StorageLocation { get; }
 
         [nterraform.Core.TerraformProperty(name: "target_resource_id", @out: false, min: 1, max: 1)]
         public string @TargetResourceId { get; }
 
         [nterraform.Core.TerraformProperty(name: "filter", @out: false, min: 0, max: 0)]
-        public filter[] @Filter { get; }
+        public FSharpList<filter> @Filter { get; }
 
         [nterraform.Core.TerraformProperty(name: "maximum_bytes_per_packet", @out: false, min: 0, max: 1)]
         public int? @MaximumBytesPerPacket { get; }

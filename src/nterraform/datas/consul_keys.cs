@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -28,10 +28,10 @@ namespace nterraform.datas
             public string @Default { get; }
         }
 
-        public consul_keys(key[] @key = null,
+        public consul_keys(FSharpList<key> @key = null,
                            string @token = null)
         {
-            @Key = @key;
+            @Key = @key ?? FSharpList<key>.Empty;
             @Token = @token;
             base._validate_();
         }
@@ -40,13 +40,13 @@ namespace nterraform.datas
         public string @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "key", @out: false, min: 0, max: 0)]
-        public key[] @Key { get; }
+        public FSharpList<key> @Key { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }
 
         [nterraform.Core.TerraformProperty(name: "var", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Var { get; }
+        public FSharpMap<string,string> @Var { get; }
     }
 
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -8,21 +8,6 @@ namespace nterraform.datas
         [nterraform.Core.TerraformStructure(category: "data", typeName: "encryption_settings")]
         public sealed class encryption_settings : nterraform.Core.structure
         {
-            [nterraform.Core.TerraformStructure(category: "data", typeName: "disk_encryption_key")]
-            public sealed class disk_encryption_key : nterraform.Core.structure
-            {
-                public disk_encryption_key()
-                {
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "secret_url", @out: true, min: 0, max: 1)]
-                public string @SecretUrl { get; }
-
-                [nterraform.Core.TerraformProperty(name: "source_vault_id", @out: true, min: 0, max: 1)]
-                public string @SourceVaultId { get; }
-            }
-
             [nterraform.Core.TerraformStructure(category: "data", typeName: "key_encryption_key")]
             public sealed class key_encryption_key : nterraform.Core.structure
             {
@@ -38,31 +23,46 @@ namespace nterraform.datas
                 public string @SourceVaultId { get; }
             }
 
-            public encryption_settings(disk_encryption_key[] @diskEncryptionKey = null,
-                                       key_encryption_key[] @keyEncryptionKey = null)
+            [nterraform.Core.TerraformStructure(category: "data", typeName: "disk_encryption_key")]
+            public sealed class disk_encryption_key : nterraform.Core.structure
             {
-                @DiskEncryptionKey = @diskEncryptionKey;
-                @KeyEncryptionKey = @keyEncryptionKey;
+                public disk_encryption_key()
+                {
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "secret_url", @out: true, min: 0, max: 1)]
+                public string @SecretUrl { get; }
+
+                [nterraform.Core.TerraformProperty(name: "source_vault_id", @out: true, min: 0, max: 1)]
+                public string @SourceVaultId { get; }
+            }
+
+            public encryption_settings(FSharpList<disk_encryption_key> @diskEncryptionKey = null,
+                                       FSharpList<key_encryption_key> @keyEncryptionKey = null)
+            {
+                @DiskEncryptionKey = @diskEncryptionKey ?? FSharpList<disk_encryption_key>.Empty;
+                @KeyEncryptionKey = @keyEncryptionKey ?? FSharpList<key_encryption_key>.Empty;
                 base._validate_();
             }
 
             [nterraform.Core.TerraformProperty(name: "disk_encryption_key", @out: false, min: 0, max: 0)]
-            public disk_encryption_key[] @DiskEncryptionKey { get; }
+            public FSharpList<disk_encryption_key> @DiskEncryptionKey { get; }
 
             [nterraform.Core.TerraformProperty(name: "enabled", @out: true, min: 0, max: 1)]
             public bool? @Enabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "key_encryption_key", @out: false, min: 0, max: 0)]
-            public key_encryption_key[] @KeyEncryptionKey { get; }
+            public FSharpList<key_encryption_key> @KeyEncryptionKey { get; }
         }
 
         public azurerm_snapshot(string @name,
                                 string @resourceGroupName,
-                                encryption_settings[] @encryptionSettings = null)
+                                FSharpList<encryption_settings> @encryptionSettings = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @EncryptionSettings = @encryptionSettings;
+            @EncryptionSettings = @encryptionSettings ?? FSharpList<encryption_settings>.Empty;
             base._validate_();
         }
 
@@ -79,7 +79,7 @@ namespace nterraform.datas
         public string @DiskSizeGb { get; }
 
         [nterraform.Core.TerraformProperty(name: "encryption_settings", @out: false, min: 0, max: 0)]
-        public encryption_settings[] @EncryptionSettings { get; }
+        public FSharpList<encryption_settings> @EncryptionSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "os_type", @out: true, min: 0, max: 1)]
         public string @OsType { get; }

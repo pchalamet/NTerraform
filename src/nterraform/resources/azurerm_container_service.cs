@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -75,22 +75,6 @@ namespace nterraform.resources
             public string @ClientSecret { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "diagnostics_profile")]
-        public sealed class diagnostics_profile : nterraform.Core.structure
-        {
-            public diagnostics_profile(bool @enabled)
-            {
-                @Enabled = @enabled;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
-            public bool @Enabled { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_uri", @out: true, min: 0, max: 1)]
-            public string @StorageUri { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "linux_profile")]
         public sealed class linux_profile : nterraform.Core.structure
         {
@@ -108,7 +92,7 @@ namespace nterraform.resources
             }
 
             public linux_profile(string @adminUsername,
-                                 ssh_key[] @sshKey)
+                                 FSharpList<ssh_key> @sshKey)
             {
                 @AdminUsername = @adminUsername;
                 @SshKey = @sshKey;
@@ -119,18 +103,34 @@ namespace nterraform.resources
             public string @AdminUsername { get; }
 
             [nterraform.Core.TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 1)]
-            public ssh_key[] @SshKey { get; }
+            public FSharpList<ssh_key> @SshKey { get; }
         }
 
-        public azurerm_container_service(agent_pool_profile[] @agentPoolProfile,
-                                         diagnostics_profile[] @diagnosticsProfile,
-                                         linux_profile[] @linuxProfile,
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "diagnostics_profile")]
+        public sealed class diagnostics_profile : nterraform.Core.structure
+        {
+            public diagnostics_profile(bool @enabled)
+            {
+                @Enabled = @enabled;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
+            public bool @Enabled { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_uri", @out: true, min: 0, max: 1)]
+            public string @StorageUri { get; }
+        }
+
+        public azurerm_container_service(FSharpList<agent_pool_profile> @agentPoolProfile,
+                                         FSharpList<diagnostics_profile> @diagnosticsProfile,
+                                         FSharpList<linux_profile> @linuxProfile,
                                          string @location,
-                                         master_profile[] @masterProfile,
+                                         FSharpList<master_profile> @masterProfile,
                                          string @name,
                                          string @orchestrationPlatform,
                                          string @resourceGroupName,
-                                         service_principal[] @servicePrincipal = null)
+                                         FSharpList<service_principal> @servicePrincipal = null)
         {
             @AgentPoolProfile = @agentPoolProfile;
             @DiagnosticsProfile = @diagnosticsProfile;
@@ -140,24 +140,24 @@ namespace nterraform.resources
             @Name = @name;
             @OrchestrationPlatform = @orchestrationPlatform;
             @ResourceGroupName = @resourceGroupName;
-            @ServicePrincipal = @servicePrincipal;
+            @ServicePrincipal = @servicePrincipal ?? FSharpList<service_principal>.Empty;
             base._validate_();
         }
 
         [nterraform.Core.TerraformProperty(name: "agent_pool_profile", @out: false, min: 1, max: 1)]
-        public agent_pool_profile[] @AgentPoolProfile { get; }
+        public FSharpList<agent_pool_profile> @AgentPoolProfile { get; }
 
         [nterraform.Core.TerraformProperty(name: "diagnostics_profile", @out: false, min: 1, max: 1)]
-        public diagnostics_profile[] @DiagnosticsProfile { get; }
+        public FSharpList<diagnostics_profile> @DiagnosticsProfile { get; }
 
         [nterraform.Core.TerraformProperty(name: "linux_profile", @out: false, min: 1, max: 1)]
-        public linux_profile[] @LinuxProfile { get; }
+        public FSharpList<linux_profile> @LinuxProfile { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "master_profile", @out: false, min: 1, max: 1)]
-        public master_profile[] @MasterProfile { get; }
+        public FSharpList<master_profile> @MasterProfile { get; }
 
         [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
@@ -169,10 +169,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "service_principal", @out: false, min: 0, max: 1)]
-        public service_principal[] @ServicePrincipal { get; }
+        public FSharpList<service_principal> @ServicePrincipal { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_key_vault_key")]
     public sealed class azurerm_key_vault_key : nterraform.Core.resource
     {
-        public azurerm_key_vault_key(string[] @keyOpts,
+        public azurerm_key_vault_key(FSharpList<string> @keyOpts,
                                      int @keySize,
                                      string @keyType,
                                      string @name,
@@ -20,7 +20,7 @@ namespace nterraform.resources
         }
 
         [nterraform.Core.TerraformProperty(name: "key_opts", @out: false, min: 1, max: 1)]
-        public string[] @KeyOpts { get; }
+        public FSharpList<string> @KeyOpts { get; }
 
         [nterraform.Core.TerraformProperty(name: "key_size", @out: false, min: 1, max: 1)]
         public int @KeySize { get; }
@@ -41,7 +41,7 @@ namespace nterraform.resources
         public string @N { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
         public string @Version { get; }

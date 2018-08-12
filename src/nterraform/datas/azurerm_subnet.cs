@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -28,7 +28,7 @@ namespace nterraform.datas
         public string @AddressPrefix { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_configurations", @out: true, min: 0, max: 1)]
-        public string[] @IpConfigurations { get; }
+        public FSharpList<string> @IpConfigurations { get; }
 
         [nterraform.Core.TerraformProperty(name: "network_security_group_id", @out: true, min: 0, max: 1)]
         public string @NetworkSecurityGroupId { get; }

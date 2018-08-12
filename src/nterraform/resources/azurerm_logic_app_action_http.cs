@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -10,14 +10,14 @@ namespace nterraform.resources
                                              string @name,
                                              string @uri,
                                              string @body = null,
-                                             Dictionary<string,string> @headers = null)
+                                             FSharpMap<string,string> @headers = null)
         {
             @LogicAppId = @logicAppId;
             @Method = @method;
             @Name = @name;
             @Uri = @uri;
             @Body = @body;
-            @Headers = @headers;
+            @Headers = @headers ?? MapModule.Empty<string,string>();
             base._validate_();
         }
 
@@ -37,7 +37,7 @@ namespace nterraform.resources
         public string @Body { get; }
 
         [nterraform.Core.TerraformProperty(name: "headers", @out: false, min: 0, max: 1)]
-        public Dictionary<string,string> @Headers { get; }
+        public FSharpMap<string,string> @Headers { get; }
     }
 
 }

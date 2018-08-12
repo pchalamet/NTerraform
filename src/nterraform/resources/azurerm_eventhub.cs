@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -36,7 +36,7 @@ namespace nterraform.resources
                 public string @StorageAccountId { get; }
             }
 
-            public capture_description(destination[] @destination,
+            public capture_description(FSharpList<destination> @destination,
                                        bool @enabled,
                                        string @encoding,
                                        int? @intervalInSeconds = null,
@@ -51,7 +51,7 @@ namespace nterraform.resources
             }
 
             [nterraform.Core.TerraformProperty(name: "destination", @out: false, min: 1, max: 1)]
-            public destination[] @Destination { get; }
+            public FSharpList<destination> @Destination { get; }
 
             [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 1, max: 1)]
             public bool @Enabled { get; }
@@ -71,7 +71,7 @@ namespace nterraform.resources
                                 string @namespaceName,
                                 int @partitionCount,
                                 string @resourceGroupName,
-                                capture_description[] @captureDescription = null,
+                                FSharpList<capture_description> @captureDescription = null,
                                 string @location = null)
         {
             @MessageRetention = @messageRetention;
@@ -79,7 +79,7 @@ namespace nterraform.resources
             @NamespaceName = @namespaceName;
             @PartitionCount = @partitionCount;
             @ResourceGroupName = @resourceGroupName;
-            @CaptureDescription = @captureDescription;
+            @CaptureDescription = @captureDescription ?? FSharpList<capture_description>.Empty;
             @Location = @location;
             base._validate_();
         }
@@ -100,13 +100,13 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "capture_description", @out: false, min: 0, max: 1)]
-        public capture_description[] @CaptureDescription { get; }
+        public FSharpList<capture_description> @CaptureDescription { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "partition_ids", @out: true, min: 0, max: 1)]
-        public string[] @PartitionIds { get; }
+        public FSharpList<string> @PartitionIds { get; }
     }
 
 }

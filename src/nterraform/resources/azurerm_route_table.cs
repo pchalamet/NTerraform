@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -35,13 +35,13 @@ namespace nterraform.resources
                                    string @name,
                                    string @resourceGroupName,
                                    bool? @disableBgpRoutePropagation = null,
-                                   route[] @route = null)
+                                   FSharpList<route> @route = null)
         {
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @DisableBgpRoutePropagation = @disableBgpRoutePropagation;
-            @Route = @route;
+            @Route = @route ?? FSharpList<route>.Empty;
             base._validate_();
         }
 
@@ -58,13 +58,13 @@ namespace nterraform.resources
         public bool? @DisableBgpRoutePropagation { get; }
 
         [nterraform.Core.TerraformProperty(name: "route", @out: false, min: 0, max: 0)]
-        public route[] @Route { get; }
+        public FSharpList<route> @Route { get; }
 
         [nterraform.Core.TerraformProperty(name: "subnets", @out: true, min: 0, max: 1)]
-        public string[] @Subnets { get; }
+        public FSharpList<string> @Subnets { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

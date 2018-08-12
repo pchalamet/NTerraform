@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -8,12 +8,12 @@ namespace nterraform.resources
         public consul_service(string @name,
                               string @node,
                               int? @port = null,
-                              string[] @tags = null)
+                              FSharpList<string> @tags = null)
         {
             @Name = @name;
             @Node = @node;
             @Port = @port;
-            @Tags = @tags;
+            @Tags = @tags ?? FSharpList<string>.Empty;
             base._validate_();
         }
 
@@ -36,7 +36,7 @@ namespace nterraform.resources
         public string @ServiceId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
-        public string[] @Tags { get; }
+        public FSharpList<string> @Tags { get; }
     }
 
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -21,7 +21,7 @@ namespace nterraform.resources
         public azurerm_automation_account(string @location,
                                           string @name,
                                           string @resourceGroupName,
-                                          sku[] @sku)
+                                          FSharpList<sku> @sku)
         {
             @Location = @location;
             @Name = @name;
@@ -40,10 +40,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
-        public sku[] @Sku { get; }
+        public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

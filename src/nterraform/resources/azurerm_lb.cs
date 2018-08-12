@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -9,10 +9,10 @@ namespace nterraform.resources
         public sealed class frontend_ip_configuration : nterraform.Core.structure
         {
             public frontend_ip_configuration(string @name,
-                                             string[] @zones = null)
+                                             FSharpList<string> @zones = null)
             {
                 @Name = @name;
-                @Zones = @zones;
+                @Zones = @zones ?? FSharpList<string>.Empty;
                 base._validate_();
             }
 
@@ -20,10 +20,10 @@ namespace nterraform.resources
             public string @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "inbound_nat_rules", @out: true, min: 0, max: 1)]
-            public string[] @InboundNatRules { get; }
+            public FSharpList<string> @InboundNatRules { get; }
 
             [nterraform.Core.TerraformProperty(name: "load_balancer_rules", @out: true, min: 0, max: 1)]
-            public string[] @LoadBalancerRules { get; }
+            public FSharpList<string> @LoadBalancerRules { get; }
 
             [nterraform.Core.TerraformProperty(name: "private_ip_address", @out: true, min: 0, max: 1)]
             public string @PrivateIpAddress { get; }
@@ -38,10 +38,10 @@ namespace nterraform.resources
             public string @SubnetId { get; }
 
             [nterraform.Core.TerraformProperty(name: "zones", @out: false, min: 0, max: 1)]
-            public string[] @Zones { get; }
+            public FSharpList<string> @Zones { get; }
         }
 
-        public azurerm_lb(frontend_ip_configuration[] @frontendIpConfiguration,
+        public azurerm_lb(FSharpList<frontend_ip_configuration> @frontendIpConfiguration,
                           string @location,
                           string @name,
                           string @resourceGroupName,
@@ -56,7 +56,7 @@ namespace nterraform.resources
         }
 
         [nterraform.Core.TerraformProperty(name: "frontend_ip_configuration", @out: false, min: 1, max: 0)]
-        public frontend_ip_configuration[] @FrontendIpConfiguration { get; }
+        public FSharpList<frontend_ip_configuration> @FrontendIpConfiguration { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
@@ -71,13 +71,13 @@ namespace nterraform.resources
         public string @PrivateIpAddress { get; }
 
         [nterraform.Core.TerraformProperty(name: "private_ip_addresses", @out: true, min: 0, max: 1)]
-        public string[] @PrivateIpAddresses { get; }
+        public FSharpList<string> @PrivateIpAddresses { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 0, max: 1)]
         public string @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

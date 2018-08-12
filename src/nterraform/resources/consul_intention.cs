@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -9,13 +9,13 @@ namespace nterraform.resources
                                 string @destinationName,
                                 string @sourceName,
                                 string @description = null,
-                                Dictionary<string,string> @meta = null)
+                                FSharpMap<string,string> @meta = null)
         {
             @Action = @action;
             @DestinationName = @destinationName;
             @SourceName = @sourceName;
             @Description = @description;
-            @Meta = @meta;
+            @Meta = @meta ?? MapModule.Empty<string,string>();
             base._validate_();
         }
 
@@ -32,7 +32,7 @@ namespace nterraform.resources
         public string @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "meta", @out: false, min: 0, max: 1)]
-        public Dictionary<string,string> @Meta { get; }
+        public FSharpMap<string,string> @Meta { get; }
     }
 
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Reflection;
+using System.Collections;
+using System.Linq;
 
 namespace nterraform.Core
 {
@@ -25,11 +27,11 @@ namespace nterraform.Core
                             throw new ApplicationException($"Property {prop.Name} is mandatory");
                         break;
 
-                    case object[] arr:
-                        if (propAttribute.Min != 0 && arr.Length < propAttribute.Min)
-                            throw new ApplicationException($"Expecting at least {propAttribute.Min} items in property {prop.Name}");
-                        if (propAttribute.Max != 0 && propAttribute.Max < arr.Length)
-                            throw new ApplicationException($"Expecting at most {propAttribute.Max} items in property {prop.Name}");
+                    case IEnumerable arr:
+                        //if (propAttribute.Min != 0 && arr. < propAttribute.Min)
+                        //    throw new ApplicationException($"Expecting at least {propAttribute.Min} items in property {prop.Name}");
+                        //if (propAttribute.Max != 0 && propAttribute.Max < arr.Count())
+                        //throw new ApplicationException($"Expecting at most {propAttribute.Max} items in property {prop.Name}");
                         break;
                 }
             }

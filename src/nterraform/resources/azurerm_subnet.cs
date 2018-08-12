@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -11,7 +11,7 @@ namespace nterraform.resources
                               string @virtualNetworkName,
                               string @networkSecurityGroupId = null,
                               string @routeTableId = null,
-                              string[] @serviceEndpoints = null)
+                              FSharpList<string> @serviceEndpoints = null)
         {
             @AddressPrefix = @addressPrefix;
             @Name = @name;
@@ -19,7 +19,7 @@ namespace nterraform.resources
             @VirtualNetworkName = @virtualNetworkName;
             @NetworkSecurityGroupId = @networkSecurityGroupId;
             @RouteTableId = @routeTableId;
-            @ServiceEndpoints = @serviceEndpoints;
+            @ServiceEndpoints = @serviceEndpoints ?? FSharpList<string>.Empty;
             base._validate_();
         }
 
@@ -36,7 +36,7 @@ namespace nterraform.resources
         public string @VirtualNetworkName { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_configurations", @out: true, min: 0, max: 1)]
-        public string[] @IpConfigurations { get; }
+        public FSharpList<string> @IpConfigurations { get; }
 
         [nterraform.Core.TerraformProperty(name: "network_security_group_id", @out: false, min: 0, max: 1)]
         public string @NetworkSecurityGroupId { get; }
@@ -45,7 +45,7 @@ namespace nterraform.resources
         public string @RouteTableId { get; }
 
         [nterraform.Core.TerraformProperty(name: "service_endpoints", @out: false, min: 0, max: 1)]
-        public string[] @ServiceEndpoints { get; }
+        public FSharpList<string> @ServiceEndpoints { get; }
     }
 
 }

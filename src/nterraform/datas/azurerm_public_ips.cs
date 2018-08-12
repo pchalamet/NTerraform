@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -33,13 +33,13 @@ namespace nterraform.datas
                                   string @allocationType = null,
                                   bool? @attached = null,
                                   string @namePrefix = null,
-                                  public_ips[] @publicIps = null)
+                                  FSharpList<public_ips> @publicIps = null)
         {
             @ResourceGroupName = @resourceGroupName;
             @AllocationType = @allocationType;
             @Attached = @attached;
             @NamePrefix = @namePrefix;
-            @PublicIps = @publicIps;
+            @PublicIps = @publicIps ?? FSharpList<public_ips>.Empty;
             base._validate_();
         }
 
@@ -56,7 +56,7 @@ namespace nterraform.datas
         public string @NamePrefix { get; }
 
         [nterraform.Core.TerraformProperty(name: "public_ips", @out: false, min: 0, max: 0)]
-        public public_ips[] @PublicIps { get; }
+        public FSharpList<public_ips> @PublicIps { get; }
     }
 
 }

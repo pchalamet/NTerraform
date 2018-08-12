@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -14,7 +14,7 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-            public string[] @Tags { get; }
+            public FSharpList<string> @Tags { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "query_options")]
@@ -23,7 +23,7 @@ namespace nterraform.datas
             public query_options(bool? @allowStale = null,
                                  string @datacenter = null,
                                  string @near = null,
-                                 Dictionary<string,string> @nodeMeta = null,
+                                 FSharpMap<string,string> @nodeMeta = null,
                                  bool? @requireConsistent = null,
                                  string @token = null,
                                  int? @waitIndex = null,
@@ -32,7 +32,7 @@ namespace nterraform.datas
                 @AllowStale = @allowStale;
                 @Datacenter = @datacenter;
                 @Near = @near;
-                @NodeMeta = @nodeMeta;
+                @NodeMeta = @nodeMeta ?? MapModule.Empty<string,string>();
                 @RequireConsistent = @requireConsistent;
                 @Token = @token;
                 @WaitIndex = @waitIndex;
@@ -50,7 +50,7 @@ namespace nterraform.datas
             public string @Near { get; }
 
             [nterraform.Core.TerraformProperty(name: "node_meta", @out: false, min: 0, max: 1)]
-            public Dictionary<string,string> @NodeMeta { get; }
+            public FSharpMap<string,string> @NodeMeta { get; }
 
             [nterraform.Core.TerraformProperty(name: "require_consistent", @out: false, min: 0, max: 1)]
             public bool? @RequireConsistent { get; }
@@ -65,11 +65,11 @@ namespace nterraform.datas
             public string @WaitTime { get; }
         }
 
-        public consul_services(query_options[] @queryOptions = null,
-                               Dictionary<string,services> @services = null)
+        public consul_services(FSharpList<query_options> @queryOptions = null,
+                               FSharpMap<string,services> @services = null)
         {
-            @QueryOptions = @queryOptions;
-            @Services = @services;
+            @QueryOptions = @queryOptions ?? FSharpList<query_options>.Empty;
+            @Services = @services ?? MapModule.Empty<string,services>();
             base._validate_();
         }
 
@@ -77,13 +77,13 @@ namespace nterraform.datas
         public string @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "names", @out: true, min: 0, max: 1)]
-        public string[] @Names { get; }
+        public FSharpList<string> @Names { get; }
 
         [nterraform.Core.TerraformProperty(name: "query_options", @out: false, min: 0, max: 0)]
-        public query_options[] @QueryOptions { get; }
+        public FSharpList<query_options> @QueryOptions { get; }
 
         [nterraform.Core.TerraformProperty(name: "services", @out: false, min: 0, max: 0)]
-        public Dictionary<string,services> @Services { get; }
+        public FSharpMap<string,services> @Services { get; }
     }
 
 }

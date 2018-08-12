@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -22,7 +22,7 @@ namespace nterraform.resources
                                                   string @name,
                                                   string @namespaceType,
                                                   string @resourceGroupName,
-                                                  sku[] @sku,
+                                                  FSharpList<sku> @sku,
                                                   bool? @enabled = null)
         {
             @Location = @location;
@@ -47,7 +47,7 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
-        public sku[] @Sku { get; }
+        public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
         public bool? @Enabled { get; }

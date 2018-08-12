@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -60,7 +60,7 @@ namespace nterraform.resources
                                                     string @subscriptionName,
                                                     string @topicName,
                                                     string @action = null,
-                                                    correlation_filter[] @correlationFilter = null,
+                                                    FSharpList<correlation_filter> @correlationFilter = null,
                                                     string @sqlFilter = null)
         {
             @FilterType = @filterType;
@@ -70,7 +70,7 @@ namespace nterraform.resources
             @SubscriptionName = @subscriptionName;
             @TopicName = @topicName;
             @Action = @action;
-            @CorrelationFilter = @correlationFilter;
+            @CorrelationFilter = @correlationFilter ?? FSharpList<correlation_filter>.Empty;
             @SqlFilter = @sqlFilter;
             base._validate_();
         }
@@ -97,7 +97,7 @@ namespace nterraform.resources
         public string @Action { get; }
 
         [nterraform.Core.TerraformProperty(name: "correlation_filter", @out: false, min: 0, max: 1)]
-        public correlation_filter[] @CorrelationFilter { get; }
+        public FSharpList<correlation_filter> @CorrelationFilter { get; }
 
         [nterraform.Core.TerraformProperty(name: "sql_filter", @out: false, min: 0, max: 1)]
         public string @SqlFilter { get; }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -19,11 +19,11 @@ namespace nterraform.datas
 
         public azurerm_notification_hub_namespace(string @name,
                                                   string @resourceGroupName,
-                                                  sku[] @sku = null)
+                                                  FSharpList<sku> @sku = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @Sku = @sku;
+            @Sku = @sku ?? FSharpList<sku>.Empty;
             base._validate_();
         }
 
@@ -46,7 +46,7 @@ namespace nterraform.datas
         public string @ServicebusEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 0, max: 0)]
-        public sku[] @Sku { get; }
+        public FSharpList<sku> @Sku { get; }
     }
 
 }

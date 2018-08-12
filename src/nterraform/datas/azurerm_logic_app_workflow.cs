@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -26,10 +26,10 @@ namespace nterraform.datas
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "parameters", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Parameters { get; }
+        public FSharpMap<string,string> @Parameters { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "workflow_schema", @out: true, min: 0, max: 1)]
         public string @WorkflowSchema { get; }

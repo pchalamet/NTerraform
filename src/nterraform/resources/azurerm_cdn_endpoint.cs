@@ -1,33 +1,10 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_cdn_endpoint")]
     public sealed class azurerm_cdn_endpoint : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "geo_filter")]
-        public sealed class geo_filter : nterraform.Core.structure
-        {
-            public geo_filter(string @action,
-                              string[] @countryCodes,
-                              string @relativePath)
-            {
-                @Action = @action;
-                @CountryCodes = @countryCodes;
-                @RelativePath = @relativePath;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "action", @out: false, min: 1, max: 1)]
-            public string @Action { get; }
-
-            [nterraform.Core.TerraformProperty(name: "country_codes", @out: false, min: 1, max: 1)]
-            public string[] @CountryCodes { get; }
-
-            [nterraform.Core.TerraformProperty(name: "relative_path", @out: false, min: 1, max: 1)]
-            public string @RelativePath { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "origin")]
         public sealed class origin : nterraform.Core.structure
         {
@@ -56,12 +33,35 @@ namespace nterraform.resources
             public int? @HttpsPort { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "geo_filter")]
+        public sealed class geo_filter : nterraform.Core.structure
+        {
+            public geo_filter(string @action,
+                              FSharpList<string> @countryCodes,
+                              string @relativePath)
+            {
+                @Action = @action;
+                @CountryCodes = @countryCodes;
+                @RelativePath = @relativePath;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "action", @out: false, min: 1, max: 1)]
+            public string @Action { get; }
+
+            [nterraform.Core.TerraformProperty(name: "country_codes", @out: false, min: 1, max: 1)]
+            public FSharpList<string> @CountryCodes { get; }
+
+            [nterraform.Core.TerraformProperty(name: "relative_path", @out: false, min: 1, max: 1)]
+            public string @RelativePath { get; }
+        }
+
         public azurerm_cdn_endpoint(string @location,
                                     string @name,
-                                    origin[] @origin,
+                                    FSharpList<origin> @origin,
                                     string @profileName,
                                     string @resourceGroupName,
-                                    geo_filter[] @geoFilter = null,
+                                    FSharpList<geo_filter> @geoFilter = null,
                                     bool? @isCompressionEnabled = null,
                                     bool? @isHttpAllowed = null,
                                     bool? @isHttpsAllowed = null,
@@ -73,7 +73,7 @@ namespace nterraform.resources
             @Origin = @origin;
             @ProfileName = @profileName;
             @ResourceGroupName = @resourceGroupName;
-            @GeoFilter = @geoFilter;
+            @GeoFilter = @geoFilter ?? FSharpList<geo_filter>.Empty;
             @IsCompressionEnabled = @isCompressionEnabled;
             @IsHttpAllowed = @isHttpAllowed;
             @IsHttpsAllowed = @isHttpsAllowed;
@@ -89,7 +89,7 @@ namespace nterraform.resources
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "origin", @out: false, min: 1, max: 0)]
-        public origin[] @Origin { get; }
+        public FSharpList<origin> @Origin { get; }
 
         [nterraform.Core.TerraformProperty(name: "profile_name", @out: false, min: 1, max: 1)]
         public string @ProfileName { get; }
@@ -98,10 +98,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "content_types_to_compress", @out: true, min: 0, max: 1)]
-        public string[] @ContentTypesToCompress { get; }
+        public FSharpList<string> @ContentTypesToCompress { get; }
 
         [nterraform.Core.TerraformProperty(name: "geo_filter", @out: false, min: 0, max: 0)]
-        public geo_filter[] @GeoFilter { get; }
+        public FSharpList<geo_filter> @GeoFilter { get; }
 
         [nterraform.Core.TerraformProperty(name: "host_name", @out: true, min: 0, max: 1)]
         public string @HostName { get; }
@@ -131,7 +131,7 @@ namespace nterraform.resources
         public string @QuerystringCachingBehaviour { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -15,13 +15,13 @@ namespace nterraform.datas
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "certificate_permissions", @out: true, min: 0, max: 1)]
-        public string[] @CertificatePermissions { get; }
+        public FSharpList<string> @CertificatePermissions { get; }
 
         [nterraform.Core.TerraformProperty(name: "key_permissions", @out: true, min: 0, max: 1)]
-        public string[] @KeyPermissions { get; }
+        public FSharpList<string> @KeyPermissions { get; }
 
         [nterraform.Core.TerraformProperty(name: "secret_permissions", @out: true, min: 0, max: 1)]
-        public string[] @SecretPermissions { get; }
+        public FSharpList<string> @SecretPermissions { get; }
     }
 
 }

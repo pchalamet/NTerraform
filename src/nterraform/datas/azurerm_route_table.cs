@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -28,11 +28,11 @@ namespace nterraform.datas
 
         public azurerm_route_table(string @name,
                                    string @resourceGroupName,
-                                   route[] @route = null)
+                                   FSharpList<route> @route = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @Route = @route;
+            @Route = @route ?? FSharpList<route>.Empty;
             base._validate_();
         }
 
@@ -46,13 +46,13 @@ namespace nterraform.datas
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "route", @out: false, min: 0, max: 0)]
-        public route[] @Route { get; }
+        public FSharpList<route> @Route { get; }
 
         [nterraform.Core.TerraformProperty(name: "subnets", @out: true, min: 0, max: 1)]
-        public string[] @Subnets { get; }
+        public FSharpList<string> @Subnets { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

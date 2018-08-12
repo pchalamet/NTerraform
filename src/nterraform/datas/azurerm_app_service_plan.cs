@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -43,13 +43,13 @@ namespace nterraform.datas
 
         public azurerm_app_service_plan(string @name,
                                         string @resourceGroupName,
-                                        properties[] @properties = null,
-                                        sku[] @sku = null)
+                                        FSharpList<properties> @properties = null,
+                                        FSharpList<sku> @sku = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @Properties = @properties;
-            @Sku = @sku;
+            @Properties = @properties ?? FSharpList<properties>.Empty;
+            @Sku = @sku ?? FSharpList<sku>.Empty;
             base._validate_();
         }
 
@@ -69,13 +69,13 @@ namespace nterraform.datas
         public int? @MaximumNumberOfWorkers { get; }
 
         [nterraform.Core.TerraformProperty(name: "properties", @out: false, min: 0, max: 0)]
-        public properties[] @Properties { get; }
+        public FSharpList<properties> @Properties { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 0, max: 0)]
-        public sku[] @Sku { get; }
+        public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

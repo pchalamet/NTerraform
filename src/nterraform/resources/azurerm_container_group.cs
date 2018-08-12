@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -74,20 +74,20 @@ namespace nterraform.resources
                              int @memory,
                              string @name,
                              string @command = null,
-                             Dictionary<string,string> @environmentVariables = null,
+                             FSharpMap<string,string> @environmentVariables = null,
                              int? @port = null,
                              string @protocol = null,
-                             volume[] @volume = null)
+                             FSharpList<volume> @volume = null)
             {
                 @Cpu = @cpu;
                 @Image = @image;
                 @Memory = @memory;
                 @Name = @name;
                 @Command = @command;
-                @EnvironmentVariables = @environmentVariables;
+                @EnvironmentVariables = @environmentVariables ?? MapModule.Empty<string,string>();
                 @Port = @port;
                 @Protocol = @protocol;
-                @Volume = @volume;
+                @Volume = @volume ?? FSharpList<volume>.Empty;
                 base._validate_();
             }
 
@@ -107,7 +107,7 @@ namespace nterraform.resources
             public string @Command { get; }
 
             [nterraform.Core.TerraformProperty(name: "environment_variables", @out: false, min: 0, max: 1)]
-            public Dictionary<string,string> @EnvironmentVariables { get; }
+            public FSharpMap<string,string> @EnvironmentVariables { get; }
 
             [nterraform.Core.TerraformProperty(name: "port", @out: false, min: 0, max: 1)]
             public int? @Port { get; }
@@ -116,16 +116,16 @@ namespace nterraform.resources
             public string @Protocol { get; }
 
             [nterraform.Core.TerraformProperty(name: "volume", @out: false, min: 0, max: 0)]
-            public volume[] @Volume { get; }
+            public FSharpList<volume> @Volume { get; }
         }
 
-        public azurerm_container_group(container[] @container,
+        public azurerm_container_group(FSharpList<container> @container,
                                        string @location,
                                        string @name,
                                        string @osType,
                                        string @resourceGroupName,
                                        string @dnsNameLabel = null,
-                                       image_registry_credential[] @imageRegistryCredential = null,
+                                       FSharpList<image_registry_credential> @imageRegistryCredential = null,
                                        string @ipAddressType = null,
                                        string @restartPolicy = null)
         {
@@ -135,14 +135,14 @@ namespace nterraform.resources
             @OsType = @osType;
             @ResourceGroupName = @resourceGroupName;
             @DnsNameLabel = @dnsNameLabel;
-            @ImageRegistryCredential = @imageRegistryCredential;
+            @ImageRegistryCredential = @imageRegistryCredential ?? FSharpList<image_registry_credential>.Empty;
             @IpAddressType = @ipAddressType;
             @RestartPolicy = @restartPolicy;
             base._validate_();
         }
 
         [nterraform.Core.TerraformProperty(name: "container", @out: false, min: 1, max: 0)]
-        public container[] @Container { get; }
+        public FSharpList<container> @Container { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
@@ -163,7 +163,7 @@ namespace nterraform.resources
         public string @Fqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "image_registry_credential", @out: false, min: 0, max: 0)]
-        public image_registry_credential[] @ImageRegistryCredential { get; }
+        public FSharpList<image_registry_credential> @ImageRegistryCredential { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_address", @out: true, min: 0, max: 1)]
         public string @IpAddress { get; }
@@ -175,7 +175,7 @@ namespace nterraform.resources
         public string @RestartPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -28,13 +28,13 @@ namespace nterraform.resources
         public string @Homepage { get; }
 
         [nterraform.Core.TerraformProperty(name: "identifier_uris", @out: true, min: 0, max: 1)]
-        public string[] @IdentifierUris { get; }
+        public FSharpList<string> @IdentifierUris { get; }
 
         [nterraform.Core.TerraformProperty(name: "oauth2_allow_implicit_flow", @out: false, min: 0, max: 1)]
         public bool? @Oauth2AllowImplicitFlow { get; }
 
         [nterraform.Core.TerraformProperty(name: "reply_urls", @out: true, min: 0, max: 1)]
-        public string[] @ReplyUrls { get; }
+        public FSharpList<string> @ReplyUrls { get; }
     }
 
 }

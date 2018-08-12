@@ -1,23 +1,10 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_notification_hub")]
     public sealed class azurerm_notification_hub : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "gcm_credential")]
-        public sealed class gcm_credential : nterraform.Core.structure
-        {
-            public gcm_credential(string @apiKey)
-            {
-                @ApiKey = @apiKey;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "api_key", @out: false, min: 1, max: 1)]
-            public string @ApiKey { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "apns_credential")]
         public sealed class apns_credential : nterraform.Core.structure
         {
@@ -51,19 +38,32 @@ namespace nterraform.resources
             public string @Token { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "gcm_credential")]
+        public sealed class gcm_credential : nterraform.Core.structure
+        {
+            public gcm_credential(string @apiKey)
+            {
+                @ApiKey = @apiKey;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "api_key", @out: false, min: 1, max: 1)]
+            public string @ApiKey { get; }
+        }
+
         public azurerm_notification_hub(string @location,
                                         string @name,
                                         string @namespaceName,
                                         string @resourceGroupName,
-                                        apns_credential[] @apnsCredential = null,
-                                        gcm_credential[] @gcmCredential = null)
+                                        FSharpList<apns_credential> @apnsCredential = null,
+                                        FSharpList<gcm_credential> @gcmCredential = null)
         {
             @Location = @location;
             @Name = @name;
             @NamespaceName = @namespaceName;
             @ResourceGroupName = @resourceGroupName;
-            @ApnsCredential = @apnsCredential;
-            @GcmCredential = @gcmCredential;
+            @ApnsCredential = @apnsCredential ?? FSharpList<apns_credential>.Empty;
+            @GcmCredential = @gcmCredential ?? FSharpList<gcm_credential>.Empty;
             base._validate_();
         }
 
@@ -80,10 +80,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "apns_credential", @out: false, min: 0, max: 1)]
-        public apns_credential[] @ApnsCredential { get; }
+        public FSharpList<apns_credential> @ApnsCredential { get; }
 
         [nterraform.Core.TerraformProperty(name: "gcm_credential", @out: false, min: 0, max: 1)]
-        public gcm_credential[] @GcmCredential { get; }
+        public FSharpList<gcm_credential> @GcmCredential { get; }
     }
 
 }

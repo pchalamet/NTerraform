@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
@@ -8,11 +8,11 @@ namespace nterraform.datas
         [nterraform.Core.TerraformStructure(category: "data", typeName: "security_rule")]
         public sealed class security_rule : nterraform.Core.structure
         {
-            public security_rule(string[] @destinationApplicationSecurityGroupIds = null,
-                                 string[] @sourceApplicationSecurityGroupIds = null)
+            public security_rule(FSharpList<string> @destinationApplicationSecurityGroupIds = null,
+                                 FSharpList<string> @sourceApplicationSecurityGroupIds = null)
             {
-                @DestinationApplicationSecurityGroupIds = @destinationApplicationSecurityGroupIds;
-                @SourceApplicationSecurityGroupIds = @sourceApplicationSecurityGroupIds;
+                @DestinationApplicationSecurityGroupIds = @destinationApplicationSecurityGroupIds ?? FSharpList<string>.Empty;
+                @SourceApplicationSecurityGroupIds = @sourceApplicationSecurityGroupIds ?? FSharpList<string>.Empty;
                 base._validate_();
             }
 
@@ -26,16 +26,16 @@ namespace nterraform.datas
             public string @DestinationAddressPrefix { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_address_prefixes", @out: true, min: 0, max: 1)]
-            public string[] @DestinationAddressPrefixes { get; }
+            public FSharpList<string> @DestinationAddressPrefixes { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_application_security_group_ids", @out: false, min: 0, max: 1)]
-            public string[] @DestinationApplicationSecurityGroupIds { get; }
+            public FSharpList<string> @DestinationApplicationSecurityGroupIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_port_range", @out: true, min: 0, max: 1)]
             public string @DestinationPortRange { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_port_ranges", @out: true, min: 0, max: 1)]
-            public string[] @DestinationPortRanges { get; }
+            public FSharpList<string> @DestinationPortRanges { get; }
 
             [nterraform.Core.TerraformProperty(name: "direction", @out: true, min: 0, max: 1)]
             public string @Direction { get; }
@@ -53,25 +53,25 @@ namespace nterraform.datas
             public string @SourceAddressPrefix { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_address_prefixes", @out: true, min: 0, max: 1)]
-            public string[] @SourceAddressPrefixes { get; }
+            public FSharpList<string> @SourceAddressPrefixes { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_application_security_group_ids", @out: false, min: 0, max: 1)]
-            public string[] @SourceApplicationSecurityGroupIds { get; }
+            public FSharpList<string> @SourceApplicationSecurityGroupIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_port_range", @out: true, min: 0, max: 1)]
             public string @SourcePortRange { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_port_ranges", @out: true, min: 0, max: 1)]
-            public string[] @SourcePortRanges { get; }
+            public FSharpList<string> @SourcePortRanges { get; }
         }
 
         public azurerm_network_security_group(string @name,
                                               string @resourceGroupName,
-                                              security_rule[] @securityRule = null)
+                                              FSharpList<security_rule> @securityRule = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @SecurityRule = @securityRule;
+            @SecurityRule = @securityRule ?? FSharpList<security_rule>.Empty;
             base._validate_();
         }
 
@@ -85,10 +85,10 @@ namespace nterraform.datas
         public string @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "security_rule", @out: false, min: 0, max: 0)]
-        public security_rule[] @SecurityRule { get; }
+        public FSharpList<security_rule> @SecurityRule { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

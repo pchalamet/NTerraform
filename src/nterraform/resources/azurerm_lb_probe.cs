@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -41,7 +41,7 @@ namespace nterraform.resources
         public int? @IntervalInSeconds { get; }
 
         [nterraform.Core.TerraformProperty(name: "load_balancer_rules", @out: true, min: 0, max: 1)]
-        public string[] @LoadBalancerRules { get; }
+        public FSharpList<string> @LoadBalancerRules { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
         public string @Location { get; }

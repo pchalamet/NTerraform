@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -27,11 +27,11 @@ namespace nterraform.resources
             }
 
             public publish_content_link(string @uri,
-                                        hash[] @hash = null,
+                                        FSharpList<hash> @hash = null,
                                         string @version = null)
             {
                 @Uri = @uri;
-                @Hash = @hash;
+                @Hash = @hash ?? FSharpList<hash>.Empty;
                 @Version = @version;
                 base._validate_();
             }
@@ -40,7 +40,7 @@ namespace nterraform.resources
             public string @Uri { get; }
 
             [nterraform.Core.TerraformProperty(name: "hash", @out: false, min: 0, max: 1)]
-            public hash[] @Hash { get; }
+            public FSharpList<hash> @Hash { get; }
 
             [nterraform.Core.TerraformProperty(name: "version", @out: false, min: 0, max: 1)]
             public string @Version { get; }
@@ -51,7 +51,7 @@ namespace nterraform.resources
                                           bool @logProgress,
                                           bool @logVerbose,
                                           string @name,
-                                          publish_content_link[] @publishContentLink,
+                                          FSharpList<publish_content_link> @publishContentLink,
                                           string @resourceGroupName,
                                           string @runbookType,
                                           string @description = null)
@@ -84,7 +84,7 @@ namespace nterraform.resources
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "publish_content_link", @out: false, min: 1, max: 1)]
-        public publish_content_link[] @PublishContentLink { get; }
+        public FSharpList<publish_content_link> @PublishContentLink { get; }
 
         [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
@@ -96,7 +96,7 @@ namespace nterraform.resources
         public string @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

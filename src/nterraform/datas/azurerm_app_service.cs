@@ -1,43 +1,10 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "connection_string")]
-        public sealed class connection_string : nterraform.Core.structure
-        {
-            public connection_string()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
-            public string @Value { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "source_control")]
-        public sealed class source_control : nterraform.Core.structure
-        {
-            public source_control()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
-            public string @Branch { get; }
-
-            [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
-            public string @RepoUrl { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "site_config")]
         public sealed class site_config : nterraform.Core.structure
         {
@@ -60,10 +27,10 @@ namespace nterraform.datas
             }
 
             public site_config(bool? @alwaysOn = null,
-                               string[] @defaultDocuments = null,
+                               FSharpList<string> @defaultDocuments = null,
                                string @dotnetFrameworkVersion = null,
                                bool? @http2Enabled = null,
-                               ip_restriction[] @ipRestriction = null,
+                               FSharpList<ip_restriction> @ipRestriction = null,
                                string @javaContainer = null,
                                string @javaContainerVersion = null,
                                string @javaVersion = null,
@@ -73,10 +40,10 @@ namespace nterraform.datas
                                string @scmType = null)
             {
                 @AlwaysOn = @alwaysOn;
-                @DefaultDocuments = @defaultDocuments;
+                @DefaultDocuments = @defaultDocuments ?? FSharpList<string>.Empty;
                 @DotnetFrameworkVersion = @dotnetFrameworkVersion;
                 @Http2Enabled = @http2Enabled;
-                @IpRestriction = @ipRestriction;
+                @IpRestriction = @ipRestriction ?? FSharpList<ip_restriction>.Empty;
                 @JavaContainer = @javaContainer;
                 @JavaContainerVersion = @javaContainerVersion;
                 @JavaVersion = @javaVersion;
@@ -91,7 +58,7 @@ namespace nterraform.datas
             public bool? @AlwaysOn { get; }
 
             [nterraform.Core.TerraformProperty(name: "default_documents", @out: false, min: 0, max: 1)]
-            public string[] @DefaultDocuments { get; }
+            public FSharpList<string> @DefaultDocuments { get; }
 
             [nterraform.Core.TerraformProperty(name: "dotnet_framework_version", @out: false, min: 0, max: 1)]
             public string @DotnetFrameworkVersion { get; }
@@ -103,7 +70,7 @@ namespace nterraform.datas
             public bool? @Http2Enabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "ip_restriction", @out: false, min: 0, max: 0)]
-            public ip_restriction[] @IpRestriction { get; }
+            public FSharpList<ip_restriction> @IpRestriction { get; }
 
             [nterraform.Core.TerraformProperty(name: "java_container", @out: false, min: 0, max: 1)]
             public string @JavaContainer { get; }
@@ -148,6 +115,39 @@ namespace nterraform.datas
             public bool? @WebsocketsEnabled { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "connection_string")]
+        public sealed class connection_string : nterraform.Core.structure
+        {
+            public connection_string()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
+            public string @Value { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "source_control")]
+        public sealed class source_control : nterraform.Core.structure
+        {
+            public source_control()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
+            public string @Branch { get; }
+
+            [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
+            public string @RepoUrl { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "data", typeName: "site_credential")]
         public sealed class site_credential : nterraform.Core.structure
         {
@@ -165,17 +165,17 @@ namespace nterraform.datas
 
         public azurerm_app_service(string @name,
                                    string @resourceGroupName,
-                                   connection_string[] @connectionString = null,
-                                   site_config[] @siteConfig = null,
-                                   site_credential[] @siteCredential = null,
-                                   source_control[] @sourceControl = null)
+                                   FSharpList<connection_string> @connectionString = null,
+                                   FSharpList<site_config> @siteConfig = null,
+                                   FSharpList<site_credential> @siteCredential = null,
+                                   FSharpList<source_control> @sourceControl = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @ConnectionString = @connectionString;
-            @SiteConfig = @siteConfig;
-            @SiteCredential = @siteCredential;
-            @SourceControl = @sourceControl;
+            @ConnectionString = @connectionString ?? FSharpList<connection_string>.Empty;
+            @SiteConfig = @siteConfig ?? FSharpList<site_config>.Empty;
+            @SiteCredential = @siteCredential ?? FSharpList<site_credential>.Empty;
+            @SourceControl = @sourceControl ?? FSharpList<source_control>.Empty;
             base._validate_();
         }
 
@@ -189,13 +189,13 @@ namespace nterraform.datas
         public string @AppServicePlanId { get; }
 
         [nterraform.Core.TerraformProperty(name: "app_settings", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @AppSettings { get; }
+        public FSharpMap<string,string> @AppSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "client_affinity_enabled", @out: true, min: 0, max: 1)]
         public bool? @ClientAffinityEnabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "connection_string", @out: false, min: 0, max: 0)]
-        public connection_string[] @ConnectionString { get; }
+        public FSharpList<connection_string> @ConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_site_hostname", @out: true, min: 0, max: 1)]
         public string @DefaultSiteHostname { get; }
@@ -213,16 +213,16 @@ namespace nterraform.datas
         public string @OutboundIpAddresses { get; }
 
         [nterraform.Core.TerraformProperty(name: "site_config", @out: false, min: 0, max: 1)]
-        public site_config[] @SiteConfig { get; }
+        public FSharpList<site_config> @SiteConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "site_credential", @out: false, min: 0, max: 0)]
-        public site_credential[] @SiteCredential { get; }
+        public FSharpList<site_credential> @SiteCredential { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_control", @out: false, min: 0, max: 0)]
-        public source_control[] @SourceControl { get; }
+        public FSharpList<source_control> @SourceControl { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

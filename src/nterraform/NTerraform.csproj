@@ -5,10 +5,10 @@
         <TargetFramework>netcoreapp2.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-      <None Remove="Resources\AzurermApplicationGateway.fs" />
+        <PackageReference Include="FSharp.Core" Version="4.3.4" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Hosts\" />
-      <Folder Include="Core\" />
+        <Folder Include="Hosts\" />
+        <Folder Include="Core\" />
     </ItemGroup>
 </Project>

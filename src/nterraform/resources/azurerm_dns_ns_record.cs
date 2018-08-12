@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
@@ -22,13 +22,13 @@ namespace nterraform.resources
                                      string @resourceGroupName,
                                      int @ttl,
                                      string @zoneName,
-                                     record[] @record = null)
+                                     FSharpList<record> @record = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
             @Ttl = @ttl;
             @ZoneName = @zoneName;
-            @Record = @record;
+            @Record = @record ?? FSharpList<record>.Empty;
             base._validate_();
         }
 
@@ -45,13 +45,13 @@ namespace nterraform.resources
         public string @ZoneName { get; }
 
         [nterraform.Core.TerraformProperty(name: "record", @out: false, min: 0, max: 0)]
-        public record[] @Record { get; }
+        public FSharpList<record> @Record { get; }
 
         [nterraform.Core.TerraformProperty(name: "records", @out: true, min: 0, max: 1)]
-        public string[] @Records { get; }
+        public FSharpList<string> @Records { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
+using System.Collections;
 
 namespace nterraform
 {
@@ -39,13 +40,13 @@ namespace nterraform
                 case bool b:
                     return b ? "\"true\"" : "\"false\"";
 
-                case string[] arr:
+                case IEnumerable<string> arr:
                     return "[ " + String.Join(", ", arr.Select(x => $"\"{x}\"")) + " ]";
 
-                case int[] arr:
+                case IEnumerable<int> arr:
                     return "[ " + String.Join(", ", arr.Select(x => $"\"{x}\"")) + " ]";
 
-                case bool[] arr:
+                case IEnumerable<bool> arr:
                     return "[ " + String.Join(", ", arr.Select(x => x ? "\"true\"" : "\"false\"")) + " ]";
 
                 default:
@@ -75,7 +76,7 @@ namespace nterraform
                         Console.WriteLine($"  {sindent}{propAttribute.Name} = {s}");
                         break;
 
-                    case object[] arr:
+                    case IEnumerable arr:
                         foreach (var item in arr)
                             WriteObject(indent + 2, $"  {sindent}{propAttribute.Name} =", Format(item));
                         break;

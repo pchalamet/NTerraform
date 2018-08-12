@@ -1,23 +1,10 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "consul_prepared_query")]
     public sealed class consul_prepared_query : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "dns")]
-        public sealed class dns : nterraform.Core.structure
-        {
-            public dns(string @ttl = null)
-            {
-                @Ttl = @ttl;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "ttl", @out: false, min: 0, max: 1)]
-            public string @Ttl { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "template")]
         public sealed class template : nterraform.Core.structure
         {
@@ -39,45 +26,58 @@ namespace nterraform.resources
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "failover")]
         public sealed class failover : nterraform.Core.structure
         {
-            public failover(string[] @datacenters = null,
+            public failover(FSharpList<string> @datacenters = null,
                             int? @nearestN = null)
             {
-                @Datacenters = @datacenters;
+                @Datacenters = @datacenters ?? FSharpList<string>.Empty;
                 @NearestN = @nearestN;
                 base._validate_();
             }
 
             [nterraform.Core.TerraformProperty(name: "datacenters", @out: false, min: 0, max: 1)]
-            public string[] @Datacenters { get; }
+            public FSharpList<string> @Datacenters { get; }
 
             [nterraform.Core.TerraformProperty(name: "nearest_n", @out: false, min: 0, max: 1)]
             public int? @NearestN { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "dns")]
+        public sealed class dns : nterraform.Core.structure
+        {
+            public dns(string @ttl = null)
+            {
+                @Ttl = @ttl;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "ttl", @out: false, min: 0, max: 1)]
+            public string @Ttl { get; }
+        }
+
         public consul_prepared_query(string @name,
                                      string @service,
                                      string @datacenter = null,
-                                     dns[] @dns = null,
-                                     failover[] @failover = null,
+                                     FSharpList<dns> @dns = null,
+                                     FSharpList<failover> @failover = null,
                                      string @near = null,
                                      bool? @onlyPassing = null,
                                      string @session = null,
                                      string @storedToken = null,
-                                     string[] @tags = null,
-                                     template[] @template = null,
+                                     FSharpList<string> @tags = null,
+                                     FSharpList<template> @template = null,
                                      string @token = null)
         {
             @Name = @name;
             @Service = @service;
             @Datacenter = @datacenter;
-            @Dns = @dns;
-            @Failover = @failover;
+            @Dns = @dns ?? FSharpList<dns>.Empty;
+            @Failover = @failover ?? FSharpList<failover>.Empty;
             @Near = @near;
             @OnlyPassing = @onlyPassing;
             @Session = @session;
             @StoredToken = @storedToken;
-            @Tags = @tags;
-            @Template = @template;
+            @Tags = @tags ?? FSharpList<string>.Empty;
+            @Template = @template ?? FSharpList<template>.Empty;
             @Token = @token;
             base._validate_();
         }
@@ -92,10 +92,10 @@ namespace nterraform.resources
         public string @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns", @out: false, min: 0, max: 1)]
-        public dns[] @Dns { get; }
+        public FSharpList<dns> @Dns { get; }
 
         [nterraform.Core.TerraformProperty(name: "failover", @out: false, min: 0, max: 1)]
-        public failover[] @Failover { get; }
+        public FSharpList<failover> @Failover { get; }
 
         [nterraform.Core.TerraformProperty(name: "near", @out: false, min: 0, max: 1)]
         public string @Near { get; }
@@ -110,10 +110,10 @@ namespace nterraform.resources
         public string @StoredToken { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
-        public string[] @Tags { get; }
+        public FSharpList<string> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "template", @out: false, min: 0, max: 1)]
-        public template[] @Template { get; }
+        public FSharpList<template> @Template { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }

@@ -1,29 +1,10 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
-        public sealed class identity : nterraform.Core.structure
-        {
-            public identity(string @type)
-            {
-                @Type = @type;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-            public string @TenantId { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "source_control")]
         public sealed class source_control : nterraform.Core.structure
         {
@@ -37,21 +18,6 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
             public string @RepoUrl { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_credential")]
-        public sealed class site_credential : nterraform.Core.structure
-        {
-            public site_credential()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_config")]
@@ -76,10 +42,10 @@ namespace nterraform.resources
             }
 
             public site_config(bool? @alwaysOn = null,
-                               string[] @defaultDocuments = null,
+                               FSharpList<string> @defaultDocuments = null,
                                string @dotnetFrameworkVersion = null,
                                bool? @http2Enabled = null,
-                               ip_restriction[] @ipRestriction = null,
+                               FSharpList<ip_restriction> @ipRestriction = null,
                                string @javaContainer = null,
                                string @javaContainerVersion = null,
                                string @javaVersion = null,
@@ -89,10 +55,10 @@ namespace nterraform.resources
                                string @scmType = null)
             {
                 @AlwaysOn = @alwaysOn;
-                @DefaultDocuments = @defaultDocuments;
+                @DefaultDocuments = @defaultDocuments ?? FSharpList<string>.Empty;
                 @DotnetFrameworkVersion = @dotnetFrameworkVersion;
                 @Http2Enabled = @http2Enabled;
-                @IpRestriction = @ipRestriction;
+                @IpRestriction = @ipRestriction ?? FSharpList<ip_restriction>.Empty;
                 @JavaContainer = @javaContainer;
                 @JavaContainerVersion = @javaContainerVersion;
                 @JavaVersion = @javaVersion;
@@ -107,7 +73,7 @@ namespace nterraform.resources
             public bool? @AlwaysOn { get; }
 
             [nterraform.Core.TerraformProperty(name: "default_documents", @out: false, min: 0, max: 1)]
-            public string[] @DefaultDocuments { get; }
+            public FSharpList<string> @DefaultDocuments { get; }
 
             [nterraform.Core.TerraformProperty(name: "dotnet_framework_version", @out: false, min: 0, max: 1)]
             public string @DotnetFrameworkVersion { get; }
@@ -119,7 +85,7 @@ namespace nterraform.resources
             public bool? @Http2Enabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "ip_restriction", @out: false, min: 0, max: 0)]
-            public ip_restriction[] @IpRestriction { get; }
+            public FSharpList<ip_restriction> @IpRestriction { get; }
 
             [nterraform.Core.TerraformProperty(name: "java_container", @out: false, min: 0, max: 1)]
             public string @JavaContainer { get; }
@@ -164,6 +130,40 @@ namespace nterraform.resources
             public bool? @WebsocketsEnabled { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_credential")]
+        public sealed class site_credential : nterraform.Core.structure
+        {
+            public site_credential()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
+
+            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
+        public sealed class identity : nterraform.Core.structure
+        {
+            public identity(string @type)
+            {
+                @Type = @type;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
+            public string @PrincipalId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
+            public string @TenantId { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]
         public sealed class connection_string : nterraform.Core.structure
         {
@@ -191,25 +191,25 @@ namespace nterraform.resources
                                    string @location,
                                    string @name,
                                    string @resourceGroupName,
-                                   connection_string[] @connectionString = null,
+                                   FSharpList<connection_string> @connectionString = null,
                                    bool? @enabled = null,
                                    bool? @httpsOnly = null,
-                                   identity[] @identity = null,
-                                   site_config[] @siteConfig = null,
-                                   site_credential[] @siteCredential = null,
-                                   source_control[] @sourceControl = null)
+                                   FSharpList<identity> @identity = null,
+                                   FSharpList<site_config> @siteConfig = null,
+                                   FSharpList<site_credential> @siteCredential = null,
+                                   FSharpList<source_control> @sourceControl = null)
         {
             @AppServicePlanId = @appServicePlanId;
             @Location = @location;
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
-            @ConnectionString = @connectionString;
+            @ConnectionString = @connectionString ?? FSharpList<connection_string>.Empty;
             @Enabled = @enabled;
             @HttpsOnly = @httpsOnly;
-            @Identity = @identity;
-            @SiteConfig = @siteConfig;
-            @SiteCredential = @siteCredential;
-            @SourceControl = @sourceControl;
+            @Identity = @identity ?? FSharpList<identity>.Empty;
+            @SiteConfig = @siteConfig ?? FSharpList<site_config>.Empty;
+            @SiteCredential = @siteCredential ?? FSharpList<site_credential>.Empty;
+            @SourceControl = @sourceControl ?? FSharpList<source_control>.Empty;
             base._validate_();
         }
 
@@ -226,13 +226,13 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "app_settings", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @AppSettings { get; }
+        public FSharpMap<string,string> @AppSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "client_affinity_enabled", @out: true, min: 0, max: 1)]
         public bool? @ClientAffinityEnabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "connection_string", @out: false, min: 0, max: 0)]
-        public connection_string[] @ConnectionString { get; }
+        public FSharpList<connection_string> @ConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_site_hostname", @out: true, min: 0, max: 1)]
         public string @DefaultSiteHostname { get; }
@@ -244,22 +244,22 @@ namespace nterraform.resources
         public bool? @HttpsOnly { get; }
 
         [nterraform.Core.TerraformProperty(name: "identity", @out: false, min: 0, max: 1)]
-        public identity[] @Identity { get; }
+        public FSharpList<identity> @Identity { get; }
 
         [nterraform.Core.TerraformProperty(name: "outbound_ip_addresses", @out: true, min: 0, max: 1)]
         public string @OutboundIpAddresses { get; }
 
         [nterraform.Core.TerraformProperty(name: "site_config", @out: false, min: 0, max: 1)]
-        public site_config[] @SiteConfig { get; }
+        public FSharpList<site_config> @SiteConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "site_credential", @out: false, min: 0, max: 1)]
-        public site_credential[] @SiteCredential { get; }
+        public FSharpList<site_credential> @SiteCredential { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_control", @out: false, min: 0, max: 1)]
-        public source_control[] @SourceControl { get; }
+        public FSharpList<source_control> @SourceControl { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public Dictionary<string,string> @Tags { get; }
+        public FSharpMap<string,string> @Tags { get; }
     }
 
 }

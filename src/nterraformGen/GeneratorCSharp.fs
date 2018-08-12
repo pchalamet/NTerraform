@@ -24,14 +24,6 @@ let toNullable (field : Field) =
     //| Cardinality.Range (None, _) -> " = null"
     //| _ -> ""     
 
-let initNullable = function
-    | { Min = 0; Max = _ } -> " = null"
-    | _ -> ""
-
-let nullableIntValue = function
-    | Some x -> sprintf "%d" x
-    | _ -> "null"
-
 let rec toTypeName name primitive =
     match primitive with
     | Primitive Primitive.String -> "string"
@@ -40,10 +32,26 @@ let rec toTypeName name primitive =
     | FieldType.Collection (coll, fieldType) -> let declType = toTypeName name fieldType
                                                 match coll with
                                                 | Collection.Single -> declType
-                                                | Collection.List -> sprintf "%s[]" declType
-                                                | Collection.Map -> sprintf "Dictionary<string,%s>" declType
-                                                | Collection.Set -> sprintf "%s[]" declType
+                                                | Collection.List -> sprintf "FSharpList<%s>" declType
+                                                | Collection.Map -> sprintf "FSharpMap<string,%s>" declType
+                                                | Collection.Set -> sprintf "FSharpList<%s>" declType
     | FieldType.Structure _ -> name
+
+let assignEmpty (field : Field) =
+    match field.Type, field.Cardinality with
+    | FieldType.Collection (Collection.List, underlying), { Min = 0; Max = _ } -> sprintf " ?? FSharpList<%s>.Empty" (toTypeName field.Name underlying)
+    | FieldType.Collection (Collection.Set, underlying), { Min = 0; Max = _ } -> sprintf " ?? FSharpList<%s>.Empty" (toTypeName field.Name underlying)
+    | FieldType.Collection (Collection.Map, underlying), { Min = 0; Max = _ } -> sprintf " ?? MapModule.Empty<string,%s>()" (toTypeName field.Name underlying)
+    | _ -> ""
+
+let initNullable = function
+    | { Min = 0; Max = _ } -> sprintf " = null"
+    | _ -> ""
+
+let nullableIntValue = function
+    | Some x -> sprintf "%d" x
+    | _ -> "null"
+
 
 
 
@@ -97,9 +105,10 @@ let rec generateType plugin category typeName fields =
 
             let ctorInit = orderedParameters
                                |> List.filter (fun x -> x.Modifier = Modifier.In)
-                               |> List.map (fun x -> sprintf "%s@%s = @%s;" space12
+                               |> List.map (fun x -> sprintf "%s@%s = @%s%s;" space12
                                                                             (x.Name |> toPascalCase)
-                                                                            (x.Name |> toCamlCase))
+                                                                            (x.Name |> toCamlCase)
+                                                                            (assignEmpty x))
                                                                             
             let attributes = orderedParameters
                                 |> List.map (fun x -> sprintf "%s[nterraform.Core.TerraformProperty(name: %A, @out: %s, min: %d, max: %d)]"
@@ -136,7 +145,7 @@ let rec generateType plugin category typeName fields =
         }
 
     seq {
-        yield "using System.Collections.Generic;"
+        yield "using Microsoft.FSharp.Collections;"
         yield ""
         match category with
         | "provider" -> yield sprintf "namespace nterraform.%s" (category + "s")

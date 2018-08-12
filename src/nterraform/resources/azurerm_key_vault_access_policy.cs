@@ -1,18 +1,18 @@
-using System.Collections.Generic;
+using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_key_vault_access_policy")]
     public sealed class azurerm_key_vault_access_policy : nterraform.Core.resource
     {
-        public azurerm_key_vault_access_policy(string[] @keyPermissions,
+        public azurerm_key_vault_access_policy(FSharpList<string> @keyPermissions,
                                                string @objectId,
                                                string @resourceGroupName,
-                                               string[] @secretPermissions,
+                                               FSharpList<string> @secretPermissions,
                                                string @tenantId,
                                                string @vaultName,
                                                string @applicationId = null,
-                                               string[] @certificatePermissions = null)
+                                               FSharpList<string> @certificatePermissions = null)
         {
             @KeyPermissions = @keyPermissions;
             @ObjectId = @objectId;
@@ -21,12 +21,12 @@ namespace nterraform.resources
             @TenantId = @tenantId;
             @VaultName = @vaultName;
             @ApplicationId = @applicationId;
-            @CertificatePermissions = @certificatePermissions;
+            @CertificatePermissions = @certificatePermissions ?? FSharpList<string>.Empty;
             base._validate_();
         }
 
         [nterraform.Core.TerraformProperty(name: "key_permissions", @out: false, min: 1, max: 1)]
-        public string[] @KeyPermissions { get; }
+        public FSharpList<string> @KeyPermissions { get; }
 
         [nterraform.Core.TerraformProperty(name: "object_id", @out: false, min: 1, max: 1)]
         public string @ObjectId { get; }
@@ -35,7 +35,7 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "secret_permissions", @out: false, min: 1, max: 1)]
-        public string[] @SecretPermissions { get; }
+        public FSharpList<string> @SecretPermissions { get; }
 
         [nterraform.Core.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
         public string @TenantId { get; }
@@ -47,7 +47,7 @@ namespace nterraform.resources
         public string @ApplicationId { get; }
 
         [nterraform.Core.TerraformProperty(name: "certificate_permissions", @out: false, min: 0, max: 1)]
-        public string[] @CertificatePermissions { get; }
+        public FSharpList<string> @CertificatePermissions { get; }
     }
 
 }
