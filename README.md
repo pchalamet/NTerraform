@@ -80,7 +80,7 @@ This script can then be executed through FSI (it will write to stdout the terraf
 Both tools must be on PATH.
 
 # Generate new NTerraformLibrary
-Script `NTerraform/build.ps1` can regenerate definitions. Update `NTerraform/providers.txt` accordingly.
+Script `src/nterraform/build.ps1` can regenerate definitions. Update `src/nterraform/providers.txt` accordingly.
 
 # Future
 This is a POC as stated before. Following items are in sight:
