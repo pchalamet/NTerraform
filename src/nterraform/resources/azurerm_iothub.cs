@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -37,23 +38,23 @@ namespace nterraform.resources
             }
 
             [nterraform.Core.TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
-            public string @KeyName { get; }
+            public FSharpOption<string> @KeyName { get; }
 
             [nterraform.Core.TerraformProperty(name: "permissions", @out: true, min: 0, max: 1)]
-            public string @Permissions { get; }
+            public FSharpOption<string> @Permissions { get; }
 
             [nterraform.Core.TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
-            public string @PrimaryKey { get; }
+            public FSharpOption<string> @PrimaryKey { get; }
 
             [nterraform.Core.TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
-            public string @SecondaryKey { get; }
+            public FSharpOption<string> @SecondaryKey { get; }
         }
 
         public azurerm_iothub(string @location,
                               string @name,
                               string @resourceGroupName,
                               FSharpList<sku> @sku,
-                              FSharpList<shared_access_policy> @sharedAccessPolicy = null)
+                              FSharpOption<FSharpList<shared_access_policy>> @sharedAccessPolicy = null)
         {
             @Location = @location;
             @Name = @name;
@@ -76,16 +77,16 @@ namespace nterraform.resources
         public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "hostname", @out: true, min: 0, max: 1)]
-        public string @Hostname { get; }
+        public FSharpOption<string> @Hostname { get; }
 
         [nterraform.Core.TerraformProperty(name: "shared_access_policy", @out: false, min: 0, max: 0)]
-        public FSharpList<shared_access_policy> @SharedAccessPolicy { get; }
+        public FSharpOption<FSharpList<shared_access_policy>> @SharedAccessPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
-        public string @Type { get; }
+        public FSharpOption<string> @Type { get; }
     }
 
 }

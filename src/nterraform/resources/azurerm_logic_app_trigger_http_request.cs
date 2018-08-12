@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,8 +9,8 @@ namespace nterraform.resources
         public azurerm_logic_app_trigger_http_request(string @logicAppId,
                                                       string @name,
                                                       string @schema,
-                                                      string @method = null,
-                                                      string @relativePath = null)
+                                                      FSharpOption<string> @method = null,
+                                                      FSharpOption<string> @relativePath = null)
         {
             @LogicAppId = @logicAppId;
             @Name = @name;
@@ -29,10 +30,10 @@ namespace nterraform.resources
         public string @Schema { get; }
 
         [nterraform.Core.TerraformProperty(name: "method", @out: false, min: 0, max: 1)]
-        public string @Method { get; }
+        public FSharpOption<string> @Method { get; }
 
         [nterraform.Core.TerraformProperty(name: "relative_path", @out: false, min: 0, max: 1)]
-        public string @RelativePath { get; }
+        public FSharpOption<string> @RelativePath { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,14 +9,14 @@ namespace nterraform.resources
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
         public sealed class sku : nterraform.Core.structure
         {
-            public sku(string @name = null)
+            public sku(FSharpOption<string> @name = null)
             {
                 @Name = @name;
                 base._validate_();
             }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
-            public string @Name { get; }
+            public FSharpOption<string> @Name { get; }
         }
 
         public azurerm_automation_account(string @location,
@@ -43,7 +44,7 @@ namespace nterraform.resources
         public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

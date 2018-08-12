@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -14,12 +15,12 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            public FSharpOption<string> @Name { get; }
         }
 
         public azurerm_storage_account(string @name,
                                        string @resourceGroupName,
-                                       FSharpList<custom_domain> @customDomain = null)
+                                       FSharpOption<FSharpList<custom_domain>> @customDomain = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -34,82 +35,82 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "access_tier", @out: true, min: 0, max: 1)]
-        public string @AccessTier { get; }
+        public FSharpOption<string> @AccessTier { get; }
 
         [nterraform.Core.TerraformProperty(name: "account_encryption_source", @out: true, min: 0, max: 1)]
-        public string @AccountEncryptionSource { get; }
+        public FSharpOption<string> @AccountEncryptionSource { get; }
 
         [nterraform.Core.TerraformProperty(name: "account_kind", @out: true, min: 0, max: 1)]
-        public string @AccountKind { get; }
+        public FSharpOption<string> @AccountKind { get; }
 
         [nterraform.Core.TerraformProperty(name: "account_replication_type", @out: true, min: 0, max: 1)]
-        public string @AccountReplicationType { get; }
+        public FSharpOption<string> @AccountReplicationType { get; }
 
         [nterraform.Core.TerraformProperty(name: "account_tier", @out: true, min: 0, max: 1)]
-        public string @AccountTier { get; }
+        public FSharpOption<string> @AccountTier { get; }
 
         [nterraform.Core.TerraformProperty(name: "custom_domain", @out: false, min: 0, max: 1)]
-        public FSharpList<custom_domain> @CustomDomain { get; }
+        public FSharpOption<FSharpList<custom_domain>> @CustomDomain { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_blob_encryption", @out: true, min: 0, max: 1)]
-        public bool? @EnableBlobEncryption { get; }
+        public FSharpOption<bool> @EnableBlobEncryption { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_file_encryption", @out: true, min: 0, max: 1)]
-        public bool? @EnableFileEncryption { get; }
+        public FSharpOption<bool> @EnableFileEncryption { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_https_traffic_only", @out: true, min: 0, max: 1)]
-        public bool? @EnableHttpsTrafficOnly { get; }
+        public FSharpOption<bool> @EnableHttpsTrafficOnly { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_access_key", @out: true, min: 0, max: 1)]
-        public string @PrimaryAccessKey { get; }
+        public FSharpOption<string> @PrimaryAccessKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_blob_connection_string", @out: true, min: 0, max: 1)]
-        public string @PrimaryBlobConnectionString { get; }
+        public FSharpOption<string> @PrimaryBlobConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_blob_endpoint", @out: true, min: 0, max: 1)]
-        public string @PrimaryBlobEndpoint { get; }
+        public FSharpOption<string> @PrimaryBlobEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_connection_string", @out: true, min: 0, max: 1)]
-        public string @PrimaryConnectionString { get; }
+        public FSharpOption<string> @PrimaryConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_file_endpoint", @out: true, min: 0, max: 1)]
-        public string @PrimaryFileEndpoint { get; }
+        public FSharpOption<string> @PrimaryFileEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_location", @out: true, min: 0, max: 1)]
-        public string @PrimaryLocation { get; }
+        public FSharpOption<string> @PrimaryLocation { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_queue_endpoint", @out: true, min: 0, max: 1)]
-        public string @PrimaryQueueEndpoint { get; }
+        public FSharpOption<string> @PrimaryQueueEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_table_endpoint", @out: true, min: 0, max: 1)]
-        public string @PrimaryTableEndpoint { get; }
+        public FSharpOption<string> @PrimaryTableEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_access_key", @out: true, min: 0, max: 1)]
-        public string @SecondaryAccessKey { get; }
+        public FSharpOption<string> @SecondaryAccessKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_blob_connection_string", @out: true, min: 0, max: 1)]
-        public string @SecondaryBlobConnectionString { get; }
+        public FSharpOption<string> @SecondaryBlobConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_blob_endpoint", @out: true, min: 0, max: 1)]
-        public string @SecondaryBlobEndpoint { get; }
+        public FSharpOption<string> @SecondaryBlobEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_connection_string", @out: true, min: 0, max: 1)]
-        public string @SecondaryConnectionString { get; }
+        public FSharpOption<string> @SecondaryConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_location", @out: true, min: 0, max: 1)]
-        public string @SecondaryLocation { get; }
+        public FSharpOption<string> @SecondaryLocation { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_queue_endpoint", @out: true, min: 0, max: 1)]
-        public string @SecondaryQueueEndpoint { get; }
+        public FSharpOption<string> @SecondaryQueueEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_table_endpoint", @out: true, min: 0, max: 1)]
-        public string @SecondaryTableEndpoint { get; }
+        public FSharpOption<string> @SecondaryTableEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,9 +9,9 @@ namespace nterraform.resources
         public azurerm_logic_app_workflow(string @location,
                                           string @name,
                                           string @resourceGroupName,
-                                          FSharpMap<string,string> @parameters = null,
-                                          string @workflowSchema = null,
-                                          string @workflowVersion = null)
+                                          FSharpOption<FSharpMap<string,string>> @parameters = null,
+                                          FSharpOption<string> @workflowSchema = null,
+                                          FSharpOption<string> @workflowVersion = null)
         {
             @Location = @location;
             @Name = @name;
@@ -31,19 +32,19 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "access_endpoint", @out: true, min: 0, max: 1)]
-        public string @AccessEndpoint { get; }
+        public FSharpOption<string> @AccessEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
-        public FSharpMap<string,string> @Parameters { get; }
+        public FSharpOption<FSharpMap<string,string>> @Parameters { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "workflow_schema", @out: false, min: 0, max: 1)]
-        public string @WorkflowSchema { get; }
+        public FSharpOption<string> @WorkflowSchema { get; }
 
         [nterraform.Core.TerraformProperty(name: "workflow_version", @out: false, min: 0, max: 1)]
-        public string @WorkflowVersion { get; }
+        public FSharpOption<string> @WorkflowVersion { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -39,7 +40,7 @@ namespace nterraform.resources
                               string @shareName,
                               string @storageAccountKey,
                               string @storageAccountName,
-                              bool? @readOnly = null)
+                              FSharpOption<bool> @readOnly = null)
                 {
                     @MountPath = @mountPath;
                     @Name = @name;
@@ -66,18 +67,18 @@ namespace nterraform.resources
                 public string @StorageAccountName { get; }
 
                 [nterraform.Core.TerraformProperty(name: "read_only", @out: false, min: 0, max: 1)]
-                public bool? @ReadOnly { get; }
+                public FSharpOption<bool> @ReadOnly { get; }
             }
 
             public container(int @cpu,
                              string @image,
                              int @memory,
                              string @name,
-                             string @command = null,
-                             FSharpMap<string,string> @environmentVariables = null,
-                             int? @port = null,
-                             string @protocol = null,
-                             FSharpList<volume> @volume = null)
+                             FSharpOption<string> @command = null,
+                             FSharpOption<FSharpMap<string,string>> @environmentVariables = null,
+                             FSharpOption<int> @port = null,
+                             FSharpOption<string> @protocol = null,
+                             FSharpOption<FSharpList<volume>> @volume = null)
             {
                 @Cpu = @cpu;
                 @Image = @image;
@@ -104,19 +105,19 @@ namespace nterraform.resources
             public string @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "command", @out: false, min: 0, max: 1)]
-            public string @Command { get; }
+            public FSharpOption<string> @Command { get; }
 
             [nterraform.Core.TerraformProperty(name: "environment_variables", @out: false, min: 0, max: 1)]
-            public FSharpMap<string,string> @EnvironmentVariables { get; }
+            public FSharpOption<FSharpMap<string,string>> @EnvironmentVariables { get; }
 
             [nterraform.Core.TerraformProperty(name: "port", @out: false, min: 0, max: 1)]
-            public int? @Port { get; }
+            public FSharpOption<int> @Port { get; }
 
             [nterraform.Core.TerraformProperty(name: "protocol", @out: false, min: 0, max: 1)]
-            public string @Protocol { get; }
+            public FSharpOption<string> @Protocol { get; }
 
             [nterraform.Core.TerraformProperty(name: "volume", @out: false, min: 0, max: 0)]
-            public FSharpList<volume> @Volume { get; }
+            public FSharpOption<FSharpList<volume>> @Volume { get; }
         }
 
         public azurerm_container_group(FSharpList<container> @container,
@@ -124,10 +125,10 @@ namespace nterraform.resources
                                        string @name,
                                        string @osType,
                                        string @resourceGroupName,
-                                       string @dnsNameLabel = null,
-                                       FSharpList<image_registry_credential> @imageRegistryCredential = null,
-                                       string @ipAddressType = null,
-                                       string @restartPolicy = null)
+                                       FSharpOption<string> @dnsNameLabel = null,
+                                       FSharpOption<FSharpList<image_registry_credential>> @imageRegistryCredential = null,
+                                       FSharpOption<string> @ipAddressType = null,
+                                       FSharpOption<string> @restartPolicy = null)
         {
             @Container = @container;
             @Location = @location;
@@ -157,25 +158,25 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns_name_label", @out: false, min: 0, max: 1)]
-        public string @DnsNameLabel { get; }
+        public FSharpOption<string> @DnsNameLabel { get; }
 
         [nterraform.Core.TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
-        public string @Fqdn { get; }
+        public FSharpOption<string> @Fqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "image_registry_credential", @out: false, min: 0, max: 0)]
-        public FSharpList<image_registry_credential> @ImageRegistryCredential { get; }
+        public FSharpOption<FSharpList<image_registry_credential>> @ImageRegistryCredential { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_address", @out: true, min: 0, max: 1)]
-        public string @IpAddress { get; }
+        public FSharpOption<string> @IpAddress { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_address_type", @out: false, min: 0, max: 1)]
-        public string @IpAddressType { get; }
+        public FSharpOption<string> @IpAddressType { get; }
 
         [nterraform.Core.TerraformProperty(name: "restart_policy", @out: false, min: 0, max: 1)]
-        public string @RestartPolicy { get; }
+        public FSharpOption<string> @RestartPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

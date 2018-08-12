@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -23,7 +24,7 @@ namespace nterraform.resources
             public string @BgpPeeringAddress { get; }
 
             [nterraform.Core.TerraformProperty(name: "peer_weight", @out: true, min: 0, max: 1)]
-            public int? @PeerWeight { get; }
+            public FSharpOption<int> @PeerWeight { get; }
         }
 
         public azurerm_local_network_gateway(FSharpList<string> @addressSpace,
@@ -31,7 +32,7 @@ namespace nterraform.resources
                                              string @location,
                                              string @name,
                                              string @resourceGroupName,
-                                             FSharpList<bgp_settings> @bgpSettings = null)
+                                             FSharpOption<FSharpList<bgp_settings>> @bgpSettings = null)
         {
             @AddressSpace = @addressSpace;
             @GatewayAddress = @gatewayAddress;
@@ -58,10 +59,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "bgp_settings", @out: false, min: 0, max: 1)]
-        public FSharpList<bgp_settings> @BgpSettings { get; }
+        public FSharpOption<FSharpList<bgp_settings>> @BgpSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

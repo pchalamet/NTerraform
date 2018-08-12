@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -25,10 +26,10 @@ namespace nterraform.resources
         public string @Value { get; }
 
         [nterraform.Core.TerraformProperty(name: "key_id", @out: true, min: 0, max: 1)]
-        public string @KeyId { get; }
+        public FSharpOption<string> @KeyId { get; }
 
         [nterraform.Core.TerraformProperty(name: "start_date", @out: true, min: 0, max: 1)]
-        public string @StartDate { get; }
+        public FSharpOption<string> @StartDate { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -7,8 +8,8 @@ namespace nterraform.resources
     {
         public consul_service(string @name,
                               string @node,
-                              int? @port = null,
-                              FSharpList<string> @tags = null)
+                              FSharpOption<int> @port = null,
+                              FSharpOption<FSharpList<string>> @tags = null)
         {
             @Name = @name;
             @Node = @node;
@@ -24,19 +25,19 @@ namespace nterraform.resources
         public string @Node { get; }
 
         [nterraform.Core.TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
-        public string @Address { get; }
+        public FSharpOption<string> @Address { get; }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
-        public string @Datacenter { get; }
+        public FSharpOption<string> @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "port", @out: false, min: 0, max: 1)]
-        public int? @Port { get; }
+        public FSharpOption<int> @Port { get; }
 
         [nterraform.Core.TerraformProperty(name: "service_id", @out: true, min: 0, max: 1)]
-        public string @ServiceId { get; }
+        public FSharpOption<string> @ServiceId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
-        public FSharpList<string> @Tags { get; }
+        public FSharpOption<FSharpList<string>> @Tags { get; }
     }
 
 }

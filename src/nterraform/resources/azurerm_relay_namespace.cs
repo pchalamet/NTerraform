@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -43,22 +44,22 @@ namespace nterraform.resources
         public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "metric_id", @out: true, min: 0, max: 1)]
-        public string @MetricId { get; }
+        public FSharpOption<string> @MetricId { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_connection_string", @out: true, min: 0, max: 1)]
-        public string @PrimaryConnectionString { get; }
+        public FSharpOption<string> @PrimaryConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
-        public string @PrimaryKey { get; }
+        public FSharpOption<string> @PrimaryKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_connection_string", @out: true, min: 0, max: 1)]
-        public string @SecondaryConnectionString { get; }
+        public FSharpOption<string> @SecondaryConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
-        public string @SecondaryKey { get; }
+        public FSharpOption<string> @SecondaryKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -8,14 +9,14 @@ namespace nterraform.datas
         [nterraform.Core.TerraformStructure(category: "data", typeName: "query_options")]
         public sealed class query_options : nterraform.Core.structure
         {
-            public query_options(bool? @allowStale = null,
-                                 string @datacenter = null,
-                                 string @near = null,
-                                 FSharpMap<string,string> @nodeMeta = null,
-                                 bool? @requireConsistent = null,
-                                 string @token = null,
-                                 int? @waitIndex = null,
-                                 string @waitTime = null)
+            public query_options(FSharpOption<bool> @allowStale = null,
+                                 FSharpOption<string> @datacenter = null,
+                                 FSharpOption<string> @near = null,
+                                 FSharpOption<FSharpMap<string,string>> @nodeMeta = null,
+                                 FSharpOption<bool> @requireConsistent = null,
+                                 FSharpOption<string> @token = null,
+                                 FSharpOption<int> @waitIndex = null,
+                                 FSharpOption<string> @waitTime = null)
             {
                 @AllowStale = @allowStale;
                 @Datacenter = @datacenter;
@@ -29,28 +30,28 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "allow_stale", @out: false, min: 0, max: 1)]
-            public bool? @AllowStale { get; }
+            public FSharpOption<bool> @AllowStale { get; }
 
             [nterraform.Core.TerraformProperty(name: "datacenter", @out: false, min: 0, max: 1)]
-            public string @Datacenter { get; }
+            public FSharpOption<string> @Datacenter { get; }
 
             [nterraform.Core.TerraformProperty(name: "near", @out: false, min: 0, max: 1)]
-            public string @Near { get; }
+            public FSharpOption<string> @Near { get; }
 
             [nterraform.Core.TerraformProperty(name: "node_meta", @out: false, min: 0, max: 1)]
-            public FSharpMap<string,string> @NodeMeta { get; }
+            public FSharpOption<FSharpMap<string,string>> @NodeMeta { get; }
 
             [nterraform.Core.TerraformProperty(name: "require_consistent", @out: false, min: 0, max: 1)]
-            public bool? @RequireConsistent { get; }
+            public FSharpOption<bool> @RequireConsistent { get; }
 
             [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
-            public string @Token { get; }
+            public FSharpOption<string> @Token { get; }
 
             [nterraform.Core.TerraformProperty(name: "wait_index", @out: false, min: 0, max: 1)]
-            public int? @WaitIndex { get; }
+            public FSharpOption<int> @WaitIndex { get; }
 
             [nterraform.Core.TerraformProperty(name: "wait_time", @out: false, min: 0, max: 1)]
-            public string @WaitTime { get; }
+            public FSharpOption<string> @WaitTime { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "service")]
@@ -65,63 +66,63 @@ namespace nterraform.datas
                 }
 
                 [nterraform.Core.TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
-                public string @Lan { get; }
+                public FSharpOption<string> @Lan { get; }
 
                 [nterraform.Core.TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
-                public string @Wan { get; }
+                public FSharpOption<string> @Wan { get; }
             }
 
-            public service(FSharpMap<string,tagged_addresses> @taggedAddresses = null)
+            public service(FSharpOption<FSharpMap<string,tagged_addresses>> @taggedAddresses = null)
             {
                 @TaggedAddresses = @taggedAddresses ?? MapModule.Empty<string,tagged_addresses>();
                 base._validate_();
             }
 
             [nterraform.Core.TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
-            public string @Address { get; }
+            public FSharpOption<string> @Address { get; }
 
             [nterraform.Core.TerraformProperty(name: "create_index", @out: true, min: 0, max: 1)]
-            public string @CreateIndex { get; }
+            public FSharpOption<string> @CreateIndex { get; }
 
             [nterraform.Core.TerraformProperty(name: "enable_tag_override", @out: true, min: 0, max: 1)]
-            public string @EnableTagOverride { get; }
+            public FSharpOption<string> @EnableTagOverride { get; }
 
             [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
+            public FSharpOption<string> @Id { get; }
 
             [nterraform.Core.TerraformProperty(name: "modify_index", @out: true, min: 0, max: 1)]
-            public string @ModifyIndex { get; }
+            public FSharpOption<string> @ModifyIndex { get; }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            public FSharpOption<string> @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "node_address", @out: true, min: 0, max: 1)]
-            public string @NodeAddress { get; }
+            public FSharpOption<string> @NodeAddress { get; }
 
             [nterraform.Core.TerraformProperty(name: "node_id", @out: true, min: 0, max: 1)]
-            public string @NodeId { get; }
+            public FSharpOption<string> @NodeId { get; }
 
             [nterraform.Core.TerraformProperty(name: "node_meta", @out: true, min: 0, max: 1)]
-            public FSharpMap<string,string> @NodeMeta { get; }
+            public FSharpOption<FSharpMap<string,string>> @NodeMeta { get; }
 
             [nterraform.Core.TerraformProperty(name: "node_name", @out: true, min: 0, max: 1)]
-            public string @NodeName { get; }
+            public FSharpOption<string> @NodeName { get; }
 
             [nterraform.Core.TerraformProperty(name: "port", @out: true, min: 0, max: 1)]
-            public string @Port { get; }
+            public FSharpOption<string> @Port { get; }
 
             [nterraform.Core.TerraformProperty(name: "tagged_addresses", @out: false, min: 0, max: 0)]
-            public FSharpMap<string,tagged_addresses> @TaggedAddresses { get; }
+            public FSharpOption<FSharpMap<string,tagged_addresses>> @TaggedAddresses { get; }
 
             [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @Tags { get; }
+            public FSharpOption<FSharpList<string>> @Tags { get; }
         }
 
         public consul_service(string @name,
-                              string @datacenter = null,
-                              FSharpList<query_options> @queryOptions = null,
-                              FSharpList<service> @service = null,
-                              string @tag = null)
+                              FSharpOption<string> @datacenter = null,
+                              FSharpOption<FSharpList<query_options>> @queryOptions = null,
+                              FSharpOption<FSharpList<service>> @service = null,
+                              FSharpOption<string> @tag = null)
         {
             @Name = @name;
             @Datacenter = @datacenter;
@@ -135,16 +136,16 @@ namespace nterraform.datas
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: false, min: 0, max: 1)]
-        public string @Datacenter { get; }
+        public FSharpOption<string> @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "query_options", @out: false, min: 0, max: 0)]
-        public FSharpList<query_options> @QueryOptions { get; }
+        public FSharpOption<FSharpList<query_options>> @QueryOptions { get; }
 
         [nterraform.Core.TerraformProperty(name: "service", @out: false, min: 0, max: 0)]
-        public FSharpList<service> @Service { get; }
+        public FSharpOption<FSharpList<service>> @Service { get; }
 
         [nterraform.Core.TerraformProperty(name: "tag", @out: false, min: 0, max: 1)]
-        public string @Tag { get; }
+        public FSharpOption<string> @Tag { get; }
     }
 
 }

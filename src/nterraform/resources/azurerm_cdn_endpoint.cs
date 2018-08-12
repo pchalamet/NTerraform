@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -10,8 +11,8 @@ namespace nterraform.resources
         {
             public origin(string @hostName,
                           string @name,
-                          int? @httpPort = null,
-                          int? @httpsPort = null)
+                          FSharpOption<int> @httpPort = null,
+                          FSharpOption<int> @httpsPort = null)
             {
                 @HostName = @hostName;
                 @Name = @name;
@@ -27,10 +28,10 @@ namespace nterraform.resources
             public string @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "http_port", @out: false, min: 0, max: 1)]
-            public int? @HttpPort { get; }
+            public FSharpOption<int> @HttpPort { get; }
 
             [nterraform.Core.TerraformProperty(name: "https_port", @out: false, min: 0, max: 1)]
-            public int? @HttpsPort { get; }
+            public FSharpOption<int> @HttpsPort { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "geo_filter")]
@@ -61,12 +62,12 @@ namespace nterraform.resources
                                     FSharpList<origin> @origin,
                                     string @profileName,
                                     string @resourceGroupName,
-                                    FSharpList<geo_filter> @geoFilter = null,
-                                    bool? @isCompressionEnabled = null,
-                                    bool? @isHttpAllowed = null,
-                                    bool? @isHttpsAllowed = null,
-                                    string @optimizationType = null,
-                                    string @querystringCachingBehaviour = null)
+                                    FSharpOption<FSharpList<geo_filter>> @geoFilter = null,
+                                    FSharpOption<bool> @isCompressionEnabled = null,
+                                    FSharpOption<bool> @isHttpAllowed = null,
+                                    FSharpOption<bool> @isHttpsAllowed = null,
+                                    FSharpOption<string> @optimizationType = null,
+                                    FSharpOption<string> @querystringCachingBehaviour = null)
         {
             @Location = @location;
             @Name = @name;
@@ -98,40 +99,40 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "content_types_to_compress", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @ContentTypesToCompress { get; }
+        public FSharpOption<FSharpList<string>> @ContentTypesToCompress { get; }
 
         [nterraform.Core.TerraformProperty(name: "geo_filter", @out: false, min: 0, max: 0)]
-        public FSharpList<geo_filter> @GeoFilter { get; }
+        public FSharpOption<FSharpList<geo_filter>> @GeoFilter { get; }
 
         [nterraform.Core.TerraformProperty(name: "host_name", @out: true, min: 0, max: 1)]
-        public string @HostName { get; }
+        public FSharpOption<string> @HostName { get; }
 
         [nterraform.Core.TerraformProperty(name: "is_compression_enabled", @out: false, min: 0, max: 1)]
-        public bool? @IsCompressionEnabled { get; }
+        public FSharpOption<bool> @IsCompressionEnabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "is_http_allowed", @out: false, min: 0, max: 1)]
-        public bool? @IsHttpAllowed { get; }
+        public FSharpOption<bool> @IsHttpAllowed { get; }
 
         [nterraform.Core.TerraformProperty(name: "is_https_allowed", @out: false, min: 0, max: 1)]
-        public bool? @IsHttpsAllowed { get; }
+        public FSharpOption<bool> @IsHttpsAllowed { get; }
 
         [nterraform.Core.TerraformProperty(name: "optimization_type", @out: false, min: 0, max: 1)]
-        public string @OptimizationType { get; }
+        public FSharpOption<string> @OptimizationType { get; }
 
         [nterraform.Core.TerraformProperty(name: "origin_host_header", @out: true, min: 0, max: 1)]
-        public string @OriginHostHeader { get; }
+        public FSharpOption<string> @OriginHostHeader { get; }
 
         [nterraform.Core.TerraformProperty(name: "origin_path", @out: true, min: 0, max: 1)]
-        public string @OriginPath { get; }
+        public FSharpOption<string> @OriginPath { get; }
 
         [nterraform.Core.TerraformProperty(name: "probe_path", @out: true, min: 0, max: 1)]
-        public string @ProbePath { get; }
+        public FSharpOption<string> @ProbePath { get; }
 
         [nterraform.Core.TerraformProperty(name: "querystring_caching_behaviour", @out: false, min: 0, max: 1)]
-        public string @QuerystringCachingBehaviour { get; }
+        public FSharpOption<string> @QuerystringCachingBehaviour { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

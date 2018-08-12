@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -14,7 +15,7 @@ namespace nterraform.resources
                           string @storageKey,
                           string @storageKeyType,
                           string @storageUri,
-                          string @operationMode = null)
+                          FSharpOption<string> @operationMode = null)
             {
                 @AdministratorLogin = @administratorLogin;
                 @AdministratorLoginPassword = @administratorLoginPassword;
@@ -45,15 +46,15 @@ namespace nterraform.resources
             public string @StorageUri { get; }
 
             [nterraform.Core.TerraformProperty(name: "operation_mode", @out: false, min: 0, max: 1)]
-            public string @OperationMode { get; }
+            public FSharpOption<string> @OperationMode { get; }
         }
 
         public azurerm_sql_database(string @location,
                                     string @name,
                                     string @resourceGroupName,
                                     string @serverName,
-                                    string @createMode = null,
-                                    FSharpList<import> @import = null)
+                                    FSharpOption<string> @createMode = null,
+                                    FSharpOption<FSharpList<import>> @import = null)
         {
             @Location = @location;
             @Name = @name;
@@ -77,49 +78,49 @@ namespace nterraform.resources
         public string @ServerName { get; }
 
         [nterraform.Core.TerraformProperty(name: "collation", @out: true, min: 0, max: 1)]
-        public string @Collation { get; }
+        public FSharpOption<string> @Collation { get; }
 
         [nterraform.Core.TerraformProperty(name: "create_mode", @out: false, min: 0, max: 1)]
-        public string @CreateMode { get; }
+        public FSharpOption<string> @CreateMode { get; }
 
         [nterraform.Core.TerraformProperty(name: "creation_date", @out: true, min: 0, max: 1)]
-        public string @CreationDate { get; }
+        public FSharpOption<string> @CreationDate { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_secondary_location", @out: true, min: 0, max: 1)]
-        public string @DefaultSecondaryLocation { get; }
+        public FSharpOption<string> @DefaultSecondaryLocation { get; }
 
         [nterraform.Core.TerraformProperty(name: "edition", @out: true, min: 0, max: 1)]
-        public string @Edition { get; }
+        public FSharpOption<string> @Edition { get; }
 
         [nterraform.Core.TerraformProperty(name: "elastic_pool_name", @out: true, min: 0, max: 1)]
-        public string @ElasticPoolName { get; }
+        public FSharpOption<string> @ElasticPoolName { get; }
 
         [nterraform.Core.TerraformProperty(name: "encryption", @out: true, min: 0, max: 1)]
-        public string @Encryption { get; }
+        public FSharpOption<string> @Encryption { get; }
 
         [nterraform.Core.TerraformProperty(name: "import", @out: false, min: 0, max: 1)]
-        public FSharpList<import> @Import { get; }
+        public FSharpOption<FSharpList<import>> @Import { get; }
 
         [nterraform.Core.TerraformProperty(name: "max_size_bytes", @out: true, min: 0, max: 1)]
-        public string @MaxSizeBytes { get; }
+        public FSharpOption<string> @MaxSizeBytes { get; }
 
         [nterraform.Core.TerraformProperty(name: "requested_service_objective_id", @out: true, min: 0, max: 1)]
-        public string @RequestedServiceObjectiveId { get; }
+        public FSharpOption<string> @RequestedServiceObjectiveId { get; }
 
         [nterraform.Core.TerraformProperty(name: "requested_service_objective_name", @out: true, min: 0, max: 1)]
-        public string @RequestedServiceObjectiveName { get; }
+        public FSharpOption<string> @RequestedServiceObjectiveName { get; }
 
         [nterraform.Core.TerraformProperty(name: "restore_point_in_time", @out: true, min: 0, max: 1)]
-        public string @RestorePointInTime { get; }
+        public FSharpOption<string> @RestorePointInTime { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_database_deletion_date", @out: true, min: 0, max: 1)]
-        public string @SourceDatabaseDeletionDate { get; }
+        public FSharpOption<string> @SourceDatabaseDeletionDate { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_database_id", @out: true, min: 0, max: 1)]
-        public string @SourceDatabaseId { get; }
+        public FSharpOption<string> @SourceDatabaseId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

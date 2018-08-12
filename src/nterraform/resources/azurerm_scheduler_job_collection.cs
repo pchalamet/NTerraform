@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,8 +10,8 @@ namespace nterraform.resources
         public sealed class quota : nterraform.Core.structure
         {
             public quota(string @maxRecurrenceFrequency,
-                         int? @maxJobCount = null,
-                         int? @maxRecurrenceInterval = null)
+                         FSharpOption<int> @maxJobCount = null,
+                         FSharpOption<int> @maxRecurrenceInterval = null)
             {
                 @MaxRecurrenceFrequency = @maxRecurrenceFrequency;
                 @MaxJobCount = @maxJobCount;
@@ -22,21 +23,21 @@ namespace nterraform.resources
             public string @MaxRecurrenceFrequency { get; }
 
             [nterraform.Core.TerraformProperty(name: "max_job_count", @out: false, min: 0, max: 1)]
-            public int? @MaxJobCount { get; }
+            public FSharpOption<int> @MaxJobCount { get; }
 
             [nterraform.Core.TerraformProperty(name: "max_recurrence_interval", @out: false, min: 0, max: 1)]
-            public int? @MaxRecurrenceInterval { get; }
+            public FSharpOption<int> @MaxRecurrenceInterval { get; }
 
             [nterraform.Core.TerraformProperty(name: "max_retry_interval", @out: true, min: 0, max: 1)]
-            public int? @MaxRetryInterval { get; }
+            public FSharpOption<int> @MaxRetryInterval { get; }
         }
 
         public azurerm_scheduler_job_collection(string @location,
                                                 string @name,
                                                 string @resourceGroupName,
                                                 string @sku,
-                                                FSharpList<quota> @quota = null,
-                                                string @state = null)
+                                                FSharpOption<FSharpList<quota>> @quota = null,
+                                                FSharpOption<string> @state = null)
         {
             @Location = @location;
             @Name = @name;
@@ -60,13 +61,13 @@ namespace nterraform.resources
         public string @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "quota", @out: false, min: 0, max: 1)]
-        public FSharpList<quota> @Quota { get; }
+        public FSharpOption<FSharpList<quota>> @Quota { get; }
 
         [nterraform.Core.TerraformProperty(name: "state", @out: false, min: 0, max: 1)]
-        public string @State { get; }
+        public FSharpOption<string> @State { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

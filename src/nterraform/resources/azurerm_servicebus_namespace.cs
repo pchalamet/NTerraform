@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,7 +10,7 @@ namespace nterraform.resources
                                             string @name,
                                             string @resourceGroupName,
                                             string @sku,
-                                            int? @capacity = null)
+                                            FSharpOption<int> @capacity = null)
         {
             @Location = @location;
             @Name = @name;
@@ -32,22 +33,22 @@ namespace nterraform.resources
         public string @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "capacity", @out: false, min: 0, max: 1)]
-        public int? @Capacity { get; }
+        public FSharpOption<int> @Capacity { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_primary_connection_string", @out: true, min: 0, max: 1)]
-        public string @DefaultPrimaryConnectionString { get; }
+        public FSharpOption<string> @DefaultPrimaryConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_primary_key", @out: true, min: 0, max: 1)]
-        public string @DefaultPrimaryKey { get; }
+        public FSharpOption<string> @DefaultPrimaryKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_secondary_connection_string", @out: true, min: 0, max: 1)]
-        public string @DefaultSecondaryConnectionString { get; }
+        public FSharpOption<string> @DefaultSecondaryConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_secondary_key", @out: true, min: 0, max: 1)]
-        public string @DefaultSecondaryKey { get; }
+        public FSharpOption<string> @DefaultSecondaryKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

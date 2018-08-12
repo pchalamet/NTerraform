@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,10 +10,10 @@ namespace nterraform.resources
                                 string @name,
                                 int @port,
                                 string @resourceGroupName,
-                                int? @intervalInSeconds = null,
-                                string @location = null,
-                                int? @numberOfProbes = null,
-                                string @requestPath = null)
+                                FSharpOption<int> @intervalInSeconds = null,
+                                FSharpOption<string> @location = null,
+                                FSharpOption<int> @numberOfProbes = null,
+                                FSharpOption<string> @requestPath = null)
         {
             @LoadbalancerId = @loadbalancerId;
             @Name = @name;
@@ -38,22 +39,22 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "interval_in_seconds", @out: false, min: 0, max: 1)]
-        public int? @IntervalInSeconds { get; }
+        public FSharpOption<int> @IntervalInSeconds { get; }
 
         [nterraform.Core.TerraformProperty(name: "load_balancer_rules", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @LoadBalancerRules { get; }
+        public FSharpOption<FSharpList<string>> @LoadBalancerRules { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "number_of_probes", @out: false, min: 0, max: 1)]
-        public int? @NumberOfProbes { get; }
+        public FSharpOption<int> @NumberOfProbes { get; }
 
         [nterraform.Core.TerraformProperty(name: "protocol", @out: true, min: 0, max: 1)]
-        public string @Protocol { get; }
+        public FSharpOption<string> @Protocol { get; }
 
         [nterraform.Core.TerraformProperty(name: "request_path", @out: false, min: 0, max: 1)]
-        public string @RequestPath { get; }
+        public FSharpOption<string> @RequestPath { get; }
     }
 
 }

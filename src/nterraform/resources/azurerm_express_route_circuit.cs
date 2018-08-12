@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -30,7 +31,7 @@ namespace nterraform.resources
                                              string @resourceGroupName,
                                              string @serviceProviderName,
                                              FSharpList<sku> @sku,
-                                             bool? @allowClassicOperations = null)
+                                             FSharpOption<bool> @allowClassicOperations = null)
         {
             @BandwidthInMbps = @bandwidthInMbps;
             @Location = @location;
@@ -65,16 +66,16 @@ namespace nterraform.resources
         public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "allow_classic_operations", @out: false, min: 0, max: 1)]
-        public bool? @AllowClassicOperations { get; }
+        public FSharpOption<bool> @AllowClassicOperations { get; }
 
         [nterraform.Core.TerraformProperty(name: "service_key", @out: true, min: 0, max: 1)]
-        public string @ServiceKey { get; }
+        public FSharpOption<string> @ServiceKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "service_provider_provisioning_state", @out: true, min: 0, max: 1)]
-        public string @ServiceProviderProvisioningState { get; }
+        public FSharpOption<string> @ServiceProviderProvisioningState { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

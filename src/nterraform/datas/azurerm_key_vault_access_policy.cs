@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -15,13 +16,13 @@ namespace nterraform.datas
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "certificate_permissions", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @CertificatePermissions { get; }
+        public FSharpOption<FSharpList<string>> @CertificatePermissions { get; }
 
         [nterraform.Core.TerraformProperty(name: "key_permissions", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @KeyPermissions { get; }
+        public FSharpOption<FSharpList<string>> @KeyPermissions { get; }
 
         [nterraform.Core.TerraformProperty(name: "secret_permissions", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @SecretPermissions { get; }
+        public FSharpOption<FSharpList<string>> @SecretPermissions { get; }
     }
 
 }

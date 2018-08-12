@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,9 +10,9 @@ namespace nterraform.resources
         public sealed class service : nterraform.Core.structure
         {
             public service(string @name,
-                           string @address = null,
-                           int? @port = null,
-                           FSharpList<string> @tags = null)
+                           FSharpOption<string> @address = null,
+                           FSharpOption<int> @port = null,
+                           FSharpOption<FSharpList<string>> @tags = null)
             {
                 @Name = @name;
                 @Address = @address;
@@ -24,22 +25,22 @@ namespace nterraform.resources
             public string @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "address", @out: false, min: 0, max: 1)]
-            public string @Address { get; }
+            public FSharpOption<string> @Address { get; }
 
             [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
+            public FSharpOption<string> @Id { get; }
 
             [nterraform.Core.TerraformProperty(name: "port", @out: false, min: 0, max: 1)]
-            public int? @Port { get; }
+            public FSharpOption<int> @Port { get; }
 
             [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @Tags { get; }
+            public FSharpOption<FSharpList<string>> @Tags { get; }
         }
 
         public consul_catalog_entry(string @address,
                                     string @node,
-                                    FSharpList<service> @service = null,
-                                    string @token = null)
+                                    FSharpOption<FSharpList<service>> @service = null,
+                                    FSharpOption<string> @token = null)
         {
             @Address = @address;
             @Node = @node;
@@ -55,13 +56,13 @@ namespace nterraform.resources
         public string @Node { get; }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
-        public string @Datacenter { get; }
+        public FSharpOption<string> @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "service", @out: false, min: 0, max: 0)]
-        public FSharpList<service> @Service { get; }
+        public FSharpOption<FSharpList<service>> @Service { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
-        public string @Token { get; }
+        public FSharpOption<string> @Token { get; }
     }
 
 }

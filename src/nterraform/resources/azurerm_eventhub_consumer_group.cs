@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,8 +10,8 @@ namespace nterraform.resources
                                                string @name,
                                                string @namespaceName,
                                                string @resourceGroupName,
-                                               string @location = null,
-                                               string @userMetadata = null)
+                                               FSharpOption<string> @location = null,
+                                               FSharpOption<string> @userMetadata = null)
         {
             @EventhubName = @eventhubName;
             @Name = @name;
@@ -34,10 +35,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "user_metadata", @out: false, min: 0, max: 1)]
-        public string @UserMetadata { get; }
+        public FSharpOption<string> @UserMetadata { get; }
     }
 
 }

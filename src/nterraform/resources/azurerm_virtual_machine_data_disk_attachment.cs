@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,8 +10,8 @@ namespace nterraform.resources
                                                             int @lun,
                                                             string @managedDiskId,
                                                             string @virtualMachineId,
-                                                            string @createOption = null,
-                                                            bool? @writeAcceleratorEnabled = null)
+                                                            FSharpOption<string> @createOption = null,
+                                                            FSharpOption<bool> @writeAcceleratorEnabled = null)
         {
             @Caching = @caching;
             @Lun = @lun;
@@ -34,10 +35,10 @@ namespace nterraform.resources
         public string @VirtualMachineId { get; }
 
         [nterraform.Core.TerraformProperty(name: "create_option", @out: false, min: 0, max: 1)]
-        public string @CreateOption { get; }
+        public FSharpOption<string> @CreateOption { get; }
 
         [nterraform.Core.TerraformProperty(name: "write_accelerator_enabled", @out: false, min: 0, max: 1)]
-        public bool? @WriteAcceleratorEnabled { get; }
+        public FSharpOption<bool> @WriteAcceleratorEnabled { get; }
     }
 
 }

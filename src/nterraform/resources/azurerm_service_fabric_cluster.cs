@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -49,9 +50,9 @@ namespace nterraform.resources
                              int @instanceCount,
                              bool @isPrimary,
                              string @name,
-                             FSharpList<application_ports> @applicationPorts = null,
-                             string @durabilityLevel = null,
-                             FSharpList<ephemeral_ports> @ephemeralPorts = null)
+                             FSharpOption<FSharpList<application_ports>> @applicationPorts = null,
+                             FSharpOption<string> @durabilityLevel = null,
+                             FSharpOption<FSharpList<ephemeral_ports>> @ephemeralPorts = null)
             {
                 @ClientEndpointPort = @clientEndpointPort;
                 @HttpEndpointPort = @httpEndpointPort;
@@ -80,13 +81,13 @@ namespace nterraform.resources
             public string @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "application_ports", @out: false, min: 0, max: 1)]
-            public FSharpList<application_ports> @ApplicationPorts { get; }
+            public FSharpOption<FSharpList<application_ports>> @ApplicationPorts { get; }
 
             [nterraform.Core.TerraformProperty(name: "durability_level", @out: false, min: 0, max: 1)]
-            public string @DurabilityLevel { get; }
+            public FSharpOption<string> @DurabilityLevel { get; }
 
             [nterraform.Core.TerraformProperty(name: "ephemeral_ports", @out: false, min: 0, max: 1)]
-            public FSharpList<ephemeral_ports> @EphemeralPorts { get; }
+            public FSharpOption<FSharpList<ephemeral_ports>> @EphemeralPorts { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "client_certificate_thumbprint")]
@@ -145,7 +146,7 @@ namespace nterraform.resources
         {
             public certificate(string @thumbprint,
                                string @x509StoreName,
-                               string @thumbprintSecondary = null)
+                               FSharpOption<string> @thumbprintSecondary = null)
             {
                 @Thumbprint = @thumbprint;
                 @X509StoreName = @x509StoreName;
@@ -160,14 +161,14 @@ namespace nterraform.resources
             public string @X509StoreName { get; }
 
             [nterraform.Core.TerraformProperty(name: "thumbprint_secondary", @out: false, min: 0, max: 1)]
-            public string @ThumbprintSecondary { get; }
+            public FSharpOption<string> @ThumbprintSecondary { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "fabric_settings")]
         public sealed class fabric_settings : nterraform.Core.structure
         {
             public fabric_settings(string @name,
-                                   FSharpMap<string,string> @parameters = null)
+                                   FSharpOption<FSharpMap<string,string>> @parameters = null)
             {
                 @Name = @name;
                 @Parameters = @parameters ?? MapModule.Empty<string,string>();
@@ -178,7 +179,7 @@ namespace nterraform.resources
             public string @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
-            public FSharpMap<string,string> @Parameters { get; }
+            public FSharpOption<FSharpMap<string,string>> @Parameters { get; }
         }
 
         public azurerm_service_fabric_cluster(string @location,
@@ -189,11 +190,11 @@ namespace nterraform.resources
                                               string @resourceGroupName,
                                               string @upgradeMode,
                                               string @vmImage,
-                                              FSharpList<string> @addOnFeatures = null,
-                                              FSharpList<certificate> @certificate = null,
-                                              FSharpList<client_certificate_thumbprint> @clientCertificateThumbprint = null,
-                                              FSharpList<diagnostics_config> @diagnosticsConfig = null,
-                                              FSharpList<fabric_settings> @fabricSettings = null)
+                                              FSharpOption<FSharpList<string>> @addOnFeatures = null,
+                                              FSharpOption<FSharpList<certificate>> @certificate = null,
+                                              FSharpOption<FSharpList<client_certificate_thumbprint>> @clientCertificateThumbprint = null,
+                                              FSharpOption<FSharpList<diagnostics_config>> @diagnosticsConfig = null,
+                                              FSharpOption<FSharpList<fabric_settings>> @fabricSettings = null)
         {
             @Location = @location;
             @ManagementEndpoint = @managementEndpoint;
@@ -236,25 +237,25 @@ namespace nterraform.resources
         public string @VmImage { get; }
 
         [nterraform.Core.TerraformProperty(name: "add_on_features", @out: false, min: 0, max: 1)]
-        public FSharpList<string> @AddOnFeatures { get; }
+        public FSharpOption<FSharpList<string>> @AddOnFeatures { get; }
 
         [nterraform.Core.TerraformProperty(name: "certificate", @out: false, min: 0, max: 1)]
-        public FSharpList<certificate> @Certificate { get; }
+        public FSharpOption<FSharpList<certificate>> @Certificate { get; }
 
         [nterraform.Core.TerraformProperty(name: "client_certificate_thumbprint", @out: false, min: 0, max: 1)]
-        public FSharpList<client_certificate_thumbprint> @ClientCertificateThumbprint { get; }
+        public FSharpOption<FSharpList<client_certificate_thumbprint>> @ClientCertificateThumbprint { get; }
 
         [nterraform.Core.TerraformProperty(name: "cluster_endpoint", @out: true, min: 0, max: 1)]
-        public string @ClusterEndpoint { get; }
+        public FSharpOption<string> @ClusterEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "diagnostics_config", @out: false, min: 0, max: 1)]
-        public FSharpList<diagnostics_config> @DiagnosticsConfig { get; }
+        public FSharpOption<FSharpList<diagnostics_config>> @DiagnosticsConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "fabric_settings", @out: false, min: 0, max: 0)]
-        public FSharpList<fabric_settings> @FabricSettings { get; }
+        public FSharpOption<FSharpList<fabric_settings>> @FabricSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

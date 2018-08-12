@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -14,21 +15,21 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "address_prefix", @out: true, min: 0, max: 1)]
-            public string @AddressPrefix { get; }
+            public FSharpOption<string> @AddressPrefix { get; }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            public FSharpOption<string> @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "next_hop_in_ip_address", @out: true, min: 0, max: 1)]
-            public string @NextHopInIpAddress { get; }
+            public FSharpOption<string> @NextHopInIpAddress { get; }
 
             [nterraform.Core.TerraformProperty(name: "next_hop_type", @out: true, min: 0, max: 1)]
-            public string @NextHopType { get; }
+            public FSharpOption<string> @NextHopType { get; }
         }
 
         public azurerm_route_table(string @name,
                                    string @resourceGroupName,
-                                   FSharpList<route> @route = null)
+                                   FSharpOption<FSharpList<route>> @route = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -43,16 +44,16 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "route", @out: false, min: 0, max: 0)]
-        public FSharpList<route> @Route { get; }
+        public FSharpOption<FSharpList<route>> @Route { get; }
 
         [nterraform.Core.TerraformProperty(name: "subnets", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @Subnets { get; }
+        public FSharpOption<FSharpList<string>> @Subnets { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

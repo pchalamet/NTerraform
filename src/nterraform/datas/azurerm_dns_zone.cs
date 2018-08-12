@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -15,28 +16,28 @@ namespace nterraform.datas
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "max_number_of_record_sets", @out: true, min: 0, max: 1)]
-        public string @MaxNumberOfRecordSets { get; }
+        public FSharpOption<string> @MaxNumberOfRecordSets { get; }
 
         [nterraform.Core.TerraformProperty(name: "name_servers", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @NameServers { get; }
+        public FSharpOption<FSharpList<string>> @NameServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "number_of_record_sets", @out: true, min: 0, max: 1)]
-        public string @NumberOfRecordSets { get; }
+        public FSharpOption<string> @NumberOfRecordSets { get; }
 
         [nterraform.Core.TerraformProperty(name: "registration_virtual_network_ids", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @RegistrationVirtualNetworkIds { get; }
+        public FSharpOption<FSharpList<string>> @RegistrationVirtualNetworkIds { get; }
 
         [nterraform.Core.TerraformProperty(name: "resolution_virtual_network_ids", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @ResolutionVirtualNetworkIds { get; }
+        public FSharpOption<FSharpList<string>> @ResolutionVirtualNetworkIds { get; }
 
         [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: true, min: 0, max: 1)]
-        public string @ResourceGroupName { get; }
+        public FSharpOption<string> @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "zone_type", @out: true, min: 0, max: 1)]
-        public string @ZoneType { get; }
+        public FSharpOption<string> @ZoneType { get; }
     }
 
 }

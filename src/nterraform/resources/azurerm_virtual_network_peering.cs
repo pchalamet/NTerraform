@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -30,16 +31,16 @@ namespace nterraform.resources
         public string @VirtualNetworkName { get; }
 
         [nterraform.Core.TerraformProperty(name: "allow_forwarded_traffic", @out: true, min: 0, max: 1)]
-        public bool? @AllowForwardedTraffic { get; }
+        public FSharpOption<bool> @AllowForwardedTraffic { get; }
 
         [nterraform.Core.TerraformProperty(name: "allow_gateway_transit", @out: true, min: 0, max: 1)]
-        public bool? @AllowGatewayTransit { get; }
+        public FSharpOption<bool> @AllowGatewayTransit { get; }
 
         [nterraform.Core.TerraformProperty(name: "allow_virtual_network_access", @out: true, min: 0, max: 1)]
-        public bool? @AllowVirtualNetworkAccess { get; }
+        public FSharpOption<bool> @AllowVirtualNetworkAccess { get; }
 
         [nterraform.Core.TerraformProperty(name: "use_remote_gateways", @out: true, min: 0, max: 1)]
-        public bool? @UseRemoteGateways { get; }
+        public FSharpOption<bool> @UseRemoteGateways { get; }
     }
 
 }

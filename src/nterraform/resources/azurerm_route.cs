@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -35,7 +36,7 @@ namespace nterraform.resources
         public string @RouteTableName { get; }
 
         [nterraform.Core.TerraformProperty(name: "next_hop_in_ip_address", @out: true, min: 0, max: 1)]
-        public string @NextHopInIpAddress { get; }
+        public FSharpOption<string> @NextHopInIpAddress { get; }
     }
 
 }

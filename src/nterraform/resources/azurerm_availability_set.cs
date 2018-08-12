@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,9 +9,9 @@ namespace nterraform.resources
         public azurerm_availability_set(string @location,
                                         string @name,
                                         string @resourceGroupName,
-                                        bool? @managed = null,
-                                        int? @platformFaultDomainCount = null,
-                                        int? @platformUpdateDomainCount = null)
+                                        FSharpOption<bool> @managed = null,
+                                        FSharpOption<int> @platformFaultDomainCount = null,
+                                        FSharpOption<int> @platformUpdateDomainCount = null)
         {
             @Location = @location;
             @Name = @name;
@@ -31,16 +32,16 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "managed", @out: false, min: 0, max: 1)]
-        public bool? @Managed { get; }
+        public FSharpOption<bool> @Managed { get; }
 
         [nterraform.Core.TerraformProperty(name: "platform_fault_domain_count", @out: false, min: 0, max: 1)]
-        public int? @PlatformFaultDomainCount { get; }
+        public FSharpOption<int> @PlatformFaultDomainCount { get; }
 
         [nterraform.Core.TerraformProperty(name: "platform_update_domain_count", @out: false, min: 0, max: 1)]
-        public int? @PlatformUpdateDomainCount { get; }
+        public FSharpOption<int> @PlatformUpdateDomainCount { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

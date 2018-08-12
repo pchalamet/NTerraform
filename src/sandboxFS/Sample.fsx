@@ -18,6 +18,6 @@ let network = azurerm_virtual_network(name = "production-network",
                                       addressSpace = [ "10.0.0.0/16" ],
                                       location = resgroup.Location,
                                       resourceGroupName = resgroup.Name,
-                                      subnet = subnets)
+                                      subnet = Some subnets)
 
 configuration.build()

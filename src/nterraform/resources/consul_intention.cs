@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,8 +9,8 @@ namespace nterraform.resources
         public consul_intention(string @action,
                                 string @destinationName,
                                 string @sourceName,
-                                string @description = null,
-                                FSharpMap<string,string> @meta = null)
+                                FSharpOption<string> @description = null,
+                                FSharpOption<FSharpMap<string,string>> @meta = null)
         {
             @Action = @action;
             @DestinationName = @destinationName;
@@ -29,10 +30,10 @@ namespace nterraform.resources
         public string @SourceName { get; }
 
         [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
-        public string @Description { get; }
+        public FSharpOption<string> @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "meta", @out: false, min: 0, max: 1)]
-        public FSharpMap<string,string> @Meta { get; }
+        public FSharpOption<FSharpMap<string,string>> @Meta { get; }
     }
 
 }

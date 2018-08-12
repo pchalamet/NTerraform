@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,7 +9,7 @@ namespace nterraform.resources
         public azurerm_management_lock(string @lockLevel,
                                        string @name,
                                        string @scope,
-                                       string @notes = null)
+                                       FSharpOption<string> @notes = null)
         {
             @LockLevel = @lockLevel;
             @Name = @name;
@@ -27,7 +28,7 @@ namespace nterraform.resources
         public string @Scope { get; }
 
         [nterraform.Core.TerraformProperty(name: "notes", @out: false, min: 0, max: 1)]
-        public string @Notes { get; }
+        public FSharpOption<string> @Notes { get; }
     }
 
 }

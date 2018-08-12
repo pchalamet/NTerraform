@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -13,7 +14,7 @@ namespace nterraform.resources
                                    string @name,
                                    string @protocol,
                                    string @resourceGroupName,
-                                   string @location = null)
+                                   FSharpOption<string> @location = null)
         {
             @BackendPort = @backendPort;
             @FrontendIpConfigurationName = @frontendIpConfigurationName;
@@ -52,10 +53,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "frontend_ip_configuration_id", @out: true, min: 0, max: 1)]
-        public string @FrontendIpConfigurationId { get; }
+        public FSharpOption<string> @FrontendIpConfigurationId { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
     }
 
 }

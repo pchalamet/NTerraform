@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,7 +10,7 @@ namespace nterraform.resources
         public sealed class patch_schedule : nterraform.Core.structure
         {
             public patch_schedule(string @dayOfWeek,
-                                  int? @startHourUtc = null)
+                                  FSharpOption<int> @startHourUtc = null)
             {
                 @DayOfWeek = @dayOfWeek;
                 @StartHourUtc = @startHourUtc;
@@ -20,18 +21,18 @@ namespace nterraform.resources
             public string @DayOfWeek { get; }
 
             [nterraform.Core.TerraformProperty(name: "start_hour_utc", @out: false, min: 0, max: 1)]
-            public int? @StartHourUtc { get; }
+            public FSharpOption<int> @StartHourUtc { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "redis_configuration")]
         public sealed class redis_configuration : nterraform.Core.structure
         {
-            public redis_configuration(string @maxmemoryPolicy = null,
-                                       string @notifyKeyspaceEvents = null,
-                                       bool? @rdbBackupEnabled = null,
-                                       int? @rdbBackupFrequency = null,
-                                       int? @rdbBackupMaxSnapshotCount = null,
-                                       string @rdbStorageConnectionString = null)
+            public redis_configuration(FSharpOption<string> @maxmemoryPolicy = null,
+                                       FSharpOption<string> @notifyKeyspaceEvents = null,
+                                       FSharpOption<bool> @rdbBackupEnabled = null,
+                                       FSharpOption<int> @rdbBackupFrequency = null,
+                                       FSharpOption<int> @rdbBackupMaxSnapshotCount = null,
+                                       FSharpOption<string> @rdbStorageConnectionString = null)
             {
                 @MaxmemoryPolicy = @maxmemoryPolicy;
                 @NotifyKeyspaceEvents = @notifyKeyspaceEvents;
@@ -43,31 +44,31 @@ namespace nterraform.resources
             }
 
             [nterraform.Core.TerraformProperty(name: "maxclients", @out: true, min: 0, max: 1)]
-            public int? @Maxclients { get; }
+            public FSharpOption<int> @Maxclients { get; }
 
             [nterraform.Core.TerraformProperty(name: "maxmemory_delta", @out: true, min: 0, max: 1)]
-            public int? @MaxmemoryDelta { get; }
+            public FSharpOption<int> @MaxmemoryDelta { get; }
 
             [nterraform.Core.TerraformProperty(name: "maxmemory_policy", @out: false, min: 0, max: 1)]
-            public string @MaxmemoryPolicy { get; }
+            public FSharpOption<string> @MaxmemoryPolicy { get; }
 
             [nterraform.Core.TerraformProperty(name: "maxmemory_reserved", @out: true, min: 0, max: 1)]
-            public int? @MaxmemoryReserved { get; }
+            public FSharpOption<int> @MaxmemoryReserved { get; }
 
             [nterraform.Core.TerraformProperty(name: "notify_keyspace_events", @out: false, min: 0, max: 1)]
-            public string @NotifyKeyspaceEvents { get; }
+            public FSharpOption<string> @NotifyKeyspaceEvents { get; }
 
             [nterraform.Core.TerraformProperty(name: "rdb_backup_enabled", @out: false, min: 0, max: 1)]
-            public bool? @RdbBackupEnabled { get; }
+            public FSharpOption<bool> @RdbBackupEnabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "rdb_backup_frequency", @out: false, min: 0, max: 1)]
-            public int? @RdbBackupFrequency { get; }
+            public FSharpOption<int> @RdbBackupFrequency { get; }
 
             [nterraform.Core.TerraformProperty(name: "rdb_backup_max_snapshot_count", @out: false, min: 0, max: 1)]
-            public int? @RdbBackupMaxSnapshotCount { get; }
+            public FSharpOption<int> @RdbBackupMaxSnapshotCount { get; }
 
             [nterraform.Core.TerraformProperty(name: "rdb_storage_connection_string", @out: false, min: 0, max: 1)]
-            public string @RdbStorageConnectionString { get; }
+            public FSharpOption<string> @RdbStorageConnectionString { get; }
         }
 
         public azurerm_redis_cache(int @capacity,
@@ -77,10 +78,10 @@ namespace nterraform.resources
                                    FSharpList<redis_configuration> @redisConfiguration,
                                    string @resourceGroupName,
                                    string @skuName,
-                                   bool? @enableNonSslPort = null,
-                                   FSharpList<patch_schedule> @patchSchedule = null,
-                                   int? @shardCount = null,
-                                   string @subnetId = null)
+                                   FSharpOption<bool> @enableNonSslPort = null,
+                                   FSharpOption<FSharpList<patch_schedule>> @patchSchedule = null,
+                                   FSharpOption<int> @shardCount = null,
+                                   FSharpOption<string> @subnetId = null)
         {
             @Capacity = @capacity;
             @Family = @family;
@@ -118,37 +119,37 @@ namespace nterraform.resources
         public string @SkuName { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_non_ssl_port", @out: false, min: 0, max: 1)]
-        public bool? @EnableNonSslPort { get; }
+        public FSharpOption<bool> @EnableNonSslPort { get; }
 
         [nterraform.Core.TerraformProperty(name: "hostname", @out: true, min: 0, max: 1)]
-        public string @Hostname { get; }
+        public FSharpOption<string> @Hostname { get; }
 
         [nterraform.Core.TerraformProperty(name: "patch_schedule", @out: false, min: 0, max: 0)]
-        public FSharpList<patch_schedule> @PatchSchedule { get; }
+        public FSharpOption<FSharpList<patch_schedule>> @PatchSchedule { get; }
 
         [nterraform.Core.TerraformProperty(name: "port", @out: true, min: 0, max: 1)]
-        public int? @Port { get; }
+        public FSharpOption<int> @Port { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_access_key", @out: true, min: 0, max: 1)]
-        public string @PrimaryAccessKey { get; }
+        public FSharpOption<string> @PrimaryAccessKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "private_static_ip_address", @out: true, min: 0, max: 1)]
-        public string @PrivateStaticIpAddress { get; }
+        public FSharpOption<string> @PrivateStaticIpAddress { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_access_key", @out: true, min: 0, max: 1)]
-        public string @SecondaryAccessKey { get; }
+        public FSharpOption<string> @SecondaryAccessKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "shard_count", @out: false, min: 0, max: 1)]
-        public int? @ShardCount { get; }
+        public FSharpOption<int> @ShardCount { get; }
 
         [nterraform.Core.TerraformProperty(name: "ssl_port", @out: true, min: 0, max: 1)]
-        public int? @SslPort { get; }
+        public FSharpOption<int> @SslPort { get; }
 
         [nterraform.Core.TerraformProperty(name: "subnet_id", @out: false, min: 0, max: 1)]
-        public string @SubnetId { get; }
+        public FSharpOption<string> @SubnetId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

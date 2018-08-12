@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -20,16 +21,16 @@ namespace nterraform.datas
         public string @VaultUri { get; }
 
         [nterraform.Core.TerraformProperty(name: "content_type", @out: true, min: 0, max: 1)]
-        public string @ContentType { get; }
+        public FSharpOption<string> @ContentType { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
-        public string @Value { get; }
+        public FSharpOption<string> @Value { get; }
 
         [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
-        public string @Version { get; }
+        public FSharpOption<string> @Version { get; }
     }
 
 }

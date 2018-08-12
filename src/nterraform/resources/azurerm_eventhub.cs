@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -39,8 +40,8 @@ namespace nterraform.resources
             public capture_description(FSharpList<destination> @destination,
                                        bool @enabled,
                                        string @encoding,
-                                       int? @intervalInSeconds = null,
-                                       int? @sizeLimitInBytes = null)
+                                       FSharpOption<int> @intervalInSeconds = null,
+                                       FSharpOption<int> @sizeLimitInBytes = null)
             {
                 @Destination = @destination;
                 @Enabled = @enabled;
@@ -60,10 +61,10 @@ namespace nterraform.resources
             public string @Encoding { get; }
 
             [nterraform.Core.TerraformProperty(name: "interval_in_seconds", @out: false, min: 0, max: 1)]
-            public int? @IntervalInSeconds { get; }
+            public FSharpOption<int> @IntervalInSeconds { get; }
 
             [nterraform.Core.TerraformProperty(name: "size_limit_in_bytes", @out: false, min: 0, max: 1)]
-            public int? @SizeLimitInBytes { get; }
+            public FSharpOption<int> @SizeLimitInBytes { get; }
         }
 
         public azurerm_eventhub(int @messageRetention,
@@ -71,8 +72,8 @@ namespace nterraform.resources
                                 string @namespaceName,
                                 int @partitionCount,
                                 string @resourceGroupName,
-                                FSharpList<capture_description> @captureDescription = null,
-                                string @location = null)
+                                FSharpOption<FSharpList<capture_description>> @captureDescription = null,
+                                FSharpOption<string> @location = null)
         {
             @MessageRetention = @messageRetention;
             @Name = @name;
@@ -100,13 +101,13 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "capture_description", @out: false, min: 0, max: 1)]
-        public FSharpList<capture_description> @CaptureDescription { get; }
+        public FSharpOption<FSharpList<capture_description>> @CaptureDescription { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "partition_ids", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @PartitionIds { get; }
+        public FSharpOption<FSharpList<string>> @PartitionIds { get; }
     }
 
 }

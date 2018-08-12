@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -10,7 +11,7 @@ namespace nterraform.resources
                                              string @password,
                                              string @resourceGroupName,
                                              string @username,
-                                             string @description = null)
+                                             FSharpOption<string> @description = null)
         {
             @AccountName = @accountName;
             @Name = @name;
@@ -37,7 +38,7 @@ namespace nterraform.resources
         public string @Username { get; }
 
         [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
-        public string @Description { get; }
+        public FSharpOption<string> @Description { get; }
     }
 
 }

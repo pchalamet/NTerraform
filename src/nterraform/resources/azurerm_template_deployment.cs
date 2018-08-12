@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,8 +9,8 @@ namespace nterraform.resources
         public azurerm_template_deployment(string @deploymentMode,
                                            string @name,
                                            string @resourceGroupName,
-                                           FSharpMap<string,string> @parameters = null,
-                                           string @parametersBody = null)
+                                           FSharpOption<FSharpMap<string,string>> @parameters = null,
+                                           FSharpOption<string> @parametersBody = null)
         {
             @DeploymentMode = @deploymentMode;
             @Name = @name;
@@ -29,16 +30,16 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "outputs", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Outputs { get; }
+        public FSharpOption<FSharpMap<string,string>> @Outputs { get; }
 
         [nterraform.Core.TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
-        public FSharpMap<string,string> @Parameters { get; }
+        public FSharpOption<FSharpMap<string,string>> @Parameters { get; }
 
         [nterraform.Core.TerraformProperty(name: "parameters_body", @out: false, min: 0, max: 1)]
-        public string @ParametersBody { get; }
+        public FSharpOption<string> @ParametersBody { get; }
 
         [nterraform.Core.TerraformProperty(name: "template_body", @out: true, min: 0, max: 1)]
-        public string @TemplateBody { get; }
+        public FSharpOption<string> @TemplateBody { get; }
     }
 
 }

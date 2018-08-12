@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -10,12 +11,12 @@ namespace nterraform.resources
                                                string @namespaceName,
                                                string @resourceGroupName,
                                                string @topicName,
-                                               bool? @deadLetteringOnFilterEvaluationExceptions = null,
-                                               bool? @deadLetteringOnMessageExpiration = null,
-                                               bool? @enableBatchedOperations = null,
-                                               string @forwardTo = null,
-                                               string @location = null,
-                                               bool? @requiresSession = null)
+                                               FSharpOption<bool> @deadLetteringOnFilterEvaluationExceptions = null,
+                                               FSharpOption<bool> @deadLetteringOnMessageExpiration = null,
+                                               FSharpOption<bool> @enableBatchedOperations = null,
+                                               FSharpOption<string> @forwardTo = null,
+                                               FSharpOption<string> @location = null,
+                                               FSharpOption<bool> @requiresSession = null)
         {
             @MaxDeliveryCount = @maxDeliveryCount;
             @Name = @name;
@@ -47,31 +48,31 @@ namespace nterraform.resources
         public string @TopicName { get; }
 
         [nterraform.Core.TerraformProperty(name: "auto_delete_on_idle", @out: true, min: 0, max: 1)]
-        public string @AutoDeleteOnIdle { get; }
+        public FSharpOption<string> @AutoDeleteOnIdle { get; }
 
         [nterraform.Core.TerraformProperty(name: "dead_lettering_on_filter_evaluation_exceptions", @out: false, min: 0, max: 1)]
-        public bool? @DeadLetteringOnFilterEvaluationExceptions { get; }
+        public FSharpOption<bool> @DeadLetteringOnFilterEvaluationExceptions { get; }
 
         [nterraform.Core.TerraformProperty(name: "dead_lettering_on_message_expiration", @out: false, min: 0, max: 1)]
-        public bool? @DeadLetteringOnMessageExpiration { get; }
+        public FSharpOption<bool> @DeadLetteringOnMessageExpiration { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_message_ttl", @out: true, min: 0, max: 1)]
-        public string @DefaultMessageTtl { get; }
+        public FSharpOption<string> @DefaultMessageTtl { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_batched_operations", @out: false, min: 0, max: 1)]
-        public bool? @EnableBatchedOperations { get; }
+        public FSharpOption<bool> @EnableBatchedOperations { get; }
 
         [nterraform.Core.TerraformProperty(name: "forward_to", @out: false, min: 0, max: 1)]
-        public string @ForwardTo { get; }
+        public FSharpOption<string> @ForwardTo { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "lock_duration", @out: true, min: 0, max: 1)]
-        public string @LockDuration { get; }
+        public FSharpOption<string> @LockDuration { get; }
 
         [nterraform.Core.TerraformProperty(name: "requires_session", @out: false, min: 0, max: 1)]
-        public bool? @RequiresSession { get; }
+        public FSharpOption<bool> @RequiresSession { get; }
     }
 
 }

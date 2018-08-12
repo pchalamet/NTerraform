@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -20,19 +21,19 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "domain_name_label", @out: true, min: 0, max: 1)]
-        public string @DomainNameLabel { get; }
+        public FSharpOption<string> @DomainNameLabel { get; }
 
         [nterraform.Core.TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
-        public string @Fqdn { get; }
+        public FSharpOption<string> @Fqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "idle_timeout_in_minutes", @out: true, min: 0, max: 1)]
-        public int? @IdleTimeoutInMinutes { get; }
+        public FSharpOption<int> @IdleTimeoutInMinutes { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_address", @out: true, min: 0, max: 1)]
-        public string @IpAddress { get; }
+        public FSharpOption<string> @IpAddress { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,13 +10,13 @@ namespace nterraform.resources
                                     string @resourceGroupName,
                                     string @storageAccountName,
                                     string @storageContainerName,
-                                    int? @attempts = null,
-                                    string @contentType = null,
-                                    int? @parallelism = null,
-                                    int? @size = null,
-                                    string @source = null,
-                                    string @sourceUri = null,
-                                    string @type = null)
+                                    FSharpOption<int> @attempts = null,
+                                    FSharpOption<string> @contentType = null,
+                                    FSharpOption<int> @parallelism = null,
+                                    FSharpOption<int> @size = null,
+                                    FSharpOption<string> @source = null,
+                                    FSharpOption<string> @sourceUri = null,
+                                    FSharpOption<string> @type = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -44,28 +45,28 @@ namespace nterraform.resources
         public string @StorageContainerName { get; }
 
         [nterraform.Core.TerraformProperty(name: "attempts", @out: false, min: 0, max: 1)]
-        public int? @Attempts { get; }
+        public FSharpOption<int> @Attempts { get; }
 
         [nterraform.Core.TerraformProperty(name: "content_type", @out: false, min: 0, max: 1)]
-        public string @ContentType { get; }
+        public FSharpOption<string> @ContentType { get; }
 
         [nterraform.Core.TerraformProperty(name: "parallelism", @out: false, min: 0, max: 1)]
-        public int? @Parallelism { get; }
+        public FSharpOption<int> @Parallelism { get; }
 
         [nterraform.Core.TerraformProperty(name: "size", @out: false, min: 0, max: 1)]
-        public int? @Size { get; }
+        public FSharpOption<int> @Size { get; }
 
         [nterraform.Core.TerraformProperty(name: "source", @out: false, min: 0, max: 1)]
-        public string @Source { get; }
+        public FSharpOption<string> @Source { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_uri", @out: false, min: 0, max: 1)]
-        public string @SourceUri { get; }
+        public FSharpOption<string> @SourceUri { get; }
 
         [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 0, max: 1)]
-        public string @Type { get; }
+        public FSharpOption<string> @Type { get; }
 
         [nterraform.Core.TerraformProperty(name: "url", @out: true, min: 0, max: 1)]
-        public string @Url { get; }
+        public FSharpOption<string> @Url { get; }
     }
 
 }

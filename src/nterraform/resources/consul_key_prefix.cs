@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -7,7 +8,7 @@ namespace nterraform.resources
     {
         public consul_key_prefix(string @pathPrefix,
                                  FSharpMap<string,string> @subkeys,
-                                 string @token = null)
+                                 FSharpOption<string> @token = null)
         {
             @PathPrefix = @pathPrefix;
             @Subkeys = @subkeys;
@@ -22,10 +23,10 @@ namespace nterraform.resources
         public FSharpMap<string,string> @Subkeys { get; }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
-        public string @Datacenter { get; }
+        public FSharpOption<string> @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
-        public string @Token { get; }
+        public FSharpOption<string> @Token { get; }
     }
 
 }

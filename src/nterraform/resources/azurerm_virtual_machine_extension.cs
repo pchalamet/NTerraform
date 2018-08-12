@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -12,9 +13,9 @@ namespace nterraform.resources
                                                  string @type,
                                                  string @typeHandlerVersion,
                                                  string @virtualMachineName,
-                                                 bool? @autoUpgradeMinorVersion = null,
-                                                 string @protectedSettings = null,
-                                                 string @settings = null)
+                                                 FSharpOption<bool> @autoUpgradeMinorVersion = null,
+                                                 FSharpOption<string> @protectedSettings = null,
+                                                 FSharpOption<string> @settings = null)
         {
             @Location = @location;
             @Name = @name;
@@ -51,16 +52,16 @@ namespace nterraform.resources
         public string @VirtualMachineName { get; }
 
         [nterraform.Core.TerraformProperty(name: "auto_upgrade_minor_version", @out: false, min: 0, max: 1)]
-        public bool? @AutoUpgradeMinorVersion { get; }
+        public FSharpOption<bool> @AutoUpgradeMinorVersion { get; }
 
         [nterraform.Core.TerraformProperty(name: "protected_settings", @out: false, min: 0, max: 1)]
-        public string @ProtectedSettings { get; }
+        public FSharpOption<string> @ProtectedSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "settings", @out: false, min: 0, max: 1)]
-        public string @Settings { get; }
+        public FSharpOption<string> @Settings { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

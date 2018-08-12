@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,8 +9,8 @@ namespace nterraform.resources
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_location")]
         public sealed class storage_location : nterraform.Core.structure
         {
-            public storage_location(string @filePath = null,
-                                    string @storageAccountId = null)
+            public storage_location(FSharpOption<string> @filePath = null,
+                                    FSharpOption<string> @storageAccountId = null)
             {
                 @FilePath = @filePath;
                 @StorageAccountId = @storageAccountId;
@@ -17,23 +18,23 @@ namespace nterraform.resources
             }
 
             [nterraform.Core.TerraformProperty(name: "file_path", @out: false, min: 0, max: 1)]
-            public string @FilePath { get; }
+            public FSharpOption<string> @FilePath { get; }
 
             [nterraform.Core.TerraformProperty(name: "storage_account_id", @out: false, min: 0, max: 1)]
-            public string @StorageAccountId { get; }
+            public FSharpOption<string> @StorageAccountId { get; }
 
             [nterraform.Core.TerraformProperty(name: "storage_path", @out: true, min: 0, max: 1)]
-            public string @StoragePath { get; }
+            public FSharpOption<string> @StoragePath { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "filter")]
         public sealed class filter : nterraform.Core.structure
         {
             public filter(string @protocol,
-                          string @localIpAddress = null,
-                          string @localPort = null,
-                          string @remoteIpAddress = null,
-                          string @remotePort = null)
+                          FSharpOption<string> @localIpAddress = null,
+                          FSharpOption<string> @localPort = null,
+                          FSharpOption<string> @remoteIpAddress = null,
+                          FSharpOption<string> @remotePort = null)
             {
                 @Protocol = @protocol;
                 @LocalIpAddress = @localIpAddress;
@@ -47,16 +48,16 @@ namespace nterraform.resources
             public string @Protocol { get; }
 
             [nterraform.Core.TerraformProperty(name: "local_ip_address", @out: false, min: 0, max: 1)]
-            public string @LocalIpAddress { get; }
+            public FSharpOption<string> @LocalIpAddress { get; }
 
             [nterraform.Core.TerraformProperty(name: "local_port", @out: false, min: 0, max: 1)]
-            public string @LocalPort { get; }
+            public FSharpOption<string> @LocalPort { get; }
 
             [nterraform.Core.TerraformProperty(name: "remote_ip_address", @out: false, min: 0, max: 1)]
-            public string @RemoteIpAddress { get; }
+            public FSharpOption<string> @RemoteIpAddress { get; }
 
             [nterraform.Core.TerraformProperty(name: "remote_port", @out: false, min: 0, max: 1)]
-            public string @RemotePort { get; }
+            public FSharpOption<string> @RemotePort { get; }
         }
 
         public azurerm_packet_capture(string @name,
@@ -64,10 +65,10 @@ namespace nterraform.resources
                                       string @resourceGroupName,
                                       FSharpList<storage_location> @storageLocation,
                                       string @targetResourceId,
-                                      FSharpList<filter> @filter = null,
-                                      int? @maximumBytesPerPacket = null,
-                                      int? @maximumBytesPerSession = null,
-                                      int? @maximumCaptureDuration = null)
+                                      FSharpOption<FSharpList<filter>> @filter = null,
+                                      FSharpOption<int> @maximumBytesPerPacket = null,
+                                      FSharpOption<int> @maximumBytesPerSession = null,
+                                      FSharpOption<int> @maximumCaptureDuration = null)
         {
             @Name = @name;
             @NetworkWatcherName = @networkWatcherName;
@@ -97,16 +98,16 @@ namespace nterraform.resources
         public string @TargetResourceId { get; }
 
         [nterraform.Core.TerraformProperty(name: "filter", @out: false, min: 0, max: 0)]
-        public FSharpList<filter> @Filter { get; }
+        public FSharpOption<FSharpList<filter>> @Filter { get; }
 
         [nterraform.Core.TerraformProperty(name: "maximum_bytes_per_packet", @out: false, min: 0, max: 1)]
-        public int? @MaximumBytesPerPacket { get; }
+        public FSharpOption<int> @MaximumBytesPerPacket { get; }
 
         [nterraform.Core.TerraformProperty(name: "maximum_bytes_per_session", @out: false, min: 0, max: 1)]
-        public int? @MaximumBytesPerSession { get; }
+        public FSharpOption<int> @MaximumBytesPerSession { get; }
 
         [nterraform.Core.TerraformProperty(name: "maximum_capture_duration", @out: false, min: 0, max: 1)]
-        public int? @MaximumCaptureDuration { get; }
+        public FSharpOption<int> @MaximumCaptureDuration { get; }
     }
 
 }

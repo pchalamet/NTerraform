@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,9 +9,9 @@ namespace nterraform.resources
         public azurerm_policy_assignment(string @name,
                                          string @policyDefinitionId,
                                          string @scope,
-                                         string @description = null,
-                                         string @displayName = null,
-                                         string @parameters = null)
+                                         FSharpOption<string> @description = null,
+                                         FSharpOption<string> @displayName = null,
+                                         FSharpOption<string> @parameters = null)
         {
             @Name = @name;
             @PolicyDefinitionId = @policyDefinitionId;
@@ -31,13 +32,13 @@ namespace nterraform.resources
         public string @Scope { get; }
 
         [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
-        public string @Description { get; }
+        public FSharpOption<string> @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "display_name", @out: false, min: 0, max: 1)]
-        public string @DisplayName { get; }
+        public FSharpOption<string> @DisplayName { get; }
 
         [nterraform.Core.TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
-        public string @Parameters { get; }
+        public FSharpOption<string> @Parameters { get; }
     }
 
 }

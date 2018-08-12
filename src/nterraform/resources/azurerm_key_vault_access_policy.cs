@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -11,8 +12,8 @@ namespace nterraform.resources
                                                FSharpList<string> @secretPermissions,
                                                string @tenantId,
                                                string @vaultName,
-                                               string @applicationId = null,
-                                               FSharpList<string> @certificatePermissions = null)
+                                               FSharpOption<string> @applicationId = null,
+                                               FSharpOption<FSharpList<string>> @certificatePermissions = null)
         {
             @KeyPermissions = @keyPermissions;
             @ObjectId = @objectId;
@@ -44,10 +45,10 @@ namespace nterraform.resources
         public string @VaultName { get; }
 
         [nterraform.Core.TerraformProperty(name: "application_id", @out: false, min: 0, max: 1)]
-        public string @ApplicationId { get; }
+        public FSharpOption<string> @ApplicationId { get; }
 
         [nterraform.Core.TerraformProperty(name: "certificate_permissions", @out: false, min: 0, max: 1)]
-        public FSharpList<string> @CertificatePermissions { get; }
+        public FSharpOption<FSharpList<string>> @CertificatePermissions { get; }
     }
 
 }

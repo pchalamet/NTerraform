@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.providers
@@ -5,15 +6,15 @@ namespace nterraform.providers
     [nterraform.Core.TerraformStructure(category: "provider", typeName: "consul")]
     public sealed class consul : nterraform.Core.provider
     {
-        public consul(string @address = null,
-                      string @caFile = null,
-                      string @certFile = null,
-                      string @datacenter = null,
-                      string @httpAuth = null,
-                      bool? @insecureHttps = null,
-                      string @keyFile = null,
-                      string @scheme = null,
-                      string @token = null)
+        public consul(FSharpOption<string> @address = null,
+                      FSharpOption<string> @caFile = null,
+                      FSharpOption<string> @certFile = null,
+                      FSharpOption<string> @datacenter = null,
+                      FSharpOption<string> @httpAuth = null,
+                      FSharpOption<bool> @insecureHttps = null,
+                      FSharpOption<string> @keyFile = null,
+                      FSharpOption<string> @scheme = null,
+                      FSharpOption<string> @token = null)
         {
             @Address = @address;
             @CaFile = @caFile;
@@ -28,31 +29,31 @@ namespace nterraform.providers
         }
 
         [nterraform.Core.TerraformProperty(name: "address", @out: false, min: 0, max: 1)]
-        public string @Address { get; }
+        public FSharpOption<string> @Address { get; }
 
         [nterraform.Core.TerraformProperty(name: "ca_file", @out: false, min: 0, max: 1)]
-        public string @CaFile { get; }
+        public FSharpOption<string> @CaFile { get; }
 
         [nterraform.Core.TerraformProperty(name: "cert_file", @out: false, min: 0, max: 1)]
-        public string @CertFile { get; }
+        public FSharpOption<string> @CertFile { get; }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: false, min: 0, max: 1)]
-        public string @Datacenter { get; }
+        public FSharpOption<string> @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "http_auth", @out: false, min: 0, max: 1)]
-        public string @HttpAuth { get; }
+        public FSharpOption<string> @HttpAuth { get; }
 
         [nterraform.Core.TerraformProperty(name: "insecure_https", @out: false, min: 0, max: 1)]
-        public bool? @InsecureHttps { get; }
+        public FSharpOption<bool> @InsecureHttps { get; }
 
         [nterraform.Core.TerraformProperty(name: "key_file", @out: false, min: 0, max: 1)]
-        public string @KeyFile { get; }
+        public FSharpOption<string> @KeyFile { get; }
 
         [nterraform.Core.TerraformProperty(name: "scheme", @out: false, min: 0, max: 1)]
-        public string @Scheme { get; }
+        public FSharpOption<string> @Scheme { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
-        public string @Token { get; }
+        public FSharpOption<string> @Token { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.providers
@@ -6,14 +7,14 @@ namespace nterraform.providers
     public sealed class azurerm : nterraform.Core.provider
     {
         public azurerm(string @environment,
-                       string @clientId = null,
-                       string @clientSecret = null,
-                       string @msiEndpoint = null,
-                       bool? @skipCredentialsValidation = null,
-                       bool? @skipProviderRegistration = null,
-                       string @subscriptionId = null,
-                       string @tenantId = null,
-                       bool? @useMsi = null)
+                       FSharpOption<string> @clientId = null,
+                       FSharpOption<string> @clientSecret = null,
+                       FSharpOption<string> @msiEndpoint = null,
+                       FSharpOption<bool> @skipCredentialsValidation = null,
+                       FSharpOption<bool> @skipProviderRegistration = null,
+                       FSharpOption<string> @subscriptionId = null,
+                       FSharpOption<string> @tenantId = null,
+                       FSharpOption<bool> @useMsi = null)
         {
             @Environment = @environment;
             @ClientId = @clientId;
@@ -31,28 +32,28 @@ namespace nterraform.providers
         public string @Environment { get; }
 
         [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 0, max: 1)]
-        public string @ClientId { get; }
+        public FSharpOption<string> @ClientId { get; }
 
         [nterraform.Core.TerraformProperty(name: "client_secret", @out: false, min: 0, max: 1)]
-        public string @ClientSecret { get; }
+        public FSharpOption<string> @ClientSecret { get; }
 
         [nterraform.Core.TerraformProperty(name: "msi_endpoint", @out: false, min: 0, max: 1)]
-        public string @MsiEndpoint { get; }
+        public FSharpOption<string> @MsiEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "skip_credentials_validation", @out: false, min: 0, max: 1)]
-        public bool? @SkipCredentialsValidation { get; }
+        public FSharpOption<bool> @SkipCredentialsValidation { get; }
 
         [nterraform.Core.TerraformProperty(name: "skip_provider_registration", @out: false, min: 0, max: 1)]
-        public bool? @SkipProviderRegistration { get; }
+        public FSharpOption<bool> @SkipProviderRegistration { get; }
 
         [nterraform.Core.TerraformProperty(name: "subscription_id", @out: false, min: 0, max: 1)]
-        public string @SubscriptionId { get; }
+        public FSharpOption<string> @SubscriptionId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tenant_id", @out: false, min: 0, max: 1)]
-        public string @TenantId { get; }
+        public FSharpOption<string> @TenantId { get; }
 
         [nterraform.Core.TerraformProperty(name: "use_msi", @out: false, min: 0, max: 1)]
-        public bool? @UseMsi { get; }
+        public FSharpOption<bool> @UseMsi { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -14,33 +15,10 @@ namespace nterraform.resources
             }
 
             [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
+            public FSharpOption<string> @Password { get; }
 
             [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_config")]
-        public sealed class site_config : nterraform.Core.structure
-        {
-            public site_config(bool? @alwaysOn = null,
-                               bool? @use32BitWorkerProcess = null,
-                               bool? @websocketsEnabled = null)
-            {
-                @AlwaysOn = @alwaysOn;
-                @Use32BitWorkerProcess = @use32BitWorkerProcess;
-                @WebsocketsEnabled = @websocketsEnabled;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "always_on", @out: false, min: 0, max: 1)]
-            public bool? @AlwaysOn { get; }
-
-            [nterraform.Core.TerraformProperty(name: "use_32_bit_worker_process", @out: false, min: 0, max: 1)]
-            public bool? @Use32BitWorkerProcess { get; }
-
-            [nterraform.Core.TerraformProperty(name: "websockets_enabled", @out: false, min: 0, max: 1)]
-            public bool? @WebsocketsEnabled { get; }
+            public FSharpOption<string> @Username { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]
@@ -79,10 +57,33 @@ namespace nterraform.resources
             public string @Type { get; }
 
             [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
+            public FSharpOption<string> @PrincipalId { get; }
 
             [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-            public string @TenantId { get; }
+            public FSharpOption<string> @TenantId { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_config")]
+        public sealed class site_config : nterraform.Core.structure
+        {
+            public site_config(FSharpOption<bool> @alwaysOn = null,
+                               FSharpOption<bool> @use32BitWorkerProcess = null,
+                               FSharpOption<bool> @websocketsEnabled = null)
+            {
+                @AlwaysOn = @alwaysOn;
+                @Use32BitWorkerProcess = @use32BitWorkerProcess;
+                @WebsocketsEnabled = @websocketsEnabled;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "always_on", @out: false, min: 0, max: 1)]
+            public FSharpOption<bool> @AlwaysOn { get; }
+
+            [nterraform.Core.TerraformProperty(name: "use_32_bit_worker_process", @out: false, min: 0, max: 1)]
+            public FSharpOption<bool> @Use32BitWorkerProcess { get; }
+
+            [nterraform.Core.TerraformProperty(name: "websockets_enabled", @out: false, min: 0, max: 1)]
+            public FSharpOption<bool> @WebsocketsEnabled { get; }
         }
 
         public azurerm_function_app(string @appServicePlanId,
@@ -90,14 +91,14 @@ namespace nterraform.resources
                                     string @name,
                                     string @resourceGroupName,
                                     string @storageConnectionString,
-                                    FSharpMap<string,string> @appSettings = null,
-                                    FSharpList<connection_string> @connectionString = null,
-                                    bool? @enabled = null,
-                                    bool? @httpsOnly = null,
-                                    FSharpList<identity> @identity = null,
-                                    FSharpList<site_config> @siteConfig = null,
-                                    FSharpList<site_credential> @siteCredential = null,
-                                    string @version = null)
+                                    FSharpOption<FSharpMap<string,string>> @appSettings = null,
+                                    FSharpOption<FSharpList<connection_string>> @connectionString = null,
+                                    FSharpOption<bool> @enabled = null,
+                                    FSharpOption<bool> @httpsOnly = null,
+                                    FSharpOption<FSharpList<identity>> @identity = null,
+                                    FSharpOption<FSharpList<site_config>> @siteConfig = null,
+                                    FSharpOption<FSharpList<site_credential>> @siteCredential = null,
+                                    FSharpOption<string> @version = null)
         {
             @AppServicePlanId = @appServicePlanId;
             @Location = @location;
@@ -131,40 +132,40 @@ namespace nterraform.resources
         public string @StorageConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "app_settings", @out: false, min: 0, max: 1)]
-        public FSharpMap<string,string> @AppSettings { get; }
+        public FSharpOption<FSharpMap<string,string>> @AppSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "client_affinity_enabled", @out: true, min: 0, max: 1)]
-        public bool? @ClientAffinityEnabled { get; }
+        public FSharpOption<bool> @ClientAffinityEnabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "connection_string", @out: false, min: 0, max: 0)]
-        public FSharpList<connection_string> @ConnectionString { get; }
+        public FSharpOption<FSharpList<connection_string>> @ConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_hostname", @out: true, min: 0, max: 1)]
-        public string @DefaultHostname { get; }
+        public FSharpOption<string> @DefaultHostname { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
-        public bool? @Enabled { get; }
+        public FSharpOption<bool> @Enabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "https_only", @out: false, min: 0, max: 1)]
-        public bool? @HttpsOnly { get; }
+        public FSharpOption<bool> @HttpsOnly { get; }
 
         [nterraform.Core.TerraformProperty(name: "identity", @out: false, min: 0, max: 1)]
-        public FSharpList<identity> @Identity { get; }
+        public FSharpOption<FSharpList<identity>> @Identity { get; }
 
         [nterraform.Core.TerraformProperty(name: "outbound_ip_addresses", @out: true, min: 0, max: 1)]
-        public string @OutboundIpAddresses { get; }
+        public FSharpOption<string> @OutboundIpAddresses { get; }
 
         [nterraform.Core.TerraformProperty(name: "site_config", @out: false, min: 0, max: 1)]
-        public FSharpList<site_config> @SiteConfig { get; }
+        public FSharpOption<FSharpList<site_config>> @SiteConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "site_credential", @out: false, min: 0, max: 1)]
-        public FSharpList<site_credential> @SiteCredential { get; }
+        public FSharpOption<FSharpList<site_credential>> @SiteCredential { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "version", @out: false, min: 0, max: 1)]
-        public string @Version { get; }
+        public FSharpOption<string> @Version { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -25,16 +26,16 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "endpoint", @out: true, min: 0, max: 1)]
-        public string @Endpoint { get; }
+        public FSharpOption<string> @Endpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_access_key", @out: true, min: 0, max: 1)]
-        public string @PrimaryAccessKey { get; }
+        public FSharpOption<string> @PrimaryAccessKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_access_key", @out: true, min: 0, max: 1)]
-        public string @SecondaryAccessKey { get; }
+        public FSharpOption<string> @SecondaryAccessKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -10,7 +11,7 @@ namespace nterraform.datas
         {
             public subkey(string @name,
                           string @path,
-                          string @default = null)
+                          FSharpOption<string> @default = null)
             {
                 @Name = @name;
                 @Path = @path;
@@ -25,12 +26,12 @@ namespace nterraform.datas
             public string @Path { get; }
 
             [nterraform.Core.TerraformProperty(name: "default", @out: false, min: 0, max: 1)]
-            public string @Default { get; }
+            public FSharpOption<string> @Default { get; }
         }
 
         public consul_key_prefix(string @pathPrefix,
-                                 FSharpList<subkey> @subkey = null,
-                                 string @token = null)
+                                 FSharpOption<FSharpList<subkey>> @subkey = null,
+                                 FSharpOption<string> @token = null)
         {
             @PathPrefix = @pathPrefix;
             @Subkey = @subkey ?? FSharpList<subkey>.Empty;
@@ -42,19 +43,19 @@ namespace nterraform.datas
         public string @PathPrefix { get; }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
-        public string @Datacenter { get; }
+        public FSharpOption<string> @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "subkey", @out: false, min: 0, max: 0)]
-        public FSharpList<subkey> @Subkey { get; }
+        public FSharpOption<FSharpList<subkey>> @Subkey { get; }
 
         [nterraform.Core.TerraformProperty(name: "subkeys", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Subkeys { get; }
+        public FSharpOption<FSharpMap<string,string>> @Subkeys { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
-        public string @Token { get; }
+        public FSharpOption<string> @Token { get; }
 
         [nterraform.Core.TerraformProperty(name: "var", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Var { get; }
+        public FSharpOption<FSharpMap<string,string>> @Var { get; }
     }
 
 }

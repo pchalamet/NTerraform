@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -40,19 +41,19 @@ namespace nterraform.resources
         public string @ServerName { get; }
 
         [nterraform.Core.TerraformProperty(name: "creation_date", @out: true, min: 0, max: 1)]
-        public string @CreationDate { get; }
+        public FSharpOption<string> @CreationDate { get; }
 
         [nterraform.Core.TerraformProperty(name: "db_dtu_max", @out: true, min: 0, max: 1)]
-        public int? @DbDtuMax { get; }
+        public FSharpOption<int> @DbDtuMax { get; }
 
         [nterraform.Core.TerraformProperty(name: "db_dtu_min", @out: true, min: 0, max: 1)]
-        public int? @DbDtuMin { get; }
+        public FSharpOption<int> @DbDtuMin { get; }
 
         [nterraform.Core.TerraformProperty(name: "pool_size", @out: true, min: 0, max: 1)]
-        public int? @PoolSize { get; }
+        public FSharpOption<int> @PoolSize { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

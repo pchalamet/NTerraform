@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -25,8 +26,8 @@ namespace nterraform.resources
                                  string @objectId,
                                  FSharpList<string> @secretPermissions,
                                  string @tenantId,
-                                 string @applicationId = null,
-                                 FSharpList<string> @certificatePermissions = null)
+                                 FSharpOption<string> @applicationId = null,
+                                 FSharpOption<FSharpList<string>> @certificatePermissions = null)
             {
                 @KeyPermissions = @keyPermissions;
                 @ObjectId = @objectId;
@@ -50,10 +51,10 @@ namespace nterraform.resources
             public string @TenantId { get; }
 
             [nterraform.Core.TerraformProperty(name: "application_id", @out: false, min: 0, max: 1)]
-            public string @ApplicationId { get; }
+            public FSharpOption<string> @ApplicationId { get; }
 
             [nterraform.Core.TerraformProperty(name: "certificate_permissions", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @CertificatePermissions { get; }
+            public FSharpOption<FSharpList<string>> @CertificatePermissions { get; }
         }
 
         public azurerm_key_vault(string @location,
@@ -61,10 +62,10 @@ namespace nterraform.resources
                                  string @resourceGroupName,
                                  FSharpList<sku> @sku,
                                  string @tenantId,
-                                 FSharpList<access_policy> @accessPolicy = null,
-                                 bool? @enabledForDeployment = null,
-                                 bool? @enabledForDiskEncryption = null,
-                                 bool? @enabledForTemplateDeployment = null)
+                                 FSharpOption<FSharpList<access_policy>> @accessPolicy = null,
+                                 FSharpOption<bool> @enabledForDeployment = null,
+                                 FSharpOption<bool> @enabledForDiskEncryption = null,
+                                 FSharpOption<bool> @enabledForTemplateDeployment = null)
         {
             @Location = @location;
             @Name = @name;
@@ -94,22 +95,22 @@ namespace nterraform.resources
         public string @TenantId { get; }
 
         [nterraform.Core.TerraformProperty(name: "access_policy", @out: false, min: 0, max: 16)]
-        public FSharpList<access_policy> @AccessPolicy { get; }
+        public FSharpOption<FSharpList<access_policy>> @AccessPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled_for_deployment", @out: false, min: 0, max: 1)]
-        public bool? @EnabledForDeployment { get; }
+        public FSharpOption<bool> @EnabledForDeployment { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled_for_disk_encryption", @out: false, min: 0, max: 1)]
-        public bool? @EnabledForDiskEncryption { get; }
+        public FSharpOption<bool> @EnabledForDiskEncryption { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled_for_template_deployment", @out: false, min: 0, max: 1)]
-        public bool? @EnabledForTemplateDeployment { get; }
+        public FSharpOption<bool> @EnabledForTemplateDeployment { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "vault_uri", @out: true, min: 0, max: 1)]
-        public string @VaultUri { get; }
+        public FSharpOption<string> @VaultUri { get; }
     }
 
 }

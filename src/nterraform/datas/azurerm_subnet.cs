@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -25,16 +26,16 @@ namespace nterraform.datas
         public string @VirtualNetworkName { get; }
 
         [nterraform.Core.TerraformProperty(name: "address_prefix", @out: true, min: 0, max: 1)]
-        public string @AddressPrefix { get; }
+        public FSharpOption<string> @AddressPrefix { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_configurations", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @IpConfigurations { get; }
+        public FSharpOption<FSharpList<string>> @IpConfigurations { get; }
 
         [nterraform.Core.TerraformProperty(name: "network_security_group_id", @out: true, min: 0, max: 1)]
-        public string @NetworkSecurityGroupId { get; }
+        public FSharpOption<string> @NetworkSecurityGroupId { get; }
 
         [nterraform.Core.TerraformProperty(name: "route_table_id", @out: true, min: 0, max: 1)]
-        public string @RouteTableId { get; }
+        public FSharpOption<string> @RouteTableId { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -12,7 +13,7 @@ namespace nterraform.resources
             public sealed class ip_restriction : nterraform.Core.structure
             {
                 public ip_restriction(string @ipAddress,
-                                      string @subnetMask = null)
+                                      FSharpOption<string> @subnetMask = null)
                 {
                     @IpAddress = @ipAddress;
                     @SubnetMask = @subnetMask;
@@ -23,21 +24,21 @@ namespace nterraform.resources
                 public string @IpAddress { get; }
 
                 [nterraform.Core.TerraformProperty(name: "subnet_mask", @out: false, min: 0, max: 1)]
-                public string @SubnetMask { get; }
+                public FSharpOption<string> @SubnetMask { get; }
             }
 
-            public site_config(bool? @alwaysOn = null,
-                               FSharpList<string> @defaultDocuments = null,
-                               string @dotnetFrameworkVersion = null,
-                               bool? @http2Enabled = null,
-                               FSharpList<ip_restriction> @ipRestriction = null,
-                               string @javaContainer = null,
-                               string @javaContainerVersion = null,
-                               string @javaVersion = null,
-                               string @phpVersion = null,
-                               string @pythonVersion = null,
-                               bool? @remoteDebuggingEnabled = null,
-                               string @scmType = null)
+            public site_config(FSharpOption<bool> @alwaysOn = null,
+                               FSharpOption<FSharpList<string>> @defaultDocuments = null,
+                               FSharpOption<string> @dotnetFrameworkVersion = null,
+                               FSharpOption<bool> @http2Enabled = null,
+                               FSharpOption<FSharpList<ip_restriction>> @ipRestriction = null,
+                               FSharpOption<string> @javaContainer = null,
+                               FSharpOption<string> @javaContainerVersion = null,
+                               FSharpOption<string> @javaVersion = null,
+                               FSharpOption<string> @phpVersion = null,
+                               FSharpOption<string> @pythonVersion = null,
+                               FSharpOption<bool> @remoteDebuggingEnabled = null,
+                               FSharpOption<string> @scmType = null)
             {
                 @AlwaysOn = @alwaysOn;
                 @DefaultDocuments = @defaultDocuments ?? FSharpList<string>.Empty;
@@ -55,64 +56,64 @@ namespace nterraform.resources
             }
 
             [nterraform.Core.TerraformProperty(name: "always_on", @out: false, min: 0, max: 1)]
-            public bool? @AlwaysOn { get; }
+            public FSharpOption<bool> @AlwaysOn { get; }
 
             [nterraform.Core.TerraformProperty(name: "default_documents", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @DefaultDocuments { get; }
+            public FSharpOption<FSharpList<string>> @DefaultDocuments { get; }
 
             [nterraform.Core.TerraformProperty(name: "dotnet_framework_version", @out: false, min: 0, max: 1)]
-            public string @DotnetFrameworkVersion { get; }
+            public FSharpOption<string> @DotnetFrameworkVersion { get; }
 
             [nterraform.Core.TerraformProperty(name: "ftps_state", @out: true, min: 0, max: 1)]
-            public string @FtpsState { get; }
+            public FSharpOption<string> @FtpsState { get; }
 
             [nterraform.Core.TerraformProperty(name: "http2_enabled", @out: false, min: 0, max: 1)]
-            public bool? @Http2Enabled { get; }
+            public FSharpOption<bool> @Http2Enabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "ip_restriction", @out: false, min: 0, max: 0)]
-            public FSharpList<ip_restriction> @IpRestriction { get; }
+            public FSharpOption<FSharpList<ip_restriction>> @IpRestriction { get; }
 
             [nterraform.Core.TerraformProperty(name: "java_container", @out: false, min: 0, max: 1)]
-            public string @JavaContainer { get; }
+            public FSharpOption<string> @JavaContainer { get; }
 
             [nterraform.Core.TerraformProperty(name: "java_container_version", @out: false, min: 0, max: 1)]
-            public string @JavaContainerVersion { get; }
+            public FSharpOption<string> @JavaContainerVersion { get; }
 
             [nterraform.Core.TerraformProperty(name: "java_version", @out: false, min: 0, max: 1)]
-            public string @JavaVersion { get; }
+            public FSharpOption<string> @JavaVersion { get; }
 
             [nterraform.Core.TerraformProperty(name: "linux_fx_version", @out: true, min: 0, max: 1)]
-            public string @LinuxFxVersion { get; }
+            public FSharpOption<string> @LinuxFxVersion { get; }
 
             [nterraform.Core.TerraformProperty(name: "local_mysql_enabled", @out: true, min: 0, max: 1)]
-            public bool? @LocalMysqlEnabled { get; }
+            public FSharpOption<bool> @LocalMysqlEnabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "managed_pipeline_mode", @out: true, min: 0, max: 1)]
-            public string @ManagedPipelineMode { get; }
+            public FSharpOption<string> @ManagedPipelineMode { get; }
 
             [nterraform.Core.TerraformProperty(name: "min_tls_version", @out: true, min: 0, max: 1)]
-            public string @MinTlsVersion { get; }
+            public FSharpOption<string> @MinTlsVersion { get; }
 
             [nterraform.Core.TerraformProperty(name: "php_version", @out: false, min: 0, max: 1)]
-            public string @PhpVersion { get; }
+            public FSharpOption<string> @PhpVersion { get; }
 
             [nterraform.Core.TerraformProperty(name: "python_version", @out: false, min: 0, max: 1)]
-            public string @PythonVersion { get; }
+            public FSharpOption<string> @PythonVersion { get; }
 
             [nterraform.Core.TerraformProperty(name: "remote_debugging_enabled", @out: false, min: 0, max: 1)]
-            public bool? @RemoteDebuggingEnabled { get; }
+            public FSharpOption<bool> @RemoteDebuggingEnabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "remote_debugging_version", @out: true, min: 0, max: 1)]
-            public string @RemoteDebuggingVersion { get; }
+            public FSharpOption<string> @RemoteDebuggingVersion { get; }
 
             [nterraform.Core.TerraformProperty(name: "scm_type", @out: false, min: 0, max: 1)]
-            public string @ScmType { get; }
+            public FSharpOption<string> @ScmType { get; }
 
             [nterraform.Core.TerraformProperty(name: "use_32_bit_worker_process", @out: true, min: 0, max: 1)]
-            public bool? @Use32BitWorkerProcess { get; }
+            public FSharpOption<bool> @Use32BitWorkerProcess { get; }
 
             [nterraform.Core.TerraformProperty(name: "websockets_enabled", @out: true, min: 0, max: 1)]
-            public bool? @WebsocketsEnabled { get; }
+            public FSharpOption<bool> @WebsocketsEnabled { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]
@@ -151,10 +152,10 @@ namespace nterraform.resources
             public string @Type { get; }
 
             [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
+            public FSharpOption<string> @PrincipalId { get; }
 
             [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-            public string @TenantId { get; }
+            public FSharpOption<string> @TenantId { get; }
         }
 
         public azurerm_app_service_slot(string @appServiceName,
@@ -162,11 +163,11 @@ namespace nterraform.resources
                                         string @location,
                                         string @name,
                                         string @resourceGroupName,
-                                        FSharpList<connection_string> @connectionString = null,
-                                        bool? @enabled = null,
-                                        bool? @httpsOnly = null,
-                                        FSharpList<identity> @identity = null,
-                                        FSharpList<site_config> @siteConfig = null)
+                                        FSharpOption<FSharpList<connection_string>> @connectionString = null,
+                                        FSharpOption<bool> @enabled = null,
+                                        FSharpOption<bool> @httpsOnly = null,
+                                        FSharpOption<FSharpList<identity>> @identity = null,
+                                        FSharpOption<FSharpList<site_config>> @siteConfig = null)
         {
             @AppServiceName = @appServiceName;
             @AppServicePlanId = @appServicePlanId;
@@ -197,31 +198,31 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "app_settings", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @AppSettings { get; }
+        public FSharpOption<FSharpMap<string,string>> @AppSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "client_affinity_enabled", @out: true, min: 0, max: 1)]
-        public bool? @ClientAffinityEnabled { get; }
+        public FSharpOption<bool> @ClientAffinityEnabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "connection_string", @out: false, min: 0, max: 0)]
-        public FSharpList<connection_string> @ConnectionString { get; }
+        public FSharpOption<FSharpList<connection_string>> @ConnectionString { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_site_hostname", @out: true, min: 0, max: 1)]
-        public string @DefaultSiteHostname { get; }
+        public FSharpOption<string> @DefaultSiteHostname { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
-        public bool? @Enabled { get; }
+        public FSharpOption<bool> @Enabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "https_only", @out: false, min: 0, max: 1)]
-        public bool? @HttpsOnly { get; }
+        public FSharpOption<bool> @HttpsOnly { get; }
 
         [nterraform.Core.TerraformProperty(name: "identity", @out: false, min: 0, max: 1)]
-        public FSharpList<identity> @Identity { get; }
+        public FSharpOption<FSharpList<identity>> @Identity { get; }
 
         [nterraform.Core.TerraformProperty(name: "site_config", @out: false, min: 0, max: 1)]
-        public FSharpList<site_config> @SiteConfig { get; }
+        public FSharpOption<FSharpList<site_config>> @SiteConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

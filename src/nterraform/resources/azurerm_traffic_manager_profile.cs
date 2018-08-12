@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -5,6 +6,29 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_traffic_manager_profile")]
     public sealed class azurerm_traffic_manager_profile : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "monitor_config")]
+        public sealed class monitor_config : nterraform.Core.structure
+        {
+            public monitor_config(int @port,
+                                  string @protocol,
+                                  FSharpOption<string> @path = null)
+            {
+                @Port = @port;
+                @Protocol = @protocol;
+                @Path = @path;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "port", @out: false, min: 1, max: 1)]
+            public int @Port { get; }
+
+            [nterraform.Core.TerraformProperty(name: "protocol", @out: false, min: 1, max: 1)]
+            public string @Protocol { get; }
+
+            [nterraform.Core.TerraformProperty(name: "path", @out: false, min: 0, max: 1)]
+            public FSharpOption<string> @Path { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "dns_config")]
         public sealed class dns_config : nterraform.Core.structure
         {
@@ -21,29 +45,6 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "ttl", @out: false, min: 1, max: 1)]
             public int @Ttl { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "monitor_config")]
-        public sealed class monitor_config : nterraform.Core.structure
-        {
-            public monitor_config(int @port,
-                                  string @protocol,
-                                  string @path = null)
-            {
-                @Port = @port;
-                @Protocol = @protocol;
-                @Path = @path;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "port", @out: false, min: 1, max: 1)]
-            public int @Port { get; }
-
-            [nterraform.Core.TerraformProperty(name: "protocol", @out: false, min: 1, max: 1)]
-            public string @Protocol { get; }
-
-            [nterraform.Core.TerraformProperty(name: "path", @out: false, min: 0, max: 1)]
-            public string @Path { get; }
         }
 
         public azurerm_traffic_manager_profile(FSharpList<dns_config> @dnsConfig,
@@ -76,13 +77,13 @@ namespace nterraform.resources
         public string @TrafficRoutingMethod { get; }
 
         [nterraform.Core.TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
-        public string @Fqdn { get; }
+        public FSharpOption<string> @Fqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "profile_status", @out: true, min: 0, max: 1)]
-        public string @ProfileStatus { get; }
+        public FSharpOption<string> @ProfileStatus { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -27,8 +28,8 @@ namespace nterraform.resources
             }
 
             public publish_content_link(string @uri,
-                                        FSharpList<hash> @hash = null,
-                                        string @version = null)
+                                        FSharpOption<FSharpList<hash>> @hash = null,
+                                        FSharpOption<string> @version = null)
             {
                 @Uri = @uri;
                 @Hash = @hash ?? FSharpList<hash>.Empty;
@@ -40,10 +41,10 @@ namespace nterraform.resources
             public string @Uri { get; }
 
             [nterraform.Core.TerraformProperty(name: "hash", @out: false, min: 0, max: 1)]
-            public FSharpList<hash> @Hash { get; }
+            public FSharpOption<FSharpList<hash>> @Hash { get; }
 
             [nterraform.Core.TerraformProperty(name: "version", @out: false, min: 0, max: 1)]
-            public string @Version { get; }
+            public FSharpOption<string> @Version { get; }
         }
 
         public azurerm_automation_runbook(string @accountName,
@@ -54,7 +55,7 @@ namespace nterraform.resources
                                           FSharpList<publish_content_link> @publishContentLink,
                                           string @resourceGroupName,
                                           string @runbookType,
-                                          string @description = null)
+                                          FSharpOption<string> @description = null)
         {
             @AccountName = @accountName;
             @Location = @location;
@@ -93,10 +94,10 @@ namespace nterraform.resources
         public string @RunbookType { get; }
 
         [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
-        public string @Description { get; }
+        public FSharpOption<string> @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

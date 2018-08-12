@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -23,7 +24,7 @@ namespace nterraform.resources
                                                   string @namespaceType,
                                                   string @resourceGroupName,
                                                   FSharpList<sku> @sku,
-                                                  bool? @enabled = null)
+                                                  FSharpOption<bool> @enabled = null)
         {
             @Location = @location;
             @Name = @name;
@@ -50,10 +51,10 @@ namespace nterraform.resources
         public FSharpList<sku> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
-        public bool? @Enabled { get; }
+        public FSharpOption<bool> @Enabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "servicebus_endpoint", @out: true, min: 0, max: 1)]
-        public string @ServicebusEndpoint { get; }
+        public FSharpOption<string> @ServicebusEndpoint { get; }
     }
 
 }

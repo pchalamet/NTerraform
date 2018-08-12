@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,9 +10,9 @@ namespace nterraform.resources
                                                 string @profileName,
                                                 string @resourceGroupName,
                                                 string @type,
-                                                FSharpList<string> @geoMappings = null,
-                                                int? @minChildEndpoints = null,
-                                                string @targetResourceId = null)
+                                                FSharpOption<FSharpList<string>> @geoMappings = null,
+                                                FSharpOption<int> @minChildEndpoints = null,
+                                                FSharpOption<string> @targetResourceId = null)
         {
             @Name = @name;
             @ProfileName = @profileName;
@@ -36,31 +37,31 @@ namespace nterraform.resources
         public string @Type { get; }
 
         [nterraform.Core.TerraformProperty(name: "endpoint_location", @out: true, min: 0, max: 1)]
-        public string @EndpointLocation { get; }
+        public FSharpOption<string> @EndpointLocation { get; }
 
         [nterraform.Core.TerraformProperty(name: "endpoint_monitor_status", @out: true, min: 0, max: 1)]
-        public string @EndpointMonitorStatus { get; }
+        public FSharpOption<string> @EndpointMonitorStatus { get; }
 
         [nterraform.Core.TerraformProperty(name: "endpoint_status", @out: true, min: 0, max: 1)]
-        public string @EndpointStatus { get; }
+        public FSharpOption<string> @EndpointStatus { get; }
 
         [nterraform.Core.TerraformProperty(name: "geo_mappings", @out: false, min: 0, max: 1)]
-        public FSharpList<string> @GeoMappings { get; }
+        public FSharpOption<FSharpList<string>> @GeoMappings { get; }
 
         [nterraform.Core.TerraformProperty(name: "min_child_endpoints", @out: false, min: 0, max: 1)]
-        public int? @MinChildEndpoints { get; }
+        public FSharpOption<int> @MinChildEndpoints { get; }
 
         [nterraform.Core.TerraformProperty(name: "priority", @out: true, min: 0, max: 1)]
-        public int? @Priority { get; }
+        public FSharpOption<int> @Priority { get; }
 
         [nterraform.Core.TerraformProperty(name: "target", @out: true, min: 0, max: 1)]
-        public string @Target { get; }
+        public FSharpOption<string> @Target { get; }
 
         [nterraform.Core.TerraformProperty(name: "target_resource_id", @out: false, min: 0, max: 1)]
-        public string @TargetResourceId { get; }
+        public FSharpOption<string> @TargetResourceId { get; }
 
         [nterraform.Core.TerraformProperty(name: "weight", @out: true, min: 0, max: 1)]
-        public int? @Weight { get; }
+        public FSharpOption<int> @Weight { get; }
     }
 
 }

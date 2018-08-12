@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,8 +9,8 @@ namespace nterraform.resources
         public azurerm_automation_schedule(string @frequency,
                                            string @name,
                                            string @resourceGroupName,
-                                           string @description = null,
-                                           string @timezone = null)
+                                           FSharpOption<string> @description = null,
+                                           FSharpOption<string> @timezone = null)
         {
             @Frequency = @frequency;
             @Name = @name;
@@ -29,25 +30,25 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "account_name", @out: true, min: 0, max: 1)]
-        public string @AccountName { get; }
+        public FSharpOption<string> @AccountName { get; }
 
         [nterraform.Core.TerraformProperty(name: "automation_account_name", @out: true, min: 0, max: 1)]
-        public string @AutomationAccountName { get; }
+        public FSharpOption<string> @AutomationAccountName { get; }
 
         [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
-        public string @Description { get; }
+        public FSharpOption<string> @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "expiry_time", @out: true, min: 0, max: 1)]
-        public string @ExpiryTime { get; }
+        public FSharpOption<string> @ExpiryTime { get; }
 
         [nterraform.Core.TerraformProperty(name: "interval", @out: true, min: 0, max: 1)]
-        public int? @Interval { get; }
+        public FSharpOption<int> @Interval { get; }
 
         [nterraform.Core.TerraformProperty(name: "start_time", @out: true, min: 0, max: 1)]
-        public string @StartTime { get; }
+        public FSharpOption<string> @StartTime { get; }
 
         [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
-        public string @Timezone { get; }
+        public FSharpOption<string> @Timezone { get; }
     }
 
 }

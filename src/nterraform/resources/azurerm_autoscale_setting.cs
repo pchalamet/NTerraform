@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -5,60 +6,68 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_autoscale_setting")]
     public sealed class azurerm_autoscale_setting : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "notification")]
+        public sealed class notification : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "email")]
+            public sealed class email : nterraform.Core.structure
+            {
+                public email(FSharpOption<FSharpList<string>> @customEmails = null,
+                             FSharpOption<bool> @sendToSubscriptionAdministrator = null,
+                             FSharpOption<bool> @sendToSubscriptionCoAdministrator = null)
+                {
+                    @CustomEmails = @customEmails ?? FSharpList<string>.Empty;
+                    @SendToSubscriptionAdministrator = @sendToSubscriptionAdministrator;
+                    @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "custom_emails", @out: false, min: 0, max: 1)]
+                public FSharpOption<FSharpList<string>> @CustomEmails { get; }
+
+                [nterraform.Core.TerraformProperty(name: "send_to_subscription_administrator", @out: false, min: 0, max: 1)]
+                public FSharpOption<bool> @SendToSubscriptionAdministrator { get; }
+
+                [nterraform.Core.TerraformProperty(name: "send_to_subscription_co_administrator", @out: false, min: 0, max: 1)]
+                public FSharpOption<bool> @SendToSubscriptionCoAdministrator { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "webhook")]
+            public sealed class webhook : nterraform.Core.structure
+            {
+                public webhook(string @serviceUri,
+                               FSharpOption<FSharpMap<string,string>> @properties = null)
+                {
+                    @ServiceUri = @serviceUri;
+                    @Properties = @properties ?? MapModule.Empty<string,string>();
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "service_uri", @out: false, min: 1, max: 1)]
+                public string @ServiceUri { get; }
+
+                [nterraform.Core.TerraformProperty(name: "properties", @out: false, min: 0, max: 1)]
+                public FSharpOption<FSharpMap<string,string>> @Properties { get; }
+            }
+
+            public notification(FSharpOption<FSharpList<email>> @email = null,
+                                FSharpOption<FSharpList<webhook>> @webhook = null)
+            {
+                @Email = @email ?? FSharpList<email>.Empty;
+                @Webhook = @webhook ?? FSharpList<webhook>.Empty;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "email", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<email>> @Email { get; }
+
+            [nterraform.Core.TerraformProperty(name: "webhook", @out: false, min: 0, max: 0)]
+            public FSharpOption<FSharpList<webhook>> @Webhook { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "profile")]
         public sealed class profile : nterraform.Core.structure
         {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
-            public sealed class recurrence : nterraform.Core.structure
-            {
-                public recurrence(FSharpList<string> @days,
-                                  FSharpList<int> @hours,
-                                  FSharpList<int> @minutes,
-                                  string @timezone = null)
-                {
-                    @Days = @days;
-                    @Hours = @hours;
-                    @Minutes = @minutes;
-                    @Timezone = @timezone;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "days", @out: false, min: 1, max: 1)]
-                public FSharpList<string> @Days { get; }
-
-                [nterraform.Core.TerraformProperty(name: "hours", @out: false, min: 1, max: 1)]
-                public FSharpList<int> @Hours { get; }
-
-                [nterraform.Core.TerraformProperty(name: "minutes", @out: false, min: 1, max: 1)]
-                public FSharpList<int> @Minutes { get; }
-
-                [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
-                public string @Timezone { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "capacity")]
-            public sealed class capacity : nterraform.Core.structure
-            {
-                public capacity(int @default,
-                                int @maximum,
-                                int @minimum)
-                {
-                    @Default = @default;
-                    @Maximum = @maximum;
-                    @Minimum = @minimum;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "default", @out: false, min: 1, max: 1)]
-                public int @Default { get; }
-
-                [nterraform.Core.TerraformProperty(name: "maximum", @out: false, min: 1, max: 1)]
-                public int @Maximum { get; }
-
-                [nterraform.Core.TerraformProperty(name: "minimum", @out: false, min: 1, max: 1)]
-                public int @Minimum { get; }
-            }
-
             [nterraform.Core.TerraformStructure(category: "resource", typeName: "rule")]
             public sealed class rule : nterraform.Core.structure
             {
@@ -158,7 +167,7 @@ namespace nterraform.resources
             {
                 public fixed_date(string @end,
                                   string @start,
-                                  string @timezone = null)
+                                  FSharpOption<string> @timezone = null)
                 {
                     @End = @end;
                     @Start = @start;
@@ -173,14 +182,65 @@ namespace nterraform.resources
                 public string @Start { get; }
 
                 [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
-                public string @Timezone { get; }
+                public FSharpOption<string> @Timezone { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
+            public sealed class recurrence : nterraform.Core.structure
+            {
+                public recurrence(FSharpList<string> @days,
+                                  FSharpList<int> @hours,
+                                  FSharpList<int> @minutes,
+                                  FSharpOption<string> @timezone = null)
+                {
+                    @Days = @days;
+                    @Hours = @hours;
+                    @Minutes = @minutes;
+                    @Timezone = @timezone;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "days", @out: false, min: 1, max: 1)]
+                public FSharpList<string> @Days { get; }
+
+                [nterraform.Core.TerraformProperty(name: "hours", @out: false, min: 1, max: 1)]
+                public FSharpList<int> @Hours { get; }
+
+                [nterraform.Core.TerraformProperty(name: "minutes", @out: false, min: 1, max: 1)]
+                public FSharpList<int> @Minutes { get; }
+
+                [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
+                public FSharpOption<string> @Timezone { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "capacity")]
+            public sealed class capacity : nterraform.Core.structure
+            {
+                public capacity(int @default,
+                                int @maximum,
+                                int @minimum)
+                {
+                    @Default = @default;
+                    @Maximum = @maximum;
+                    @Minimum = @minimum;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "default", @out: false, min: 1, max: 1)]
+                public int @Default { get; }
+
+                [nterraform.Core.TerraformProperty(name: "maximum", @out: false, min: 1, max: 1)]
+                public int @Maximum { get; }
+
+                [nterraform.Core.TerraformProperty(name: "minimum", @out: false, min: 1, max: 1)]
+                public int @Minimum { get; }
             }
 
             public profile(FSharpList<capacity> @capacity,
                            string @name,
-                           FSharpList<fixed_date> @fixedDate = null,
-                           FSharpList<recurrence> @recurrence = null,
-                           FSharpList<rule> @rule = null)
+                           FSharpOption<FSharpList<fixed_date>> @fixedDate = null,
+                           FSharpOption<FSharpList<recurrence>> @recurrence = null,
+                           FSharpOption<FSharpList<rule>> @rule = null)
             {
                 @Capacity = @capacity;
                 @Name = @name;
@@ -197,72 +257,13 @@ namespace nterraform.resources
             public string @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "fixed_date", @out: false, min: 0, max: 1)]
-            public FSharpList<fixed_date> @FixedDate { get; }
+            public FSharpOption<FSharpList<fixed_date>> @FixedDate { get; }
 
             [nterraform.Core.TerraformProperty(name: "recurrence", @out: false, min: 0, max: 1)]
-            public FSharpList<recurrence> @Recurrence { get; }
+            public FSharpOption<FSharpList<recurrence>> @Recurrence { get; }
 
             [nterraform.Core.TerraformProperty(name: "rule", @out: false, min: 0, max: 10)]
-            public FSharpList<rule> @Rule { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "notification")]
-        public sealed class notification : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "webhook")]
-            public sealed class webhook : nterraform.Core.structure
-            {
-                public webhook(string @serviceUri,
-                               FSharpMap<string,string> @properties = null)
-                {
-                    @ServiceUri = @serviceUri;
-                    @Properties = @properties ?? MapModule.Empty<string,string>();
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "service_uri", @out: false, min: 1, max: 1)]
-                public string @ServiceUri { get; }
-
-                [nterraform.Core.TerraformProperty(name: "properties", @out: false, min: 0, max: 1)]
-                public FSharpMap<string,string> @Properties { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "email")]
-            public sealed class email : nterraform.Core.structure
-            {
-                public email(FSharpList<string> @customEmails = null,
-                             bool? @sendToSubscriptionAdministrator = null,
-                             bool? @sendToSubscriptionCoAdministrator = null)
-                {
-                    @CustomEmails = @customEmails ?? FSharpList<string>.Empty;
-                    @SendToSubscriptionAdministrator = @sendToSubscriptionAdministrator;
-                    @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "custom_emails", @out: false, min: 0, max: 1)]
-                public FSharpList<string> @CustomEmails { get; }
-
-                [nterraform.Core.TerraformProperty(name: "send_to_subscription_administrator", @out: false, min: 0, max: 1)]
-                public bool? @SendToSubscriptionAdministrator { get; }
-
-                [nterraform.Core.TerraformProperty(name: "send_to_subscription_co_administrator", @out: false, min: 0, max: 1)]
-                public bool? @SendToSubscriptionCoAdministrator { get; }
-            }
-
-            public notification(FSharpList<email> @email = null,
-                                FSharpList<webhook> @webhook = null)
-            {
-                @Email = @email ?? FSharpList<email>.Empty;
-                @Webhook = @webhook ?? FSharpList<webhook>.Empty;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "email", @out: false, min: 0, max: 1)]
-            public FSharpList<email> @Email { get; }
-
-            [nterraform.Core.TerraformProperty(name: "webhook", @out: false, min: 0, max: 0)]
-            public FSharpList<webhook> @Webhook { get; }
+            public FSharpOption<FSharpList<rule>> @Rule { get; }
         }
 
         public azurerm_autoscale_setting(string @location,
@@ -270,8 +271,8 @@ namespace nterraform.resources
                                          FSharpList<profile> @profile,
                                          string @resourceGroupName,
                                          string @targetResourceId,
-                                         bool? @enabled = null,
-                                         FSharpList<notification> @notification = null)
+                                         FSharpOption<bool> @enabled = null,
+                                         FSharpOption<FSharpList<notification>> @notification = null)
         {
             @Location = @location;
             @Name = @name;
@@ -299,13 +300,13 @@ namespace nterraform.resources
         public string @TargetResourceId { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
-        public bool? @Enabled { get; }
+        public FSharpOption<bool> @Enabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "notification", @out: false, min: 0, max: 1)]
-        public FSharpList<notification> @Notification { get; }
+        public FSharpOption<FSharpList<notification>> @Notification { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

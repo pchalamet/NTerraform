@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,7 +9,7 @@ namespace nterraform.resources
         public azurerm_storage_share(string @name,
                                      string @resourceGroupName,
                                      string @storageAccountName,
-                                     int? @quota = null)
+                                     FSharpOption<int> @quota = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -27,10 +28,10 @@ namespace nterraform.resources
         public string @StorageAccountName { get; }
 
         [nterraform.Core.TerraformProperty(name: "quota", @out: false, min: 0, max: 1)]
-        public int? @Quota { get; }
+        public FSharpOption<int> @Quota { get; }
 
         [nterraform.Core.TerraformProperty(name: "url", @out: true, min: 0, max: 1)]
-        public string @Url { get; }
+        public FSharpOption<string> @Url { get; }
     }
 
 }

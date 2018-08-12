@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -14,12 +15,12 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            public FSharpOption<string> @Name { get; }
         }
 
         public azurerm_notification_hub_namespace(string @name,
                                                   string @resourceGroupName,
-                                                  FSharpList<sku> @sku = null)
+                                                  FSharpOption<FSharpList<sku>> @sku = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -34,19 +35,19 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled", @out: true, min: 0, max: 1)]
-        public bool? @Enabled { get; }
+        public FSharpOption<bool> @Enabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "namespace_type", @out: true, min: 0, max: 1)]
-        public string @NamespaceType { get; }
+        public FSharpOption<string> @NamespaceType { get; }
 
         [nterraform.Core.TerraformProperty(name: "servicebus_endpoint", @out: true, min: 0, max: 1)]
-        public string @ServicebusEndpoint { get; }
+        public FSharpOption<string> @ServicebusEndpoint { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 0, max: 0)]
-        public FSharpList<sku> @Sku { get; }
+        public FSharpOption<FSharpList<sku>> @Sku { get; }
     }
 
 }

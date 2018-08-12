@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,8 +9,8 @@ namespace nterraform.resources
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "permissions")]
         public sealed class permissions : nterraform.Core.structure
         {
-            public permissions(FSharpList<string> @actions = null,
-                               FSharpList<string> @notActions = null)
+            public permissions(FSharpOption<FSharpList<string>> @actions = null,
+                               FSharpOption<FSharpList<string>> @notActions = null)
             {
                 @Actions = @actions ?? FSharpList<string>.Empty;
                 @NotActions = @notActions ?? FSharpList<string>.Empty;
@@ -17,17 +18,17 @@ namespace nterraform.resources
             }
 
             [nterraform.Core.TerraformProperty(name: "actions", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @Actions { get; }
+            public FSharpOption<FSharpList<string>> @Actions { get; }
 
             [nterraform.Core.TerraformProperty(name: "not_actions", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @NotActions { get; }
+            public FSharpOption<FSharpList<string>> @NotActions { get; }
         }
 
         public azurerm_role_definition(FSharpList<string> @assignableScopes,
                                        string @name,
                                        FSharpList<permissions> @permissions,
                                        string @scope,
-                                       string @description = null)
+                                       FSharpOption<string> @description = null)
         {
             @AssignableScopes = @assignableScopes;
             @Name = @name;
@@ -50,10 +51,10 @@ namespace nterraform.resources
         public string @Scope { get; }
 
         [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
-        public string @Description { get; }
+        public FSharpOption<string> @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "role_definition_id", @out: true, min: 0, max: 1)]
-        public string @RoleDefinitionId { get; }
+        public FSharpOption<string> @RoleDefinitionId { get; }
     }
 
 }

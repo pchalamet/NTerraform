@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -13,17 +14,17 @@ namespace nterraform.resources
                                  string @name,
                                  int @priority,
                                  string @protocol,
-                                 string @description = null,
-                                 string @destinationAddressPrefix = null,
-                                 FSharpList<string> @destinationAddressPrefixes = null,
-                                 FSharpList<string> @destinationApplicationSecurityGroupIds = null,
-                                 string @destinationPortRange = null,
-                                 FSharpList<string> @destinationPortRanges = null,
-                                 string @sourceAddressPrefix = null,
-                                 FSharpList<string> @sourceAddressPrefixes = null,
-                                 FSharpList<string> @sourceApplicationSecurityGroupIds = null,
-                                 string @sourcePortRange = null,
-                                 FSharpList<string> @sourcePortRanges = null)
+                                 FSharpOption<string> @description = null,
+                                 FSharpOption<string> @destinationAddressPrefix = null,
+                                 FSharpOption<FSharpList<string>> @destinationAddressPrefixes = null,
+                                 FSharpOption<FSharpList<string>> @destinationApplicationSecurityGroupIds = null,
+                                 FSharpOption<string> @destinationPortRange = null,
+                                 FSharpOption<FSharpList<string>> @destinationPortRanges = null,
+                                 FSharpOption<string> @sourceAddressPrefix = null,
+                                 FSharpOption<FSharpList<string>> @sourceAddressPrefixes = null,
+                                 FSharpOption<FSharpList<string>> @sourceApplicationSecurityGroupIds = null,
+                                 FSharpOption<string> @sourcePortRange = null,
+                                 FSharpOption<FSharpList<string>> @sourcePortRanges = null)
             {
                 @Access = @access;
                 @Direction = @direction;
@@ -60,43 +61,43 @@ namespace nterraform.resources
             public string @Protocol { get; }
 
             [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
-            public string @Description { get; }
+            public FSharpOption<string> @Description { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_address_prefix", @out: false, min: 0, max: 1)]
-            public string @DestinationAddressPrefix { get; }
+            public FSharpOption<string> @DestinationAddressPrefix { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_address_prefixes", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @DestinationAddressPrefixes { get; }
+            public FSharpOption<FSharpList<string>> @DestinationAddressPrefixes { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_application_security_group_ids", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @DestinationApplicationSecurityGroupIds { get; }
+            public FSharpOption<FSharpList<string>> @DestinationApplicationSecurityGroupIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_port_range", @out: false, min: 0, max: 1)]
-            public string @DestinationPortRange { get; }
+            public FSharpOption<string> @DestinationPortRange { get; }
 
             [nterraform.Core.TerraformProperty(name: "destination_port_ranges", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @DestinationPortRanges { get; }
+            public FSharpOption<FSharpList<string>> @DestinationPortRanges { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_address_prefix", @out: false, min: 0, max: 1)]
-            public string @SourceAddressPrefix { get; }
+            public FSharpOption<string> @SourceAddressPrefix { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_address_prefixes", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @SourceAddressPrefixes { get; }
+            public FSharpOption<FSharpList<string>> @SourceAddressPrefixes { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_application_security_group_ids", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @SourceApplicationSecurityGroupIds { get; }
+            public FSharpOption<FSharpList<string>> @SourceApplicationSecurityGroupIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_port_range", @out: false, min: 0, max: 1)]
-            public string @SourcePortRange { get; }
+            public FSharpOption<string> @SourcePortRange { get; }
 
             [nterraform.Core.TerraformProperty(name: "source_port_ranges", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @SourcePortRanges { get; }
+            public FSharpOption<FSharpList<string>> @SourcePortRanges { get; }
         }
 
         public azurerm_network_security_group(string @location,
                                               string @name,
                                               string @resourceGroupName,
-                                              FSharpList<security_rule> @securityRule = null)
+                                              FSharpOption<FSharpList<security_rule>> @securityRule = null)
         {
             @Location = @location;
             @Name = @name;
@@ -115,10 +116,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "security_rule", @out: false, min: 0, max: 0)]
-        public FSharpList<security_rule> @SecurityRule { get; }
+        public FSharpOption<FSharpList<security_rule>> @SecurityRule { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -30,13 +31,13 @@ namespace nterraform.resources
         public string @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "partition_count", @out: true, min: 0, max: 1)]
-        public int? @PartitionCount { get; }
+        public FSharpOption<int> @PartitionCount { get; }
 
         [nterraform.Core.TerraformProperty(name: "replica_count", @out: true, min: 0, max: 1)]
-        public int? @ReplicaCount { get; }
+        public FSharpOption<int> @ReplicaCount { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

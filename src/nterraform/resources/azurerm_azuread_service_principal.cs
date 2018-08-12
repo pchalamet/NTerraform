@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -15,7 +16,7 @@ namespace nterraform.resources
         public string @ApplicationId { get; }
 
         [nterraform.Core.TerraformProperty(name: "display_name", @out: true, min: 0, max: 1)]
-        public string @DisplayName { get; }
+        public FSharpOption<string> @DisplayName { get; }
     }
 
 }

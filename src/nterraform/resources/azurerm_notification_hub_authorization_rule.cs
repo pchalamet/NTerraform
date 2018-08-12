@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,9 +10,9 @@ namespace nterraform.resources
                                                            string @namespaceName,
                                                            string @notificationHubName,
                                                            string @resourceGroupName,
-                                                           bool? @listen = null,
-                                                           bool? @manage = null,
-                                                           bool? @send = null)
+                                                           FSharpOption<bool> @listen = null,
+                                                           FSharpOption<bool> @manage = null,
+                                                           FSharpOption<bool> @send = null)
         {
             @Name = @name;
             @NamespaceName = @namespaceName;
@@ -36,19 +37,19 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "listen", @out: false, min: 0, max: 1)]
-        public bool? @Listen { get; }
+        public FSharpOption<bool> @Listen { get; }
 
         [nterraform.Core.TerraformProperty(name: "manage", @out: false, min: 0, max: 1)]
-        public bool? @Manage { get; }
+        public FSharpOption<bool> @Manage { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_access_key", @out: true, min: 0, max: 1)]
-        public string @PrimaryAccessKey { get; }
+        public FSharpOption<string> @PrimaryAccessKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_access_key", @out: true, min: 0, max: 1)]
-        public string @SecondaryAccessKey { get; }
+        public FSharpOption<string> @SecondaryAccessKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "send", @out: false, min: 0, max: 1)]
-        public bool? @Send { get; }
+        public FSharpOption<bool> @Send { get; }
     }
 
 }

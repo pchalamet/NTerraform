@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -5,6 +6,24 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_key_vault_certificate")]
     public sealed class azurerm_key_vault_certificate : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate")]
+        public sealed class certificate : nterraform.Core.structure
+        {
+            public certificate(string @contents,
+                               FSharpOption<string> @password = null)
+            {
+                @Contents = @contents;
+                @Password = @password;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "contents", @out: false, min: 1, max: 1)]
+            public string @Contents { get; }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 0, max: 1)]
+            public FSharpOption<string> @Password { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate_policy")]
         public sealed class certificate_policy : nterraform.Core.structure
         {
@@ -52,24 +71,6 @@ namespace nterraform.resources
             [nterraform.Core.TerraformStructure(category: "resource", typeName: "lifetime_action")]
             public sealed class lifetime_action : nterraform.Core.structure
             {
-                [nterraform.Core.TerraformStructure(category: "resource", typeName: "trigger")]
-                public sealed class trigger : nterraform.Core.structure
-                {
-                    public trigger(int? @daysBeforeExpiry = null,
-                                   int? @lifetimePercentage = null)
-                    {
-                        @DaysBeforeExpiry = @daysBeforeExpiry;
-                        @LifetimePercentage = @lifetimePercentage;
-                        base._validate_();
-                    }
-
-                    [nterraform.Core.TerraformProperty(name: "days_before_expiry", @out: false, min: 0, max: 1)]
-                    public int? @DaysBeforeExpiry { get; }
-
-                    [nterraform.Core.TerraformProperty(name: "lifetime_percentage", @out: false, min: 0, max: 1)]
-                    public int? @LifetimePercentage { get; }
-                }
-
                 [nterraform.Core.TerraformStructure(category: "resource", typeName: "action")]
                 public sealed class action : nterraform.Core.structure
                 {
@@ -81,6 +82,24 @@ namespace nterraform.resources
 
                     [nterraform.Core.TerraformProperty(name: "action_type", @out: false, min: 1, max: 1)]
                     public string @ActionType { get; }
+                }
+
+                [nterraform.Core.TerraformStructure(category: "resource", typeName: "trigger")]
+                public sealed class trigger : nterraform.Core.structure
+                {
+                    public trigger(FSharpOption<int> @daysBeforeExpiry = null,
+                                   FSharpOption<int> @lifetimePercentage = null)
+                    {
+                        @DaysBeforeExpiry = @daysBeforeExpiry;
+                        @LifetimePercentage = @lifetimePercentage;
+                        base._validate_();
+                    }
+
+                    [nterraform.Core.TerraformProperty(name: "days_before_expiry", @out: false, min: 0, max: 1)]
+                    public FSharpOption<int> @DaysBeforeExpiry { get; }
+
+                    [nterraform.Core.TerraformProperty(name: "lifetime_percentage", @out: false, min: 0, max: 1)]
+                    public FSharpOption<int> @LifetimePercentage { get; }
                 }
 
                 public lifetime_action(FSharpList<action> @action,
@@ -137,8 +156,8 @@ namespace nterraform.resources
             public certificate_policy(FSharpList<issuer_parameters> @issuerParameters,
                                       FSharpList<key_properties> @keyProperties,
                                       FSharpList<secret_properties> @secretProperties,
-                                      FSharpList<lifetime_action> @lifetimeAction = null,
-                                      FSharpList<x509_certificate_properties> @x509CertificateProperties = null)
+                                      FSharpOption<FSharpList<lifetime_action>> @lifetimeAction = null,
+                                      FSharpOption<FSharpList<x509_certificate_properties>> @x509CertificateProperties = null)
             {
                 @IssuerParameters = @issuerParameters;
                 @KeyProperties = @keyProperties;
@@ -158,34 +177,16 @@ namespace nterraform.resources
             public FSharpList<secret_properties> @SecretProperties { get; }
 
             [nterraform.Core.TerraformProperty(name: "lifetime_action", @out: false, min: 0, max: 0)]
-            public FSharpList<lifetime_action> @LifetimeAction { get; }
+            public FSharpOption<FSharpList<lifetime_action>> @LifetimeAction { get; }
 
             [nterraform.Core.TerraformProperty(name: "x509_certificate_properties", @out: false, min: 0, max: 1)]
-            public FSharpList<x509_certificate_properties> @X509CertificateProperties { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate")]
-        public sealed class certificate : nterraform.Core.structure
-        {
-            public certificate(string @contents,
-                               string @password = null)
-            {
-                @Contents = @contents;
-                @Password = @password;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "contents", @out: false, min: 1, max: 1)]
-            public string @Contents { get; }
-
-            [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 0, max: 1)]
-            public string @Password { get; }
+            public FSharpOption<FSharpList<x509_certificate_properties>> @X509CertificateProperties { get; }
         }
 
         public azurerm_key_vault_certificate(FSharpList<certificate_policy> @certificatePolicy,
                                              string @name,
                                              string @vaultUri,
-                                             FSharpList<certificate> @certificate = null)
+                                             FSharpOption<FSharpList<certificate>> @certificate = null)
         {
             @CertificatePolicy = @certificatePolicy;
             @Name = @name;
@@ -204,19 +205,19 @@ namespace nterraform.resources
         public string @VaultUri { get; }
 
         [nterraform.Core.TerraformProperty(name: "certificate", @out: false, min: 0, max: 1)]
-        public FSharpList<certificate> @Certificate { get; }
+        public FSharpOption<FSharpList<certificate>> @Certificate { get; }
 
         [nterraform.Core.TerraformProperty(name: "certificate_data", @out: true, min: 0, max: 1)]
-        public string @CertificateData { get; }
+        public FSharpOption<string> @CertificateData { get; }
 
         [nterraform.Core.TerraformProperty(name: "secret_id", @out: true, min: 0, max: 1)]
-        public string @SecretId { get; }
+        public FSharpOption<string> @SecretId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
-        public string @Version { get; }
+        public FSharpOption<string> @Version { get; }
     }
 
 }

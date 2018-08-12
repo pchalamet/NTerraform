@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -20,25 +21,25 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "disk_size_gb", @out: true, min: 0, max: 1)]
-        public int? @DiskSizeGb { get; }
+        public FSharpOption<int> @DiskSizeGb { get; }
 
         [nterraform.Core.TerraformProperty(name: "os_type", @out: true, min: 0, max: 1)]
-        public string @OsType { get; }
+        public FSharpOption<string> @OsType { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_resource_id", @out: true, min: 0, max: 1)]
-        public string @SourceResourceId { get; }
+        public FSharpOption<string> @SourceResourceId { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_uri", @out: true, min: 0, max: 1)]
-        public string @SourceUri { get; }
+        public FSharpOption<string> @SourceUri { get; }
 
         [nterraform.Core.TerraformProperty(name: "storage_account_type", @out: true, min: 0, max: 1)]
-        public string @StorageAccountType { get; }
+        public FSharpOption<string> @StorageAccountType { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "zones", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @Zones { get; }
+        public FSharpOption<FSharpList<string>> @Zones { get; }
     }
 
 }

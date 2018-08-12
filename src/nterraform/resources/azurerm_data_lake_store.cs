@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,10 +9,10 @@ namespace nterraform.resources
         public azurerm_data_lake_store(string @location,
                                        string @name,
                                        string @resourceGroupName,
-                                       string @encryptionState = null,
-                                       string @firewallAllowAzureIps = null,
-                                       string @firewallState = null,
-                                       string @tier = null)
+                                       FSharpOption<string> @encryptionState = null,
+                                       FSharpOption<string> @firewallAllowAzureIps = null,
+                                       FSharpOption<string> @firewallState = null,
+                                       FSharpOption<string> @tier = null)
         {
             @Location = @location;
             @Name = @name;
@@ -33,22 +34,22 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "encryption_state", @out: false, min: 0, max: 1)]
-        public string @EncryptionState { get; }
+        public FSharpOption<string> @EncryptionState { get; }
 
         [nterraform.Core.TerraformProperty(name: "encryption_type", @out: true, min: 0, max: 1)]
-        public string @EncryptionType { get; }
+        public FSharpOption<string> @EncryptionType { get; }
 
         [nterraform.Core.TerraformProperty(name: "firewall_allow_azure_ips", @out: false, min: 0, max: 1)]
-        public string @FirewallAllowAzureIps { get; }
+        public FSharpOption<string> @FirewallAllowAzureIps { get; }
 
         [nterraform.Core.TerraformProperty(name: "firewall_state", @out: false, min: 0, max: 1)]
-        public string @FirewallState { get; }
+        public FSharpOption<string> @FirewallState { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "tier", @out: false, min: 0, max: 1)]
-        public string @Tier { get; }
+        public FSharpOption<string> @Tier { get; }
     }
 
 }

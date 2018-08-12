@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -55,8 +56,8 @@ namespace nterraform.resources
                                         string @name,
                                         string @namespaceName,
                                         string @resourceGroupName,
-                                        FSharpList<apns_credential> @apnsCredential = null,
-                                        FSharpList<gcm_credential> @gcmCredential = null)
+                                        FSharpOption<FSharpList<apns_credential>> @apnsCredential = null,
+                                        FSharpOption<FSharpList<gcm_credential>> @gcmCredential = null)
         {
             @Location = @location;
             @Name = @name;
@@ -80,10 +81,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "apns_credential", @out: false, min: 0, max: 1)]
-        public FSharpList<apns_credential> @ApnsCredential { get; }
+        public FSharpOption<FSharpList<apns_credential>> @ApnsCredential { get; }
 
         [nterraform.Core.TerraformProperty(name: "gcm_credential", @out: false, min: 0, max: 1)]
-        public FSharpList<gcm_credential> @GcmCredential { get; }
+        public FSharpOption<FSharpList<gcm_credential>> @GcmCredential { get; }
     }
 
 }

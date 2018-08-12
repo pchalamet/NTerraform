@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -24,8 +25,8 @@ namespace nterraform.resources
                                                      string @resourceGroupName,
                                                      string @secondaryPeerAddressPrefix,
                                                      int @vlanId,
-                                                     FSharpList<microsoft_peering_config> @microsoftPeeringConfig = null,
-                                                     string @sharedKey = null)
+                                                     FSharpOption<FSharpList<microsoft_peering_config>> @microsoftPeeringConfig = null,
+                                                     FSharpOption<string> @sharedKey = null)
         {
             @ExpressRouteCircuitName = @expressRouteCircuitName;
             @PeeringType = @peeringType;
@@ -57,22 +58,22 @@ namespace nterraform.resources
         public int @VlanId { get; }
 
         [nterraform.Core.TerraformProperty(name: "azure_asn", @out: true, min: 0, max: 1)]
-        public int? @AzureAsn { get; }
+        public FSharpOption<int> @AzureAsn { get; }
 
         [nterraform.Core.TerraformProperty(name: "microsoft_peering_config", @out: false, min: 0, max: 1)]
-        public FSharpList<microsoft_peering_config> @MicrosoftPeeringConfig { get; }
+        public FSharpOption<FSharpList<microsoft_peering_config>> @MicrosoftPeeringConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "peer_asn", @out: true, min: 0, max: 1)]
-        public int? @PeerAsn { get; }
+        public FSharpOption<int> @PeerAsn { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_azure_port", @out: true, min: 0, max: 1)]
-        public string @PrimaryAzurePort { get; }
+        public FSharpOption<string> @PrimaryAzurePort { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_azure_port", @out: true, min: 0, max: 1)]
-        public string @SecondaryAzurePort { get; }
+        public FSharpOption<string> @SecondaryAzurePort { get; }
 
         [nterraform.Core.TerraformProperty(name: "shared_key", @out: false, min: 0, max: 1)]
-        public string @SharedKey { get; }
+        public FSharpOption<string> @SharedKey { get; }
     }
 
 }

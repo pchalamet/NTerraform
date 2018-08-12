@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -14,34 +15,16 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            public FSharpOption<string> @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "private_ip_address_allocation", @out: true, min: 0, max: 1)]
-            public string @PrivateIpAddressAllocation { get; }
+            public FSharpOption<string> @PrivateIpAddressAllocation { get; }
 
             [nterraform.Core.TerraformProperty(name: "public_ip_address_id", @out: true, min: 0, max: 1)]
-            public string @PublicIpAddressId { get; }
+            public FSharpOption<string> @PublicIpAddressId { get; }
 
             [nterraform.Core.TerraformProperty(name: "subnet_id", @out: true, min: 0, max: 1)]
-            public string @SubnetId { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "bgp_settings")]
-        public sealed class bgp_settings : nterraform.Core.structure
-        {
-            public bgp_settings()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "asn", @out: true, min: 0, max: 1)]
-            public int? @Asn { get; }
-
-            [nterraform.Core.TerraformProperty(name: "peer_weight", @out: true, min: 0, max: 1)]
-            public int? @PeerWeight { get; }
-
-            [nterraform.Core.TerraformProperty(name: "peering_address", @out: true, min: 0, max: 1)]
-            public string @PeeringAddress { get; }
+            public FSharpOption<string> @SubnetId { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "vpn_client_configuration")]
@@ -56,10 +39,10 @@ namespace nterraform.datas
                 }
 
                 [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-                public string @Name { get; }
+                public FSharpOption<string> @Name { get; }
 
                 [nterraform.Core.TerraformProperty(name: "public_cert_data", @out: true, min: 0, max: 1)]
-                public string @PublicCertData { get; }
+                public FSharpOption<string> @PublicCertData { get; }
             }
 
             [nterraform.Core.TerraformStructure(category: "data", typeName: "revoked_certificate")]
@@ -71,14 +54,14 @@ namespace nterraform.datas
                 }
 
                 [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-                public string @Name { get; }
+                public FSharpOption<string> @Name { get; }
 
                 [nterraform.Core.TerraformProperty(name: "thumbprint", @out: true, min: 0, max: 1)]
-                public string @Thumbprint { get; }
+                public FSharpOption<string> @Thumbprint { get; }
             }
 
-            public vpn_client_configuration(FSharpList<revoked_certificate> @revokedCertificate = null,
-                                            FSharpList<root_certificate> @rootCertificate = null)
+            public vpn_client_configuration(FSharpOption<FSharpList<revoked_certificate>> @revokedCertificate = null,
+                                            FSharpOption<FSharpList<root_certificate>> @rootCertificate = null)
             {
                 @RevokedCertificate = @revokedCertificate ?? FSharpList<revoked_certificate>.Empty;
                 @RootCertificate = @rootCertificate ?? FSharpList<root_certificate>.Empty;
@@ -86,29 +69,47 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "address_space", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @AddressSpace { get; }
+            public FSharpOption<FSharpList<string>> @AddressSpace { get; }
 
             [nterraform.Core.TerraformProperty(name: "radius_server_address", @out: true, min: 0, max: 1)]
-            public string @RadiusServerAddress { get; }
+            public FSharpOption<string> @RadiusServerAddress { get; }
 
             [nterraform.Core.TerraformProperty(name: "radius_server_secret", @out: true, min: 0, max: 1)]
-            public string @RadiusServerSecret { get; }
+            public FSharpOption<string> @RadiusServerSecret { get; }
 
             [nterraform.Core.TerraformProperty(name: "revoked_certificate", @out: false, min: 0, max: 0)]
-            public FSharpList<revoked_certificate> @RevokedCertificate { get; }
+            public FSharpOption<FSharpList<revoked_certificate>> @RevokedCertificate { get; }
 
             [nterraform.Core.TerraformProperty(name: "root_certificate", @out: false, min: 0, max: 0)]
-            public FSharpList<root_certificate> @RootCertificate { get; }
+            public FSharpOption<FSharpList<root_certificate>> @RootCertificate { get; }
 
             [nterraform.Core.TerraformProperty(name: "vpn_client_protocols", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @VpnClientProtocols { get; }
+            public FSharpOption<FSharpList<string>> @VpnClientProtocols { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "bgp_settings")]
+        public sealed class bgp_settings : nterraform.Core.structure
+        {
+            public bgp_settings()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "asn", @out: true, min: 0, max: 1)]
+            public FSharpOption<int> @Asn { get; }
+
+            [nterraform.Core.TerraformProperty(name: "peer_weight", @out: true, min: 0, max: 1)]
+            public FSharpOption<int> @PeerWeight { get; }
+
+            [nterraform.Core.TerraformProperty(name: "peering_address", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @PeeringAddress { get; }
         }
 
         public azurerm_virtual_network_gateway(string @name,
                                                string @resourceGroupName,
-                                               FSharpList<bgp_settings> @bgpSettings = null,
-                                               FSharpList<ip_configuration> @ipConfiguration = null,
-                                               FSharpList<vpn_client_configuration> @vpnClientConfiguration = null)
+                                               FSharpOption<FSharpList<bgp_settings>> @bgpSettings = null,
+                                               FSharpOption<FSharpList<ip_configuration>> @ipConfiguration = null,
+                                               FSharpOption<FSharpList<vpn_client_configuration>> @vpnClientConfiguration = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -125,37 +126,37 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "active_active", @out: true, min: 0, max: 1)]
-        public bool? @ActiveActive { get; }
+        public FSharpOption<bool> @ActiveActive { get; }
 
         [nterraform.Core.TerraformProperty(name: "bgp_settings", @out: false, min: 0, max: 0)]
-        public FSharpList<bgp_settings> @BgpSettings { get; }
+        public FSharpOption<FSharpList<bgp_settings>> @BgpSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "default_local_network_gateway_id", @out: true, min: 0, max: 1)]
-        public string @DefaultLocalNetworkGatewayId { get; }
+        public FSharpOption<string> @DefaultLocalNetworkGatewayId { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_bgp", @out: true, min: 0, max: 1)]
-        public bool? @EnableBgp { get; }
+        public FSharpOption<bool> @EnableBgp { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_configuration", @out: false, min: 0, max: 0)]
-        public FSharpList<ip_configuration> @IpConfiguration { get; }
+        public FSharpOption<FSharpList<ip_configuration>> @IpConfiguration { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: true, min: 0, max: 1)]
-        public string @Sku { get; }
+        public FSharpOption<string> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
-        public string @Type { get; }
+        public FSharpOption<string> @Type { get; }
 
         [nterraform.Core.TerraformProperty(name: "vpn_client_configuration", @out: false, min: 0, max: 0)]
-        public FSharpList<vpn_client_configuration> @VpnClientConfiguration { get; }
+        public FSharpOption<FSharpList<vpn_client_configuration>> @VpnClientConfiguration { get; }
 
         [nterraform.Core.TerraformProperty(name: "vpn_type", @out: true, min: 0, max: 1)]
-        public string @VpnType { get; }
+        public FSharpOption<string> @VpnType { get; }
     }
 
 }

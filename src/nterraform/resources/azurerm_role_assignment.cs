@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -7,7 +8,7 @@ namespace nterraform.resources
     {
         public azurerm_role_assignment(string @principalId,
                                        string @scope,
-                                       string @roleDefinitionName = null)
+                                       FSharpOption<string> @roleDefinitionName = null)
         {
             @PrincipalId = @principalId;
             @Scope = @scope;
@@ -22,13 +23,13 @@ namespace nterraform.resources
         public string @Scope { get; }
 
         [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-        public string @Name { get; }
+        public FSharpOption<string> @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "role_definition_id", @out: true, min: 0, max: 1)]
-        public string @RoleDefinitionId { get; }
+        public FSharpOption<string> @RoleDefinitionId { get; }
 
         [nterraform.Core.TerraformProperty(name: "role_definition_name", @out: false, min: 0, max: 1)]
-        public string @RoleDefinitionName { get; }
+        public FSharpOption<string> @RoleDefinitionName { get; }
     }
 
 }

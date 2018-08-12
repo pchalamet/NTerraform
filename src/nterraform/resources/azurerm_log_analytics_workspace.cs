@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -30,22 +31,22 @@ namespace nterraform.resources
         public string @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "portal_url", @out: true, min: 0, max: 1)]
-        public string @PortalUrl { get; }
+        public FSharpOption<string> @PortalUrl { get; }
 
         [nterraform.Core.TerraformProperty(name: "primary_shared_key", @out: true, min: 0, max: 1)]
-        public string @PrimarySharedKey { get; }
+        public FSharpOption<string> @PrimarySharedKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "retention_in_days", @out: true, min: 0, max: 1)]
-        public int? @RetentionInDays { get; }
+        public FSharpOption<int> @RetentionInDays { get; }
 
         [nterraform.Core.TerraformProperty(name: "secondary_shared_key", @out: true, min: 0, max: 1)]
-        public string @SecondarySharedKey { get; }
+        public FSharpOption<string> @SecondarySharedKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "workspace_id", @out: true, min: 0, max: 1)]
-        public string @WorkspaceId { get; }
+        public FSharpOption<string> @WorkspaceId { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -5,6 +6,303 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_scheduler_job")]
     public sealed class azurerm_scheduler_job : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "error_action_web")]
+        public sealed class error_action_web : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_basic")]
+            public sealed class authentication_basic : nterraform.Core.structure
+            {
+                public authentication_basic(string @password,
+                                            string @username)
+                {
+                    @Password = @password;
+                    @Username = @username;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+                public string @Password { get; }
+
+                [nterraform.Core.TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
+                public string @Username { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_certificate")]
+            public sealed class authentication_certificate : nterraform.Core.structure
+            {
+                public authentication_certificate(string @password,
+                                                  string @pfx)
+                {
+                    @Password = @password;
+                    @Pfx = @pfx;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+                public string @Password { get; }
+
+                [nterraform.Core.TerraformProperty(name: "pfx", @out: false, min: 1, max: 1)]
+                public string @Pfx { get; }
+
+                [nterraform.Core.TerraformProperty(name: "expiration", @out: true, min: 0, max: 1)]
+                public FSharpOption<string> @Expiration { get; }
+
+                [nterraform.Core.TerraformProperty(name: "subject_name", @out: true, min: 0, max: 1)]
+                public FSharpOption<string> @SubjectName { get; }
+
+                [nterraform.Core.TerraformProperty(name: "thumbprint", @out: true, min: 0, max: 1)]
+                public FSharpOption<string> @Thumbprint { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_active_directory")]
+            public sealed class authentication_active_directory : nterraform.Core.structure
+            {
+                public authentication_active_directory(string @clientId,
+                                                       string @secret,
+                                                       string @tenantId)
+                {
+                    @ClientId = @clientId;
+                    @Secret = @secret;
+                    @TenantId = @tenantId;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
+                public string @ClientId { get; }
+
+                [nterraform.Core.TerraformProperty(name: "secret", @out: false, min: 1, max: 1)]
+                public string @Secret { get; }
+
+                [nterraform.Core.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
+                public string @TenantId { get; }
+
+                [nterraform.Core.TerraformProperty(name: "audience", @out: true, min: 0, max: 1)]
+                public FSharpOption<string> @Audience { get; }
+            }
+
+            public error_action_web(string @method,
+                                    string @url,
+                                    FSharpOption<FSharpList<authentication_active_directory>> @authenticationActiveDirectory = null,
+                                    FSharpOption<FSharpList<authentication_basic>> @authenticationBasic = null,
+                                    FSharpOption<FSharpList<authentication_certificate>> @authenticationCertificate = null,
+                                    FSharpOption<string> @body = null,
+                                    FSharpOption<FSharpMap<string,string>> @headers = null)
+            {
+                @Method = @method;
+                @Url = @url;
+                @AuthenticationActiveDirectory = @authenticationActiveDirectory ?? FSharpList<authentication_active_directory>.Empty;
+                @AuthenticationBasic = @authenticationBasic ?? FSharpList<authentication_basic>.Empty;
+                @AuthenticationCertificate = @authenticationCertificate ?? FSharpList<authentication_certificate>.Empty;
+                @Body = @body;
+                @Headers = @headers ?? MapModule.Empty<string,string>();
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "method", @out: false, min: 1, max: 1)]
+            public string @Method { get; }
+
+            [nterraform.Core.TerraformProperty(name: "url", @out: false, min: 1, max: 1)]
+            public string @Url { get; }
+
+            [nterraform.Core.TerraformProperty(name: "authentication_active_directory", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<authentication_active_directory>> @AuthenticationActiveDirectory { get; }
+
+            [nterraform.Core.TerraformProperty(name: "authentication_basic", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<authentication_basic>> @AuthenticationBasic { get; }
+
+            [nterraform.Core.TerraformProperty(name: "authentication_certificate", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<authentication_certificate>> @AuthenticationCertificate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "body", @out: false, min: 0, max: 1)]
+            public FSharpOption<string> @Body { get; }
+
+            [nterraform.Core.TerraformProperty(name: "headers", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpMap<string,string>> @Headers { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
+        public sealed class recurrence : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "monthly_occurrences")]
+            public sealed class monthly_occurrences : nterraform.Core.structure
+            {
+                public monthly_occurrences(string @day,
+                                           int @occurrence)
+                {
+                    @Day = @day;
+                    @Occurrence = @occurrence;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "day", @out: false, min: 1, max: 1)]
+                public string @Day { get; }
+
+                [nterraform.Core.TerraformProperty(name: "occurrence", @out: false, min: 1, max: 1)]
+                public int @Occurrence { get; }
+            }
+
+            public recurrence(string @frequency,
+                              FSharpList<monthly_occurrences> @monthlyOccurrences,
+                              FSharpOption<int> @count = null,
+                              FSharpOption<FSharpList<int>> @hours = null,
+                              FSharpOption<int> @interval = null,
+                              FSharpOption<FSharpList<int>> @minutes = null,
+                              FSharpOption<FSharpList<int>> @monthDays = null,
+                              FSharpOption<FSharpList<string>> @weekDays = null)
+            {
+                @Frequency = @frequency;
+                @MonthlyOccurrences = @monthlyOccurrences;
+                @Count = @count;
+                @Hours = @hours ?? FSharpList<int>.Empty;
+                @Interval = @interval;
+                @Minutes = @minutes ?? FSharpList<int>.Empty;
+                @MonthDays = @monthDays ?? FSharpList<int>.Empty;
+                @WeekDays = @weekDays ?? FSharpList<string>.Empty;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "frequency", @out: false, min: 1, max: 1)]
+            public string @Frequency { get; }
+
+            [nterraform.Core.TerraformProperty(name: "monthly_occurrences", @out: false, min: 1, max: 0)]
+            public FSharpList<monthly_occurrences> @MonthlyOccurrences { get; }
+
+            [nterraform.Core.TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
+            public FSharpOption<int> @Count { get; }
+
+            [nterraform.Core.TerraformProperty(name: "end_time", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @EndTime { get; }
+
+            [nterraform.Core.TerraformProperty(name: "hours", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<int>> @Hours { get; }
+
+            [nterraform.Core.TerraformProperty(name: "interval", @out: false, min: 0, max: 1)]
+            public FSharpOption<int> @Interval { get; }
+
+            [nterraform.Core.TerraformProperty(name: "minutes", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<int>> @Minutes { get; }
+
+            [nterraform.Core.TerraformProperty(name: "month_days", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<int>> @MonthDays { get; }
+
+            [nterraform.Core.TerraformProperty(name: "week_days", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<string>> @WeekDays { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "action_web")]
+        public sealed class action_web : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_active_directory")]
+            public sealed class authentication_active_directory : nterraform.Core.structure
+            {
+                public authentication_active_directory(string @clientId,
+                                                       string @secret,
+                                                       string @tenantId)
+                {
+                    @ClientId = @clientId;
+                    @Secret = @secret;
+                    @TenantId = @tenantId;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
+                public string @ClientId { get; }
+
+                [nterraform.Core.TerraformProperty(name: "secret", @out: false, min: 1, max: 1)]
+                public string @Secret { get; }
+
+                [nterraform.Core.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
+                public string @TenantId { get; }
+
+                [nterraform.Core.TerraformProperty(name: "audience", @out: true, min: 0, max: 1)]
+                public FSharpOption<string> @Audience { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_basic")]
+            public sealed class authentication_basic : nterraform.Core.structure
+            {
+                public authentication_basic(string @password,
+                                            string @username)
+                {
+                    @Password = @password;
+                    @Username = @username;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+                public string @Password { get; }
+
+                [nterraform.Core.TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
+                public string @Username { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_certificate")]
+            public sealed class authentication_certificate : nterraform.Core.structure
+            {
+                public authentication_certificate(string @password,
+                                                  string @pfx)
+                {
+                    @Password = @password;
+                    @Pfx = @pfx;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+                public string @Password { get; }
+
+                [nterraform.Core.TerraformProperty(name: "pfx", @out: false, min: 1, max: 1)]
+                public string @Pfx { get; }
+
+                [nterraform.Core.TerraformProperty(name: "expiration", @out: true, min: 0, max: 1)]
+                public FSharpOption<string> @Expiration { get; }
+
+                [nterraform.Core.TerraformProperty(name: "subject_name", @out: true, min: 0, max: 1)]
+                public FSharpOption<string> @SubjectName { get; }
+
+                [nterraform.Core.TerraformProperty(name: "thumbprint", @out: true, min: 0, max: 1)]
+                public FSharpOption<string> @Thumbprint { get; }
+            }
+
+            public action_web(string @method,
+                              string @url,
+                              FSharpOption<FSharpList<authentication_active_directory>> @authenticationActiveDirectory = null,
+                              FSharpOption<FSharpList<authentication_basic>> @authenticationBasic = null,
+                              FSharpOption<FSharpList<authentication_certificate>> @authenticationCertificate = null,
+                              FSharpOption<string> @body = null,
+                              FSharpOption<FSharpMap<string,string>> @headers = null)
+            {
+                @Method = @method;
+                @Url = @url;
+                @AuthenticationActiveDirectory = @authenticationActiveDirectory ?? FSharpList<authentication_active_directory>.Empty;
+                @AuthenticationBasic = @authenticationBasic ?? FSharpList<authentication_basic>.Empty;
+                @AuthenticationCertificate = @authenticationCertificate ?? FSharpList<authentication_certificate>.Empty;
+                @Body = @body;
+                @Headers = @headers ?? MapModule.Empty<string,string>();
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "method", @out: false, min: 1, max: 1)]
+            public string @Method { get; }
+
+            [nterraform.Core.TerraformProperty(name: "url", @out: false, min: 1, max: 1)]
+            public string @Url { get; }
+
+            [nterraform.Core.TerraformProperty(name: "authentication_active_directory", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<authentication_active_directory>> @AuthenticationActiveDirectory { get; }
+
+            [nterraform.Core.TerraformProperty(name: "authentication_basic", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<authentication_basic>> @AuthenticationBasic { get; }
+
+            [nterraform.Core.TerraformProperty(name: "authentication_certificate", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpList<authentication_certificate>> @AuthenticationCertificate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "body", @out: false, min: 0, max: 1)]
+            public FSharpOption<string> @Body { get; }
+
+            [nterraform.Core.TerraformProperty(name: "headers", @out: false, min: 0, max: 1)]
+            public FSharpOption<FSharpMap<string,string>> @Headers { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "error_action_storage_queue")]
         public sealed class error_action_storage_queue : nterraform.Core.structure
         {
@@ -36,8 +334,8 @@ namespace nterraform.resources
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "retry")]
         public sealed class retry : nterraform.Core.structure
         {
-            public retry(int? @count = null,
-                         string @interval = null)
+            public retry(FSharpOption<int> @count = null,
+                         FSharpOption<string> @interval = null)
             {
                 @Count = @count;
                 @Interval = @interval;
@@ -45,10 +343,10 @@ namespace nterraform.resources
             }
 
             [nterraform.Core.TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
-            public int? @Count { get; }
+            public FSharpOption<int> @Count { get; }
 
             [nterraform.Core.TerraformProperty(name: "interval", @out: false, min: 0, max: 1)]
-            public string @Interval { get; }
+            public FSharpOption<string> @Interval { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "action_storage_queue")]
@@ -79,312 +377,15 @@ namespace nterraform.resources
             public string @StorageQueueName { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "action_web")]
-        public sealed class action_web : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_certificate")]
-            public sealed class authentication_certificate : nterraform.Core.structure
-            {
-                public authentication_certificate(string @password,
-                                                  string @pfx)
-                {
-                    @Password = @password;
-                    @Pfx = @pfx;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-                public string @Password { get; }
-
-                [nterraform.Core.TerraformProperty(name: "pfx", @out: false, min: 1, max: 1)]
-                public string @Pfx { get; }
-
-                [nterraform.Core.TerraformProperty(name: "expiration", @out: true, min: 0, max: 1)]
-                public string @Expiration { get; }
-
-                [nterraform.Core.TerraformProperty(name: "subject_name", @out: true, min: 0, max: 1)]
-                public string @SubjectName { get; }
-
-                [nterraform.Core.TerraformProperty(name: "thumbprint", @out: true, min: 0, max: 1)]
-                public string @Thumbprint { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_active_directory")]
-            public sealed class authentication_active_directory : nterraform.Core.structure
-            {
-                public authentication_active_directory(string @clientId,
-                                                       string @secret,
-                                                       string @tenantId)
-                {
-                    @ClientId = @clientId;
-                    @Secret = @secret;
-                    @TenantId = @tenantId;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
-                public string @ClientId { get; }
-
-                [nterraform.Core.TerraformProperty(name: "secret", @out: false, min: 1, max: 1)]
-                public string @Secret { get; }
-
-                [nterraform.Core.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
-                public string @TenantId { get; }
-
-                [nterraform.Core.TerraformProperty(name: "audience", @out: true, min: 0, max: 1)]
-                public string @Audience { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_basic")]
-            public sealed class authentication_basic : nterraform.Core.structure
-            {
-                public authentication_basic(string @password,
-                                            string @username)
-                {
-                    @Password = @password;
-                    @Username = @username;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-                public string @Password { get; }
-
-                [nterraform.Core.TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
-                public string @Username { get; }
-            }
-
-            public action_web(string @method,
-                              string @url,
-                              FSharpList<authentication_active_directory> @authenticationActiveDirectory = null,
-                              FSharpList<authentication_basic> @authenticationBasic = null,
-                              FSharpList<authentication_certificate> @authenticationCertificate = null,
-                              string @body = null,
-                              FSharpMap<string,string> @headers = null)
-            {
-                @Method = @method;
-                @Url = @url;
-                @AuthenticationActiveDirectory = @authenticationActiveDirectory ?? FSharpList<authentication_active_directory>.Empty;
-                @AuthenticationBasic = @authenticationBasic ?? FSharpList<authentication_basic>.Empty;
-                @AuthenticationCertificate = @authenticationCertificate ?? FSharpList<authentication_certificate>.Empty;
-                @Body = @body;
-                @Headers = @headers ?? MapModule.Empty<string,string>();
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "method", @out: false, min: 1, max: 1)]
-            public string @Method { get; }
-
-            [nterraform.Core.TerraformProperty(name: "url", @out: false, min: 1, max: 1)]
-            public string @Url { get; }
-
-            [nterraform.Core.TerraformProperty(name: "authentication_active_directory", @out: false, min: 0, max: 1)]
-            public FSharpList<authentication_active_directory> @AuthenticationActiveDirectory { get; }
-
-            [nterraform.Core.TerraformProperty(name: "authentication_basic", @out: false, min: 0, max: 1)]
-            public FSharpList<authentication_basic> @AuthenticationBasic { get; }
-
-            [nterraform.Core.TerraformProperty(name: "authentication_certificate", @out: false, min: 0, max: 1)]
-            public FSharpList<authentication_certificate> @AuthenticationCertificate { get; }
-
-            [nterraform.Core.TerraformProperty(name: "body", @out: false, min: 0, max: 1)]
-            public string @Body { get; }
-
-            [nterraform.Core.TerraformProperty(name: "headers", @out: false, min: 0, max: 1)]
-            public FSharpMap<string,string> @Headers { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "error_action_web")]
-        public sealed class error_action_web : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_active_directory")]
-            public sealed class authentication_active_directory : nterraform.Core.structure
-            {
-                public authentication_active_directory(string @clientId,
-                                                       string @secret,
-                                                       string @tenantId)
-                {
-                    @ClientId = @clientId;
-                    @Secret = @secret;
-                    @TenantId = @tenantId;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
-                public string @ClientId { get; }
-
-                [nterraform.Core.TerraformProperty(name: "secret", @out: false, min: 1, max: 1)]
-                public string @Secret { get; }
-
-                [nterraform.Core.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
-                public string @TenantId { get; }
-
-                [nterraform.Core.TerraformProperty(name: "audience", @out: true, min: 0, max: 1)]
-                public string @Audience { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_basic")]
-            public sealed class authentication_basic : nterraform.Core.structure
-            {
-                public authentication_basic(string @password,
-                                            string @username)
-                {
-                    @Password = @password;
-                    @Username = @username;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-                public string @Password { get; }
-
-                [nterraform.Core.TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
-                public string @Username { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_certificate")]
-            public sealed class authentication_certificate : nterraform.Core.structure
-            {
-                public authentication_certificate(string @password,
-                                                  string @pfx)
-                {
-                    @Password = @password;
-                    @Pfx = @pfx;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-                public string @Password { get; }
-
-                [nterraform.Core.TerraformProperty(name: "pfx", @out: false, min: 1, max: 1)]
-                public string @Pfx { get; }
-
-                [nterraform.Core.TerraformProperty(name: "expiration", @out: true, min: 0, max: 1)]
-                public string @Expiration { get; }
-
-                [nterraform.Core.TerraformProperty(name: "subject_name", @out: true, min: 0, max: 1)]
-                public string @SubjectName { get; }
-
-                [nterraform.Core.TerraformProperty(name: "thumbprint", @out: true, min: 0, max: 1)]
-                public string @Thumbprint { get; }
-            }
-
-            public error_action_web(string @method,
-                                    string @url,
-                                    FSharpList<authentication_active_directory> @authenticationActiveDirectory = null,
-                                    FSharpList<authentication_basic> @authenticationBasic = null,
-                                    FSharpList<authentication_certificate> @authenticationCertificate = null,
-                                    string @body = null,
-                                    FSharpMap<string,string> @headers = null)
-            {
-                @Method = @method;
-                @Url = @url;
-                @AuthenticationActiveDirectory = @authenticationActiveDirectory ?? FSharpList<authentication_active_directory>.Empty;
-                @AuthenticationBasic = @authenticationBasic ?? FSharpList<authentication_basic>.Empty;
-                @AuthenticationCertificate = @authenticationCertificate ?? FSharpList<authentication_certificate>.Empty;
-                @Body = @body;
-                @Headers = @headers ?? MapModule.Empty<string,string>();
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "method", @out: false, min: 1, max: 1)]
-            public string @Method { get; }
-
-            [nterraform.Core.TerraformProperty(name: "url", @out: false, min: 1, max: 1)]
-            public string @Url { get; }
-
-            [nterraform.Core.TerraformProperty(name: "authentication_active_directory", @out: false, min: 0, max: 1)]
-            public FSharpList<authentication_active_directory> @AuthenticationActiveDirectory { get; }
-
-            [nterraform.Core.TerraformProperty(name: "authentication_basic", @out: false, min: 0, max: 1)]
-            public FSharpList<authentication_basic> @AuthenticationBasic { get; }
-
-            [nterraform.Core.TerraformProperty(name: "authentication_certificate", @out: false, min: 0, max: 1)]
-            public FSharpList<authentication_certificate> @AuthenticationCertificate { get; }
-
-            [nterraform.Core.TerraformProperty(name: "body", @out: false, min: 0, max: 1)]
-            public string @Body { get; }
-
-            [nterraform.Core.TerraformProperty(name: "headers", @out: false, min: 0, max: 1)]
-            public FSharpMap<string,string> @Headers { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
-        public sealed class recurrence : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "monthly_occurrences")]
-            public sealed class monthly_occurrences : nterraform.Core.structure
-            {
-                public monthly_occurrences(string @day,
-                                           int @occurrence)
-                {
-                    @Day = @day;
-                    @Occurrence = @occurrence;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "day", @out: false, min: 1, max: 1)]
-                public string @Day { get; }
-
-                [nterraform.Core.TerraformProperty(name: "occurrence", @out: false, min: 1, max: 1)]
-                public int @Occurrence { get; }
-            }
-
-            public recurrence(string @frequency,
-                              FSharpList<monthly_occurrences> @monthlyOccurrences,
-                              int? @count = null,
-                              FSharpList<int> @hours = null,
-                              int? @interval = null,
-                              FSharpList<int> @minutes = null,
-                              FSharpList<int> @monthDays = null,
-                              FSharpList<string> @weekDays = null)
-            {
-                @Frequency = @frequency;
-                @MonthlyOccurrences = @monthlyOccurrences;
-                @Count = @count;
-                @Hours = @hours ?? FSharpList<int>.Empty;
-                @Interval = @interval;
-                @Minutes = @minutes ?? FSharpList<int>.Empty;
-                @MonthDays = @monthDays ?? FSharpList<int>.Empty;
-                @WeekDays = @weekDays ?? FSharpList<string>.Empty;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "frequency", @out: false, min: 1, max: 1)]
-            public string @Frequency { get; }
-
-            [nterraform.Core.TerraformProperty(name: "monthly_occurrences", @out: false, min: 1, max: 0)]
-            public FSharpList<monthly_occurrences> @MonthlyOccurrences { get; }
-
-            [nterraform.Core.TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
-            public int? @Count { get; }
-
-            [nterraform.Core.TerraformProperty(name: "end_time", @out: true, min: 0, max: 1)]
-            public string @EndTime { get; }
-
-            [nterraform.Core.TerraformProperty(name: "hours", @out: false, min: 0, max: 1)]
-            public FSharpList<int> @Hours { get; }
-
-            [nterraform.Core.TerraformProperty(name: "interval", @out: false, min: 0, max: 1)]
-            public int? @Interval { get; }
-
-            [nterraform.Core.TerraformProperty(name: "minutes", @out: false, min: 0, max: 1)]
-            public FSharpList<int> @Minutes { get; }
-
-            [nterraform.Core.TerraformProperty(name: "month_days", @out: false, min: 0, max: 1)]
-            public FSharpList<int> @MonthDays { get; }
-
-            [nterraform.Core.TerraformProperty(name: "week_days", @out: false, min: 0, max: 1)]
-            public FSharpList<string> @WeekDays { get; }
-        }
-
         public azurerm_scheduler_job(string @jobCollectionName,
                                      string @name,
                                      FSharpList<recurrence> @recurrence,
                                      string @resourceGroupName,
-                                     FSharpList<action_storage_queue> @actionStorageQueue = null,
-                                     FSharpList<action_web> @actionWeb = null,
-                                     FSharpList<error_action_storage_queue> @errorActionStorageQueue = null,
-                                     FSharpList<error_action_web> @errorActionWeb = null,
-                                     FSharpList<retry> @retry = null)
+                                     FSharpOption<FSharpList<action_storage_queue>> @actionStorageQueue = null,
+                                     FSharpOption<FSharpList<action_web>> @actionWeb = null,
+                                     FSharpOption<FSharpList<error_action_storage_queue>> @errorActionStorageQueue = null,
+                                     FSharpOption<FSharpList<error_action_web>> @errorActionWeb = null,
+                                     FSharpOption<FSharpList<retry>> @retry = null)
         {
             @JobCollectionName = @jobCollectionName;
             @Name = @name;
@@ -411,25 +412,25 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "action_storage_queue", @out: false, min: 0, max: 1)]
-        public FSharpList<action_storage_queue> @ActionStorageQueue { get; }
+        public FSharpOption<FSharpList<action_storage_queue>> @ActionStorageQueue { get; }
 
         [nterraform.Core.TerraformProperty(name: "action_web", @out: false, min: 0, max: 1)]
-        public FSharpList<action_web> @ActionWeb { get; }
+        public FSharpOption<FSharpList<action_web>> @ActionWeb { get; }
 
         [nterraform.Core.TerraformProperty(name: "error_action_storage_queue", @out: false, min: 0, max: 1)]
-        public FSharpList<error_action_storage_queue> @ErrorActionStorageQueue { get; }
+        public FSharpOption<FSharpList<error_action_storage_queue>> @ErrorActionStorageQueue { get; }
 
         [nterraform.Core.TerraformProperty(name: "error_action_web", @out: false, min: 0, max: 1)]
-        public FSharpList<error_action_web> @ErrorActionWeb { get; }
+        public FSharpOption<FSharpList<error_action_web>> @ErrorActionWeb { get; }
 
         [nterraform.Core.TerraformProperty(name: "retry", @out: false, min: 0, max: 1)]
-        public FSharpList<retry> @Retry { get; }
+        public FSharpOption<FSharpList<retry>> @Retry { get; }
 
         [nterraform.Core.TerraformProperty(name: "start_time", @out: true, min: 0, max: 1)]
-        public string @StartTime { get; }
+        public FSharpOption<string> @StartTime { get; }
 
         [nterraform.Core.TerraformProperty(name: "state", @out: true, min: 0, max: 1)]
-        public string @State { get; }
+        public FSharpOption<string> @State { get; }
     }
 
 }

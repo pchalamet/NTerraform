@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -43,10 +44,10 @@ namespace nterraform.resources
             public string @PfsGroup { get; }
 
             [nterraform.Core.TerraformProperty(name: "sa_datasize", @out: true, min: 0, max: 1)]
-            public int? @SaDatasize { get; }
+            public FSharpOption<int> @SaDatasize { get; }
 
             [nterraform.Core.TerraformProperty(name: "sa_lifetime", @out: true, min: 0, max: 1)]
-            public int? @SaLifetime { get; }
+            public FSharpOption<int> @SaLifetime { get; }
         }
 
         public azurerm_virtual_network_gateway_connection(string @location,
@@ -54,12 +55,12 @@ namespace nterraform.resources
                                                           string @resourceGroupName,
                                                           string @type,
                                                           string @virtualNetworkGatewayId,
-                                                          string @authorizationKey = null,
-                                                          string @expressRouteCircuitId = null,
-                                                          FSharpList<ipsec_policy> @ipsecPolicy = null,
-                                                          string @localNetworkGatewayId = null,
-                                                          string @peerVirtualNetworkGatewayId = null,
-                                                          string @sharedKey = null)
+                                                          FSharpOption<string> @authorizationKey = null,
+                                                          FSharpOption<string> @expressRouteCircuitId = null,
+                                                          FSharpOption<FSharpList<ipsec_policy>> @ipsecPolicy = null,
+                                                          FSharpOption<string> @localNetworkGatewayId = null,
+                                                          FSharpOption<string> @peerVirtualNetworkGatewayId = null,
+                                                          FSharpOption<string> @sharedKey = null)
         {
             @Location = @location;
             @Name = @name;
@@ -91,34 +92,34 @@ namespace nterraform.resources
         public string @VirtualNetworkGatewayId { get; }
 
         [nterraform.Core.TerraformProperty(name: "authorization_key", @out: false, min: 0, max: 1)]
-        public string @AuthorizationKey { get; }
+        public FSharpOption<string> @AuthorizationKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_bgp", @out: true, min: 0, max: 1)]
-        public bool? @EnableBgp { get; }
+        public FSharpOption<bool> @EnableBgp { get; }
 
         [nterraform.Core.TerraformProperty(name: "express_route_circuit_id", @out: false, min: 0, max: 1)]
-        public string @ExpressRouteCircuitId { get; }
+        public FSharpOption<string> @ExpressRouteCircuitId { get; }
 
         [nterraform.Core.TerraformProperty(name: "ipsec_policy", @out: false, min: 0, max: 1)]
-        public FSharpList<ipsec_policy> @IpsecPolicy { get; }
+        public FSharpOption<FSharpList<ipsec_policy>> @IpsecPolicy { get; }
 
         [nterraform.Core.TerraformProperty(name: "local_network_gateway_id", @out: false, min: 0, max: 1)]
-        public string @LocalNetworkGatewayId { get; }
+        public FSharpOption<string> @LocalNetworkGatewayId { get; }
 
         [nterraform.Core.TerraformProperty(name: "peer_virtual_network_gateway_id", @out: false, min: 0, max: 1)]
-        public string @PeerVirtualNetworkGatewayId { get; }
+        public FSharpOption<string> @PeerVirtualNetworkGatewayId { get; }
 
         [nterraform.Core.TerraformProperty(name: "routing_weight", @out: true, min: 0, max: 1)]
-        public int? @RoutingWeight { get; }
+        public FSharpOption<int> @RoutingWeight { get; }
 
         [nterraform.Core.TerraformProperty(name: "shared_key", @out: false, min: 0, max: 1)]
-        public string @SharedKey { get; }
+        public FSharpOption<string> @SharedKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "use_policy_based_traffic_selectors", @out: true, min: 0, max: 1)]
-        public bool? @UsePolicyBasedTrafficSelectors { get; }
+        public FSharpOption<bool> @UsePolicyBasedTrafficSelectors { get; }
     }
 
 }

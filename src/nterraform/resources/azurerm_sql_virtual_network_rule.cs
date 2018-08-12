@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,7 +10,7 @@ namespace nterraform.resources
                                                 string @resourceGroupName,
                                                 string @serverName,
                                                 string @subnetId,
-                                                bool? @ignoreMissingVnetServiceEndpoint = null)
+                                                FSharpOption<bool> @ignoreMissingVnetServiceEndpoint = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -32,7 +33,7 @@ namespace nterraform.resources
         public string @SubnetId { get; }
 
         [nterraform.Core.TerraformProperty(name: "ignore_missing_vnet_service_endpoint", @out: false, min: 0, max: 1)]
-        public bool? @IgnoreMissingVnetServiceEndpoint { get; }
+        public FSharpOption<bool> @IgnoreMissingVnetServiceEndpoint { get; }
     }
 
 }

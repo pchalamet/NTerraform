@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -11,28 +12,28 @@ namespace nterraform.datas
         }
 
         [nterraform.Core.TerraformProperty(name: "application_id", @out: true, min: 0, max: 1)]
-        public string @ApplicationId { get; }
+        public FSharpOption<string> @ApplicationId { get; }
 
         [nterraform.Core.TerraformProperty(name: "available_to_other_tenants", @out: true, min: 0, max: 1)]
-        public bool? @AvailableToOtherTenants { get; }
+        public FSharpOption<bool> @AvailableToOtherTenants { get; }
 
         [nterraform.Core.TerraformProperty(name: "homepage", @out: true, min: 0, max: 1)]
-        public string @Homepage { get; }
+        public FSharpOption<string> @Homepage { get; }
 
         [nterraform.Core.TerraformProperty(name: "identifier_uris", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @IdentifierUris { get; }
+        public FSharpOption<FSharpList<string>> @IdentifierUris { get; }
 
         [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-        public string @Name { get; }
+        public FSharpOption<string> @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "oauth2_allow_implicit_flow", @out: true, min: 0, max: 1)]
-        public bool? @Oauth2AllowImplicitFlow { get; }
+        public FSharpOption<bool> @Oauth2AllowImplicitFlow { get; }
 
         [nterraform.Core.TerraformProperty(name: "object_id", @out: true, min: 0, max: 1)]
-        public string @ObjectId { get; }
+        public FSharpOption<string> @ObjectId { get; }
 
         [nterraform.Core.TerraformProperty(name: "reply_urls", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @ReplyUrls { get; }
+        public FSharpOption<FSharpList<string>> @ReplyUrls { get; }
     }
 
 }

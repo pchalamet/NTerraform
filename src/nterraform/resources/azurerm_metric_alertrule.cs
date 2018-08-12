@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -5,21 +6,6 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_metric_alertrule")]
     public sealed class azurerm_metric_alertrule : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "email_action")]
-        public sealed class email_action : nterraform.Core.structure
-        {
-            public email_action()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "custom_emails", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @CustomEmails { get; }
-
-            [nterraform.Core.TerraformProperty(name: "send_to_service_owners", @out: true, min: 0, max: 1)]
-            public bool? @SendToServiceOwners { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "webhook_action")]
         public sealed class webhook_action : nterraform.Core.structure
         {
@@ -33,7 +19,22 @@ namespace nterraform.resources
             public string @ServiceUri { get; }
 
             [nterraform.Core.TerraformProperty(name: "properties", @out: true, min: 0, max: 1)]
-            public FSharpMap<string,string> @Properties { get; }
+            public FSharpOption<FSharpMap<string,string>> @Properties { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "email_action")]
+        public sealed class email_action : nterraform.Core.structure
+        {
+            public email_action()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "custom_emails", @out: true, min: 0, max: 1)]
+            public FSharpOption<FSharpList<string>> @CustomEmails { get; }
+
+            [nterraform.Core.TerraformProperty(name: "send_to_service_owners", @out: true, min: 0, max: 1)]
+            public FSharpOption<bool> @SendToServiceOwners { get; }
         }
 
         public azurerm_metric_alertrule(string @aggregation,
@@ -45,9 +46,9 @@ namespace nterraform.resources
                                         string @resourceGroupName,
                                         string @resourceId,
                                         int @threshold,
-                                        FSharpList<email_action> @emailAction = null,
-                                        bool? @enabled = null,
-                                        FSharpList<webhook_action> @webhookAction = null)
+                                        FSharpOption<FSharpList<email_action>> @emailAction = null,
+                                        FSharpOption<bool> @enabled = null,
+                                        FSharpOption<FSharpList<webhook_action>> @webhookAction = null)
         {
             @Aggregation = @aggregation;
             @Location = @location;
@@ -92,19 +93,19 @@ namespace nterraform.resources
         public int @Threshold { get; }
 
         [nterraform.Core.TerraformProperty(name: "description", @out: true, min: 0, max: 1)]
-        public string @Description { get; }
+        public FSharpOption<string> @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "email_action", @out: false, min: 0, max: 1)]
-        public FSharpList<email_action> @EmailAction { get; }
+        public FSharpOption<FSharpList<email_action>> @EmailAction { get; }
 
         [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
-        public bool? @Enabled { get; }
+        public FSharpOption<bool> @Enabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "webhook_action", @out: false, min: 0, max: 1)]
-        public FSharpList<webhook_action> @WebhookAction { get; }
+        public FSharpOption<FSharpList<webhook_action>> @WebhookAction { get; }
     }
 
 }

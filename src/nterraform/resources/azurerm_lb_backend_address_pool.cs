@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,7 +9,7 @@ namespace nterraform.resources
         public azurerm_lb_backend_address_pool(string @loadbalancerId,
                                                string @name,
                                                string @resourceGroupName,
-                                               string @location = null)
+                                               FSharpOption<string> @location = null)
         {
             @LoadbalancerId = @loadbalancerId;
             @Name = @name;
@@ -27,13 +28,13 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "backend_ip_configurations", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @BackendIpConfigurations { get; }
+        public FSharpOption<FSharpList<string>> @BackendIpConfigurations { get; }
 
         [nterraform.Core.TerraformProperty(name: "load_balancing_rules", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @LoadBalancingRules { get; }
+        public FSharpOption<FSharpList<string>> @LoadBalancingRules { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
     }
 
 }

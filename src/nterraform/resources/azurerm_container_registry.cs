@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -26,10 +27,10 @@ namespace nterraform.resources
         public azurerm_container_registry(string @location,
                                           string @name,
                                           string @resourceGroupName,
-                                          bool? @adminEnabled = null,
-                                          string @sku = null,
-                                          FSharpList<storage_account> @storageAccount = null,
-                                          string @storageAccountId = null)
+                                          FSharpOption<bool> @adminEnabled = null,
+                                          FSharpOption<string> @sku = null,
+                                          FSharpOption<FSharpList<storage_account>> @storageAccount = null,
+                                          FSharpOption<string> @storageAccountId = null)
         {
             @Location = @location;
             @Name = @name;
@@ -51,28 +52,28 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "admin_enabled", @out: false, min: 0, max: 1)]
-        public bool? @AdminEnabled { get; }
+        public FSharpOption<bool> @AdminEnabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "admin_password", @out: true, min: 0, max: 1)]
-        public string @AdminPassword { get; }
+        public FSharpOption<string> @AdminPassword { get; }
 
         [nterraform.Core.TerraformProperty(name: "admin_username", @out: true, min: 0, max: 1)]
-        public string @AdminUsername { get; }
+        public FSharpOption<string> @AdminUsername { get; }
 
         [nterraform.Core.TerraformProperty(name: "login_server", @out: true, min: 0, max: 1)]
-        public string @LoginServer { get; }
+        public FSharpOption<string> @LoginServer { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 0, max: 1)]
-        public string @Sku { get; }
+        public FSharpOption<string> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "storage_account", @out: false, min: 0, max: 1)]
-        public FSharpList<storage_account> @StorageAccount { get; }
+        public FSharpOption<FSharpList<storage_account>> @StorageAccount { get; }
 
         [nterraform.Core.TerraformProperty(name: "storage_account_id", @out: false, min: 0, max: 1)]
-        public string @StorageAccountId { get; }
+        public FSharpOption<string> @StorageAccountId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

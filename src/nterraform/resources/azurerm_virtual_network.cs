@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -10,7 +11,7 @@ namespace nterraform.resources
         {
             public subnet(string @addressPrefix,
                           string @name,
-                          string @securityGroup = null)
+                          FSharpOption<string> @securityGroup = null)
             {
                 @AddressPrefix = @addressPrefix;
                 @Name = @name;
@@ -25,15 +26,15 @@ namespace nterraform.resources
             public string @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "security_group", @out: false, min: 0, max: 1)]
-            public string @SecurityGroup { get; }
+            public FSharpOption<string> @SecurityGroup { get; }
         }
 
         public azurerm_virtual_network(FSharpList<string> @addressSpace,
                                        string @location,
                                        string @name,
                                        string @resourceGroupName,
-                                       FSharpList<string> @dnsServers = null,
-                                       FSharpList<subnet> @subnet = null)
+                                       FSharpOption<FSharpList<string>> @dnsServers = null,
+                                       FSharpOption<FSharpList<subnet>> @subnet = null)
         {
             @AddressSpace = @addressSpace;
             @Location = @location;
@@ -57,13 +58,13 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns_servers", @out: false, min: 0, max: 1)]
-        public FSharpList<string> @DnsServers { get; }
+        public FSharpOption<FSharpList<string>> @DnsServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "subnet", @out: false, min: 0, max: 0)]
-        public FSharpList<subnet> @Subnet { get; }
+        public FSharpOption<FSharpList<subnet>> @Subnet { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

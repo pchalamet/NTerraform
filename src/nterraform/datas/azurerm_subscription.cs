@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -11,22 +12,22 @@ namespace nterraform.datas
         }
 
         [nterraform.Core.TerraformProperty(name: "display_name", @out: true, min: 0, max: 1)]
-        public string @DisplayName { get; }
+        public FSharpOption<string> @DisplayName { get; }
 
         [nterraform.Core.TerraformProperty(name: "location_placement_id", @out: true, min: 0, max: 1)]
-        public string @LocationPlacementId { get; }
+        public FSharpOption<string> @LocationPlacementId { get; }
 
         [nterraform.Core.TerraformProperty(name: "quota_id", @out: true, min: 0, max: 1)]
-        public string @QuotaId { get; }
+        public FSharpOption<string> @QuotaId { get; }
 
         [nterraform.Core.TerraformProperty(name: "spending_limit", @out: true, min: 0, max: 1)]
-        public string @SpendingLimit { get; }
+        public FSharpOption<string> @SpendingLimit { get; }
 
         [nterraform.Core.TerraformProperty(name: "state", @out: true, min: 0, max: 1)]
-        public string @State { get; }
+        public FSharpOption<string> @State { get; }
 
         [nterraform.Core.TerraformProperty(name: "subscription_id", @out: true, min: 0, max: 1)]
-        public string @SubscriptionId { get; }
+        public FSharpOption<string> @SubscriptionId { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,7 +9,7 @@ namespace nterraform.resources
         public azurerm_storage_container(string @name,
                                          string @resourceGroupName,
                                          string @storageAccountName,
-                                         string @containerAccessType = null)
+                                         FSharpOption<string> @containerAccessType = null)
         {
             @Name = @name;
             @ResourceGroupName = @resourceGroupName;
@@ -27,10 +28,10 @@ namespace nterraform.resources
         public string @StorageAccountName { get; }
 
         [nterraform.Core.TerraformProperty(name: "container_access_type", @out: false, min: 0, max: 1)]
-        public string @ContainerAccessType { get; }
+        public FSharpOption<string> @ContainerAccessType { get; }
 
         [nterraform.Core.TerraformProperty(name: "properties", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Properties { get; }
+        public FSharpOption<FSharpMap<string,string>> @Properties { get; }
     }
 
 }

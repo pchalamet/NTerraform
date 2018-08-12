@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,9 +10,9 @@ namespace nterraform.resources
         public sealed class key : nterraform.Core.structure
         {
             public key(string @path,
-                       string @default = null,
-                       bool? @delete = null,
-                       string @name = null)
+                       FSharpOption<string> @default = null,
+                       FSharpOption<bool> @delete = null,
+                       FSharpOption<string> @name = null)
             {
                 @Path = @path;
                 @Default = @default;
@@ -24,20 +25,20 @@ namespace nterraform.resources
             public string @Path { get; }
 
             [nterraform.Core.TerraformProperty(name: "default", @out: false, min: 0, max: 1)]
-            public string @Default { get; }
+            public FSharpOption<string> @Default { get; }
 
             [nterraform.Core.TerraformProperty(name: "delete", @out: false, min: 0, max: 1)]
-            public bool? @Delete { get; }
+            public FSharpOption<bool> @Delete { get; }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
-            public string @Name { get; }
+            public FSharpOption<string> @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
-            public string @Value { get; }
+            public FSharpOption<string> @Value { get; }
         }
 
-        public consul_keys(FSharpList<key> @key = null,
-                           string @token = null)
+        public consul_keys(FSharpOption<FSharpList<key>> @key = null,
+                           FSharpOption<string> @token = null)
         {
             @Key = @key ?? FSharpList<key>.Empty;
             @Token = @token;
@@ -45,16 +46,16 @@ namespace nterraform.resources
         }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
-        public string @Datacenter { get; }
+        public FSharpOption<string> @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "key", @out: false, min: 0, max: 0)]
-        public FSharpList<key> @Key { get; }
+        public FSharpOption<FSharpList<key>> @Key { get; }
 
         [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
-        public string @Token { get; }
+        public FSharpOption<string> @Token { get; }
 
         [nterraform.Core.TerraformProperty(name: "var", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Var { get; }
+        public FSharpOption<FSharpMap<string,string>> @Var { get; }
     }
 
 }

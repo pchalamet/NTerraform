@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -11,22 +12,22 @@ namespace nterraform.datas
         }
 
         [nterraform.Core.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
-        public string @Datacenter { get; }
+        public FSharpOption<string> @Datacenter { get; }
 
         [nterraform.Core.TerraformProperty(name: "node_id", @out: true, min: 0, max: 1)]
-        public string @NodeId { get; }
+        public FSharpOption<string> @NodeId { get; }
 
         [nterraform.Core.TerraformProperty(name: "node_name", @out: true, min: 0, max: 1)]
-        public string @NodeName { get; }
+        public FSharpOption<string> @NodeName { get; }
 
         [nterraform.Core.TerraformProperty(name: "revision", @out: true, min: 0, max: 1)]
-        public string @Revision { get; }
+        public FSharpOption<string> @Revision { get; }
 
         [nterraform.Core.TerraformProperty(name: "server", @out: true, min: 0, max: 1)]
-        public bool? @Server { get; }
+        public FSharpOption<bool> @Server { get; }
 
         [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
-        public string @Version { get; }
+        public FSharpOption<string> @Version { get; }
     }
 
 }

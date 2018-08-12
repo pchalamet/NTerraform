@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -30,7 +31,7 @@ namespace nterraform.datas
         public string @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
-        public string @Version { get; }
+        public FSharpOption<string> @Version { get; }
     }
 
 }

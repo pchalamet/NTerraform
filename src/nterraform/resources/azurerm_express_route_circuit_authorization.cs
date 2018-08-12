@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -25,10 +26,10 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "authorization_key", @out: true, min: 0, max: 1)]
-        public string @AuthorizationKey { get; }
+        public FSharpOption<string> @AuthorizationKey { get; }
 
         [nterraform.Core.TerraformProperty(name: "authorization_use_status", @out: true, min: 0, max: 1)]
-        public string @AuthorizationUseStatus { get; }
+        public FSharpOption<string> @AuthorizationUseStatus { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -6,8 +7,8 @@ namespace nterraform.resources
     public sealed class consul_agent_service : nterraform.Core.resource
     {
         public consul_agent_service(string @name,
-                                    int? @port = null,
-                                    FSharpList<string> @tags = null)
+                                    FSharpOption<int> @port = null,
+                                    FSharpOption<FSharpList<string>> @tags = null)
         {
             @Name = @name;
             @Port = @port;
@@ -19,13 +20,13 @@ namespace nterraform.resources
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
-        public string @Address { get; }
+        public FSharpOption<string> @Address { get; }
 
         [nterraform.Core.TerraformProperty(name: "port", @out: false, min: 0, max: 1)]
-        public int? @Port { get; }
+        public FSharpOption<int> @Port { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
-        public FSharpList<string> @Tags { get; }
+        public FSharpOption<FSharpList<string>> @Tags { get; }
     }
 
 }

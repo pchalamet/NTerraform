@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -11,13 +12,13 @@ namespace nterraform.datas
         }
 
         [nterraform.Core.TerraformProperty(name: "application_id", @out: true, min: 0, max: 1)]
-        public string @ApplicationId { get; }
+        public FSharpOption<string> @ApplicationId { get; }
 
         [nterraform.Core.TerraformProperty(name: "display_name", @out: true, min: 0, max: 1)]
-        public string @DisplayName { get; }
+        public FSharpOption<string> @DisplayName { get; }
 
         [nterraform.Core.TerraformProperty(name: "object_id", @out: true, min: 0, max: 1)]
-        public string @ObjectId { get; }
+        public FSharpOption<string> @ObjectId { get; }
     }
 
 }

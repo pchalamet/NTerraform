@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -20,25 +21,25 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "encryption_state", @out: true, min: 0, max: 1)]
-        public string @EncryptionState { get; }
+        public FSharpOption<string> @EncryptionState { get; }
 
         [nterraform.Core.TerraformProperty(name: "encryption_type", @out: true, min: 0, max: 1)]
-        public string @EncryptionType { get; }
+        public FSharpOption<string> @EncryptionType { get; }
 
         [nterraform.Core.TerraformProperty(name: "firewall_allow_azure_ips", @out: true, min: 0, max: 1)]
-        public string @FirewallAllowAzureIps { get; }
+        public FSharpOption<string> @FirewallAllowAzureIps { get; }
 
         [nterraform.Core.TerraformProperty(name: "firewall_state", @out: true, min: 0, max: 1)]
-        public string @FirewallState { get; }
+        public FSharpOption<string> @FirewallState { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "tier", @out: true, min: 0, max: 1)]
-        public string @Tier { get; }
+        public FSharpOption<string> @Tier { get; }
     }
 
 }

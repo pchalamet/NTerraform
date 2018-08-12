@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -11,8 +12,8 @@ namespace nterraform.resources
             public ip_configuration(string @name,
                                     string @privateIpAddressAllocation,
                                     string @subnetId,
-                                    string @privateIpAddress = null,
-                                    string @publicIpAddressId = null)
+                                    FSharpOption<string> @privateIpAddress = null,
+                                    FSharpOption<string> @publicIpAddressId = null)
             {
                 @Name = @name;
                 @PrivateIpAddressAllocation = @privateIpAddressAllocation;
@@ -32,34 +33,34 @@ namespace nterraform.resources
             public string @SubnetId { get; }
 
             [nterraform.Core.TerraformProperty(name: "application_gateway_backend_address_pools_ids", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @ApplicationGatewayBackendAddressPoolsIds { get; }
+            public FSharpOption<FSharpList<string>> @ApplicationGatewayBackendAddressPoolsIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "application_security_group_ids", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @ApplicationSecurityGroupIds { get; }
+            public FSharpOption<FSharpList<string>> @ApplicationSecurityGroupIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "load_balancer_backend_address_pools_ids", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @LoadBalancerBackendAddressPoolsIds { get; }
+            public FSharpOption<FSharpList<string>> @LoadBalancerBackendAddressPoolsIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "load_balancer_inbound_nat_rules_ids", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @LoadBalancerInboundNatRulesIds { get; }
+            public FSharpOption<FSharpList<string>> @LoadBalancerInboundNatRulesIds { get; }
 
             [nterraform.Core.TerraformProperty(name: "primary", @out: true, min: 0, max: 1)]
-            public bool? @Primary { get; }
+            public FSharpOption<bool> @Primary { get; }
 
             [nterraform.Core.TerraformProperty(name: "private_ip_address", @out: false, min: 0, max: 1)]
-            public string @PrivateIpAddress { get; }
+            public FSharpOption<string> @PrivateIpAddress { get; }
 
             [nterraform.Core.TerraformProperty(name: "public_ip_address_id", @out: false, min: 0, max: 1)]
-            public string @PublicIpAddressId { get; }
+            public FSharpOption<string> @PublicIpAddressId { get; }
         }
 
         public azurerm_network_interface(FSharpList<ip_configuration> @ipConfiguration,
                                          string @location,
                                          string @name,
                                          string @resourceGroupName,
-                                         bool? @enableAcceleratedNetworking = null,
-                                         bool? @enableIpForwarding = null,
-                                         string @networkSecurityGroupId = null)
+                                         FSharpOption<bool> @enableAcceleratedNetworking = null,
+                                         FSharpOption<bool> @enableIpForwarding = null,
+                                         FSharpOption<string> @networkSecurityGroupId = null)
         {
             @IpConfiguration = @ipConfiguration;
             @Location = @location;
@@ -84,40 +85,40 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "applied_dns_servers", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @AppliedDnsServers { get; }
+        public FSharpOption<FSharpList<string>> @AppliedDnsServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "dns_servers", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @DnsServers { get; }
+        public FSharpOption<FSharpList<string>> @DnsServers { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_accelerated_networking", @out: false, min: 0, max: 1)]
-        public bool? @EnableAcceleratedNetworking { get; }
+        public FSharpOption<bool> @EnableAcceleratedNetworking { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_ip_forwarding", @out: false, min: 0, max: 1)]
-        public bool? @EnableIpForwarding { get; }
+        public FSharpOption<bool> @EnableIpForwarding { get; }
 
         [nterraform.Core.TerraformProperty(name: "internal_dns_name_label", @out: true, min: 0, max: 1)]
-        public string @InternalDnsNameLabel { get; }
+        public FSharpOption<string> @InternalDnsNameLabel { get; }
 
         [nterraform.Core.TerraformProperty(name: "internal_fqdn", @out: true, min: 0, max: 1)]
-        public string @InternalFqdn { get; }
+        public FSharpOption<string> @InternalFqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "mac_address", @out: true, min: 0, max: 1)]
-        public string @MacAddress { get; }
+        public FSharpOption<string> @MacAddress { get; }
 
         [nterraform.Core.TerraformProperty(name: "network_security_group_id", @out: false, min: 0, max: 1)]
-        public string @NetworkSecurityGroupId { get; }
+        public FSharpOption<string> @NetworkSecurityGroupId { get; }
 
         [nterraform.Core.TerraformProperty(name: "private_ip_address", @out: true, min: 0, max: 1)]
-        public string @PrivateIpAddress { get; }
+        public FSharpOption<string> @PrivateIpAddress { get; }
 
         [nterraform.Core.TerraformProperty(name: "private_ip_addresses", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @PrivateIpAddresses { get; }
+        public FSharpOption<FSharpList<string>> @PrivateIpAddresses { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "virtual_machine_id", @out: true, min: 0, max: 1)]
-        public string @VirtualMachineId { get; }
+        public FSharpOption<string> @VirtualMachineId { get; }
     }
 
 }

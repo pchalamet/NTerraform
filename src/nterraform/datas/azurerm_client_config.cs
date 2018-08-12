@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -11,19 +12,19 @@ namespace nterraform.datas
         }
 
         [nterraform.Core.TerraformProperty(name: "client_id", @out: true, min: 0, max: 1)]
-        public string @ClientId { get; }
+        public FSharpOption<string> @ClientId { get; }
 
         [nterraform.Core.TerraformProperty(name: "service_principal_application_id", @out: true, min: 0, max: 1)]
-        public string @ServicePrincipalApplicationId { get; }
+        public FSharpOption<string> @ServicePrincipalApplicationId { get; }
 
         [nterraform.Core.TerraformProperty(name: "service_principal_object_id", @out: true, min: 0, max: 1)]
-        public string @ServicePrincipalObjectId { get; }
+        public FSharpOption<string> @ServicePrincipalObjectId { get; }
 
         [nterraform.Core.TerraformProperty(name: "subscription_id", @out: true, min: 0, max: 1)]
-        public string @SubscriptionId { get; }
+        public FSharpOption<string> @SubscriptionId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-        public string @TenantId { get; }
+        public FSharpOption<string> @TenantId { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -45,8 +46,8 @@ namespace nterraform.resources
             }
 
             public encryption_settings(bool @enabled,
-                                       FSharpList<disk_encryption_key> @diskEncryptionKey = null,
-                                       FSharpList<key_encryption_key> @keyEncryptionKey = null)
+                                       FSharpOption<FSharpList<disk_encryption_key>> @diskEncryptionKey = null,
+                                       FSharpOption<FSharpList<key_encryption_key>> @keyEncryptionKey = null)
             {
                 @Enabled = @enabled;
                 @DiskEncryptionKey = @diskEncryptionKey ?? FSharpList<disk_encryption_key>.Empty;
@@ -58,20 +59,20 @@ namespace nterraform.resources
             public bool @Enabled { get; }
 
             [nterraform.Core.TerraformProperty(name: "disk_encryption_key", @out: false, min: 0, max: 1)]
-            public FSharpList<disk_encryption_key> @DiskEncryptionKey { get; }
+            public FSharpOption<FSharpList<disk_encryption_key>> @DiskEncryptionKey { get; }
 
             [nterraform.Core.TerraformProperty(name: "key_encryption_key", @out: false, min: 0, max: 1)]
-            public FSharpList<key_encryption_key> @KeyEncryptionKey { get; }
+            public FSharpOption<FSharpList<key_encryption_key>> @KeyEncryptionKey { get; }
         }
 
         public azurerm_snapshot(string @createOption,
                                 string @location,
                                 string @name,
                                 string @resourceGroupName,
-                                FSharpList<encryption_settings> @encryptionSettings = null,
-                                string @sourceResourceId = null,
-                                string @sourceUri = null,
-                                string @storageAccountId = null)
+                                FSharpOption<FSharpList<encryption_settings>> @encryptionSettings = null,
+                                FSharpOption<string> @sourceResourceId = null,
+                                FSharpOption<string> @sourceUri = null,
+                                FSharpOption<string> @storageAccountId = null)
         {
             @CreateOption = @createOption;
             @Location = @location;
@@ -97,22 +98,22 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "disk_size_gb", @out: true, min: 0, max: 1)]
-        public int? @DiskSizeGb { get; }
+        public FSharpOption<int> @DiskSizeGb { get; }
 
         [nterraform.Core.TerraformProperty(name: "encryption_settings", @out: false, min: 0, max: 1)]
-        public FSharpList<encryption_settings> @EncryptionSettings { get; }
+        public FSharpOption<FSharpList<encryption_settings>> @EncryptionSettings { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_resource_id", @out: false, min: 0, max: 1)]
-        public string @SourceResourceId { get; }
+        public FSharpOption<string> @SourceResourceId { get; }
 
         [nterraform.Core.TerraformProperty(name: "source_uri", @out: false, min: 0, max: 1)]
-        public string @SourceUri { get; }
+        public FSharpOption<string> @SourceUri { get; }
 
         [nterraform.Core.TerraformProperty(name: "storage_account_id", @out: false, min: 0, max: 1)]
-        public string @StorageAccountId { get; }
+        public FSharpOption<string> @StorageAccountId { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

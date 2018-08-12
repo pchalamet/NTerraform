@@ -6,24 +6,6 @@ open StringHelpers
 open Collections
 
 
-// C# 8.0
-//let toNullable = function
-    //| Cardinality.Optional -> "?"
-    //| Cardinality.Range (None, _) -> "?"
-    //| _ -> ""
-
-let toNullable (field : Field) =
-    match field.Type, field.Cardinality with
-    | Primitive Primitive.Bool, { Min = 0; Max = _ } -> "?"
-    | Primitive Primitive.Number, { Min = 0; Max = _ } -> "?"
-    | _ -> ""
-
-// C# 8.0
-//let initNullable = function
-    //| Cardinality.Optional -> " = null"
-    //| Cardinality.Range (None, _) -> " = null"
-    //| _ -> ""     
-
 let rec toTypeName name primitive =
     match primitive with
     | Primitive Primitive.String -> "string"
@@ -36,6 +18,15 @@ let rec toTypeName name primitive =
                                                 | Collection.Map -> sprintf "FSharpMap<string,%s>" declType
                                                 | Collection.Set -> sprintf "FSharpList<%s>" declType
     | FieldType.Structure _ -> name
+
+let toNullable (field : Field) =
+    match field.Type, field.Cardinality with
+    | Primitive Primitive.String, { Min = 0; Max = _ } -> "FSharpOption<string>"
+    | Primitive Primitive.Bool, { Min = 0; Max = _ } -> "FSharpOption<bool>"
+    | Primitive Primitive.Number, { Min = 0; Max = _ } -> "FSharpOption<int>"
+    | Collection (_, _), { Min = 0; Max = _ } -> sprintf "FSharpOption<%s>" (toTypeName field.Name field.Type)
+    | _ -> toTypeName field.Name field.Type
+
 
 let assignEmpty (field : Field) =
     match field.Type, field.Cardinality with
@@ -97,10 +88,9 @@ let rec generateType plugin category typeName fields =
             let ctorIndent = System.String(' ', ctor.Length)
             let ctorPrms = orderedParameters
                                |> List.filter (fun x -> x.Modifier = Modifier.In)
-                               |> List.map (fun x -> sprintf "%s%s @%s%s" (toTypeName x.Name x.Type)
-                                                                          (toNullable x)
-                                                                          (x.Name |> toCamlCase)
-                                                                          (initNullable x.Cardinality))
+                               |> List.map (fun x -> sprintf "%s @%s%s" (toNullable x)
+                                                                         (x.Name |> toCamlCase)
+                                                                         (initNullable x.Cardinality))
                                |> generateCtor ctor ctorIndent ")"
 
             let ctorInit = orderedParameters
@@ -118,8 +108,7 @@ let rec generateType plugin category typeName fields =
                                                             x.Cardinality.Min x.Cardinality.Max)
 
             let members = orderedParameters
-                               |> List.map (fun x -> sprintf "%spublic %s%s @%s { get; }" space8
-                                                                                        (toTypeName x.Name x.Type)
+                               |> List.map (fun x -> sprintf "%spublic %s @%s { get; }" space8
                                                                                         (toNullable x)
                                                                                         (x.Name |> toPascalCase))
 
@@ -145,6 +134,7 @@ let rec generateType plugin category typeName fields =
         }
 
     seq {
+        yield "using Microsoft.FSharp.Core;"
         yield "using Microsoft.FSharp.Collections;"
         yield ""
         match category with

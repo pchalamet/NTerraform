@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -5,6 +6,34 @@ namespace nterraform.datas
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_storage_account_sas")]
     public sealed class azurerm_storage_account_sas : nterraform.Core.data
     {
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "services")]
+        public sealed class services : nterraform.Core.structure
+        {
+            public services(bool @blob,
+                            bool @file,
+                            bool @queue,
+                            bool @table)
+            {
+                @Blob = @blob;
+                @File = @file;
+                @Queue = @queue;
+                @Table = @table;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "blob", @out: false, min: 1, max: 1)]
+            public bool @Blob { get; }
+
+            [nterraform.Core.TerraformProperty(name: "file", @out: false, min: 1, max: 1)]
+            public bool @File { get; }
+
+            [nterraform.Core.TerraformProperty(name: "queue", @out: false, min: 1, max: 1)]
+            public bool @Queue { get; }
+
+            [nterraform.Core.TerraformProperty(name: "table", @out: false, min: 1, max: 1)]
+            public bool @Table { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "data", typeName: "permissions")]
         public sealed class permissions : nterraform.Core.structure
         {
@@ -76,41 +105,13 @@ namespace nterraform.datas
             public bool @Service { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "services")]
-        public sealed class services : nterraform.Core.structure
-        {
-            public services(bool @blob,
-                            bool @file,
-                            bool @queue,
-                            bool @table)
-            {
-                @Blob = @blob;
-                @File = @file;
-                @Queue = @queue;
-                @Table = @table;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "blob", @out: false, min: 1, max: 1)]
-            public bool @Blob { get; }
-
-            [nterraform.Core.TerraformProperty(name: "file", @out: false, min: 1, max: 1)]
-            public bool @File { get; }
-
-            [nterraform.Core.TerraformProperty(name: "queue", @out: false, min: 1, max: 1)]
-            public bool @Queue { get; }
-
-            [nterraform.Core.TerraformProperty(name: "table", @out: false, min: 1, max: 1)]
-            public bool @Table { get; }
-        }
-
         public azurerm_storage_account_sas(string @connectionString,
                                            string @expiry,
                                            FSharpList<permissions> @permissions,
                                            FSharpList<resource_types> @resourceTypes,
                                            FSharpList<services> @services,
                                            string @start,
-                                           bool? @httpsOnly = null)
+                                           FSharpOption<bool> @httpsOnly = null)
         {
             @ConnectionString = @connectionString;
             @Expiry = @expiry;
@@ -141,10 +142,10 @@ namespace nterraform.datas
         public string @Start { get; }
 
         [nterraform.Core.TerraformProperty(name: "https_only", @out: false, min: 0, max: 1)]
-        public bool? @HttpsOnly { get; }
+        public FSharpOption<bool> @HttpsOnly { get; }
 
         [nterraform.Core.TerraformProperty(name: "sas", @out: true, min: 0, max: 1)]
-        public string @Sas { get; }
+        public FSharpOption<string> @Sas { get; }
     }
 
 }

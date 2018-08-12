@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -28,10 +29,10 @@ namespace nterraform.resources
         {
             public agent_pool_profile(string @name,
                                       string @vmSize,
-                                      int? @count = null,
-                                      int? @osDiskSizeGb = null,
-                                      string @osType = null,
-                                      string @vnetSubnetId = null)
+                                      FSharpOption<int> @count = null,
+                                      FSharpOption<int> @osDiskSizeGb = null,
+                                      FSharpOption<string> @osType = null,
+                                      FSharpOption<string> @vnetSubnetId = null)
             {
                 @Name = @name;
                 @VmSize = @vmSize;
@@ -49,22 +50,49 @@ namespace nterraform.resources
             public string @VmSize { get; }
 
             [nterraform.Core.TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
-            public int? @Count { get; }
+            public FSharpOption<int> @Count { get; }
 
             [nterraform.Core.TerraformProperty(name: "dns_prefix", @out: true, min: 0, max: 1)]
-            public string @DnsPrefix { get; }
+            public FSharpOption<string> @DnsPrefix { get; }
 
             [nterraform.Core.TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
-            public string @Fqdn { get; }
+            public FSharpOption<string> @Fqdn { get; }
 
             [nterraform.Core.TerraformProperty(name: "os_disk_size_gb", @out: false, min: 0, max: 1)]
-            public int? @OsDiskSizeGb { get; }
+            public FSharpOption<int> @OsDiskSizeGb { get; }
 
             [nterraform.Core.TerraformProperty(name: "os_type", @out: false, min: 0, max: 1)]
-            public string @OsType { get; }
+            public FSharpOption<string> @OsType { get; }
 
             [nterraform.Core.TerraformProperty(name: "vnet_subnet_id", @out: false, min: 0, max: 1)]
-            public string @VnetSubnetId { get; }
+            public FSharpOption<string> @VnetSubnetId { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "kube_config")]
+        public sealed class kube_config : nterraform.Core.structure
+        {
+            public kube_config()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @ClientCertificate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "client_key", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @ClientKey { get; }
+
+            [nterraform.Core.TerraformProperty(name: "cluster_ca_certificate", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @ClusterCaCertificate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "host", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @Host { get; }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @Password { get; }
+
+            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @Username { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "linux_profile")]
@@ -111,43 +139,16 @@ namespace nterraform.resources
             public string @NetworkPlugin { get; }
 
             [nterraform.Core.TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
-            public string @DnsServiceIp { get; }
+            public FSharpOption<string> @DnsServiceIp { get; }
 
             [nterraform.Core.TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
-            public string @DockerBridgeCidr { get; }
+            public FSharpOption<string> @DockerBridgeCidr { get; }
 
             [nterraform.Core.TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
-            public string @PodCidr { get; }
+            public FSharpOption<string> @PodCidr { get; }
 
             [nterraform.Core.TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
-            public string @ServiceCidr { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "kube_config")]
-        public sealed class kube_config : nterraform.Core.structure
-        {
-            public kube_config()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
-            public string @ClientCertificate { get; }
-
-            [nterraform.Core.TerraformProperty(name: "client_key", @out: true, min: 0, max: 1)]
-            public string @ClientKey { get; }
-
-            [nterraform.Core.TerraformProperty(name: "cluster_ca_certificate", @out: true, min: 0, max: 1)]
-            public string @ClusterCaCertificate { get; }
-
-            [nterraform.Core.TerraformProperty(name: "host", @out: true, min: 0, max: 1)]
-            public string @Host { get; }
-
-            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
+            public FSharpOption<string> @ServiceCidr { get; }
         }
 
         public azurerm_kubernetes_cluster(FSharpList<agent_pool_profile> @agentPoolProfile,
@@ -157,8 +158,8 @@ namespace nterraform.resources
                                           string @name,
                                           string @resourceGroupName,
                                           FSharpList<service_principal> @servicePrincipal,
-                                          FSharpList<kube_config> @kubeConfig = null,
-                                          FSharpList<network_profile> @networkProfile = null)
+                                          FSharpOption<FSharpList<kube_config>> @kubeConfig = null,
+                                          FSharpOption<FSharpList<network_profile>> @networkProfile = null)
         {
             @AgentPoolProfile = @agentPoolProfile;
             @DnsPrefix = @dnsPrefix;
@@ -194,25 +195,25 @@ namespace nterraform.resources
         public FSharpList<service_principal> @ServicePrincipal { get; }
 
         [nterraform.Core.TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
-        public string @Fqdn { get; }
+        public FSharpOption<string> @Fqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "kube_config", @out: false, min: 0, max: 1)]
-        public FSharpList<kube_config> @KubeConfig { get; }
+        public FSharpOption<FSharpList<kube_config>> @KubeConfig { get; }
 
         [nterraform.Core.TerraformProperty(name: "kube_config_raw", @out: true, min: 0, max: 1)]
-        public string @KubeConfigRaw { get; }
+        public FSharpOption<string> @KubeConfigRaw { get; }
 
         [nterraform.Core.TerraformProperty(name: "kubernetes_version", @out: true, min: 0, max: 1)]
-        public string @KubernetesVersion { get; }
+        public FSharpOption<string> @KubernetesVersion { get; }
 
         [nterraform.Core.TerraformProperty(name: "network_profile", @out: false, min: 0, max: 1)]
-        public FSharpList<network_profile> @NetworkProfile { get; }
+        public FSharpOption<FSharpList<network_profile>> @NetworkProfile { get; }
 
         [nterraform.Core.TerraformProperty(name: "node_resource_group", @out: true, min: 0, max: 1)]
-        public string @NodeResourceGroup { get; }
+        public FSharpOption<string> @NodeResourceGroup { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

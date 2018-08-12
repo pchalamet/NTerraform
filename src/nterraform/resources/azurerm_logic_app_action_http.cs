@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,8 +10,8 @@ namespace nterraform.resources
                                              string @method,
                                              string @name,
                                              string @uri,
-                                             string @body = null,
-                                             FSharpMap<string,string> @headers = null)
+                                             FSharpOption<string> @body = null,
+                                             FSharpOption<FSharpMap<string,string>> @headers = null)
         {
             @LogicAppId = @logicAppId;
             @Method = @method;
@@ -34,10 +35,10 @@ namespace nterraform.resources
         public string @Uri { get; }
 
         [nterraform.Core.TerraformProperty(name: "body", @out: false, min: 0, max: 1)]
-        public string @Body { get; }
+        public FSharpOption<string> @Body { get; }
 
         [nterraform.Core.TerraformProperty(name: "headers", @out: false, min: 0, max: 1)]
-        public FSharpMap<string,string> @Headers { get; }
+        public FSharpOption<FSharpMap<string,string>> @Headers { get; }
     }
 
 }

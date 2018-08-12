@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -20,25 +21,25 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "admin_enabled", @out: true, min: 0, max: 1)]
-        public bool? @AdminEnabled { get; }
+        public FSharpOption<bool> @AdminEnabled { get; }
 
         [nterraform.Core.TerraformProperty(name: "admin_password", @out: true, min: 0, max: 1)]
-        public string @AdminPassword { get; }
+        public FSharpOption<string> @AdminPassword { get; }
 
         [nterraform.Core.TerraformProperty(name: "admin_username", @out: true, min: 0, max: 1)]
-        public string @AdminUsername { get; }
+        public FSharpOption<string> @AdminUsername { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "login_server", @out: true, min: 0, max: 1)]
-        public string @LoginServer { get; }
+        public FSharpOption<string> @LoginServer { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: true, min: 0, max: 1)]
-        public string @Sku { get; }
+        public FSharpOption<string> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "storage_account_id", @out: true, min: 0, max: 1)]
-        public string @StorageAccountId { get; }
+        public FSharpOption<string> @StorageAccountId { get; }
     }
 
 }

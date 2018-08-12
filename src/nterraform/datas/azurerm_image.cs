@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -5,33 +6,6 @@ namespace nterraform.datas
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_image")]
     public sealed class azurerm_image : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "os_disk")]
-        public sealed class os_disk : nterraform.Core.structure
-        {
-            public os_disk()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
-            public string @BlobUri { get; }
-
-            [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
-            public string @Caching { get; }
-
-            [nterraform.Core.TerraformProperty(name: "managed_disk_id", @out: true, min: 0, max: 1)]
-            public string @ManagedDiskId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "os_state", @out: true, min: 0, max: 1)]
-            public string @OsState { get; }
-
-            [nterraform.Core.TerraformProperty(name: "os_type", @out: true, min: 0, max: 1)]
-            public string @OsType { get; }
-
-            [nterraform.Core.TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
-            public int? @SizeGb { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "data_disk")]
         public sealed class data_disk : nterraform.Core.structure
         {
@@ -41,27 +15,54 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
-            public string @BlobUri { get; }
+            public FSharpOption<string> @BlobUri { get; }
 
             [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
-            public string @Caching { get; }
+            public FSharpOption<string> @Caching { get; }
 
             [nterraform.Core.TerraformProperty(name: "lun", @out: true, min: 0, max: 1)]
-            public int? @Lun { get; }
+            public FSharpOption<int> @Lun { get; }
 
             [nterraform.Core.TerraformProperty(name: "managed_disk_id", @out: true, min: 0, max: 1)]
-            public string @ManagedDiskId { get; }
+            public FSharpOption<string> @ManagedDiskId { get; }
 
             [nterraform.Core.TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
-            public int? @SizeGb { get; }
+            public FSharpOption<int> @SizeGb { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "os_disk")]
+        public sealed class os_disk : nterraform.Core.structure
+        {
+            public os_disk()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @BlobUri { get; }
+
+            [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @Caching { get; }
+
+            [nterraform.Core.TerraformProperty(name: "managed_disk_id", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @ManagedDiskId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "os_state", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @OsState { get; }
+
+            [nterraform.Core.TerraformProperty(name: "os_type", @out: true, min: 0, max: 1)]
+            public FSharpOption<string> @OsType { get; }
+
+            [nterraform.Core.TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
+            public FSharpOption<int> @SizeGb { get; }
         }
 
         public azurerm_image(string @resourceGroupName,
-                             FSharpList<data_disk> @dataDisk = null,
-                             string @name = null,
-                             string @nameRegex = null,
-                             FSharpList<os_disk> @osDisk = null,
-                             bool? @sortDescending = null)
+                             FSharpOption<FSharpList<data_disk>> @dataDisk = null,
+                             FSharpOption<string> @name = null,
+                             FSharpOption<string> @nameRegex = null,
+                             FSharpOption<FSharpList<os_disk>> @osDisk = null,
+                             FSharpOption<bool> @sortDescending = null)
         {
             @ResourceGroupName = @resourceGroupName;
             @DataDisk = @dataDisk ?? FSharpList<data_disk>.Empty;
@@ -76,25 +77,25 @@ namespace nterraform.datas
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "data_disk", @out: false, min: 0, max: 0)]
-        public FSharpList<data_disk> @DataDisk { get; }
+        public FSharpOption<FSharpList<data_disk>> @DataDisk { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: true, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
-        public string @Name { get; }
+        public FSharpOption<string> @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "name_regex", @out: false, min: 0, max: 1)]
-        public string @NameRegex { get; }
+        public FSharpOption<string> @NameRegex { get; }
 
         [nterraform.Core.TerraformProperty(name: "os_disk", @out: false, min: 0, max: 0)]
-        public FSharpList<os_disk> @OsDisk { get; }
+        public FSharpOption<FSharpList<os_disk>> @OsDisk { get; }
 
         [nterraform.Core.TerraformProperty(name: "sort_descending", @out: false, min: 0, max: 1)]
-        public bool? @SortDescending { get; }
+        public FSharpOption<bool> @SortDescending { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
     }
 
 }

@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -9,11 +10,11 @@ namespace nterraform.resources
                                  string @name,
                                  string @publicIpAddressAllocation,
                                  string @resourceGroupName,
-                                 string @domainNameLabel = null,
-                                 int? @idleTimeoutInMinutes = null,
-                                 string @reverseFqdn = null,
-                                 string @sku = null,
-                                 FSharpList<string> @zones = null)
+                                 FSharpOption<string> @domainNameLabel = null,
+                                 FSharpOption<int> @idleTimeoutInMinutes = null,
+                                 FSharpOption<string> @reverseFqdn = null,
+                                 FSharpOption<string> @sku = null,
+                                 FSharpOption<FSharpList<string>> @zones = null)
         {
             @Location = @location;
             @Name = @name;
@@ -40,28 +41,28 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "domain_name_label", @out: false, min: 0, max: 1)]
-        public string @DomainNameLabel { get; }
+        public FSharpOption<string> @DomainNameLabel { get; }
 
         [nterraform.Core.TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
-        public string @Fqdn { get; }
+        public FSharpOption<string> @Fqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "idle_timeout_in_minutes", @out: false, min: 0, max: 1)]
-        public int? @IdleTimeoutInMinutes { get; }
+        public FSharpOption<int> @IdleTimeoutInMinutes { get; }
 
         [nterraform.Core.TerraformProperty(name: "ip_address", @out: true, min: 0, max: 1)]
-        public string @IpAddress { get; }
+        public FSharpOption<string> @IpAddress { get; }
 
         [nterraform.Core.TerraformProperty(name: "reverse_fqdn", @out: false, min: 0, max: 1)]
-        public string @ReverseFqdn { get; }
+        public FSharpOption<string> @ReverseFqdn { get; }
 
         [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 0, max: 1)]
-        public string @Sku { get; }
+        public FSharpOption<string> @Sku { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "zones", @out: false, min: 0, max: 1)]
-        public FSharpList<string> @Zones { get; }
+        public FSharpOption<FSharpList<string>> @Zones { get; }
     }
 
 }

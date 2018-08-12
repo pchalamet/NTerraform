@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -8,7 +9,7 @@ namespace nterraform.resources
         public azurerm_key_vault_secret(string @name,
                                         string @value,
                                         string @vaultUri,
-                                        string @contentType = null)
+                                        FSharpOption<string> @contentType = null)
         {
             @Name = @name;
             @Value = @value;
@@ -27,13 +28,13 @@ namespace nterraform.resources
         public string @VaultUri { get; }
 
         [nterraform.Core.TerraformProperty(name: "content_type", @out: false, min: 0, max: 1)]
-        public string @ContentType { get; }
+        public FSharpOption<string> @ContentType { get; }
 
         [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-        public FSharpMap<string,string> @Tags { get; }
+        public FSharpOption<FSharpMap<string,string>> @Tags { get; }
 
         [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
-        public string @Version { get; }
+        public FSharpOption<string> @Version { get; }
     }
 
 }

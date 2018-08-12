@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -10,7 +11,7 @@ namespace nterraform.resources
         {
             public plan(string @product,
                         string @publisher,
-                        string @promotionCode = null)
+                        FSharpOption<string> @promotionCode = null)
             {
                 @Product = @product;
                 @Publisher = @publisher;
@@ -25,10 +26,10 @@ namespace nterraform.resources
             public string @Publisher { get; }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            public FSharpOption<string> @Name { get; }
 
             [nterraform.Core.TerraformProperty(name: "promotion_code", @out: false, min: 0, max: 1)]
-            public string @PromotionCode { get; }
+            public FSharpOption<string> @PromotionCode { get; }
         }
 
         public azurerm_log_analytics_solution(string @location,

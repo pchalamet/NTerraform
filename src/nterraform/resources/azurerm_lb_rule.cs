@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.resources
@@ -12,8 +13,8 @@ namespace nterraform.resources
                                string @name,
                                string @protocol,
                                string @resourceGroupName,
-                               bool? @enableFloatingIp = null,
-                               string @location = null)
+                               FSharpOption<bool> @enableFloatingIp = null,
+                               FSharpOption<string> @location = null)
         {
             @BackendPort = @backendPort;
             @FrontendIpConfigurationName = @frontendIpConfigurationName;
@@ -49,25 +50,25 @@ namespace nterraform.resources
         public string @ResourceGroupName { get; }
 
         [nterraform.Core.TerraformProperty(name: "backend_address_pool_id", @out: true, min: 0, max: 1)]
-        public string @BackendAddressPoolId { get; }
+        public FSharpOption<string> @BackendAddressPoolId { get; }
 
         [nterraform.Core.TerraformProperty(name: "enable_floating_ip", @out: false, min: 0, max: 1)]
-        public bool? @EnableFloatingIp { get; }
+        public FSharpOption<bool> @EnableFloatingIp { get; }
 
         [nterraform.Core.TerraformProperty(name: "frontend_ip_configuration_id", @out: true, min: 0, max: 1)]
-        public string @FrontendIpConfigurationId { get; }
+        public FSharpOption<string> @FrontendIpConfigurationId { get; }
 
         [nterraform.Core.TerraformProperty(name: "idle_timeout_in_minutes", @out: true, min: 0, max: 1)]
-        public int? @IdleTimeoutInMinutes { get; }
+        public FSharpOption<int> @IdleTimeoutInMinutes { get; }
 
         [nterraform.Core.TerraformProperty(name: "load_distribution", @out: true, min: 0, max: 1)]
-        public string @LoadDistribution { get; }
+        public FSharpOption<string> @LoadDistribution { get; }
 
         [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 0, max: 1)]
-        public string @Location { get; }
+        public FSharpOption<string> @Location { get; }
 
         [nterraform.Core.TerraformProperty(name: "probe_id", @out: true, min: 0, max: 1)]
-        public string @ProbeId { get; }
+        public FSharpOption<string> @ProbeId { get; }
     }
 
 }

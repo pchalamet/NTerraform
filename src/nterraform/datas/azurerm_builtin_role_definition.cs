@@ -1,3 +1,4 @@
+using Microsoft.FSharp.Core;
 using Microsoft.FSharp.Collections;
 
 namespace nterraform.datas
@@ -14,14 +15,14 @@ namespace nterraform.datas
             }
 
             [nterraform.Core.TerraformProperty(name: "actions", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @Actions { get; }
+            public FSharpOption<FSharpList<string>> @Actions { get; }
 
             [nterraform.Core.TerraformProperty(name: "not_actions", @out: true, min: 0, max: 1)]
-            public FSharpList<string> @NotActions { get; }
+            public FSharpOption<FSharpList<string>> @NotActions { get; }
         }
 
         public azurerm_builtin_role_definition(string @name,
-                                               FSharpList<permissions> @permissions = null)
+                                               FSharpOption<FSharpList<permissions>> @permissions = null)
         {
             @Name = @name;
             @Permissions = @permissions ?? FSharpList<permissions>.Empty;
@@ -32,16 +33,16 @@ namespace nterraform.datas
         public string @Name { get; }
 
         [nterraform.Core.TerraformProperty(name: "assignable_scopes", @out: true, min: 0, max: 1)]
-        public FSharpList<string> @AssignableScopes { get; }
+        public FSharpOption<FSharpList<string>> @AssignableScopes { get; }
 
         [nterraform.Core.TerraformProperty(name: "description", @out: true, min: 0, max: 1)]
-        public string @Description { get; }
+        public FSharpOption<string> @Description { get; }
 
         [nterraform.Core.TerraformProperty(name: "permissions", @out: false, min: 0, max: 0)]
-        public FSharpList<permissions> @Permissions { get; }
+        public FSharpOption<FSharpList<permissions>> @Permissions { get; }
 
         [nterraform.Core.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
-        public string @Type { get; }
+        public FSharpOption<string> @Type { get; }
     }
 
 }
