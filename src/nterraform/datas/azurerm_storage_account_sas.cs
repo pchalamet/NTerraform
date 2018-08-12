@@ -5,6 +5,34 @@ namespace nterraform.datas.azurerm
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_storage_account_sas")]
     public sealed class azurerm_storage_account_sas : nterraform.Core.data
     {
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "services")]
+        public sealed class services : nterraform.Core.structure
+        {
+            public services(bool @blob,
+                            bool @file,
+                            bool @queue,
+                            bool @table)
+            {
+                @Blob = @blob;
+                @File = @file;
+                @Queue = @queue;
+                @Table = @table;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "blob", @out: false, min: 1, max: 1)]
+            public bool @Blob { get; }
+
+            [nterraform.Core.TerraformProperty(name: "file", @out: false, min: 1, max: 1)]
+            public bool @File { get; }
+
+            [nterraform.Core.TerraformProperty(name: "queue", @out: false, min: 1, max: 1)]
+            public bool @Queue { get; }
+
+            [nterraform.Core.TerraformProperty(name: "table", @out: false, min: 1, max: 1)]
+            public bool @Table { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "data", typeName: "permissions")]
         public sealed class permissions : nterraform.Core.structure
         {
@@ -51,34 +79,6 @@ namespace nterraform.datas.azurerm
 
             [nterraform.Core.TerraformProperty(name: "write", @out: false, min: 1, max: 1)]
             public bool @Write { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "services")]
-        public sealed class services : nterraform.Core.structure
-        {
-            public services(bool @blob,
-                            bool @file,
-                            bool @queue,
-                            bool @table)
-            {
-                @Blob = @blob;
-                @File = @file;
-                @Queue = @queue;
-                @Table = @table;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "blob", @out: false, min: 1, max: 1)]
-            public bool @Blob { get; }
-
-            [nterraform.Core.TerraformProperty(name: "file", @out: false, min: 1, max: 1)]
-            public bool @File { get; }
-
-            [nterraform.Core.TerraformProperty(name: "queue", @out: false, min: 1, max: 1)]
-            public bool @Queue { get; }
-
-            [nterraform.Core.TerraformProperty(name: "table", @out: false, min: 1, max: 1)]
-            public bool @Table { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "resource_types")]

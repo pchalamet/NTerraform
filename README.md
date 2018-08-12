@@ -7,6 +7,7 @@ Pros:
 
 Cons:
 * it's merely a new layer on top of terraform
+* terraform plugins often do not implement correctly schema interface
 
 # Example
 Here is a terraform definition (from https://www.terraform.io/docs/providers/azurerm/index.html):

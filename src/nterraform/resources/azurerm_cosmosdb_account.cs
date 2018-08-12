@@ -5,6 +5,32 @@ namespace nterraform.resources.azurerm
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_cosmosdb_account")]
     public sealed class azurerm_cosmosdb_account : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "geo_location")]
+        public sealed class geo_location : nterraform.Core.structure
+        {
+            public geo_location(int @failoverPriority,
+                                string @location,
+                                string @prefix = null)
+            {
+                @FailoverPriority = @failoverPriority;
+                @Location = @location;
+                @Prefix = @prefix;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "failover_priority", @out: false, min: 1, max: 1)]
+            public int @FailoverPriority { get; }
+
+            [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
+            public string @Location { get; }
+
+            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [nterraform.Core.TerraformProperty(name: "prefix", @out: false, min: 0, max: 1)]
+            public string @Prefix { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "consistency_policy")]
         public sealed class consistency_policy : nterraform.Core.structure
         {
@@ -39,32 +65,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "geo_location")]
-        public sealed class geo_location : nterraform.Core.structure
-        {
-            public geo_location(int @failoverPriority,
-                                string @location,
-                                string @prefix = null)
-            {
-                @FailoverPriority = @failoverPriority;
-                @Location = @location;
-                @Prefix = @prefix;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "failover_priority", @out: false, min: 1, max: 1)]
-            public int @FailoverPriority { get; }
-
-            [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
-            public string @Location { get; }
-
-            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [nterraform.Core.TerraformProperty(name: "prefix", @out: false, min: 0, max: 1)]
-            public string @Prefix { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "failover_policy")]

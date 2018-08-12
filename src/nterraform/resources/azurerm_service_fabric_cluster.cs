@@ -5,37 +5,45 @@ namespace nterraform.resources.azurerm
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_service_fabric_cluster")]
     public sealed class azurerm_service_fabric_cluster : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "diagnostics_config")]
-        public sealed class diagnostics_config : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "client_certificate_thumbprint")]
+        public sealed class client_certificate_thumbprint : nterraform.Core.structure
         {
-            public diagnostics_config(string @blobEndpoint,
-                                      string @protectedAccountKeyName,
-                                      string @queueEndpoint,
-                                      string @storageAccountName,
-                                      string @tableEndpoint)
+            public client_certificate_thumbprint(bool @isAdmin,
+                                                 string @thumbprint)
             {
-                @BlobEndpoint = @blobEndpoint;
-                @ProtectedAccountKeyName = @protectedAccountKeyName;
-                @QueueEndpoint = @queueEndpoint;
-                @StorageAccountName = @storageAccountName;
-                @TableEndpoint = @tableEndpoint;
+                @IsAdmin = @isAdmin;
+                @Thumbprint = @thumbprint;
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "blob_endpoint", @out: false, min: 1, max: 1)]
-            public string @BlobEndpoint { get; }
+            [nterraform.Core.TerraformProperty(name: "is_admin", @out: false, min: 1, max: 1)]
+            public bool @IsAdmin { get; }
 
-            [nterraform.Core.TerraformProperty(name: "protected_account_key_name", @out: false, min: 1, max: 1)]
-            public string @ProtectedAccountKeyName { get; }
+            [nterraform.Core.TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
+            public string @Thumbprint { get; }
+        }
 
-            [nterraform.Core.TerraformProperty(name: "queue_endpoint", @out: false, min: 1, max: 1)]
-            public string @QueueEndpoint { get; }
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate")]
+        public sealed class certificate : nterraform.Core.structure
+        {
+            public certificate(string @thumbprint,
+                               string @x509StoreName,
+                               string @thumbprintSecondary = null)
+            {
+                @Thumbprint = @thumbprint;
+                @X509StoreName = @x509StoreName;
+                @ThumbprintSecondary = @thumbprintSecondary;
+                base._validate_();
+            }
 
-            [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
-            public string @StorageAccountName { get; }
+            [nterraform.Core.TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
+            public string @Thumbprint { get; }
 
-            [nterraform.Core.TerraformProperty(name: "table_endpoint", @out: false, min: 1, max: 1)]
-            public string @TableEndpoint { get; }
+            [nterraform.Core.TerraformProperty(name: "x509_store_name", @out: false, min: 1, max: 1)]
+            public string @X509StoreName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "thumbprint_secondary", @out: false, min: 0, max: 1)]
+            public string @ThumbprintSecondary { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "node_type")]
@@ -122,6 +130,39 @@ namespace nterraform.resources.azurerm
             public ephemeral_ports[] @EphemeralPorts { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "diagnostics_config")]
+        public sealed class diagnostics_config : nterraform.Core.structure
+        {
+            public diagnostics_config(string @blobEndpoint,
+                                      string @protectedAccountKeyName,
+                                      string @queueEndpoint,
+                                      string @storageAccountName,
+                                      string @tableEndpoint)
+            {
+                @BlobEndpoint = @blobEndpoint;
+                @ProtectedAccountKeyName = @protectedAccountKeyName;
+                @QueueEndpoint = @queueEndpoint;
+                @StorageAccountName = @storageAccountName;
+                @TableEndpoint = @tableEndpoint;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "blob_endpoint", @out: false, min: 1, max: 1)]
+            public string @BlobEndpoint { get; }
+
+            [nterraform.Core.TerraformProperty(name: "protected_account_key_name", @out: false, min: 1, max: 1)]
+            public string @ProtectedAccountKeyName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "queue_endpoint", @out: false, min: 1, max: 1)]
+            public string @QueueEndpoint { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
+            public string @StorageAccountName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "table_endpoint", @out: false, min: 1, max: 1)]
+            public string @TableEndpoint { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "fabric_settings")]
         public sealed class fabric_settings : nterraform.Core.structure
         {
@@ -138,47 +179,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
             public Dictionary<string,string> @Parameters { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate")]
-        public sealed class certificate : nterraform.Core.structure
-        {
-            public certificate(string @thumbprint,
-                               string @x509StoreName,
-                               string @thumbprintSecondary = null)
-            {
-                @Thumbprint = @thumbprint;
-                @X509StoreName = @x509StoreName;
-                @ThumbprintSecondary = @thumbprintSecondary;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
-            public string @Thumbprint { get; }
-
-            [nterraform.Core.TerraformProperty(name: "x509_store_name", @out: false, min: 1, max: 1)]
-            public string @X509StoreName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "thumbprint_secondary", @out: false, min: 0, max: 1)]
-            public string @ThumbprintSecondary { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "client_certificate_thumbprint")]
-        public sealed class client_certificate_thumbprint : nterraform.Core.structure
-        {
-            public client_certificate_thumbprint(bool @isAdmin,
-                                                 string @thumbprint)
-            {
-                @IsAdmin = @isAdmin;
-                @Thumbprint = @thumbprint;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "is_admin", @out: false, min: 1, max: 1)]
-            public bool @IsAdmin { get; }
-
-            [nterraform.Core.TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
-            public string @Thumbprint { get; }
         }
 
         public azurerm_service_fabric_cluster(string @location,

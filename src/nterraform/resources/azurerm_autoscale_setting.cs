@@ -67,6 +67,34 @@ namespace nterraform.resources.azurerm
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "profile")]
         public sealed class profile : nterraform.Core.structure
         {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
+            public sealed class recurrence : nterraform.Core.structure
+            {
+                public recurrence(string[] @days,
+                                  int[] @hours,
+                                  int[] @minutes,
+                                  string @timezone = null)
+                {
+                    @Days = @days;
+                    @Hours = @hours;
+                    @Minutes = @minutes;
+                    @Timezone = @timezone;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "days", @out: false, min: 1, max: 1)]
+                public string[] @Days { get; }
+
+                [nterraform.Core.TerraformProperty(name: "hours", @out: false, min: 1, max: 1)]
+                public int[] @Hours { get; }
+
+                [nterraform.Core.TerraformProperty(name: "minutes", @out: false, min: 1, max: 1)]
+                public int[] @Minutes { get; }
+
+                [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
+                public string @Timezone { get; }
+            }
+
             [nterraform.Core.TerraformStructure(category: "resource", typeName: "capacity")]
             public sealed class capacity : nterraform.Core.structure
             {
@@ -202,34 +230,6 @@ namespace nterraform.resources.azurerm
 
                 [nterraform.Core.TerraformProperty(name: "start", @out: false, min: 1, max: 1)]
                 public string @Start { get; }
-
-                [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
-                public string @Timezone { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
-            public sealed class recurrence : nterraform.Core.structure
-            {
-                public recurrence(string[] @days,
-                                  int[] @hours,
-                                  int[] @minutes,
-                                  string @timezone = null)
-                {
-                    @Days = @days;
-                    @Hours = @hours;
-                    @Minutes = @minutes;
-                    @Timezone = @timezone;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "days", @out: false, min: 1, max: 1)]
-                public string[] @Days { get; }
-
-                [nterraform.Core.TerraformProperty(name: "hours", @out: false, min: 1, max: 1)]
-                public int[] @Hours { get; }
-
-                [nterraform.Core.TerraformProperty(name: "minutes", @out: false, min: 1, max: 1)]
-                public int[] @Minutes { get; }
 
                 [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
                 public string @Timezone { get; }

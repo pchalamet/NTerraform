@@ -5,30 +5,6 @@ namespace nterraform.datas.azurerm
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_image")]
     public sealed class azurerm_image : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "data_disk")]
-        public sealed class data_disk : nterraform.Core.structure
-        {
-            public data_disk()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
-            public string @BlobUri { get; }
-
-            [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
-            public string @Caching { get; }
-
-            [nterraform.Core.TerraformProperty(name: "lun", @out: true, min: 0, max: 1)]
-            public int? @Lun { get; }
-
-            [nterraform.Core.TerraformProperty(name: "managed_disk_id", @out: true, min: 0, max: 1)]
-            public string @ManagedDiskId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
-            public int? @SizeGb { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "os_disk")]
         public sealed class os_disk : nterraform.Core.structure
         {
@@ -51,6 +27,30 @@ namespace nterraform.datas.azurerm
 
             [nterraform.Core.TerraformProperty(name: "os_type", @out: true, min: 0, max: 1)]
             public string @OsType { get; }
+
+            [nterraform.Core.TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
+            public int? @SizeGb { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "data_disk")]
+        public sealed class data_disk : nterraform.Core.structure
+        {
+            public data_disk()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "blob_uri", @out: true, min: 0, max: 1)]
+            public string @BlobUri { get; }
+
+            [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
+            public string @Caching { get; }
+
+            [nterraform.Core.TerraformProperty(name: "lun", @out: true, min: 0, max: 1)]
+            public int? @Lun { get; }
+
+            [nterraform.Core.TerraformProperty(name: "managed_disk_id", @out: true, min: 0, max: 1)]
+            public string @ManagedDiskId { get; }
 
             [nterraform.Core.TerraformProperty(name: "size_gb", @out: true, min: 0, max: 1)]
             public int? @SizeGb { get; }

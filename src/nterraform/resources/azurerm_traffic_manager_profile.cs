@@ -5,6 +5,24 @@ namespace nterraform.resources.azurerm
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_traffic_manager_profile")]
     public sealed class azurerm_traffic_manager_profile : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "dns_config")]
+        public sealed class dns_config : nterraform.Core.structure
+        {
+            public dns_config(string @relativeName,
+                              int @ttl)
+            {
+                @RelativeName = @relativeName;
+                @Ttl = @ttl;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "relative_name", @out: false, min: 1, max: 1)]
+            public string @RelativeName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "ttl", @out: false, min: 1, max: 1)]
+            public int @Ttl { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "monitor_config")]
         public sealed class monitor_config : nterraform.Core.structure
         {
@@ -26,24 +44,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "path", @out: false, min: 0, max: 1)]
             public string @Path { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "dns_config")]
-        public sealed class dns_config : nterraform.Core.structure
-        {
-            public dns_config(string @relativeName,
-                              int @ttl)
-            {
-                @RelativeName = @relativeName;
-                @Ttl = @ttl;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "relative_name", @out: false, min: 1, max: 1)]
-            public string @RelativeName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "ttl", @out: false, min: 1, max: 1)]
-            public int @Ttl { get; }
         }
 
         public azurerm_traffic_manager_profile(dns_config[] @dnsConfig,

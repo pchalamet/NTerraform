@@ -5,6 +5,48 @@ namespace nterraform.resources.azurerm
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_app_service_slot")]
     public sealed class azurerm_app_service_slot : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]
+        public sealed class connection_string : nterraform.Core.structure
+        {
+            public connection_string(string @name,
+                                     string @type,
+                                     string @value)
+            {
+                @Name = @name;
+                @Type = @type;
+                @Value = @value;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+            public string @Value { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
+        public sealed class identity : nterraform.Core.structure
+        {
+            public identity(string @type)
+            {
+                @Type = @type;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
+            public string @PrincipalId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
+            public string @TenantId { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_config")]
         public sealed class site_config : nterraform.Core.structure
         {
@@ -113,48 +155,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "websockets_enabled", @out: true, min: 0, max: 1)]
             public bool? @WebsocketsEnabled { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
-        public sealed class identity : nterraform.Core.structure
-        {
-            public identity(string @type)
-            {
-                @Type = @type;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-            public string @TenantId { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]
-        public sealed class connection_string : nterraform.Core.structure
-        {
-            public connection_string(string @name,
-                                     string @type,
-                                     string @value)
-            {
-                @Name = @name;
-                @Type = @type;
-                @Value = @value;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
-            public string @Value { get; }
         }
 
         public azurerm_app_service_slot(string @appServiceName,

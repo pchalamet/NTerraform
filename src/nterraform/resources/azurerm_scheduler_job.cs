@@ -5,6 +5,34 @@ namespace nterraform.resources.azurerm
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_scheduler_job")]
     public sealed class azurerm_scheduler_job : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "error_action_storage_queue")]
+        public sealed class error_action_storage_queue : nterraform.Core.structure
+        {
+            public error_action_storage_queue(string @message,
+                                              string @sasToken,
+                                              string @storageAccountName,
+                                              string @storageQueueName)
+            {
+                @Message = @message;
+                @SasToken = @sasToken;
+                @StorageAccountName = @storageAccountName;
+                @StorageQueueName = @storageQueueName;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "message", @out: false, min: 1, max: 1)]
+            public string @Message { get; }
+
+            [nterraform.Core.TerraformProperty(name: "sas_token", @out: false, min: 1, max: 1)]
+            public string @SasToken { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
+            public string @StorageAccountName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_queue_name", @out: false, min: 1, max: 1)]
+            public string @StorageQueueName { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
         public sealed class recurrence : nterraform.Core.structure
         {
@@ -72,62 +100,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "week_days", @out: false, min: 0, max: 1)]
             public string[] @WeekDays { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "action_storage_queue")]
-        public sealed class action_storage_queue : nterraform.Core.structure
-        {
-            public action_storage_queue(string @message,
-                                        string @sasToken,
-                                        string @storageAccountName,
-                                        string @storageQueueName)
-            {
-                @Message = @message;
-                @SasToken = @sasToken;
-                @StorageAccountName = @storageAccountName;
-                @StorageQueueName = @storageQueueName;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "message", @out: false, min: 1, max: 1)]
-            public string @Message { get; }
-
-            [nterraform.Core.TerraformProperty(name: "sas_token", @out: false, min: 1, max: 1)]
-            public string @SasToken { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
-            public string @StorageAccountName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_queue_name", @out: false, min: 1, max: 1)]
-            public string @StorageQueueName { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "error_action_storage_queue")]
-        public sealed class error_action_storage_queue : nterraform.Core.structure
-        {
-            public error_action_storage_queue(string @message,
-                                              string @sasToken,
-                                              string @storageAccountName,
-                                              string @storageQueueName)
-            {
-                @Message = @message;
-                @SasToken = @sasToken;
-                @StorageAccountName = @storageAccountName;
-                @StorageQueueName = @storageQueueName;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "message", @out: false, min: 1, max: 1)]
-            public string @Message { get; }
-
-            [nterraform.Core.TerraformProperty(name: "sas_token", @out: false, min: 1, max: 1)]
-            public string @SasToken { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
-            public string @StorageAccountName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_queue_name", @out: false, min: 1, max: 1)]
-            public string @StorageQueueName { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "retry")]
@@ -262,9 +234,55 @@ namespace nterraform.resources.azurerm
             public Dictionary<string,string> @Headers { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "action_storage_queue")]
+        public sealed class action_storage_queue : nterraform.Core.structure
+        {
+            public action_storage_queue(string @message,
+                                        string @sasToken,
+                                        string @storageAccountName,
+                                        string @storageQueueName)
+            {
+                @Message = @message;
+                @SasToken = @sasToken;
+                @StorageAccountName = @storageAccountName;
+                @StorageQueueName = @storageQueueName;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "message", @out: false, min: 1, max: 1)]
+            public string @Message { get; }
+
+            [nterraform.Core.TerraformProperty(name: "sas_token", @out: false, min: 1, max: 1)]
+            public string @SasToken { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
+            public string @StorageAccountName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_queue_name", @out: false, min: 1, max: 1)]
+            public string @StorageQueueName { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "error_action_web")]
         public sealed class error_action_web : nterraform.Core.structure
         {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_basic")]
+            public sealed class authentication_basic : nterraform.Core.structure
+            {
+                public authentication_basic(string @password,
+                                            string @username)
+                {
+                    @Password = @password;
+                    @Username = @username;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+                public string @Password { get; }
+
+                [nterraform.Core.TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
+                public string @Username { get; }
+            }
+
             [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_certificate")]
             public sealed class authentication_certificate : nterraform.Core.structure
             {
@@ -316,24 +334,6 @@ namespace nterraform.resources.azurerm
 
                 [nterraform.Core.TerraformProperty(name: "audience", @out: true, min: 0, max: 1)]
                 public string @Audience { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_basic")]
-            public sealed class authentication_basic : nterraform.Core.structure
-            {
-                public authentication_basic(string @password,
-                                            string @username)
-                {
-                    @Password = @password;
-                    @Username = @username;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-                public string @Password { get; }
-
-                [nterraform.Core.TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
-                public string @Username { get; }
             }
 
             public error_action_web(string @method,

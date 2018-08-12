@@ -5,34 +5,6 @@ namespace nterraform.resources.azurerm
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_virtual_network_gateway")]
     public sealed class azurerm_virtual_network_gateway : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "ip_configuration")]
-        public sealed class ip_configuration : nterraform.Core.structure
-        {
-            public ip_configuration(string @subnetId,
-                                    string @name = null,
-                                    string @privateIpAddressAllocation = null,
-                                    string @publicIpAddressId = null)
-            {
-                @SubnetId = @subnetId;
-                @Name = @name;
-                @PrivateIpAddressAllocation = @privateIpAddressAllocation;
-                @PublicIpAddressId = @publicIpAddressId;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
-            public string @SubnetId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "private_ip_address_allocation", @out: false, min: 0, max: 1)]
-            public string @PrivateIpAddressAllocation { get; }
-
-            [nterraform.Core.TerraformProperty(name: "public_ip_address_id", @out: false, min: 0, max: 1)]
-            public string @PublicIpAddressId { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "vpn_client_configuration")]
         public sealed class vpn_client_configuration : nterraform.Core.structure
         {
@@ -105,6 +77,34 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "vpn_client_protocols", @out: false, min: 0, max: 1)]
             public string[] @VpnClientProtocols { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "ip_configuration")]
+        public sealed class ip_configuration : nterraform.Core.structure
+        {
+            public ip_configuration(string @subnetId,
+                                    string @name = null,
+                                    string @privateIpAddressAllocation = null,
+                                    string @publicIpAddressId = null)
+            {
+                @SubnetId = @subnetId;
+                @Name = @name;
+                @PrivateIpAddressAllocation = @privateIpAddressAllocation;
+                @PublicIpAddressId = @publicIpAddressId;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
+            public string @SubnetId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "private_ip_address_allocation", @out: false, min: 0, max: 1)]
+            public string @PrivateIpAddressAllocation { get; }
+
+            [nterraform.Core.TerraformProperty(name: "public_ip_address_id", @out: false, min: 0, max: 1)]
+            public string @PublicIpAddressId { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "bgp_settings")]

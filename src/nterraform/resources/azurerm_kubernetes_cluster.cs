@@ -5,37 +5,6 @@ namespace nterraform.resources.azurerm
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_kubernetes_cluster")]
     public sealed class azurerm_kubernetes_cluster : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "linux_profile")]
-        public sealed class linux_profile : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "ssh_key")]
-            public sealed class ssh_key : nterraform.Core.structure
-            {
-                public ssh_key(string @keyData)
-                {
-                    @KeyData = @keyData;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
-                public string @KeyData { get; }
-            }
-
-            public linux_profile(string @adminUsername,
-                                 ssh_key[] @sshKey)
-            {
-                @AdminUsername = @adminUsername;
-                @SshKey = @sshKey;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
-            public string @AdminUsername { get; }
-
-            [nterraform.Core.TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 0)]
-            public ssh_key[] @SshKey { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "service_principal")]
         public sealed class service_principal : nterraform.Core.structure
         {
@@ -79,6 +48,37 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
             public string @Username { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "linux_profile")]
+        public sealed class linux_profile : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "ssh_key")]
+            public sealed class ssh_key : nterraform.Core.structure
+            {
+                public ssh_key(string @keyData)
+                {
+                    @KeyData = @keyData;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
+                public string @KeyData { get; }
+            }
+
+            public linux_profile(string @adminUsername,
+                                 ssh_key[] @sshKey)
+            {
+                @AdminUsername = @adminUsername;
+                @SshKey = @sshKey;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
+            public string @AdminUsername { get; }
+
+            [nterraform.Core.TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 0)]
+            public ssh_key[] @SshKey { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_profile")]

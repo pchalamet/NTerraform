@@ -5,33 +5,27 @@ namespace nterraform.resources.azurerm
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_application_gateway")]
     public sealed class azurerm_application_gateway : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "ssl_certificate")]
-        public sealed class ssl_certificate : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
+        public sealed class sku : nterraform.Core.structure
         {
-            public ssl_certificate(string @data,
-                                   string @name,
-                                   string @password)
+            public sku(int @capacity,
+                       string @name,
+                       string @tier)
             {
-                @Data = @data;
+                @Capacity = @capacity;
                 @Name = @name;
-                @Password = @password;
+                @Tier = @tier;
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "data", @out: false, min: 1, max: 1)]
-            public string @Data { get; }
+            [nterraform.Core.TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
+            public int @Capacity { get; }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-            public string @Password { get; }
-
-            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [nterraform.Core.TerraformProperty(name: "public_cert_data", @out: true, min: 0, max: 1)]
-            public string @PublicCertData { get; }
+            [nterraform.Core.TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
+            public string @Tier { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "request_routing_rule")]
@@ -87,61 +81,6 @@ namespace nterraform.resources.azurerm
             public string @UrlPathMapName { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "http_listener")]
-        public sealed class http_listener : nterraform.Core.structure
-        {
-            public http_listener(string @frontendIpConfigurationName,
-                                 string @frontendPortName,
-                                 string @name,
-                                 string @protocol,
-                                 string @hostName = null,
-                                 bool? @requireSni = null,
-                                 string @sslCertificateName = null)
-            {
-                @FrontendIpConfigurationName = @frontendIpConfigurationName;
-                @FrontendPortName = @frontendPortName;
-                @Name = @name;
-                @Protocol = @protocol;
-                @HostName = @hostName;
-                @RequireSni = @requireSni;
-                @SslCertificateName = @sslCertificateName;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "frontend_ip_configuration_name", @out: false, min: 1, max: 1)]
-            public string @FrontendIpConfigurationName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "frontend_port_name", @out: false, min: 1, max: 1)]
-            public string @FrontendPortName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "protocol", @out: false, min: 1, max: 1)]
-            public string @Protocol { get; }
-
-            [nterraform.Core.TerraformProperty(name: "frontend_ip_configuration_id", @out: true, min: 0, max: 1)]
-            public string @FrontendIpConfigurationId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "frontend_port_id", @out: true, min: 0, max: 1)]
-            public string @FrontendPortId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "host_name", @out: false, min: 0, max: 1)]
-            public string @HostName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [nterraform.Core.TerraformProperty(name: "require_sni", @out: false, min: 0, max: 1)]
-            public bool? @RequireSni { get; }
-
-            [nterraform.Core.TerraformProperty(name: "ssl_certificate_id", @out: true, min: 0, max: 1)]
-            public string @SslCertificateId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "ssl_certificate_name", @out: false, min: 0, max: 1)]
-            public string @SslCertificateName { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "frontend_port")]
         public sealed class frontend_port : nterraform.Core.structure
         {
@@ -161,32 +100,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
             public string @Id { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "backend_address_pool")]
-        public sealed class backend_address_pool : nterraform.Core.structure
-        {
-            public backend_address_pool(string @name,
-                                        string[] @fqdnList = null,
-                                        string[] @ipAddressList = null)
-            {
-                @Name = @name;
-                @FqdnList = @fqdnList;
-                @IpAddressList = @ipAddressList;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "fqdn_list", @out: false, min: 0, max: 1)]
-            public string[] @FqdnList { get; }
-
-            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [nterraform.Core.TerraformProperty(name: "ip_address_list", @out: false, min: 0, max: 1)]
-            public string[] @IpAddressList { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "backend_http_settings")]
@@ -252,6 +165,32 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "request_timeout", @out: false, min: 0, max: 1)]
             public int? @RequestTimeout { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "backend_address_pool")]
+        public sealed class backend_address_pool : nterraform.Core.structure
+        {
+            public backend_address_pool(string @name,
+                                        string[] @fqdnList = null,
+                                        string[] @ipAddressList = null)
+            {
+                @Name = @name;
+                @FqdnList = @fqdnList;
+                @IpAddressList = @ipAddressList;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "fqdn_list", @out: false, min: 0, max: 1)]
+            public string[] @FqdnList { get; }
+
+            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [nterraform.Core.TerraformProperty(name: "ip_address_list", @out: false, min: 0, max: 1)]
+            public string[] @IpAddressList { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "probe")]
@@ -402,50 +341,6 @@ namespace nterraform.resources.azurerm
             public string @Id { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "gateway_ip_configuration")]
-        public sealed class gateway_ip_configuration : nterraform.Core.structure
-        {
-            public gateway_ip_configuration(string @name,
-                                            string @subnetId)
-            {
-                @Name = @name;
-                @SubnetId = @subnetId;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
-            public string @SubnetId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
-        public sealed class sku : nterraform.Core.structure
-        {
-            public sku(int @capacity,
-                       string @name,
-                       string @tier)
-            {
-                @Capacity = @capacity;
-                @Name = @name;
-                @Tier = @tier;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
-            public int @Capacity { get; }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
-            public string @Tier { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "authentication_certificate")]
         public sealed class authentication_certificate : nterraform.Core.structure
         {
@@ -493,6 +388,111 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "rule_set_type", @out: false, min: 0, max: 1)]
             public string @RuleSetType { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "http_listener")]
+        public sealed class http_listener : nterraform.Core.structure
+        {
+            public http_listener(string @frontendIpConfigurationName,
+                                 string @frontendPortName,
+                                 string @name,
+                                 string @protocol,
+                                 string @hostName = null,
+                                 bool? @requireSni = null,
+                                 string @sslCertificateName = null)
+            {
+                @FrontendIpConfigurationName = @frontendIpConfigurationName;
+                @FrontendPortName = @frontendPortName;
+                @Name = @name;
+                @Protocol = @protocol;
+                @HostName = @hostName;
+                @RequireSni = @requireSni;
+                @SslCertificateName = @sslCertificateName;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "frontend_ip_configuration_name", @out: false, min: 1, max: 1)]
+            public string @FrontendIpConfigurationName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "frontend_port_name", @out: false, min: 1, max: 1)]
+            public string @FrontendPortName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "protocol", @out: false, min: 1, max: 1)]
+            public string @Protocol { get; }
+
+            [nterraform.Core.TerraformProperty(name: "frontend_ip_configuration_id", @out: true, min: 0, max: 1)]
+            public string @FrontendIpConfigurationId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "frontend_port_id", @out: true, min: 0, max: 1)]
+            public string @FrontendPortId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "host_name", @out: false, min: 0, max: 1)]
+            public string @HostName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [nterraform.Core.TerraformProperty(name: "require_sni", @out: false, min: 0, max: 1)]
+            public bool? @RequireSni { get; }
+
+            [nterraform.Core.TerraformProperty(name: "ssl_certificate_id", @out: true, min: 0, max: 1)]
+            public string @SslCertificateId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "ssl_certificate_name", @out: false, min: 0, max: 1)]
+            public string @SslCertificateName { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "gateway_ip_configuration")]
+        public sealed class gateway_ip_configuration : nterraform.Core.structure
+        {
+            public gateway_ip_configuration(string @name,
+                                            string @subnetId)
+            {
+                @Name = @name;
+                @SubnetId = @subnetId;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
+            public string @SubnetId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "ssl_certificate")]
+        public sealed class ssl_certificate : nterraform.Core.structure
+        {
+            public ssl_certificate(string @data,
+                                   string @name,
+                                   string @password)
+            {
+                @Data = @data;
+                @Name = @name;
+                @Password = @password;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "data", @out: false, min: 1, max: 1)]
+            public string @Data { get; }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+            public string @Password { get; }
+
+            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [nterraform.Core.TerraformProperty(name: "public_cert_data", @out: true, min: 0, max: 1)]
+            public string @PublicCertData { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "frontend_ip_configuration")]
