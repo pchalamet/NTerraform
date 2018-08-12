@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using Microsoft.FSharp.Core;
 
 namespace nterraform
 {
@@ -50,6 +51,11 @@ namespace nterraform
                     return "[ " + String.Join(", ", arr.Select(x => x ? "\"true\"" : "\"false\"")) + " ]";
 
                 default:
+                    if (o.GetType().IsGenericType && o.GetType().GetGenericTypeDefinition() == typeof(FSharpOption<>))
+                    {
+                        return Format(o.GetType().GetProperty("Value").GetValue(o));
+                    }
+
                     return o;
             }
         }

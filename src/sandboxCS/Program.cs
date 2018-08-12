@@ -11,6 +11,7 @@ namespace SandboxCS
         static void Main(string[] args)
         {
             var lst = FSharpList<string>.Empty;
+            var opt = FSharpOption<int>.None;
 
             //    var provider = new azurerm(environment: "dev");
             //    var networkrg = new azurerm_resource_group(name: "production",

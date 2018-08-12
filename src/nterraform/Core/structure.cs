@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Collections;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace nterraform.Core
 {
@@ -27,11 +28,15 @@ namespace nterraform.Core
                             throw new ApplicationException($"Property {prop.Name} is mandatory");
                         break;
 
-                    case IEnumerable arr:
-                        //if (propAttribute.Min != 0 && arr. < propAttribute.Min)
-                        //    throw new ApplicationException($"Expecting at least {propAttribute.Min} items in property {prop.Name}");
-                        //if (propAttribute.Max != 0 && propAttribute.Max < arr.Count())
-                        //throw new ApplicationException($"Expecting at most {propAttribute.Max} items in property {prop.Name}");
+                    default:
+                        if (value.GetType().BaseType == typeof(IReadOnlyCollection<>))
+                        {
+                            var count = (int)value.GetType().GetProperty("Count").GetValue(value);
+                            if (propAttribute.Min != 0 && count < propAttribute.Min)
+                                throw new ApplicationException($"Expecting at least {propAttribute.Min} items in property {prop.Name}");
+                            if (propAttribute.Max != 0 && propAttribute.Max < count)
+                                throw new ApplicationException($"Expecting at most {propAttribute.Max} items in property {prop.Name}");
+                        }
                         break;
                 }
             }
