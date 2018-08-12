@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_policy_assignment")]
     public sealed class azurerm_policy_assignment : nterraform.Core.resource

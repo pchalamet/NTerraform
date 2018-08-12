@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_express_route_circuit_peering")]
     public sealed class azurerm_express_route_circuit_peering : nterraform.Core.resource

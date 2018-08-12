@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.azurerm
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_subscription")]
     public sealed class azurerm_subscription : nterraform.Core.data

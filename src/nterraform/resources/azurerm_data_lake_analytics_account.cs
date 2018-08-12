@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_data_lake_analytics_account")]
     public sealed class azurerm_data_lake_analytics_account : nterraform.Core.resource

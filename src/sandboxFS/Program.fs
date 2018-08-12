@@ -1,7 +1,7 @@
 ﻿open System.Reflection
 open nterraform
 open nterraform.providers
-open nterraform.resources.azurerm
+open nterraform.resources
 
 
 module nterraform2 =

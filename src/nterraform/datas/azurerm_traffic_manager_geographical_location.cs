@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.azurerm
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_traffic_manager_geographical_location")]
     public sealed class azurerm_traffic_manager_geographical_location : nterraform.Core.data

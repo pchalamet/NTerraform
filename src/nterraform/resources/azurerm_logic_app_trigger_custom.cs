@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_logic_app_trigger_custom")]
     public sealed class azurerm_logic_app_trigger_custom : nterraform.Core.resource

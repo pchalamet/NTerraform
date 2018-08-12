@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_route")]
     public sealed class azurerm_route : nterraform.Core.resource

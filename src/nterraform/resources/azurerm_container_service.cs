@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_container_service")]
     public sealed class azurerm_container_service : nterraform.Core.resource
@@ -24,55 +24,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "fqdn", @out: true, min: 0, max: 1)]
             public string @Fqdn { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "linux_profile")]
-        public sealed class linux_profile : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "ssh_key")]
-            public sealed class ssh_key : nterraform.Core.structure
-            {
-                public ssh_key(string @keyData)
-                {
-                    @KeyData = @keyData;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
-                public string @KeyData { get; }
-            }
-
-            public linux_profile(string @adminUsername,
-                                 ssh_key[] @sshKey)
-            {
-                @AdminUsername = @adminUsername;
-                @SshKey = @sshKey;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
-            public string @AdminUsername { get; }
-
-            [nterraform.Core.TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 1)]
-            public ssh_key[] @SshKey { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "service_principal")]
-        public sealed class service_principal : nterraform.Core.structure
-        {
-            public service_principal(string @clientId,
-                                     string @clientSecret)
-            {
-                @ClientId = @clientId;
-                @ClientSecret = @clientSecret;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
-            public string @ClientId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
-            public string @ClientSecret { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "agent_pool_profile")]
@@ -106,6 +57,24 @@ namespace nterraform.resources.azurerm
             public string @Fqdn { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "service_principal")]
+        public sealed class service_principal : nterraform.Core.structure
+        {
+            public service_principal(string @clientId,
+                                     string @clientSecret)
+            {
+                @ClientId = @clientId;
+                @ClientSecret = @clientSecret;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
+            public string @ClientId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
+            public string @ClientSecret { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "diagnostics_profile")]
         public sealed class diagnostics_profile : nterraform.Core.structure
         {
@@ -120,6 +89,37 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "storage_uri", @out: true, min: 0, max: 1)]
             public string @StorageUri { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "linux_profile")]
+        public sealed class linux_profile : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "ssh_key")]
+            public sealed class ssh_key : nterraform.Core.structure
+            {
+                public ssh_key(string @keyData)
+                {
+                    @KeyData = @keyData;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
+                public string @KeyData { get; }
+            }
+
+            public linux_profile(string @adminUsername,
+                                 ssh_key[] @sshKey)
+            {
+                @AdminUsername = @adminUsername;
+                @SshKey = @sshKey;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
+            public string @AdminUsername { get; }
+
+            [nterraform.Core.TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 1)]
+            public ssh_key[] @SshKey { get; }
         }
 
         public azurerm_container_service(agent_pool_profile[] @agentPoolProfile,

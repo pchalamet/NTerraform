@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_traffic_manager_profile")]
     public sealed class azurerm_traffic_manager_profile : nterraform.Core.resource

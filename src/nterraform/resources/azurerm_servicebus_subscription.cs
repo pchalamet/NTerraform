@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_servicebus_subscription")]
     public sealed class azurerm_servicebus_subscription : nterraform.Core.resource

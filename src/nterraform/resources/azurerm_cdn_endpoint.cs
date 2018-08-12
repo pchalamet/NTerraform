@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_cdn_endpoint")]
     public sealed class azurerm_cdn_endpoint : nterraform.Core.resource

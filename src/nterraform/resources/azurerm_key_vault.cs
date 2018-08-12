@@ -1,23 +1,10 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_key_vault")]
     public sealed class azurerm_key_vault : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
-        public sealed class sku : nterraform.Core.structure
-        {
-            public sku(string @name)
-            {
-                @Name = @name;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "access_policy")]
         public sealed class access_policy : nterraform.Core.structure
         {
@@ -54,6 +41,19 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "certificate_permissions", @out: false, min: 0, max: 1)]
             public string[] @CertificatePermissions { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
+        public sealed class sku : nterraform.Core.structure
+        {
+            public sku(string @name)
+            {
+                @Name = @name;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
         }
 
         public azurerm_key_vault(string @location,

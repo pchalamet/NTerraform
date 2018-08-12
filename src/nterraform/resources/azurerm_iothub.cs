@@ -1,10 +1,31 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_iothub")]
     public sealed class azurerm_iothub : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "shared_access_policy")]
+        public sealed class shared_access_policy : nterraform.Core.structure
+        {
+            public shared_access_policy()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
+            public string @KeyName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "permissions", @out: true, min: 0, max: 1)]
+            public string @Permissions { get; }
+
+            [nterraform.Core.TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
+            public string @PrimaryKey { get; }
+
+            [nterraform.Core.TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
+            public string @SecondaryKey { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
         public sealed class sku : nterraform.Core.structure
         {
@@ -26,27 +47,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
             public string @Tier { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "shared_access_policy")]
-        public sealed class shared_access_policy : nterraform.Core.structure
-        {
-            public shared_access_policy()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
-            public string @KeyName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "permissions", @out: true, min: 0, max: 1)]
-            public string @Permissions { get; }
-
-            [nterraform.Core.TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
-            public string @PrimaryKey { get; }
-
-            [nterraform.Core.TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
-            public string @SecondaryKey { get; }
         }
 
         public azurerm_iothub(string @location,

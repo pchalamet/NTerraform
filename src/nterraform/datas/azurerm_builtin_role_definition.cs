@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.azurerm
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_builtin_role_definition")]
     public sealed class azurerm_builtin_role_definition : nterraform.Core.data

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_virtual_machine_data_disk_attachment")]
     public sealed class azurerm_virtual_machine_data_disk_attachment : nterraform.Core.resource

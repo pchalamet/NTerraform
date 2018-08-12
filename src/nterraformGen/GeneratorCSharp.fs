@@ -140,7 +140,7 @@ let rec generateType plugin category typeName fields =
         yield ""
         match category with
         | "provider" -> yield sprintf "namespace nterraform.%s" (category + "s")
-        | _ -> yield sprintf "namespace nterraform.%s.%s" (category + "s") plugin
+        | _ -> yield sprintf "namespace nterraform.%s" (category + "s")
         yield "{"
         yield! generateStructure 0 category typeName fields
         yield "}"

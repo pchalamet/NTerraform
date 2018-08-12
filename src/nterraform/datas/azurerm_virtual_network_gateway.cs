@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.azurerm
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_virtual_network_gateway")]
     public sealed class azurerm_virtual_network_gateway : nterraform.Core.data
@@ -24,6 +24,24 @@ namespace nterraform.datas.azurerm
 
             [nterraform.Core.TerraformProperty(name: "subnet_id", @out: true, min: 0, max: 1)]
             public string @SubnetId { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "bgp_settings")]
+        public sealed class bgp_settings : nterraform.Core.structure
+        {
+            public bgp_settings()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "asn", @out: true, min: 0, max: 1)]
+            public int? @Asn { get; }
+
+            [nterraform.Core.TerraformProperty(name: "peer_weight", @out: true, min: 0, max: 1)]
+            public int? @PeerWeight { get; }
+
+            [nterraform.Core.TerraformProperty(name: "peering_address", @out: true, min: 0, max: 1)]
+            public string @PeeringAddress { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "vpn_client_configuration")]
@@ -84,24 +102,6 @@ namespace nterraform.datas.azurerm
 
             [nterraform.Core.TerraformProperty(name: "vpn_client_protocols", @out: true, min: 0, max: 1)]
             public string[] @VpnClientProtocols { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "bgp_settings")]
-        public sealed class bgp_settings : nterraform.Core.structure
-        {
-            public bgp_settings()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "asn", @out: true, min: 0, max: 1)]
-            public int? @Asn { get; }
-
-            [nterraform.Core.TerraformProperty(name: "peer_weight", @out: true, min: 0, max: 1)]
-            public int? @PeerWeight { get; }
-
-            [nterraform.Core.TerraformProperty(name: "peering_address", @out: true, min: 0, max: 1)]
-            public string @PeeringAddress { get; }
         }
 
         public azurerm_virtual_network_gateway(string @name,

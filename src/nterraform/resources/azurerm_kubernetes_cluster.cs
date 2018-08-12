@@ -1,26 +1,33 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_kubernetes_cluster")]
     public sealed class azurerm_kubernetes_cluster : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "service_principal")]
-        public sealed class service_principal : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_profile")]
+        public sealed class network_profile : nterraform.Core.structure
         {
-            public service_principal(string @clientId,
-                                     string @clientSecret)
+            public network_profile(string @networkPlugin)
             {
-                @ClientId = @clientId;
-                @ClientSecret = @clientSecret;
+                @NetworkPlugin = @networkPlugin;
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
-            public string @ClientId { get; }
+            [nterraform.Core.TerraformProperty(name: "network_plugin", @out: false, min: 1, max: 1)]
+            public string @NetworkPlugin { get; }
 
-            [nterraform.Core.TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
-            public string @ClientSecret { get; }
+            [nterraform.Core.TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
+            public string @DnsServiceIp { get; }
+
+            [nterraform.Core.TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
+            public string @DockerBridgeCidr { get; }
+
+            [nterraform.Core.TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
+            public string @PodCidr { get; }
+
+            [nterraform.Core.TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
+            public string @ServiceCidr { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "kube_config")]
@@ -81,29 +88,22 @@ namespace nterraform.resources.azurerm
             public ssh_key[] @SshKey { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_profile")]
-        public sealed class network_profile : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "service_principal")]
+        public sealed class service_principal : nterraform.Core.structure
         {
-            public network_profile(string @networkPlugin)
+            public service_principal(string @clientId,
+                                     string @clientSecret)
             {
-                @NetworkPlugin = @networkPlugin;
+                @ClientId = @clientId;
+                @ClientSecret = @clientSecret;
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "network_plugin", @out: false, min: 1, max: 1)]
-            public string @NetworkPlugin { get; }
+            [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
+            public string @ClientId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
-            public string @DnsServiceIp { get; }
-
-            [nterraform.Core.TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
-            public string @DockerBridgeCidr { get; }
-
-            [nterraform.Core.TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
-            public string @PodCidr { get; }
-
-            [nterraform.Core.TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
-            public string @ServiceCidr { get; }
+            [nterraform.Core.TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
+            public string @ClientSecret { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "agent_pool_profile")]

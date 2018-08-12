@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_azuread_service_principal_password")]
     public sealed class azurerm_azuread_service_principal_password : nterraform.Core.resource

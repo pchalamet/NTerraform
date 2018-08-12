@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_user_assigned_identity")]
     public sealed class azurerm_user_assigned_identity : nterraform.Core.resource

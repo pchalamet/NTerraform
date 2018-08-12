@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_eventgrid_topic")]
     public sealed class azurerm_eventgrid_topic : nterraform.Core.resource

@@ -1,38 +1,10 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_scheduler_job")]
     public sealed class azurerm_scheduler_job : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "error_action_storage_queue")]
-        public sealed class error_action_storage_queue : nterraform.Core.structure
-        {
-            public error_action_storage_queue(string @message,
-                                              string @sasToken,
-                                              string @storageAccountName,
-                                              string @storageQueueName)
-            {
-                @Message = @message;
-                @SasToken = @sasToken;
-                @StorageAccountName = @storageAccountName;
-                @StorageQueueName = @storageQueueName;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "message", @out: false, min: 1, max: 1)]
-            public string @Message { get; }
-
-            [nterraform.Core.TerraformProperty(name: "sas_token", @out: false, min: 1, max: 1)]
-            public string @SasToken { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
-            public string @StorageAccountName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_queue_name", @out: false, min: 1, max: 1)]
-            public string @StorageQueueName { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
         public sealed class recurrence : nterraform.Core.structure
         {
@@ -100,24 +72,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "week_days", @out: false, min: 0, max: 1)]
             public string[] @WeekDays { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "retry")]
-        public sealed class retry : nterraform.Core.structure
-        {
-            public retry(int? @count = null,
-                         string @interval = null)
-            {
-                @Count = @count;
-                @Interval = @interval;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
-            public int? @Count { get; }
-
-            [nterraform.Core.TerraformProperty(name: "interval", @out: false, min: 0, max: 1)]
-            public string @Interval { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "action_web")]
@@ -374,6 +328,52 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "headers", @out: false, min: 0, max: 1)]
             public Dictionary<string,string> @Headers { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "error_action_storage_queue")]
+        public sealed class error_action_storage_queue : nterraform.Core.structure
+        {
+            public error_action_storage_queue(string @message,
+                                              string @sasToken,
+                                              string @storageAccountName,
+                                              string @storageQueueName)
+            {
+                @Message = @message;
+                @SasToken = @sasToken;
+                @StorageAccountName = @storageAccountName;
+                @StorageQueueName = @storageQueueName;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "message", @out: false, min: 1, max: 1)]
+            public string @Message { get; }
+
+            [nterraform.Core.TerraformProperty(name: "sas_token", @out: false, min: 1, max: 1)]
+            public string @SasToken { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
+            public string @StorageAccountName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_queue_name", @out: false, min: 1, max: 1)]
+            public string @StorageQueueName { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "retry")]
+        public sealed class retry : nterraform.Core.structure
+        {
+            public retry(int? @count = null,
+                         string @interval = null)
+            {
+                @Count = @count;
+                @Interval = @interval;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "count", @out: false, min: 0, max: 1)]
+            public int? @Count { get; }
+
+            [nterraform.Core.TerraformProperty(name: "interval", @out: false, min: 0, max: 1)]
+            public string @Interval { get; }
         }
 
         public azurerm_scheduler_job(string @jobCollectionName,

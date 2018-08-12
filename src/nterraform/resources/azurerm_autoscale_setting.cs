@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_autoscale_setting")]
     public sealed class azurerm_autoscale_setting : nterraform.Core.resource
@@ -67,57 +67,6 @@ namespace nterraform.resources.azurerm
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "profile")]
         public sealed class profile : nterraform.Core.structure
         {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
-            public sealed class recurrence : nterraform.Core.structure
-            {
-                public recurrence(string[] @days,
-                                  int[] @hours,
-                                  int[] @minutes,
-                                  string @timezone = null)
-                {
-                    @Days = @days;
-                    @Hours = @hours;
-                    @Minutes = @minutes;
-                    @Timezone = @timezone;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "days", @out: false, min: 1, max: 1)]
-                public string[] @Days { get; }
-
-                [nterraform.Core.TerraformProperty(name: "hours", @out: false, min: 1, max: 1)]
-                public int[] @Hours { get; }
-
-                [nterraform.Core.TerraformProperty(name: "minutes", @out: false, min: 1, max: 1)]
-                public int[] @Minutes { get; }
-
-                [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
-                public string @Timezone { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "capacity")]
-            public sealed class capacity : nterraform.Core.structure
-            {
-                public capacity(int @default,
-                                int @maximum,
-                                int @minimum)
-                {
-                    @Default = @default;
-                    @Maximum = @maximum;
-                    @Minimum = @minimum;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "default", @out: false, min: 1, max: 1)]
-                public int @Default { get; }
-
-                [nterraform.Core.TerraformProperty(name: "maximum", @out: false, min: 1, max: 1)]
-                public int @Maximum { get; }
-
-                [nterraform.Core.TerraformProperty(name: "minimum", @out: false, min: 1, max: 1)]
-                public int @Minimum { get; }
-            }
-
             [nterraform.Core.TerraformStructure(category: "resource", typeName: "rule")]
             public sealed class rule : nterraform.Core.structure
             {
@@ -233,6 +182,57 @@ namespace nterraform.resources.azurerm
 
                 [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
                 public string @Timezone { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "recurrence")]
+            public sealed class recurrence : nterraform.Core.structure
+            {
+                public recurrence(string[] @days,
+                                  int[] @hours,
+                                  int[] @minutes,
+                                  string @timezone = null)
+                {
+                    @Days = @days;
+                    @Hours = @hours;
+                    @Minutes = @minutes;
+                    @Timezone = @timezone;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "days", @out: false, min: 1, max: 1)]
+                public string[] @Days { get; }
+
+                [nterraform.Core.TerraformProperty(name: "hours", @out: false, min: 1, max: 1)]
+                public int[] @Hours { get; }
+
+                [nterraform.Core.TerraformProperty(name: "minutes", @out: false, min: 1, max: 1)]
+                public int[] @Minutes { get; }
+
+                [nterraform.Core.TerraformProperty(name: "timezone", @out: false, min: 0, max: 1)]
+                public string @Timezone { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "capacity")]
+            public sealed class capacity : nterraform.Core.structure
+            {
+                public capacity(int @default,
+                                int @maximum,
+                                int @minimum)
+                {
+                    @Default = @default;
+                    @Maximum = @maximum;
+                    @Minimum = @minimum;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "default", @out: false, min: 1, max: 1)]
+                public int @Default { get; }
+
+                [nterraform.Core.TerraformProperty(name: "maximum", @out: false, min: 1, max: 1)]
+                public int @Maximum { get; }
+
+                [nterraform.Core.TerraformProperty(name: "minimum", @out: false, min: 1, max: 1)]
+                public int @Minimum { get; }
             }
 
             public profile(capacity[] @capacity,

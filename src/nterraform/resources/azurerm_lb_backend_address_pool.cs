@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_lb_backend_address_pool")]
     public sealed class azurerm_lb_backend_address_pool : nterraform.Core.resource

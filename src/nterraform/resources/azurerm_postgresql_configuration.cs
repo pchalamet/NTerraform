@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_postgresql_configuration")]
     public sealed class azurerm_postgresql_configuration : nterraform.Core.resource

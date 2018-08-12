@@ -1,6 +1,6 @@
 ﻿using nterraform;
 using nterraform.providers;
-using nterraform.resources.azurerm;
+using nterraform.resources;
 
 namespace SandboxCS
 {

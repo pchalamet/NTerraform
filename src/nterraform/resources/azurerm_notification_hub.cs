@@ -1,10 +1,23 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_notification_hub")]
     public sealed class azurerm_notification_hub : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "gcm_credential")]
+        public sealed class gcm_credential : nterraform.Core.structure
+        {
+            public gcm_credential(string @apiKey)
+            {
+                @ApiKey = @apiKey;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "api_key", @out: false, min: 1, max: 1)]
+            public string @ApiKey { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "apns_credential")]
         public sealed class apns_credential : nterraform.Core.structure
         {
@@ -36,19 +49,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 1, max: 1)]
             public string @Token { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "gcm_credential")]
-        public sealed class gcm_credential : nterraform.Core.structure
-        {
-            public gcm_credential(string @apiKey)
-            {
-                @ApiKey = @apiKey;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "api_key", @out: false, min: 1, max: 1)]
-            public string @ApiKey { get; }
         }
 
         public azurerm_notification_hub(string @location,

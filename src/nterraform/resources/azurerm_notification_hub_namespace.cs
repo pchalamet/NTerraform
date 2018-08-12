@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_notification_hub_namespace")]
     public sealed class azurerm_notification_hub_namespace : nterraform.Core.resource

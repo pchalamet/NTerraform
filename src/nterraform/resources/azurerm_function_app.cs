@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_function_app")]
     public sealed class azurerm_function_app : nterraform.Core.resource
@@ -18,29 +18,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
             public string @Username { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]
-        public sealed class connection_string : nterraform.Core.structure
-        {
-            public connection_string(string @name,
-                                     string @type,
-                                     string @value)
-            {
-                @Name = @name;
-                @Type = @type;
-                @Value = @value;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
-            public string @Value { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
@@ -83,6 +60,29 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "websockets_enabled", @out: false, min: 0, max: 1)]
             public bool? @WebsocketsEnabled { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]
+        public sealed class connection_string : nterraform.Core.structure
+        {
+            public connection_string(string @name,
+                                     string @type,
+                                     string @value)
+            {
+                @Name = @name;
+                @Type = @type;
+                @Value = @value;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+            public string @Value { get; }
         }
 
         public azurerm_function_app(string @appServicePlanId,

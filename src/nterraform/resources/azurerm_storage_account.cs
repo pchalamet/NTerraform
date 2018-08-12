@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_storage_account")]
     public sealed class azurerm_storage_account : nterraform.Core.resource
@@ -24,6 +24,24 @@ namespace nterraform.resources.azurerm
             public string @TenantId { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "custom_domain")]
+        public sealed class custom_domain : nterraform.Core.structure
+        {
+            public custom_domain(string @name,
+                                 bool? @useSubdomain = null)
+            {
+                @Name = @name;
+                @UseSubdomain = @useSubdomain;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "use_subdomain", @out: false, min: 0, max: 1)]
+            public bool? @UseSubdomain { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_rules")]
         public sealed class network_rules : nterraform.Core.structure
         {
@@ -43,24 +61,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "virtual_network_subnet_ids", @out: false, min: 0, max: 1)]
             public string[] @VirtualNetworkSubnetIds { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "custom_domain")]
-        public sealed class custom_domain : nterraform.Core.structure
-        {
-            public custom_domain(string @name,
-                                 bool? @useSubdomain = null)
-            {
-                @Name = @name;
-                @UseSubdomain = @useSubdomain;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "use_subdomain", @out: false, min: 0, max: 1)]
-            public bool? @UseSubdomain { get; }
         }
 
         public azurerm_storage_account(string @accountReplicationType,

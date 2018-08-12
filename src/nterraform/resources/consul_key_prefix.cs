@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.consul
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "consul_key_prefix")]
     public sealed class consul_key_prefix : nterraform.Core.resource

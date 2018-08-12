@@ -1,28 +1,10 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.consul
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "consul_prepared_query")]
     public sealed class consul_prepared_query : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "failover")]
-        public sealed class failover : nterraform.Core.structure
-        {
-            public failover(string[] @datacenters = null,
-                            int? @nearestN = null)
-            {
-                @Datacenters = @datacenters;
-                @NearestN = @nearestN;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "datacenters", @out: false, min: 0, max: 1)]
-            public string[] @Datacenters { get; }
-
-            [nterraform.Core.TerraformProperty(name: "nearest_n", @out: false, min: 0, max: 1)]
-            public int? @NearestN { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "dns")]
         public sealed class dns : nterraform.Core.structure
         {
@@ -52,6 +34,24 @@ namespace nterraform.resources.consul
 
             [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
             public string @Type { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "failover")]
+        public sealed class failover : nterraform.Core.structure
+        {
+            public failover(string[] @datacenters = null,
+                            int? @nearestN = null)
+            {
+                @Datacenters = @datacenters;
+                @NearestN = @nearestN;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "datacenters", @out: false, min: 0, max: 1)]
+            public string[] @Datacenters { get; }
+
+            [nterraform.Core.TerraformProperty(name: "nearest_n", @out: false, min: 0, max: 1)]
+            public int? @NearestN { get; }
         }
 
         public consul_prepared_query(string @name,

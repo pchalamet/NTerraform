@@ -1,28 +1,10 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_redis_cache")]
     public sealed class azurerm_redis_cache : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "patch_schedule")]
-        public sealed class patch_schedule : nterraform.Core.structure
-        {
-            public patch_schedule(string @dayOfWeek,
-                                  int? @startHourUtc = null)
-            {
-                @DayOfWeek = @dayOfWeek;
-                @StartHourUtc = @startHourUtc;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "day_of_week", @out: false, min: 1, max: 1)]
-            public string @DayOfWeek { get; }
-
-            [nterraform.Core.TerraformProperty(name: "start_hour_utc", @out: false, min: 0, max: 1)]
-            public int? @StartHourUtc { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "redis_configuration")]
         public sealed class redis_configuration : nterraform.Core.structure
         {
@@ -68,6 +50,24 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "rdb_storage_connection_string", @out: false, min: 0, max: 1)]
             public string @RdbStorageConnectionString { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "patch_schedule")]
+        public sealed class patch_schedule : nterraform.Core.structure
+        {
+            public patch_schedule(string @dayOfWeek,
+                                  int? @startHourUtc = null)
+            {
+                @DayOfWeek = @dayOfWeek;
+                @StartHourUtc = @startHourUtc;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "day_of_week", @out: false, min: 1, max: 1)]
+            public string @DayOfWeek { get; }
+
+            [nterraform.Core.TerraformProperty(name: "start_hour_utc", @out: false, min: 0, max: 1)]
+            public int? @StartHourUtc { get; }
         }
 
         public azurerm_redis_cache(int @capacity,

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_redis_firewall_rule")]
     public sealed class azurerm_redis_firewall_rule : nterraform.Core.resource

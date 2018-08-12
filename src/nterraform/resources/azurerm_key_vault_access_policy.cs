@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_key_vault_access_policy")]
     public sealed class azurerm_key_vault_access_policy : nterraform.Core.resource

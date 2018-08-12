@@ -1,23 +1,26 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.azurerm
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "site_credential")]
-        public sealed class site_credential : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "connection_string")]
+        public sealed class connection_string : nterraform.Core.structure
         {
-            public site_credential()
+            public connection_string()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
+            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
 
-            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
+            [nterraform.Core.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
+            public string @Value { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "source_control")]
@@ -145,22 +148,19 @@ namespace nterraform.datas.azurerm
             public bool? @WebsocketsEnabled { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "connection_string")]
-        public sealed class connection_string : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "site_credential")]
+        public sealed class site_credential : nterraform.Core.structure
         {
-            public connection_string()
+            public site_credential()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
+            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
 
-            [nterraform.Core.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
-            public string @Value { get; }
+            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
         }
 
         public azurerm_app_service(string @name,

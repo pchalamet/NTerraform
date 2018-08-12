@@ -1,10 +1,79 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.azurerm
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_kubernetes_cluster")]
     public sealed class azurerm_kubernetes_cluster : nterraform.Core.data
     {
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "agent_pool_profile")]
+        public sealed class agent_pool_profile : nterraform.Core.structure
+        {
+            public agent_pool_profile()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "count", @out: true, min: 0, max: 1)]
+            public int? @Count { get; }
+
+            [nterraform.Core.TerraformProperty(name: "dns_prefix", @out: true, min: 0, max: 1)]
+            public string @DnsPrefix { get; }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "os_disk_size_gb", @out: true, min: 0, max: 1)]
+            public int? @OsDiskSizeGb { get; }
+
+            [nterraform.Core.TerraformProperty(name: "os_type", @out: true, min: 0, max: 1)]
+            public string @OsType { get; }
+
+            [nterraform.Core.TerraformProperty(name: "vm_size", @out: true, min: 0, max: 1)]
+            public string @VmSize { get; }
+
+            [nterraform.Core.TerraformProperty(name: "vnet_subnet_id", @out: true, min: 0, max: 1)]
+            public string @VnetSubnetId { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "service_principal")]
+        public sealed class service_principal : nterraform.Core.structure
+        {
+            public service_principal()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "client_id", @out: true, min: 0, max: 1)]
+            public string @ClientId { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "kube_config")]
+        public sealed class kube_config : nterraform.Core.structure
+        {
+            public kube_config()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
+            public string @ClientCertificate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "client_key", @out: true, min: 0, max: 1)]
+            public string @ClientKey { get; }
+
+            [nterraform.Core.TerraformProperty(name: "cluster_ca_certificate", @out: true, min: 0, max: 1)]
+            public string @ClusterCaCertificate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "host", @out: true, min: 0, max: 1)]
+            public string @Host { get; }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
+
+            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "data", typeName: "linux_profile")]
         public sealed class linux_profile : nterraform.Core.structure
         {
@@ -55,75 +124,6 @@ namespace nterraform.datas.azurerm
 
             [nterraform.Core.TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
             public string @ServiceCidr { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "kube_config")]
-        public sealed class kube_config : nterraform.Core.structure
-        {
-            public kube_config()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
-            public string @ClientCertificate { get; }
-
-            [nterraform.Core.TerraformProperty(name: "client_key", @out: true, min: 0, max: 1)]
-            public string @ClientKey { get; }
-
-            [nterraform.Core.TerraformProperty(name: "cluster_ca_certificate", @out: true, min: 0, max: 1)]
-            public string @ClusterCaCertificate { get; }
-
-            [nterraform.Core.TerraformProperty(name: "host", @out: true, min: 0, max: 1)]
-            public string @Host { get; }
-
-            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "agent_pool_profile")]
-        public sealed class agent_pool_profile : nterraform.Core.structure
-        {
-            public agent_pool_profile()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "count", @out: true, min: 0, max: 1)]
-            public int? @Count { get; }
-
-            [nterraform.Core.TerraformProperty(name: "dns_prefix", @out: true, min: 0, max: 1)]
-            public string @DnsPrefix { get; }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "os_disk_size_gb", @out: true, min: 0, max: 1)]
-            public int? @OsDiskSizeGb { get; }
-
-            [nterraform.Core.TerraformProperty(name: "os_type", @out: true, min: 0, max: 1)]
-            public string @OsType { get; }
-
-            [nterraform.Core.TerraformProperty(name: "vm_size", @out: true, min: 0, max: 1)]
-            public string @VmSize { get; }
-
-            [nterraform.Core.TerraformProperty(name: "vnet_subnet_id", @out: true, min: 0, max: 1)]
-            public string @VnetSubnetId { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "service_principal")]
-        public sealed class service_principal : nterraform.Core.structure
-        {
-            public service_principal()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "client_id", @out: true, min: 0, max: 1)]
-            public string @ClientId { get; }
         }
 
         public azurerm_kubernetes_cluster(string @name,

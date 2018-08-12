@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_sql_virtual_network_rule")]
     public sealed class azurerm_sql_virtual_network_rule : nterraform.Core.resource

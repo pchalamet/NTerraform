@@ -3,7 +3,7 @@
 
 open nterraform
 open nterraform.providers
-open nterraform.resources.azurerm
+open nterraform.resources
 
 let provider = azurerm(environment = "dev")
 

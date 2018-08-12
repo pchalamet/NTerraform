@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_scheduler_job_collection")]
     public sealed class azurerm_scheduler_job_collection : nterraform.Core.resource

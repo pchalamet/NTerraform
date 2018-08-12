@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_app_service_active_slot")]
     public sealed class azurerm_app_service_active_slot : nterraform.Core.resource

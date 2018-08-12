@@ -1,13 +1,93 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_key_vault_certificate")]
     public sealed class azurerm_key_vault_certificate : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate")]
+        public sealed class certificate : nterraform.Core.structure
+        {
+            public certificate(string @contents,
+                               string @password = null)
+            {
+                @Contents = @contents;
+                @Password = @password;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "contents", @out: false, min: 1, max: 1)]
+            public string @Contents { get; }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 0, max: 1)]
+            public string @Password { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate_policy")]
         public sealed class certificate_policy : nterraform.Core.structure
         {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "lifetime_action")]
+            public sealed class lifetime_action : nterraform.Core.structure
+            {
+                [nterraform.Core.TerraformStructure(category: "resource", typeName: "action")]
+                public sealed class action : nterraform.Core.structure
+                {
+                    public action(string @actionType)
+                    {
+                        @ActionType = @actionType;
+                        base._validate_();
+                    }
+
+                    [nterraform.Core.TerraformProperty(name: "action_type", @out: false, min: 1, max: 1)]
+                    public string @ActionType { get; }
+                }
+
+                [nterraform.Core.TerraformStructure(category: "resource", typeName: "trigger")]
+                public sealed class trigger : nterraform.Core.structure
+                {
+                    public trigger(int? @daysBeforeExpiry = null,
+                                   int? @lifetimePercentage = null)
+                    {
+                        @DaysBeforeExpiry = @daysBeforeExpiry;
+                        @LifetimePercentage = @lifetimePercentage;
+                        base._validate_();
+                    }
+
+                    [nterraform.Core.TerraformProperty(name: "days_before_expiry", @out: false, min: 0, max: 1)]
+                    public int? @DaysBeforeExpiry { get; }
+
+                    [nterraform.Core.TerraformProperty(name: "lifetime_percentage", @out: false, min: 0, max: 1)]
+                    public int? @LifetimePercentage { get; }
+                }
+
+                public lifetime_action(action[] @action,
+                                       trigger[] @trigger)
+                {
+                    @Action = @action;
+                    @Trigger = @trigger;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "action", @out: false, min: 1, max: 1)]
+                public action[] @Action { get; }
+
+                [nterraform.Core.TerraformProperty(name: "trigger", @out: false, min: 1, max: 1)]
+                public trigger[] @Trigger { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "secret_properties")]
+            public sealed class secret_properties : nterraform.Core.structure
+            {
+                public secret_properties(string @contentType)
+                {
+                    @ContentType = @contentType;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "content_type", @out: false, min: 1, max: 1)]
+                public string @ContentType { get; }
+            }
+
             [nterraform.Core.TerraformStructure(category: "resource", typeName: "x509_certificate_properties")]
             public sealed class x509_certificate_properties : nterraform.Core.structure
             {
@@ -72,68 +152,6 @@ namespace nterraform.resources.azurerm
                 public bool @ReuseKey { get; }
             }
 
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "lifetime_action")]
-            public sealed class lifetime_action : nterraform.Core.structure
-            {
-                [nterraform.Core.TerraformStructure(category: "resource", typeName: "action")]
-                public sealed class action : nterraform.Core.structure
-                {
-                    public action(string @actionType)
-                    {
-                        @ActionType = @actionType;
-                        base._validate_();
-                    }
-
-                    [nterraform.Core.TerraformProperty(name: "action_type", @out: false, min: 1, max: 1)]
-                    public string @ActionType { get; }
-                }
-
-                [nterraform.Core.TerraformStructure(category: "resource", typeName: "trigger")]
-                public sealed class trigger : nterraform.Core.structure
-                {
-                    public trigger(int? @daysBeforeExpiry = null,
-                                   int? @lifetimePercentage = null)
-                    {
-                        @DaysBeforeExpiry = @daysBeforeExpiry;
-                        @LifetimePercentage = @lifetimePercentage;
-                        base._validate_();
-                    }
-
-                    [nterraform.Core.TerraformProperty(name: "days_before_expiry", @out: false, min: 0, max: 1)]
-                    public int? @DaysBeforeExpiry { get; }
-
-                    [nterraform.Core.TerraformProperty(name: "lifetime_percentage", @out: false, min: 0, max: 1)]
-                    public int? @LifetimePercentage { get; }
-                }
-
-                public lifetime_action(action[] @action,
-                                       trigger[] @trigger)
-                {
-                    @Action = @action;
-                    @Trigger = @trigger;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "action", @out: false, min: 1, max: 1)]
-                public action[] @Action { get; }
-
-                [nterraform.Core.TerraformProperty(name: "trigger", @out: false, min: 1, max: 1)]
-                public trigger[] @Trigger { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "secret_properties")]
-            public sealed class secret_properties : nterraform.Core.structure
-            {
-                public secret_properties(string @contentType)
-                {
-                    @ContentType = @contentType;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "content_type", @out: false, min: 1, max: 1)]
-                public string @ContentType { get; }
-            }
-
             public certificate_policy(issuer_parameters[] @issuerParameters,
                                       key_properties[] @keyProperties,
                                       secret_properties[] @secretProperties,
@@ -162,24 +180,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "x509_certificate_properties", @out: false, min: 0, max: 1)]
             public x509_certificate_properties[] @X509CertificateProperties { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate")]
-        public sealed class certificate : nterraform.Core.structure
-        {
-            public certificate(string @contents,
-                               string @password = null)
-            {
-                @Contents = @contents;
-                @Password = @password;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "contents", @out: false, min: 1, max: 1)]
-            public string @Contents { get; }
-
-            [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 0, max: 1)]
-            public string @Password { get; }
         }
 
         public azurerm_key_vault_certificate(certificate_policy[] @certificatePolicy,

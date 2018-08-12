@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_cosmosdb_account")]
     public sealed class azurerm_cosmosdb_account : nterraform.Core.resource
@@ -29,29 +29,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "prefix", @out: false, min: 0, max: 1)]
             public string @Prefix { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "consistency_policy")]
-        public sealed class consistency_policy : nterraform.Core.structure
-        {
-            public consistency_policy(string @consistencyLevel,
-                                      int? @maxIntervalInSeconds = null,
-                                      int? @maxStalenessPrefix = null)
-            {
-                @ConsistencyLevel = @consistencyLevel;
-                @MaxIntervalInSeconds = @maxIntervalInSeconds;
-                @MaxStalenessPrefix = @maxStalenessPrefix;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "consistency_level", @out: false, min: 1, max: 1)]
-            public string @ConsistencyLevel { get; }
-
-            [nterraform.Core.TerraformProperty(name: "max_interval_in_seconds", @out: false, min: 0, max: 1)]
-            public int? @MaxIntervalInSeconds { get; }
-
-            [nterraform.Core.TerraformProperty(name: "max_staleness_prefix", @out: false, min: 0, max: 1)]
-            public int? @MaxStalenessPrefix { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "capabilities")]
@@ -86,6 +63,29 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
             public string @Id { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "consistency_policy")]
+        public sealed class consistency_policy : nterraform.Core.structure
+        {
+            public consistency_policy(string @consistencyLevel,
+                                      int? @maxIntervalInSeconds = null,
+                                      int? @maxStalenessPrefix = null)
+            {
+                @ConsistencyLevel = @consistencyLevel;
+                @MaxIntervalInSeconds = @maxIntervalInSeconds;
+                @MaxStalenessPrefix = @maxStalenessPrefix;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "consistency_level", @out: false, min: 1, max: 1)]
+            public string @ConsistencyLevel { get; }
+
+            [nterraform.Core.TerraformProperty(name: "max_interval_in_seconds", @out: false, min: 0, max: 1)]
+            public int? @MaxIntervalInSeconds { get; }
+
+            [nterraform.Core.TerraformProperty(name: "max_staleness_prefix", @out: false, min: 0, max: 1)]
+            public int? @MaxStalenessPrefix { get; }
         }
 
         public azurerm_cosmosdb_account(consistency_policy[] @consistencyPolicy,

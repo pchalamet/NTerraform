@@ -1,50 +1,10 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.consul
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "consul_nodes")]
     public sealed class consul_nodes : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "nodes")]
-        public sealed class nodes : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "data", typeName: "tagged_addresses")]
-            public sealed class tagged_addresses : nterraform.Core.structure
-            {
-                public tagged_addresses()
-                {
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
-                public string @Lan { get; }
-
-                [nterraform.Core.TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
-                public string @Wan { get; }
-            }
-
-            public nodes(Dictionary<string,tagged_addresses> @taggedAddresses = null)
-            {
-                @TaggedAddresses = @taggedAddresses;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
-            public string @Address { get; }
-
-            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
-            public string @Id { get; }
-
-            [nterraform.Core.TerraformProperty(name: "meta", @out: true, min: 0, max: 1)]
-            public Dictionary<string,string> @Meta { get; }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tagged_addresses", @out: false, min: 0, max: 0)]
-            public Dictionary<string,tagged_addresses> @TaggedAddresses { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "query_options")]
         public sealed class query_options : nterraform.Core.structure
         {
@@ -91,6 +51,46 @@ namespace nterraform.datas.consul
 
             [nterraform.Core.TerraformProperty(name: "wait_time", @out: false, min: 0, max: 1)]
             public string @WaitTime { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "nodes")]
+        public sealed class nodes : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "data", typeName: "tagged_addresses")]
+            public sealed class tagged_addresses : nterraform.Core.structure
+            {
+                public tagged_addresses()
+                {
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
+                public string @Lan { get; }
+
+                [nterraform.Core.TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
+                public string @Wan { get; }
+            }
+
+            public nodes(Dictionary<string,tagged_addresses> @taggedAddresses = null)
+            {
+                @TaggedAddresses = @taggedAddresses;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "address", @out: true, min: 0, max: 1)]
+            public string @Address { get; }
+
+            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            public string @Id { get; }
+
+            [nterraform.Core.TerraformProperty(name: "meta", @out: true, min: 0, max: 1)]
+            public Dictionary<string,string> @Meta { get; }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "tagged_addresses", @out: false, min: 0, max: 0)]
+            public Dictionary<string,tagged_addresses> @TaggedAddresses { get; }
         }
 
         public consul_nodes(nodes[] @nodes = null,

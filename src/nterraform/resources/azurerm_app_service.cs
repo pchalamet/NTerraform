@@ -1,10 +1,44 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
+        public sealed class identity : nterraform.Core.structure
+        {
+            public identity(string @type)
+            {
+                @Type = @type;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
+            public string @PrincipalId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
+            public string @TenantId { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "source_control")]
+        public sealed class source_control : nterraform.Core.structure
+        {
+            public source_control()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
+            public string @Branch { get; }
+
+            [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
+            public string @RepoUrl { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_credential")]
         public sealed class site_credential : nterraform.Core.structure
         {
@@ -128,40 +162,6 @@ namespace nterraform.resources.azurerm
 
             [nterraform.Core.TerraformProperty(name: "websockets_enabled", @out: true, min: 0, max: 1)]
             public bool? @WebsocketsEnabled { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "source_control")]
-        public sealed class source_control : nterraform.Core.structure
-        {
-            public source_control()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
-            public string @Branch { get; }
-
-            [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
-            public string @RepoUrl { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
-        public sealed class identity : nterraform.Core.structure
-        {
-            public identity(string @type)
-            {
-                @Type = @type;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-            public string @TenantId { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]

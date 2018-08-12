@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.resources.azurerm
+namespace nterraform.resources
 {
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_eventhub_consumer_group")]
     public sealed class azurerm_eventhub_consumer_group : nterraform.Core.resource

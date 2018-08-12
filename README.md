@@ -50,9 +50,11 @@ resource "azurerm_virtual_network" "network" {
 
 Which can be rewritten as an F# script:
 ```fsharp
+#r "nterraform.dll"
+
 open nterraform
 open nterraform.providers
-open nterraform.resources.azurerm
+open nterraform.resources
 
 let provider = azurerm(environment = "dev")
 

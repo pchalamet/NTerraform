@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.consul
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "consul_keys")]
     public sealed class consul_keys : nterraform.Core.data

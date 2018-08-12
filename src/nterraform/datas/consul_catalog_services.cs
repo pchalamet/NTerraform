@@ -1,22 +1,10 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.consul
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "consul_catalog_services")]
     public sealed class consul_catalog_services : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "services")]
-        public sealed class services : nterraform.Core.structure
-        {
-            public services()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
-            public string[] @Tags { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "query_options")]
         public sealed class query_options : nterraform.Core.structure
         {
@@ -63,6 +51,18 @@ namespace nterraform.datas.consul
 
             [nterraform.Core.TerraformProperty(name: "wait_time", @out: false, min: 0, max: 1)]
             public string @WaitTime { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "services")]
+        public sealed class services : nterraform.Core.structure
+        {
+            public services()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
+            public string[] @Tags { get; }
         }
 
         public consul_catalog_services(query_options[] @queryOptions = null,

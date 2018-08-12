@@ -1,20 +1,44 @@
 using System.Collections.Generic;
 
-namespace nterraform.datas.consul
+namespace nterraform.datas
 {
     [nterraform.Core.TerraformStructure(category: "data", typeName: "consul_agent_self")]
     public sealed class consul_agent_self : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "performance")]
-        public sealed class performance : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "dns")]
+        public sealed class dns : nterraform.Core.structure
         {
-            public performance()
+            public dns()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "raft_multiplier", @out: true, min: 0, max: 1)]
-            public string @RaftMultiplier { get; }
+            [nterraform.Core.TerraformProperty(name: "allow_stale", @out: true, min: 0, max: 1)]
+            public bool? @AllowStale { get; }
+
+            [nterraform.Core.TerraformProperty(name: "enable_compression", @out: true, min: 0, max: 1)]
+            public bool? @EnableCompression { get; }
+
+            [nterraform.Core.TerraformProperty(name: "enable_truncate", @out: true, min: 0, max: 1)]
+            public bool? @EnableTruncate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "max_stale", @out: true, min: 0, max: 1)]
+            public string @MaxStale { get; }
+
+            [nterraform.Core.TerraformProperty(name: "node_ttl", @out: true, min: 0, max: 1)]
+            public string @NodeTtl { get; }
+
+            [nterraform.Core.TerraformProperty(name: "only_passing", @out: true, min: 0, max: 1)]
+            public bool? @OnlyPassing { get; }
+
+            [nterraform.Core.TerraformProperty(name: "recursor_timeout", @out: true, min: 0, max: 1)]
+            public string @RecursorTimeout { get; }
+
+            [nterraform.Core.TerraformProperty(name: "service_ttl", @out: true, min: 0, max: 1)]
+            public string @ServiceTtl { get; }
+
+            [nterraform.Core.TerraformProperty(name: "udp_answer_limit", @out: true, min: 0, max: 1)]
+            public int? @UdpAnswerLimit { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "ports")]
@@ -47,43 +71,49 @@ namespace nterraform.datas.consul
             public int? @Server { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "addresses")]
-        public sealed class addresses : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "tagged_addresses")]
+        public sealed class tagged_addresses : nterraform.Core.structure
         {
-            public addresses()
+            public tagged_addresses()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "dns", @out: true, min: 0, max: 1)]
-            public string @Dns { get; }
+            [nterraform.Core.TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
+            public string @Lan { get; }
 
-            [nterraform.Core.TerraformProperty(name: "http", @out: true, min: 0, max: 1)]
-            public string @Http { get; }
-
-            [nterraform.Core.TerraformProperty(name: "https", @out: true, min: 0, max: 1)]
-            public string @Https { get; }
-
-            [nterraform.Core.TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
-            public string @Rpc { get; }
+            [nterraform.Core.TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
+            public string @Wan { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "advertise_addrs")]
-        public sealed class advertise_addrs : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "unix_sockets")]
+        public sealed class unix_sockets : nterraform.Core.structure
         {
-            public advertise_addrs()
+            public unix_sockets()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
-            public string @Rpc { get; }
+            [nterraform.Core.TerraformProperty(name: "group", @out: true, min: 0, max: 1)]
+            public string @Group { get; }
 
-            [nterraform.Core.TerraformProperty(name: "serf_lan", @out: true, min: 0, max: 1)]
-            public string @SerfLan { get; }
+            [nterraform.Core.TerraformProperty(name: "mode", @out: true, min: 0, max: 1)]
+            public string @Mode { get; }
 
-            [nterraform.Core.TerraformProperty(name: "serf_wan", @out: true, min: 0, max: 1)]
-            public string @SerfWan { get; }
+            [nterraform.Core.TerraformProperty(name: "user", @out: true, min: 0, max: 1)]
+            public string @User { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "performance")]
+        public sealed class performance : nterraform.Core.structure
+        {
+            public performance()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "raft_multiplier", @out: true, min: 0, max: 1)]
+            public string @RaftMultiplier { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "retry_join_gce")]
@@ -105,6 +135,24 @@ namespace nterraform.datas.consul
 
             [nterraform.Core.TerraformProperty(name: "zone_pattern", @out: true, min: 0, max: 1)]
             public string @ZonePattern { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "retry_join_ec2")]
+        public sealed class retry_join_ec2 : nterraform.Core.structure
+        {
+            public retry_join_ec2()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "region", @out: true, min: 0, max: 1)]
+            public string @Region { get; }
+
+            [nterraform.Core.TerraformProperty(name: "tag_key", @out: true, min: 0, max: 1)]
+            public string @TagKey { get; }
+
+            [nterraform.Core.TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
+            public string @TagValue { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "telemetry")]
@@ -173,91 +221,43 @@ namespace nterraform.datas.consul
             public string @StatsitePrefix { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "retry_join_ec2")]
-        public sealed class retry_join_ec2 : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "advertise_addrs")]
+        public sealed class advertise_addrs : nterraform.Core.structure
         {
-            public retry_join_ec2()
+            public advertise_addrs()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "region", @out: true, min: 0, max: 1)]
-            public string @Region { get; }
+            [nterraform.Core.TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
+            public string @Rpc { get; }
 
-            [nterraform.Core.TerraformProperty(name: "tag_key", @out: true, min: 0, max: 1)]
-            public string @TagKey { get; }
+            [nterraform.Core.TerraformProperty(name: "serf_lan", @out: true, min: 0, max: 1)]
+            public string @SerfLan { get; }
 
-            [nterraform.Core.TerraformProperty(name: "tag_value", @out: true, min: 0, max: 1)]
-            public string @TagValue { get; }
+            [nterraform.Core.TerraformProperty(name: "serf_wan", @out: true, min: 0, max: 1)]
+            public string @SerfWan { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "dns")]
-        public sealed class dns : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "addresses")]
+        public sealed class addresses : nterraform.Core.structure
         {
-            public dns()
+            public addresses()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "allow_stale", @out: true, min: 0, max: 1)]
-            public bool? @AllowStale { get; }
+            [nterraform.Core.TerraformProperty(name: "dns", @out: true, min: 0, max: 1)]
+            public string @Dns { get; }
 
-            [nterraform.Core.TerraformProperty(name: "enable_compression", @out: true, min: 0, max: 1)]
-            public bool? @EnableCompression { get; }
+            [nterraform.Core.TerraformProperty(name: "http", @out: true, min: 0, max: 1)]
+            public string @Http { get; }
 
-            [nterraform.Core.TerraformProperty(name: "enable_truncate", @out: true, min: 0, max: 1)]
-            public bool? @EnableTruncate { get; }
+            [nterraform.Core.TerraformProperty(name: "https", @out: true, min: 0, max: 1)]
+            public string @Https { get; }
 
-            [nterraform.Core.TerraformProperty(name: "max_stale", @out: true, min: 0, max: 1)]
-            public string @MaxStale { get; }
-
-            [nterraform.Core.TerraformProperty(name: "node_ttl", @out: true, min: 0, max: 1)]
-            public string @NodeTtl { get; }
-
-            [nterraform.Core.TerraformProperty(name: "only_passing", @out: true, min: 0, max: 1)]
-            public bool? @OnlyPassing { get; }
-
-            [nterraform.Core.TerraformProperty(name: "recursor_timeout", @out: true, min: 0, max: 1)]
-            public string @RecursorTimeout { get; }
-
-            [nterraform.Core.TerraformProperty(name: "service_ttl", @out: true, min: 0, max: 1)]
-            public string @ServiceTtl { get; }
-
-            [nterraform.Core.TerraformProperty(name: "udp_answer_limit", @out: true, min: 0, max: 1)]
-            public int? @UdpAnswerLimit { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "tagged_addresses")]
-        public sealed class tagged_addresses : nterraform.Core.structure
-        {
-            public tagged_addresses()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "lan", @out: true, min: 0, max: 1)]
-            public string @Lan { get; }
-
-            [nterraform.Core.TerraformProperty(name: "wan", @out: true, min: 0, max: 1)]
-            public string @Wan { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "unix_sockets")]
-        public sealed class unix_sockets : nterraform.Core.structure
-        {
-            public unix_sockets()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "group", @out: true, min: 0, max: 1)]
-            public string @Group { get; }
-
-            [nterraform.Core.TerraformProperty(name: "mode", @out: true, min: 0, max: 1)]
-            public string @Mode { get; }
-
-            [nterraform.Core.TerraformProperty(name: "user", @out: true, min: 0, max: 1)]
-            public string @User { get; }
+            [nterraform.Core.TerraformProperty(name: "rpc", @out: true, min: 0, max: 1)]
+            public string @Rpc { get; }
         }
 
         public consul_agent_self(Dictionary<string,addresses> @addresses = null,
