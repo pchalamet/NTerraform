@@ -8,10 +8,10 @@ namespace nterraform.Hosts
     {
         public string Name => "dotnet-script";
 
-        public Dictionary<string, object> GetVariables()
+        public Dictionary<string, structure> GetVariables()
         {
             var currentClass = MethodBase.GetCurrentMethod().DeclaringType;
-            return new Dictionary<string, object>();
+            return new Dictionary<string, structure>();
         }
     }
 }
