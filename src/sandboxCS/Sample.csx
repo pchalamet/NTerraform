@@ -6,7 +6,6 @@ using nterraform;
 using nterraform.providers;
 using nterraform.resources;
 
-Console.WriteLine("Creating schema...");
 var provider = new azurerm(environment: "dev");
 var networkrg = new azurerm_resource_group(name: "production",
                                            location: "West US");
@@ -20,6 +19,4 @@ var network = new azurerm_virtual_network(name: "production-network",
                                           resourceGroupName: networkrg.Name,
                                           subnet: networkSubnets);
 
-Console.WriteLine("Building schema...");
 configuration.build();
-Console.WriteLine("Done");
