@@ -143,3 +143,4 @@ There is already an F# generator but it miss module support so conflicts can ari
 F# types would be far better
 * immutable collections & native F# collection (list, Map & Set)
 This is a low priority as C# host is still considered (using dotnet-script).
+Branch `feature/fsharptypes` does support FSharp's list, set, map and option. But this bring too little values to go forward with that for the moment.
