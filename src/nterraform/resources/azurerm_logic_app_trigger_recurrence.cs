@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_logic_app_trigger_recurrence")]
-    public sealed class azurerm_logic_app_trigger_recurrence : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_logic_app_trigger_recurrence")]
+    public sealed class azurerm_logic_app_trigger_recurrence : nterraform.resource
     {
         public azurerm_logic_app_trigger_recurrence(string @frequency,
                                                     int @interval,
@@ -17,16 +17,16 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "frequency", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "frequency", @out: false, min: 1, max: 1)]
         public string @Frequency { get; }
 
-        [nterraform.Core.TerraformProperty(name: "interval", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "interval", @out: false, min: 1, max: 1)]
         public int @Interval { get; }
 
-        [nterraform.Core.TerraformProperty(name: "logic_app_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "logic_app_id", @out: false, min: 1, max: 1)]
         public string @LogicAppId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
     }
 

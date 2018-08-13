@@ -2,14 +2,14 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_wafregional_regex_match_set")]
-    public sealed class aws_wafregional_regex_match_set : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_wafregional_regex_match_set")]
+    public sealed class aws_wafregional_regex_match_set : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "regex_match_tuple")]
-        public sealed class regex_match_tuple : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "regex_match_tuple")]
+        public sealed class regex_match_tuple : nterraform.structure
         {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "field_to_match")]
-            public sealed class field_to_match : nterraform.Core.structure
+            [nterraform.TerraformStructure(category: "resource", typeName: "field_to_match")]
+            public sealed class field_to_match : nterraform.structure
             {
                 public field_to_match(string @type,
                                       string @data = null)
@@ -19,10 +19,10 @@ namespace nterraform.resources
                     base._validate_();
                 }
 
-                [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+                [nterraform.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
                 public string @Type { get; }
 
-                [nterraform.Core.TerraformProperty(name: "data", @out: false, min: 0, max: 1)]
+                [nterraform.TerraformProperty(name: "data", @out: false, min: 0, max: 1)]
                 public string @Data { get; }
             }
 
@@ -36,13 +36,13 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "field_to_match", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "field_to_match", @out: false, min: 1, max: 1)]
             public field_to_match[] @FieldToMatch { get; }
 
-            [nterraform.Core.TerraformProperty(name: "regex_pattern_set_id", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "regex_pattern_set_id", @out: false, min: 1, max: 1)]
             public string @RegexPatternSetId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "text_transformation", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "text_transformation", @out: false, min: 1, max: 1)]
             public string @TextTransformation { get; }
         }
 
@@ -54,10 +54,10 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "regex_match_tuple", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "regex_match_tuple", @out: false, min: 0, max: 0)]
         public regex_match_tuple[] @RegexMatchTuple { get; }
     }
 

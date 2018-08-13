@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_postgresql_configuration")]
-    public sealed class azurerm_postgresql_configuration : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_postgresql_configuration")]
+    public sealed class azurerm_postgresql_configuration : nterraform.resource
     {
         public azurerm_postgresql_configuration(string @name,
                                                 string @resourceGroupName,
@@ -17,16 +17,16 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "server_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "server_name", @out: false, min: 1, max: 1)]
         public string @ServerName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
         public string @Value { get; }
     }
 

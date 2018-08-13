@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_elastic_beanstalk_application")]
-    public sealed class aws_elastic_beanstalk_application : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_elastic_beanstalk_application")]
+    public sealed class aws_elastic_beanstalk_application : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "appversion_lifecycle")]
-        public sealed class appversion_lifecycle : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "appversion_lifecycle")]
+        public sealed class appversion_lifecycle : nterraform.structure
         {
             public appversion_lifecycle(string @serviceRole,
                                         bool? @deleteSourceFromS3 = null,
@@ -20,16 +20,16 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "service_role", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "service_role", @out: false, min: 1, max: 1)]
             public string @ServiceRole { get; }
 
-            [nterraform.Core.TerraformProperty(name: "delete_source_from_s3", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "delete_source_from_s3", @out: false, min: 0, max: 1)]
             public bool? @DeleteSourceFromS3 { get; }
 
-            [nterraform.Core.TerraformProperty(name: "max_age_in_days", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "max_age_in_days", @out: false, min: 0, max: 1)]
             public int? @MaxAgeInDays { get; }
 
-            [nterraform.Core.TerraformProperty(name: "max_count", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "max_count", @out: false, min: 0, max: 1)]
             public int? @MaxCount { get; }
         }
 
@@ -43,13 +43,13 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "appversion_lifecycle", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "appversion_lifecycle", @out: false, min: 0, max: 1)]
         public appversion_lifecycle[] @AppversionLifecycle { get; }
 
-        [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
     }
 

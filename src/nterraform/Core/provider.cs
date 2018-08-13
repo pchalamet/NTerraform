@@ -1,4 +1,4 @@
-﻿namespace nterraform.Core
+﻿namespace nterraform
 {
     public abstract class provider : structure
     {

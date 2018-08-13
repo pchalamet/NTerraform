@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.datas
 {
-    [nterraform.Core.TerraformStructure(category: "data", typeName: "aws_elb_hosted_zone_id")]
-    public sealed class aws_elb_hosted_zone_id : nterraform.Core.data
+    [nterraform.TerraformStructure(category: "data", typeName: "aws_elb_hosted_zone_id")]
+    public sealed class aws_elb_hosted_zone_id : nterraform.data
     {
         public aws_elb_hosted_zone_id(string @region = null)
         {
@@ -11,7 +11,7 @@ namespace nterraform.datas
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "region", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "region", @out: false, min: 0, max: 1)]
         public string @Region { get; }
     }
 

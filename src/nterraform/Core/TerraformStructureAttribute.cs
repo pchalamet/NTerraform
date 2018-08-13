@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace nterraform.Core
+namespace nterraform
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class TerraformStructureAttribute : Attribute

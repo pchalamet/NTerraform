@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_waf_rate_based_rule")]
-    public sealed class aws_waf_rate_based_rule : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_waf_rate_based_rule")]
+    public sealed class aws_waf_rate_based_rule : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "predicates")]
-        public sealed class predicates : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "predicates")]
+        public sealed class predicates : nterraform.structure
         {
             public predicates(string @dataId,
                               bool @negated,
@@ -18,13 +18,13 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "data_id", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "data_id", @out: false, min: 1, max: 1)]
             public string @DataId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "negated", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "negated", @out: false, min: 1, max: 1)]
             public bool @Negated { get; }
 
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
             public string @Type { get; }
         }
 
@@ -42,19 +42,19 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "metric_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "metric_name", @out: false, min: 1, max: 1)]
         public string @MetricName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "rate_key", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "rate_key", @out: false, min: 1, max: 1)]
         public string @RateKey { get; }
 
-        [nterraform.Core.TerraformProperty(name: "rate_limit", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "rate_limit", @out: false, min: 1, max: 1)]
         public int @RateLimit { get; }
 
-        [nterraform.Core.TerraformProperty(name: "predicates", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "predicates", @out: false, min: 0, max: 0)]
         public predicates[] @Predicates { get; }
     }
 

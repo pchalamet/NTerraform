@@ -24,15 +24,15 @@ namespace nterraform.Hosts
                 var value = prop.GetValue(null);
                 switch (value)
                 {
-                    case nterraform.Core.data data:
+                    case nterraform.data data:
                         dict.Add(prop.Name, data);
                         break;
 
-                    case nterraform.Core.provider provider:
+                    case nterraform.provider provider:
                         dict.Add(prop.Name, provider);
                         break;
 
-                    case nterraform.Core.resource resource:
+                    case nterraform.resource resource:
                         dict.Add(prop.Name, resource);
                         break;
                 }

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_role_definition")]
-    public sealed class azurerm_role_definition : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_role_definition")]
+    public sealed class azurerm_role_definition : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "permissions")]
-        public sealed class permissions : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "permissions")]
+        public sealed class permissions : nterraform.structure
         {
             public permissions(string[] @actions = null,
                                string[] @notActions = null)
@@ -16,10 +16,10 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "actions", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "actions", @out: false, min: 0, max: 1)]
             public string[] @Actions { get; }
 
-            [nterraform.Core.TerraformProperty(name: "not_actions", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "not_actions", @out: false, min: 0, max: 1)]
             public string[] @NotActions { get; }
         }
 
@@ -37,22 +37,22 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "assignable_scopes", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "assignable_scopes", @out: false, min: 1, max: 1)]
         public string[] @AssignableScopes { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "permissions", @out: false, min: 1, max: 0)]
+        [nterraform.TerraformProperty(name: "permissions", @out: false, min: 1, max: 0)]
         public permissions[] @Permissions { get; }
 
-        [nterraform.Core.TerraformProperty(name: "scope", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "scope", @out: false, min: 1, max: 1)]
         public string @Scope { get; }
 
-        [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
 
-        [nterraform.Core.TerraformProperty(name: "role_definition_id", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "role_definition_id", @out: true, min: 0, max: 1)]
         public string @RoleDefinitionId { get; }
     }
 

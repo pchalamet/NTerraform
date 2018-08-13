@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_dns_txt_record")]
-    public sealed class azurerm_dns_txt_record : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_dns_txt_record")]
+    public sealed class azurerm_dns_txt_record : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "record")]
-        public sealed class record : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "record")]
+        public sealed class record : nterraform.structure
         {
             public record(string @value)
             {
@@ -14,7 +14,7 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
             public string @Value { get; }
         }
 
@@ -32,22 +32,22 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "record", @out: false, min: 1, max: 0)]
+        [nterraform.TerraformProperty(name: "record", @out: false, min: 1, max: 0)]
         public record[] @Record { get; }
 
-        [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "ttl", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "ttl", @out: false, min: 1, max: 1)]
         public int @Ttl { get; }
 
-        [nterraform.Core.TerraformProperty(name: "zone_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "zone_name", @out: false, min: 1, max: 1)]
         public string @ZoneName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

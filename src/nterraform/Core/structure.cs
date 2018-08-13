@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace nterraform.Core
+namespace nterraform
 {
     public abstract class structure
     {

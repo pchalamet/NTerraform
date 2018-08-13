@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_main_route_table_association")]
-    public sealed class aws_main_route_table_association : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_main_route_table_association")]
+    public sealed class aws_main_route_table_association : nterraform.resource
     {
         public aws_main_route_table_association(string @routeTableId,
                                                 string @vpcId)
@@ -13,13 +13,13 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "route_table_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "route_table_id", @out: false, min: 1, max: 1)]
         public string @RouteTableId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "vpc_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "vpc_id", @out: false, min: 1, max: 1)]
         public string @VpcId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "original_route_table_id", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "original_route_table_id", @out: true, min: 0, max: 1)]
         public string @OriginalRouteTableId { get; }
     }
 

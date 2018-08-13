@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_network_interface")]
-    public sealed class aws_network_interface : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_network_interface")]
+    public sealed class aws_network_interface : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "attachment")]
-        public sealed class attachment : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "attachment")]
+        public sealed class attachment : nterraform.structure
         {
             public attachment(int @deviceIndex,
                               string @instance)
@@ -16,13 +16,13 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "device_index", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "device_index", @out: false, min: 1, max: 1)]
             public int @DeviceIndex { get; }
 
-            [nterraform.Core.TerraformProperty(name: "instance", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "instance", @out: false, min: 1, max: 1)]
             public string @Instance { get; }
 
-            [nterraform.Core.TerraformProperty(name: "attachment_id", @out: true, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "attachment_id", @out: true, min: 0, max: 1)]
             public string @AttachmentId { get; }
         }
 
@@ -40,34 +40,34 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "subnet_id", @out: false, min: 1, max: 1)]
         public string @SubnetId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "attachment", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "attachment", @out: false, min: 0, max: 0)]
         public attachment[] @Attachment { get; }
 
-        [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
 
-        [nterraform.Core.TerraformProperty(name: "private_dns_name", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "private_dns_name", @out: true, min: 0, max: 1)]
         public string @PrivateDnsName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "private_ip", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "private_ip", @out: true, min: 0, max: 1)]
         public string @PrivateIp { get; }
 
-        [nterraform.Core.TerraformProperty(name: "private_ips", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "private_ips", @out: true, min: 0, max: 1)]
         public string[] @PrivateIps { get; }
 
-        [nterraform.Core.TerraformProperty(name: "private_ips_count", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "private_ips_count", @out: true, min: 0, max: 1)]
         public int? @PrivateIpsCount { get; }
 
-        [nterraform.Core.TerraformProperty(name: "security_groups", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "security_groups", @out: true, min: 0, max: 1)]
         public string[] @SecurityGroups { get; }
 
-        [nterraform.Core.TerraformProperty(name: "source_dest_check", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "source_dest_check", @out: false, min: 0, max: 1)]
         public bool? @SourceDestCheck { get; }
 
-        [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
     }
 

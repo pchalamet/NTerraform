@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_key_vault_key")]
-    public sealed class azurerm_key_vault_key : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_key_vault_key")]
+    public sealed class azurerm_key_vault_key : nterraform.resource
     {
         public azurerm_key_vault_key(string[] @keyOpts,
                                      int @keySize,
@@ -19,31 +19,31 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "key_opts", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "key_opts", @out: false, min: 1, max: 1)]
         public string[] @KeyOpts { get; }
 
-        [nterraform.Core.TerraformProperty(name: "key_size", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "key_size", @out: false, min: 1, max: 1)]
         public int @KeySize { get; }
 
-        [nterraform.Core.TerraformProperty(name: "key_type", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "key_type", @out: false, min: 1, max: 1)]
         public string @KeyType { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "vault_uri", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "vault_uri", @out: false, min: 1, max: 1)]
         public string @VaultUri { get; }
 
-        [nterraform.Core.TerraformProperty(name: "e", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "e", @out: true, min: 0, max: 1)]
         public string @E { get; }
 
-        [nterraform.Core.TerraformProperty(name: "n", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "n", @out: true, min: 0, max: 1)]
         public string @N { get; }
 
-        [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
         public string @Version { get; }
     }
 

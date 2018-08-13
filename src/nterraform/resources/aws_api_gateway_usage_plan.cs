@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_api_gateway_usage_plan")]
-    public sealed class aws_api_gateway_usage_plan : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_api_gateway_usage_plan")]
+    public sealed class aws_api_gateway_usage_plan : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "api_stages")]
-        public sealed class api_stages : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "api_stages")]
+        public sealed class api_stages : nterraform.structure
         {
             public api_stages(string @apiId,
                               string @stage)
@@ -16,15 +16,15 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "api_id", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "api_id", @out: false, min: 1, max: 1)]
             public string @ApiId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "stage", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "stage", @out: false, min: 1, max: 1)]
             public string @Stage { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "quota_settings")]
-        public sealed class quota_settings : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "quota_settings")]
+        public sealed class quota_settings : nterraform.structure
         {
             public quota_settings(int @limit,
                                   string @period,
@@ -36,18 +36,18 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "limit", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "limit", @out: false, min: 1, max: 1)]
             public int @Limit { get; }
 
-            [nterraform.Core.TerraformProperty(name: "period", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "period", @out: false, min: 1, max: 1)]
             public string @Period { get; }
 
-            [nterraform.Core.TerraformProperty(name: "offset", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "offset", @out: false, min: 0, max: 1)]
             public int? @Offset { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "throttle_settings")]
-        public sealed class throttle_settings : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "throttle_settings")]
+        public sealed class throttle_settings : nterraform.structure
         {
             public throttle_settings(int? @burstLimit = null,
                                      int? @rateLimit = null)
@@ -57,10 +57,10 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "burst_limit", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "burst_limit", @out: false, min: 0, max: 1)]
             public int? @BurstLimit { get; }
 
-            [nterraform.Core.TerraformProperty(name: "rate_limit", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "rate_limit", @out: false, min: 0, max: 1)]
             public int? @RateLimit { get; }
         }
 
@@ -80,22 +80,22 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "api_stages", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "api_stages", @out: false, min: 0, max: 0)]
         public api_stages[] @ApiStages { get; }
 
-        [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
 
-        [nterraform.Core.TerraformProperty(name: "product_code", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "product_code", @out: false, min: 0, max: 1)]
         public string @ProductCode { get; }
 
-        [nterraform.Core.TerraformProperty(name: "quota_settings", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "quota_settings", @out: false, min: 0, max: 1)]
         public quota_settings[] @QuotaSettings { get; }
 
-        [nterraform.Core.TerraformProperty(name: "throttle_settings", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "throttle_settings", @out: false, min: 0, max: 1)]
         public throttle_settings[] @ThrottleSettings { get; }
     }
 

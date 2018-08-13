@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_gamelift_build")]
-    public sealed class aws_gamelift_build : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_gamelift_build")]
+    public sealed class aws_gamelift_build : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_location")]
-        public sealed class storage_location : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "storage_location")]
+        public sealed class storage_location : nterraform.structure
         {
             public storage_location(string @bucket,
                                     string @key,
@@ -18,13 +18,13 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "bucket", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "bucket", @out: false, min: 1, max: 1)]
             public string @Bucket { get; }
 
-            [nterraform.Core.TerraformProperty(name: "key", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "key", @out: false, min: 1, max: 1)]
             public string @Key { get; }
 
-            [nterraform.Core.TerraformProperty(name: "role_arn", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "role_arn", @out: false, min: 1, max: 1)]
             public string @RoleArn { get; }
         }
 
@@ -40,16 +40,16 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "operating_system", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "operating_system", @out: false, min: 1, max: 1)]
         public string @OperatingSystem { get; }
 
-        [nterraform.Core.TerraformProperty(name: "storage_location", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "storage_location", @out: false, min: 1, max: 1)]
         public storage_location[] @StorageLocation { get; }
 
-        [nterraform.Core.TerraformProperty(name: "version", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "version", @out: false, min: 0, max: 1)]
         public string @Version { get; }
     }
 

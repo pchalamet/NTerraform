@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_azuread_service_principal")]
-    public sealed class azurerm_azuread_service_principal : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_azuread_service_principal")]
+    public sealed class azurerm_azuread_service_principal : nterraform.resource
     {
         public azurerm_azuread_service_principal(string @applicationId)
         {
@@ -11,10 +11,10 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "application_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "application_id", @out: false, min: 1, max: 1)]
         public string @ApplicationId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "display_name", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "display_name", @out: true, min: 0, max: 1)]
         public string @DisplayName { get; }
     }
 

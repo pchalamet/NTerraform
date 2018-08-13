@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_iothub")]
-    public sealed class azurerm_iothub : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_iothub")]
+    public sealed class azurerm_iothub : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
-        public sealed class sku : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "sku")]
+        public sealed class sku : nterraform.structure
         {
             public sku(int @capacity,
                        string @name,
@@ -18,34 +18,34 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
             public int @Capacity { get; }
 
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [nterraform.Core.TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "tier", @out: false, min: 1, max: 1)]
             public string @Tier { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "shared_access_policy")]
-        public sealed class shared_access_policy : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "shared_access_policy")]
+        public sealed class shared_access_policy : nterraform.structure
         {
             public shared_access_policy()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "key_name", @out: true, min: 0, max: 1)]
             public string @KeyName { get; }
 
-            [nterraform.Core.TerraformProperty(name: "permissions", @out: true, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "permissions", @out: true, min: 0, max: 1)]
             public string @Permissions { get; }
 
-            [nterraform.Core.TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "primary_key", @out: true, min: 0, max: 1)]
             public string @PrimaryKey { get; }
 
-            [nterraform.Core.TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "secondary_key", @out: true, min: 0, max: 1)]
             public string @SecondaryKey { get; }
         }
 
@@ -63,28 +63,28 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "sku", @out: false, min: 1, max: 1)]
         public sku[] @Sku { get; }
 
-        [nterraform.Core.TerraformProperty(name: "hostname", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "hostname", @out: true, min: 0, max: 1)]
         public string @Hostname { get; }
 
-        [nterraform.Core.TerraformProperty(name: "shared_access_policy", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "shared_access_policy", @out: false, min: 0, max: 0)]
         public shared_access_policy[] @SharedAccessPolicy { get; }
 
-        [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [nterraform.Core.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "type", @out: true, min: 0, max: 1)]
         public string @Type { get; }
     }
 

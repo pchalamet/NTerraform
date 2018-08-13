@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_storage_blob")]
-    public sealed class azurerm_storage_blob : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_storage_blob")]
+    public sealed class azurerm_storage_blob : nterraform.resource
     {
         public azurerm_storage_blob(string @name,
                                     string @resourceGroupName,
@@ -31,40 +31,40 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "storage_account_name", @out: false, min: 1, max: 1)]
         public string @StorageAccountName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "storage_container_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "storage_container_name", @out: false, min: 1, max: 1)]
         public string @StorageContainerName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "attempts", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "attempts", @out: false, min: 0, max: 1)]
         public int? @Attempts { get; }
 
-        [nterraform.Core.TerraformProperty(name: "content_type", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "content_type", @out: false, min: 0, max: 1)]
         public string @ContentType { get; }
 
-        [nterraform.Core.TerraformProperty(name: "parallelism", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "parallelism", @out: false, min: 0, max: 1)]
         public int? @Parallelism { get; }
 
-        [nterraform.Core.TerraformProperty(name: "size", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "size", @out: false, min: 0, max: 1)]
         public int? @Size { get; }
 
-        [nterraform.Core.TerraformProperty(name: "source", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "source", @out: false, min: 0, max: 1)]
         public string @Source { get; }
 
-        [nterraform.Core.TerraformProperty(name: "source_uri", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "source_uri", @out: false, min: 0, max: 1)]
         public string @SourceUri { get; }
 
-        [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "type", @out: false, min: 0, max: 1)]
         public string @Type { get; }
 
-        [nterraform.Core.TerraformProperty(name: "url", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "url", @out: true, min: 0, max: 1)]
         public string @Url { get; }
     }
 

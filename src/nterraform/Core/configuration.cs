@@ -56,12 +56,12 @@ namespace nterraform
         private static void WriteObject(int indent, string decl, object var)
         {
             var sindent = new String(' ', indent);
-            var typeAttribute = var.GetType().GetCustomAttribute<Core.TerraformStructureAttribute>();
+            var typeAttribute = var.GetType().GetCustomAttribute<TerraformStructureAttribute>();
 
             Console.WriteLine($"{decl} {{");
             foreach (var prop in var.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
-                var propAttribute = prop.GetCustomAttribute<Core.TerraformPropertyAttribute>();
+                var propAttribute = prop.GetCustomAttribute<TerraformPropertyAttribute>();
                 if (propAttribute.Out)
                     continue;
 
@@ -90,7 +90,7 @@ namespace nterraform
 
         private static void ProcessVariable(string name, object var)
         {
-            var typeAttribute = var.GetType().GetCustomAttribute<Core.TerraformStructureAttribute>();
+            var typeAttribute = var.GetType().GetCustomAttribute<TerraformStructureAttribute>();
             var decl = $"{typeAttribute.Category} \"{typeAttribute.TypeName}\" \"{name}\"";
             WriteObject(0, decl, var);
             Console.WriteLine();

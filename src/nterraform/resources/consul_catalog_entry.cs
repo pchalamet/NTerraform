@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "consul_catalog_entry")]
-    public sealed class consul_catalog_entry : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "consul_catalog_entry")]
+    public sealed class consul_catalog_entry : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "service")]
-        public sealed class service : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "service")]
+        public sealed class service : nterraform.structure
         {
             public service(string @name,
                            string @address = null,
@@ -20,19 +20,19 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [nterraform.Core.TerraformProperty(name: "address", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "address", @out: false, min: 0, max: 1)]
             public string @Address { get; }
 
-            [nterraform.Core.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "id", @out: true, min: 0, max: 1)]
             public string @Id { get; }
 
-            [nterraform.Core.TerraformProperty(name: "port", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "port", @out: false, min: 0, max: 1)]
             public int? @Port { get; }
 
-            [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
             public string[] @Tags { get; }
         }
 
@@ -48,19 +48,19 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "address", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "address", @out: false, min: 1, max: 1)]
         public string @Address { get; }
 
-        [nterraform.Core.TerraformProperty(name: "node", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "node", @out: false, min: 1, max: 1)]
         public string @Node { get; }
 
-        [nterraform.Core.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "datacenter", @out: true, min: 0, max: 1)]
         public string @Datacenter { get; }
 
-        [nterraform.Core.TerraformProperty(name: "service", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "service", @out: false, min: 0, max: 0)]
         public service[] @Service { get; }
 
-        [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }
     }
 

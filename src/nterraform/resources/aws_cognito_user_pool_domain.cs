@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_cognito_user_pool_domain")]
-    public sealed class aws_cognito_user_pool_domain : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_cognito_user_pool_domain")]
+    public sealed class aws_cognito_user_pool_domain : nterraform.resource
     {
         public aws_cognito_user_pool_domain(string @domain,
                                             string @userPoolId)
@@ -13,22 +13,22 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "domain", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "domain", @out: false, min: 1, max: 1)]
         public string @Domain { get; }
 
-        [nterraform.Core.TerraformProperty(name: "user_pool_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "user_pool_id", @out: false, min: 1, max: 1)]
         public string @UserPoolId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "aws_account_id", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "aws_account_id", @out: true, min: 0, max: 1)]
         public string @AwsAccountId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "cloudfront_distribution_arn", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "cloudfront_distribution_arn", @out: true, min: 0, max: 1)]
         public string @CloudfrontDistributionArn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "s3_bucket", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "s3_bucket", @out: true, min: 0, max: 1)]
         public string @S3Bucket { get; }
 
-        [nterraform.Core.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "version", @out: true, min: 0, max: 1)]
         public string @Version { get; }
     }
 

@@ -102,7 +102,7 @@ let rec generateType plugin category typeName fields =
                                                                             (x.Name |> toCamlCase))
                                                                             
             let attributes = orderedParameters
-                                |> List.map (fun x -> sprintf "%s[nterraform.Core.TerraformProperty(name: %A, @out: %s, min: %d, max: %d)]"
+                                |> List.map (fun x -> sprintf "%s[nterraform.TerraformProperty(name: %A, @out: %s, min: %d, max: %d)]"
                                                             space8
                                                             x.Name
                                                             ((x.Modifier = Modifier.Out) ? ("true", "false"))
@@ -116,8 +116,8 @@ let rec generateType plugin category typeName fields =
 
             let attrXmembers = List.zip attributes members
 
-            yield sprintf "%s[nterraform.Core.TerraformStructure(category: %A, typeName: %A)]" space4 category name
-            yield sprintf "%spublic sealed class %s : nterraform.Core.%s" space4 className baseType
+            yield sprintf "%s[nterraform.TerraformStructure(category: %A, typeName: %A)]" space4 category name
+            yield sprintf "%spublic sealed class %s : nterraform.%s" space4 className baseType
             yield sprintf "%s{" space4
 
             yield! generateFields fields

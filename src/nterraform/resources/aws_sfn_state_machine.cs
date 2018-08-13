@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_sfn_state_machine")]
-    public sealed class aws_sfn_state_machine : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_sfn_state_machine")]
+    public sealed class aws_sfn_state_machine : nterraform.resource
     {
         public aws_sfn_state_machine(string @definition,
                                      string @name,
@@ -15,19 +15,19 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "definition", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "definition", @out: false, min: 1, max: 1)]
         public string @Definition { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "role_arn", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "role_arn", @out: false, min: 1, max: 1)]
         public string @RoleArn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "creation_date", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "creation_date", @out: true, min: 0, max: 1)]
         public string @CreationDate { get; }
 
-        [nterraform.Core.TerraformProperty(name: "status", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "status", @out: true, min: 0, max: 1)]
         public string @Status { get; }
     }
 

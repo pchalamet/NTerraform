@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_cognito_resource_server")]
-    public sealed class aws_cognito_resource_server : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_cognito_resource_server")]
+    public sealed class aws_cognito_resource_server : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "scope")]
-        public sealed class scope : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "scope")]
+        public sealed class scope : nterraform.structure
         {
             public scope(string @scopeDescription,
                          string @scopeName)
@@ -16,10 +16,10 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "scope_description", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "scope_description", @out: false, min: 1, max: 1)]
             public string @ScopeDescription { get; }
 
-            [nterraform.Core.TerraformProperty(name: "scope_name", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "scope_name", @out: false, min: 1, max: 1)]
             public string @ScopeName { get; }
         }
 
@@ -35,19 +35,19 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "identifier", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "identifier", @out: false, min: 1, max: 1)]
         public string @Identifier { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "user_pool_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "user_pool_id", @out: false, min: 1, max: 1)]
         public string @UserPoolId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "scope", @out: false, min: 0, max: 25)]
+        [nterraform.TerraformProperty(name: "scope", @out: false, min: 0, max: 25)]
         public scope[] @Scope { get; }
 
-        [nterraform.Core.TerraformProperty(name: "scope_identifiers", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "scope_identifiers", @out: true, min: 0, max: 1)]
         public string[] @ScopeIdentifiers { get; }
     }
 

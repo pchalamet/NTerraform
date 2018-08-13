@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.datas
 {
-    [nterraform.Core.TerraformStructure(category: "data", typeName: "aws_ecr_repository")]
-    public sealed class aws_ecr_repository : nterraform.Core.data
+    [nterraform.TerraformStructure(category: "data", typeName: "aws_ecr_repository")]
+    public sealed class aws_ecr_repository : nterraform.data
     {
         public aws_ecr_repository(string @name)
         {
@@ -11,16 +11,16 @@ namespace nterraform.datas
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
         public string @Arn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "registry_id", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "registry_id", @out: true, min: 0, max: 1)]
         public string @RegistryId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "repository_url", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "repository_url", @out: true, min: 0, max: 1)]
         public string @RepositoryUrl { get; }
     }
 

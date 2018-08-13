@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_cognito_identity_pool")]
-    public sealed class aws_cognito_identity_pool : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_cognito_identity_pool")]
+    public sealed class aws_cognito_identity_pool : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "cognito_identity_providers")]
-        public sealed class cognito_identity_providers : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "cognito_identity_providers")]
+        public sealed class cognito_identity_providers : nterraform.structure
         {
             public cognito_identity_providers(string @clientId = null,
                                               string @providerName = null,
@@ -18,13 +18,13 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "client_id", @out: false, min: 0, max: 1)]
             public string @ClientId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "provider_name", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "provider_name", @out: false, min: 0, max: 1)]
             public string @ProviderName { get; }
 
-            [nterraform.Core.TerraformProperty(name: "server_side_token_check", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "server_side_token_check", @out: false, min: 0, max: 1)]
             public bool? @ServerSideTokenCheck { get; }
         }
 
@@ -46,28 +46,28 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "identity_pool_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "identity_pool_name", @out: false, min: 1, max: 1)]
         public string @IdentityPoolName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "allow_unauthenticated_identities", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "allow_unauthenticated_identities", @out: false, min: 0, max: 1)]
         public bool? @AllowUnauthenticatedIdentities { get; }
 
-        [nterraform.Core.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
         public string @Arn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "cognito_identity_providers", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "cognito_identity_providers", @out: false, min: 0, max: 0)]
         public cognito_identity_providers[] @CognitoIdentityProviders { get; }
 
-        [nterraform.Core.TerraformProperty(name: "developer_provider_name", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "developer_provider_name", @out: false, min: 0, max: 1)]
         public string @DeveloperProviderName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "openid_connect_provider_arns", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "openid_connect_provider_arns", @out: false, min: 0, max: 1)]
         public string[] @OpenidConnectProviderArns { get; }
 
-        [nterraform.Core.TerraformProperty(name: "saml_provider_arns", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "saml_provider_arns", @out: false, min: 0, max: 1)]
         public string[] @SamlProviderArns { get; }
 
-        [nterraform.Core.TerraformProperty(name: "supported_login_providers", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "supported_login_providers", @out: false, min: 0, max: 1)]
         public Dictionary<string,string> @SupportedLoginProviders { get; }
     }
 

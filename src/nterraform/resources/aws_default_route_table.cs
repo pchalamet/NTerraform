@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_default_route_table")]
-    public sealed class aws_default_route_table : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_default_route_table")]
+    public sealed class aws_default_route_table : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "route")]
-        public sealed class route : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "route")]
+        public sealed class route : nterraform.structure
         {
             public route(string @cidrBlock = null,
                          string @egressOnlyGatewayId = null,
@@ -28,28 +28,28 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "cidr_block", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "cidr_block", @out: false, min: 0, max: 1)]
             public string @CidrBlock { get; }
 
-            [nterraform.Core.TerraformProperty(name: "egress_only_gateway_id", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "egress_only_gateway_id", @out: false, min: 0, max: 1)]
             public string @EgressOnlyGatewayId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "gateway_id", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "gateway_id", @out: false, min: 0, max: 1)]
             public string @GatewayId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "instance_id", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "instance_id", @out: false, min: 0, max: 1)]
             public string @InstanceId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "ipv6_cidr_block", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "ipv6_cidr_block", @out: false, min: 0, max: 1)]
             public string @Ipv6CidrBlock { get; }
 
-            [nterraform.Core.TerraformProperty(name: "nat_gateway_id", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "nat_gateway_id", @out: false, min: 0, max: 1)]
             public string @NatGatewayId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "network_interface_id", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "network_interface_id", @out: false, min: 0, max: 1)]
             public string @NetworkInterfaceId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "vpc_peering_connection_id", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "vpc_peering_connection_id", @out: false, min: 0, max: 1)]
             public string @VpcPeeringConnectionId { get; }
         }
 
@@ -65,19 +65,19 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "default_route_table_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "default_route_table_id", @out: false, min: 1, max: 1)]
         public string @DefaultRouteTableId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "propagating_vgws", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "propagating_vgws", @out: false, min: 0, max: 1)]
         public string[] @PropagatingVgws { get; }
 
-        [nterraform.Core.TerraformProperty(name: "route", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "route", @out: false, min: 0, max: 0)]
         public route[] @Route { get; }
 
-        [nterraform.Core.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "tags", @out: false, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [nterraform.Core.TerraformProperty(name: "vpc_id", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "vpc_id", @out: true, min: 0, max: 1)]
         public string @VpcId { get; }
     }
 

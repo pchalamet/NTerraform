@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_ssm_maintenance_window_target")]
-    public sealed class aws_ssm_maintenance_window_target : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_ssm_maintenance_window_target")]
+    public sealed class aws_ssm_maintenance_window_target : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "targets")]
-        public sealed class targets : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "targets")]
+        public sealed class targets : nterraform.structure
         {
             public targets(string @key,
                            string[] @values)
@@ -16,10 +16,10 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "key", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "key", @out: false, min: 1, max: 1)]
             public string @Key { get; }
 
-            [nterraform.Core.TerraformProperty(name: "values", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "values", @out: false, min: 1, max: 1)]
             public string[] @Values { get; }
         }
 
@@ -35,16 +35,16 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "resource_type", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "resource_type", @out: false, min: 1, max: 1)]
         public string @ResourceType { get; }
 
-        [nterraform.Core.TerraformProperty(name: "targets", @out: false, min: 1, max: 5)]
+        [nterraform.TerraformProperty(name: "targets", @out: false, min: 1, max: 5)]
         public targets[] @Targets { get; }
 
-        [nterraform.Core.TerraformProperty(name: "window_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "window_id", @out: false, min: 1, max: 1)]
         public string @WindowId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "owner_information", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "owner_information", @out: false, min: 0, max: 1)]
         public string @OwnerInformation { get; }
     }
 

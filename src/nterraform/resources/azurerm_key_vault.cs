@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_key_vault")]
-    public sealed class azurerm_key_vault : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_key_vault")]
+    public sealed class azurerm_key_vault : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
-        public sealed class sku : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "sku")]
+        public sealed class sku : nterraform.structure
         {
             public sku(string @name)
             {
@@ -14,12 +14,12 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "access_policy")]
-        public sealed class access_policy : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "access_policy")]
+        public sealed class access_policy : nterraform.structure
         {
             public access_policy(string[] @keyPermissions,
                                  string @objectId,
@@ -37,22 +37,22 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "key_permissions", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "key_permissions", @out: false, min: 1, max: 1)]
             public string[] @KeyPermissions { get; }
 
-            [nterraform.Core.TerraformProperty(name: "object_id", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "object_id", @out: false, min: 1, max: 1)]
             public string @ObjectId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "secret_permissions", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "secret_permissions", @out: false, min: 1, max: 1)]
             public string[] @SecretPermissions { get; }
 
-            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
             public string @TenantId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "application_id", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "application_id", @out: false, min: 0, max: 1)]
             public string @ApplicationId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "certificate_permissions", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "certificate_permissions", @out: false, min: 0, max: 1)]
             public string[] @CertificatePermissions { get; }
         }
 
@@ -78,37 +78,37 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "sku", @out: false, min: 1, max: 0)]
+        [nterraform.TerraformProperty(name: "sku", @out: false, min: 1, max: 0)]
         public sku[] @Sku { get; }
 
-        [nterraform.Core.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "tenant_id", @out: false, min: 1, max: 1)]
         public string @TenantId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "access_policy", @out: false, min: 0, max: 16)]
+        [nterraform.TerraformProperty(name: "access_policy", @out: false, min: 0, max: 16)]
         public access_policy[] @AccessPolicy { get; }
 
-        [nterraform.Core.TerraformProperty(name: "enabled_for_deployment", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "enabled_for_deployment", @out: false, min: 0, max: 1)]
         public bool? @EnabledForDeployment { get; }
 
-        [nterraform.Core.TerraformProperty(name: "enabled_for_disk_encryption", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "enabled_for_disk_encryption", @out: false, min: 0, max: 1)]
         public bool? @EnabledForDiskEncryption { get; }
 
-        [nterraform.Core.TerraformProperty(name: "enabled_for_template_deployment", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "enabled_for_template_deployment", @out: false, min: 0, max: 1)]
         public bool? @EnabledForTemplateDeployment { get; }
 
-        [nterraform.Core.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "tags", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Tags { get; }
 
-        [nterraform.Core.TerraformProperty(name: "vault_uri", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "vault_uri", @out: true, min: 0, max: 1)]
         public string @VaultUri { get; }
     }
 

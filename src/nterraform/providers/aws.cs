@@ -2,11 +2,39 @@ using System.Collections.Generic;
 
 namespace nterraform.providers
 {
-    [nterraform.Core.TerraformStructure(category: "provider", typeName: "aws")]
-    public sealed class aws : nterraform.Core.provider
+    [nterraform.TerraformStructure(category: "provider", typeName: "aws")]
+    public sealed class aws : nterraform.provider
     {
-        [nterraform.Core.TerraformStructure(category: "provider", typeName: "endpoints")]
-        public sealed class endpoints : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "provider", typeName: "assume_role")]
+        public sealed class assume_role : nterraform.structure
+        {
+            public assume_role(string @externalId = null,
+                               string @policy = null,
+                               string @roleArn = null,
+                               string @sessionName = null)
+            {
+                @ExternalId = @externalId;
+                @Policy = @policy;
+                @RoleArn = @roleArn;
+                @SessionName = @sessionName;
+                base._validate_();
+            }
+
+            [nterraform.TerraformProperty(name: "external_id", @out: false, min: 0, max: 1)]
+            public string @ExternalId { get; }
+
+            [nterraform.TerraformProperty(name: "policy", @out: false, min: 0, max: 1)]
+            public string @Policy { get; }
+
+            [nterraform.TerraformProperty(name: "role_arn", @out: false, min: 0, max: 1)]
+            public string @RoleArn { get; }
+
+            [nterraform.TerraformProperty(name: "session_name", @out: false, min: 0, max: 1)]
+            public string @SessionName { get; }
+        }
+
+        [nterraform.TerraformStructure(category: "provider", typeName: "endpoints")]
+        public sealed class endpoints : nterraform.structure
         {
             public endpoints(string @acm = null,
                              string @apigateway = null,
@@ -64,111 +92,83 @@ namespace nterraform.providers
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "acm", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "acm", @out: false, min: 0, max: 1)]
             public string @Acm { get; }
 
-            [nterraform.Core.TerraformProperty(name: "apigateway", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "apigateway", @out: false, min: 0, max: 1)]
             public string @Apigateway { get; }
 
-            [nterraform.Core.TerraformProperty(name: "autoscaling", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "autoscaling", @out: false, min: 0, max: 1)]
             public string @Autoscaling { get; }
 
-            [nterraform.Core.TerraformProperty(name: "cloudformation", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "cloudformation", @out: false, min: 0, max: 1)]
             public string @Cloudformation { get; }
 
-            [nterraform.Core.TerraformProperty(name: "cloudwatch", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "cloudwatch", @out: false, min: 0, max: 1)]
             public string @Cloudwatch { get; }
 
-            [nterraform.Core.TerraformProperty(name: "cloudwatchevents", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "cloudwatchevents", @out: false, min: 0, max: 1)]
             public string @Cloudwatchevents { get; }
 
-            [nterraform.Core.TerraformProperty(name: "cloudwatchlogs", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "cloudwatchlogs", @out: false, min: 0, max: 1)]
             public string @Cloudwatchlogs { get; }
 
-            [nterraform.Core.TerraformProperty(name: "devicefarm", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "devicefarm", @out: false, min: 0, max: 1)]
             public string @Devicefarm { get; }
 
-            [nterraform.Core.TerraformProperty(name: "dynamodb", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "dynamodb", @out: false, min: 0, max: 1)]
             public string @Dynamodb { get; }
 
-            [nterraform.Core.TerraformProperty(name: "ec2", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "ec2", @out: false, min: 0, max: 1)]
             public string @Ec2 { get; }
 
-            [nterraform.Core.TerraformProperty(name: "ecr", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "ecr", @out: false, min: 0, max: 1)]
             public string @Ecr { get; }
 
-            [nterraform.Core.TerraformProperty(name: "ecs", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "ecs", @out: false, min: 0, max: 1)]
             public string @Ecs { get; }
 
-            [nterraform.Core.TerraformProperty(name: "efs", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "efs", @out: false, min: 0, max: 1)]
             public string @Efs { get; }
 
-            [nterraform.Core.TerraformProperty(name: "elb", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "elb", @out: false, min: 0, max: 1)]
             public string @Elb { get; }
 
-            [nterraform.Core.TerraformProperty(name: "es", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "es", @out: false, min: 0, max: 1)]
             public string @Es { get; }
 
-            [nterraform.Core.TerraformProperty(name: "iam", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "iam", @out: false, min: 0, max: 1)]
             public string @Iam { get; }
 
-            [nterraform.Core.TerraformProperty(name: "kinesis", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "kinesis", @out: false, min: 0, max: 1)]
             public string @Kinesis { get; }
 
-            [nterraform.Core.TerraformProperty(name: "kms", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "kms", @out: false, min: 0, max: 1)]
             public string @Kms { get; }
 
-            [nterraform.Core.TerraformProperty(name: "lambda", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "lambda", @out: false, min: 0, max: 1)]
             public string @Lambda { get; }
 
-            [nterraform.Core.TerraformProperty(name: "r53", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "r53", @out: false, min: 0, max: 1)]
             public string @R53 { get; }
 
-            [nterraform.Core.TerraformProperty(name: "rds", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "rds", @out: false, min: 0, max: 1)]
             public string @Rds { get; }
 
-            [nterraform.Core.TerraformProperty(name: "s3", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "s3", @out: false, min: 0, max: 1)]
             public string @S3 { get; }
 
-            [nterraform.Core.TerraformProperty(name: "sns", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "sns", @out: false, min: 0, max: 1)]
             public string @Sns { get; }
 
-            [nterraform.Core.TerraformProperty(name: "sqs", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "sqs", @out: false, min: 0, max: 1)]
             public string @Sqs { get; }
 
-            [nterraform.Core.TerraformProperty(name: "ssm", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "ssm", @out: false, min: 0, max: 1)]
             public string @Ssm { get; }
 
-            [nterraform.Core.TerraformProperty(name: "sts", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "sts", @out: false, min: 0, max: 1)]
             public string @Sts { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "provider", typeName: "assume_role")]
-        public sealed class assume_role : nterraform.Core.structure
-        {
-            public assume_role(string @externalId = null,
-                               string @policy = null,
-                               string @roleArn = null,
-                               string @sessionName = null)
-            {
-                @ExternalId = @externalId;
-                @Policy = @policy;
-                @RoleArn = @roleArn;
-                @SessionName = @sessionName;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "external_id", @out: false, min: 0, max: 1)]
-            public string @ExternalId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "policy", @out: false, min: 0, max: 1)]
-            public string @Policy { get; }
-
-            [nterraform.Core.TerraformProperty(name: "role_arn", @out: false, min: 0, max: 1)]
-            public string @RoleArn { get; }
-
-            [nterraform.Core.TerraformProperty(name: "session_name", @out: false, min: 0, max: 1)]
-            public string @SessionName { get; }
         }
 
         public aws(string @region,
@@ -215,64 +215,64 @@ namespace nterraform.providers
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "region", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "region", @out: false, min: 1, max: 1)]
         public string @Region { get; }
 
-        [nterraform.Core.TerraformProperty(name: "access_key", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "access_key", @out: false, min: 0, max: 1)]
         public string @AccessKey { get; }
 
-        [nterraform.Core.TerraformProperty(name: "allowed_account_ids", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "allowed_account_ids", @out: false, min: 0, max: 1)]
         public string[] @AllowedAccountIds { get; }
 
-        [nterraform.Core.TerraformProperty(name: "assume_role", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "assume_role", @out: false, min: 0, max: 1)]
         public assume_role[] @AssumeRole { get; }
 
-        [nterraform.Core.TerraformProperty(name: "dynamodb_endpoint", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "dynamodb_endpoint", @out: false, min: 0, max: 1)]
         public string @DynamodbEndpoint { get; }
 
-        [nterraform.Core.TerraformProperty(name: "endpoints", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "endpoints", @out: false, min: 0, max: 0)]
         public endpoints[] @Endpoints { get; }
 
-        [nterraform.Core.TerraformProperty(name: "forbidden_account_ids", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "forbidden_account_ids", @out: false, min: 0, max: 1)]
         public string[] @ForbiddenAccountIds { get; }
 
-        [nterraform.Core.TerraformProperty(name: "insecure", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "insecure", @out: false, min: 0, max: 1)]
         public bool? @Insecure { get; }
 
-        [nterraform.Core.TerraformProperty(name: "kinesis_endpoint", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "kinesis_endpoint", @out: false, min: 0, max: 1)]
         public string @KinesisEndpoint { get; }
 
-        [nterraform.Core.TerraformProperty(name: "max_retries", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "max_retries", @out: false, min: 0, max: 1)]
         public int? @MaxRetries { get; }
 
-        [nterraform.Core.TerraformProperty(name: "profile", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "profile", @out: false, min: 0, max: 1)]
         public string @Profile { get; }
 
-        [nterraform.Core.TerraformProperty(name: "s3_force_path_style", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "s3_force_path_style", @out: false, min: 0, max: 1)]
         public bool? @S3ForcePathStyle { get; }
 
-        [nterraform.Core.TerraformProperty(name: "secret_key", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "secret_key", @out: false, min: 0, max: 1)]
         public string @SecretKey { get; }
 
-        [nterraform.Core.TerraformProperty(name: "shared_credentials_file", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "shared_credentials_file", @out: false, min: 0, max: 1)]
         public string @SharedCredentialsFile { get; }
 
-        [nterraform.Core.TerraformProperty(name: "skip_credentials_validation", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "skip_credentials_validation", @out: false, min: 0, max: 1)]
         public bool? @SkipCredentialsValidation { get; }
 
-        [nterraform.Core.TerraformProperty(name: "skip_get_ec2_platforms", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "skip_get_ec2_platforms", @out: false, min: 0, max: 1)]
         public bool? @SkipGetEc2Platforms { get; }
 
-        [nterraform.Core.TerraformProperty(name: "skip_metadata_api_check", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "skip_metadata_api_check", @out: false, min: 0, max: 1)]
         public bool? @SkipMetadataApiCheck { get; }
 
-        [nterraform.Core.TerraformProperty(name: "skip_region_validation", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "skip_region_validation", @out: false, min: 0, max: 1)]
         public bool? @SkipRegionValidation { get; }
 
-        [nterraform.Core.TerraformProperty(name: "skip_requesting_account_id", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "skip_requesting_account_id", @out: false, min: 0, max: 1)]
         public bool? @SkipRequestingAccountId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "token", @out: false, min: 0, max: 1)]
         public string @Token { get; }
     }
 

@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_mysql_database")]
-    public sealed class azurerm_mysql_database : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "azurerm_mysql_database")]
+    public sealed class azurerm_mysql_database : nterraform.resource
     {
         public azurerm_mysql_database(string @charset,
                                       string @collation,
@@ -19,19 +19,19 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "charset", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "charset", @out: false, min: 1, max: 1)]
         public string @Charset { get; }
 
-        [nterraform.Core.TerraformProperty(name: "collation", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "collation", @out: false, min: 1, max: 1)]
         public string @Collation { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "resource_group_name", @out: false, min: 1, max: 1)]
         public string @ResourceGroupName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "server_name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "server_name", @out: false, min: 1, max: 1)]
         public string @ServerName { get; }
     }
 

@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.datas
 {
-    [nterraform.Core.TerraformStructure(category: "data", typeName: "aws_pricing_product")]
-    public sealed class aws_pricing_product : nterraform.Core.data
+    [nterraform.TerraformStructure(category: "data", typeName: "aws_pricing_product")]
+    public sealed class aws_pricing_product : nterraform.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "filters")]
-        public sealed class filters : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "data", typeName: "filters")]
+        public sealed class filters : nterraform.structure
         {
             public filters(string @field,
                            string @value)
@@ -16,10 +16,10 @@ namespace nterraform.datas
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "field", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "field", @out: false, min: 1, max: 1)]
             public string @Field { get; }
 
-            [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
             public string @Value { get; }
         }
 
@@ -31,13 +31,13 @@ namespace nterraform.datas
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "filters", @out: false, min: 1, max: 0)]
+        [nterraform.TerraformProperty(name: "filters", @out: false, min: 1, max: 0)]
         public filters[] @Filters { get; }
 
-        [nterraform.Core.TerraformProperty(name: "service_code", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "service_code", @out: false, min: 1, max: 1)]
         public string @ServiceCode { get; }
 
-        [nterraform.Core.TerraformProperty(name: "result", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "result", @out: true, min: 0, max: 1)]
         public string @Result { get; }
     }
 

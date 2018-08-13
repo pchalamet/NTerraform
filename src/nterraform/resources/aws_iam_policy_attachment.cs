@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_iam_policy_attachment")]
-    public sealed class aws_iam_policy_attachment : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_iam_policy_attachment")]
+    public sealed class aws_iam_policy_attachment : nterraform.resource
     {
         public aws_iam_policy_attachment(string @name,
                                          string @policyArn,
@@ -19,19 +19,19 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "policy_arn", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "policy_arn", @out: false, min: 1, max: 1)]
         public string @PolicyArn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "groups", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "groups", @out: false, min: 0, max: 1)]
         public string[] @Groups { get; }
 
-        [nterraform.Core.TerraformProperty(name: "roles", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "roles", @out: false, min: 0, max: 1)]
         public string[] @Roles { get; }
 
-        [nterraform.Core.TerraformProperty(name: "users", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "users", @out: false, min: 0, max: 1)]
         public string[] @Users { get; }
     }
 

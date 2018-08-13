@@ -2,21 +2,21 @@ using System.Collections.Generic;
 
 namespace nterraform.datas
 {
-    [nterraform.Core.TerraformStructure(category: "data", typeName: "aws_batch_job_queue")]
-    public sealed class aws_batch_job_queue : nterraform.Core.data
+    [nterraform.TerraformStructure(category: "data", typeName: "aws_batch_job_queue")]
+    public sealed class aws_batch_job_queue : nterraform.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "compute_environment_order")]
-        public sealed class compute_environment_order : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "data", typeName: "compute_environment_order")]
+        public sealed class compute_environment_order : nterraform.structure
         {
             public compute_environment_order()
             {
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "compute_environment", @out: true, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "compute_environment", @out: true, min: 0, max: 1)]
             public string @ComputeEnvironment { get; }
 
-            [nterraform.Core.TerraformProperty(name: "order", @out: true, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "order", @out: true, min: 0, max: 1)]
             public int? @Order { get; }
         }
 
@@ -28,25 +28,25 @@ namespace nterraform.datas
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
         public string @Arn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "compute_environment_order", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "compute_environment_order", @out: false, min: 0, max: 0)]
         public compute_environment_order[] @ComputeEnvironmentOrder { get; }
 
-        [nterraform.Core.TerraformProperty(name: "priority", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "priority", @out: true, min: 0, max: 1)]
         public int? @Priority { get; }
 
-        [nterraform.Core.TerraformProperty(name: "state", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "state", @out: true, min: 0, max: 1)]
         public string @State { get; }
 
-        [nterraform.Core.TerraformProperty(name: "status", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "status", @out: true, min: 0, max: 1)]
         public string @Status { get; }
 
-        [nterraform.Core.TerraformProperty(name: "status_reason", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "status_reason", @out: true, min: 0, max: 1)]
         public string @StatusReason { get; }
     }
 

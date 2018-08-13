@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_ecr_repository_policy")]
-    public sealed class aws_ecr_repository_policy : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_ecr_repository_policy")]
+    public sealed class aws_ecr_repository_policy : nterraform.resource
     {
         public aws_ecr_repository_policy(string @policy,
                                          string @repository)
@@ -13,13 +13,13 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "policy", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "policy", @out: false, min: 1, max: 1)]
         public string @Policy { get; }
 
-        [nterraform.Core.TerraformProperty(name: "repository", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "repository", @out: false, min: 1, max: 1)]
         public string @Repository { get; }
 
-        [nterraform.Core.TerraformProperty(name: "registry_id", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "registry_id", @out: true, min: 0, max: 1)]
         public string @RegistryId { get; }
     }
 

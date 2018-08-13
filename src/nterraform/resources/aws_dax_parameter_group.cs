@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_dax_parameter_group")]
-    public sealed class aws_dax_parameter_group : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_dax_parameter_group")]
+    public sealed class aws_dax_parameter_group : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "parameters")]
-        public sealed class parameters : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "parameters")]
+        public sealed class parameters : nterraform.structure
         {
             public parameters(string @name,
                               string @value)
@@ -16,10 +16,10 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
             public string @Value { get; }
         }
 
@@ -33,13 +33,13 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "description", @out: false, min: 0, max: 1)]
         public string @Description { get; }
 
-        [nterraform.Core.TerraformProperty(name: "parameters", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "parameters", @out: false, min: 0, max: 0)]
         public parameters[] @Parameters { get; }
     }
 

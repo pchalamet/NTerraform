@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_ecs_task_definition")]
-    public sealed class aws_ecs_task_definition : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_ecs_task_definition")]
+    public sealed class aws_ecs_task_definition : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "volume")]
-        public sealed class volume : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "volume")]
+        public sealed class volume : nterraform.structure
         {
             public volume(string @name,
                           string @hostPath = null)
@@ -16,15 +16,15 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [nterraform.Core.TerraformProperty(name: "host_path", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "host_path", @out: false, min: 0, max: 1)]
             public string @HostPath { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "placement_constraints")]
-        public sealed class placement_constraints : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "placement_constraints")]
+        public sealed class placement_constraints : nterraform.structure
         {
             public placement_constraints(string @type,
                                          string @expression = null)
@@ -34,10 +34,10 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
             public string @Type { get; }
 
-            [nterraform.Core.TerraformProperty(name: "expression", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "expression", @out: false, min: 0, max: 1)]
             public string @Expression { get; }
         }
 
@@ -63,40 +63,40 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "container_definitions", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "container_definitions", @out: false, min: 1, max: 1)]
         public string @ContainerDefinitions { get; }
 
-        [nterraform.Core.TerraformProperty(name: "family", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "family", @out: false, min: 1, max: 1)]
         public string @Family { get; }
 
-        [nterraform.Core.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
         public string @Arn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "cpu", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "cpu", @out: false, min: 0, max: 1)]
         public string @Cpu { get; }
 
-        [nterraform.Core.TerraformProperty(name: "execution_role_arn", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "execution_role_arn", @out: false, min: 0, max: 1)]
         public string @ExecutionRoleArn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "memory", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "memory", @out: false, min: 0, max: 1)]
         public string @Memory { get; }
 
-        [nterraform.Core.TerraformProperty(name: "network_mode", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "network_mode", @out: true, min: 0, max: 1)]
         public string @NetworkMode { get; }
 
-        [nterraform.Core.TerraformProperty(name: "placement_constraints", @out: false, min: 0, max: 10)]
+        [nterraform.TerraformProperty(name: "placement_constraints", @out: false, min: 0, max: 10)]
         public placement_constraints[] @PlacementConstraints { get; }
 
-        [nterraform.Core.TerraformProperty(name: "requires_compatibilities", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "requires_compatibilities", @out: false, min: 0, max: 1)]
         public string[] @RequiresCompatibilities { get; }
 
-        [nterraform.Core.TerraformProperty(name: "revision", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "revision", @out: true, min: 0, max: 1)]
         public int? @Revision { get; }
 
-        [nterraform.Core.TerraformProperty(name: "task_role_arn", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "task_role_arn", @out: false, min: 0, max: 1)]
         public string @TaskRoleArn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "volume", @out: false, min: 0, max: 0)]
+        [nterraform.TerraformProperty(name: "volume", @out: false, min: 0, max: 0)]
         public volume[] @Volume { get; }
     }
 

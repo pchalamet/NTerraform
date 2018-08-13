@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_lb_cookie_stickiness_policy")]
-    public sealed class aws_lb_cookie_stickiness_policy : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_lb_cookie_stickiness_policy")]
+    public sealed class aws_lb_cookie_stickiness_policy : nterraform.resource
     {
         public aws_lb_cookie_stickiness_policy(int @lbPort,
                                                string @loadBalancer,
@@ -17,16 +17,16 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "lb_port", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "lb_port", @out: false, min: 1, max: 1)]
         public int @LbPort { get; }
 
-        [nterraform.Core.TerraformProperty(name: "load_balancer", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "load_balancer", @out: false, min: 1, max: 1)]
         public string @LoadBalancer { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "cookie_expiration_period", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "cookie_expiration_period", @out: false, min: 0, max: 1)]
         public int? @CookieExpirationPeriod { get; }
     }
 

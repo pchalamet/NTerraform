@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_ssm_association")]
-    public sealed class aws_ssm_association : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_ssm_association")]
+    public sealed class aws_ssm_association : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "output_location")]
-        public sealed class output_location : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "output_location")]
+        public sealed class output_location : nterraform.structure
         {
             public output_location(string @s3BucketName,
                                    string @s3KeyPrefix = null)
@@ -16,15 +16,15 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "s3_bucket_name", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "s3_bucket_name", @out: false, min: 1, max: 1)]
             public string @S3BucketName { get; }
 
-            [nterraform.Core.TerraformProperty(name: "s3_key_prefix", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "s3_key_prefix", @out: false, min: 0, max: 1)]
             public string @S3KeyPrefix { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "targets")]
-        public sealed class targets : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "targets")]
+        public sealed class targets : nterraform.structure
         {
             public targets(string @key,
                            string[] @values)
@@ -34,10 +34,10 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "key", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "key", @out: false, min: 1, max: 1)]
             public string @Key { get; }
 
-            [nterraform.Core.TerraformProperty(name: "values", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "values", @out: false, min: 1, max: 1)]
             public string[] @Values { get; }
         }
 
@@ -57,31 +57,31 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "association_id", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "association_id", @out: true, min: 0, max: 1)]
         public string @AssociationId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "association_name", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "association_name", @out: false, min: 0, max: 1)]
         public string @AssociationName { get; }
 
-        [nterraform.Core.TerraformProperty(name: "document_version", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "document_version", @out: true, min: 0, max: 1)]
         public string @DocumentVersion { get; }
 
-        [nterraform.Core.TerraformProperty(name: "instance_id", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "instance_id", @out: false, min: 0, max: 1)]
         public string @InstanceId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "output_location", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "output_location", @out: false, min: 0, max: 1)]
         public output_location[] @OutputLocation { get; }
 
-        [nterraform.Core.TerraformProperty(name: "parameters", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "parameters", @out: true, min: 0, max: 1)]
         public Dictionary<string,string> @Parameters { get; }
 
-        [nterraform.Core.TerraformProperty(name: "schedule_expression", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "schedule_expression", @out: false, min: 0, max: 1)]
         public string @ScheduleExpression { get; }
 
-        [nterraform.Core.TerraformProperty(name: "targets", @out: false, min: 0, max: 5)]
+        [nterraform.TerraformProperty(name: "targets", @out: false, min: 0, max: 5)]
         public targets[] @Targets { get; }
     }
 

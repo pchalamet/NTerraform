@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_guardduty_threatintelset")]
-    public sealed class aws_guardduty_threatintelset : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_guardduty_threatintelset")]
+    public sealed class aws_guardduty_threatintelset : nterraform.resource
     {
         public aws_guardduty_threatintelset(bool @activate,
                                             string @detectorId,
@@ -19,19 +19,19 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "activate", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "activate", @out: false, min: 1, max: 1)]
         public bool @Activate { get; }
 
-        [nterraform.Core.TerraformProperty(name: "detector_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "detector_id", @out: false, min: 1, max: 1)]
         public string @DetectorId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "format", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "format", @out: false, min: 1, max: 1)]
         public string @Format { get; }
 
-        [nterraform.Core.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "location", @out: false, min: 1, max: 1)]
         public string @Location { get; }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
     }
 

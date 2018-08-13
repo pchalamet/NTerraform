@@ -2,8 +2,8 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_dx_connection_association")]
-    public sealed class aws_dx_connection_association : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_dx_connection_association")]
+    public sealed class aws_dx_connection_association : nterraform.resource
     {
         public aws_dx_connection_association(string @connectionId,
                                              string @lagId)
@@ -13,10 +13,10 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "connection_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "connection_id", @out: false, min: 1, max: 1)]
         public string @ConnectionId { get; }
 
-        [nterraform.Core.TerraformProperty(name: "lag_id", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "lag_id", @out: false, min: 1, max: 1)]
         public string @LagId { get; }
     }
 

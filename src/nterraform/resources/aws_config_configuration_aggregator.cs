@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace nterraform.resources
 {
-    [nterraform.Core.TerraformStructure(category: "resource", typeName: "aws_config_configuration_aggregator")]
-    public sealed class aws_config_configuration_aggregator : nterraform.Core.resource
+    [nterraform.TerraformStructure(category: "resource", typeName: "aws_config_configuration_aggregator")]
+    public sealed class aws_config_configuration_aggregator : nterraform.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "account_aggregation_source")]
-        public sealed class account_aggregation_source : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "account_aggregation_source")]
+        public sealed class account_aggregation_source : nterraform.structure
         {
             public account_aggregation_source(string[] @accountIds,
                                               bool? @allRegions = null,
@@ -18,18 +18,18 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "account_ids", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "account_ids", @out: false, min: 1, max: 1)]
             public string[] @AccountIds { get; }
 
-            [nterraform.Core.TerraformProperty(name: "all_regions", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "all_regions", @out: false, min: 0, max: 1)]
             public bool? @AllRegions { get; }
 
-            [nterraform.Core.TerraformProperty(name: "regions", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "regions", @out: false, min: 0, max: 1)]
             public string[] @Regions { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "organization_aggregation_source")]
-        public sealed class organization_aggregation_source : nterraform.Core.structure
+        [nterraform.TerraformStructure(category: "resource", typeName: "organization_aggregation_source")]
+        public sealed class organization_aggregation_source : nterraform.structure
         {
             public organization_aggregation_source(string @roleArn,
                                                    bool? @allRegions = null,
@@ -41,13 +41,13 @@ namespace nterraform.resources
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "role_arn", @out: false, min: 1, max: 1)]
+            [nterraform.TerraformProperty(name: "role_arn", @out: false, min: 1, max: 1)]
             public string @RoleArn { get; }
 
-            [nterraform.Core.TerraformProperty(name: "all_regions", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "all_regions", @out: false, min: 0, max: 1)]
             public bool? @AllRegions { get; }
 
-            [nterraform.Core.TerraformProperty(name: "regions", @out: false, min: 0, max: 1)]
+            [nterraform.TerraformProperty(name: "regions", @out: false, min: 0, max: 1)]
             public string[] @Regions { get; }
         }
 
@@ -61,16 +61,16 @@ namespace nterraform.resources
             base._validate_();
         }
 
-        [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+        [nterraform.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
         public string @Name { get; }
 
-        [nterraform.Core.TerraformProperty(name: "account_aggregation_source", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "account_aggregation_source", @out: false, min: 0, max: 1)]
         public account_aggregation_source[] @AccountAggregationSource { get; }
 
-        [nterraform.Core.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "arn", @out: true, min: 0, max: 1)]
         public string @Arn { get; }
 
-        [nterraform.Core.TerraformProperty(name: "organization_aggregation_source", @out: false, min: 0, max: 1)]
+        [nterraform.TerraformProperty(name: "organization_aggregation_source", @out: false, min: 0, max: 1)]
         public organization_aggregation_source[] @OrganizationAggregationSource { get; }
     }
 
