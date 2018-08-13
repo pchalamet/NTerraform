@@ -26,55 +26,6 @@ namespace nterraform.resources
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate_policy")]
         public sealed class certificate_policy : nterraform.Core.structure
         {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "lifetime_action")]
-            public sealed class lifetime_action : nterraform.Core.structure
-            {
-                [nterraform.Core.TerraformStructure(category: "resource", typeName: "action")]
-                public sealed class action : nterraform.Core.structure
-                {
-                    public action(string @actionType)
-                    {
-                        @ActionType = @actionType;
-                        base._validate_();
-                    }
-
-                    [nterraform.Core.TerraformProperty(name: "action_type", @out: false, min: 1, max: 1)]
-                    public string @ActionType { get; }
-                }
-
-                [nterraform.Core.TerraformStructure(category: "resource", typeName: "trigger")]
-                public sealed class trigger : nterraform.Core.structure
-                {
-                    public trigger(int? @daysBeforeExpiry = null,
-                                   int? @lifetimePercentage = null)
-                    {
-                        @DaysBeforeExpiry = @daysBeforeExpiry;
-                        @LifetimePercentage = @lifetimePercentage;
-                        base._validate_();
-                    }
-
-                    [nterraform.Core.TerraformProperty(name: "days_before_expiry", @out: false, min: 0, max: 1)]
-                    public int? @DaysBeforeExpiry { get; }
-
-                    [nterraform.Core.TerraformProperty(name: "lifetime_percentage", @out: false, min: 0, max: 1)]
-                    public int? @LifetimePercentage { get; }
-                }
-
-                public lifetime_action(action[] @action,
-                                       trigger[] @trigger)
-                {
-                    @Action = @action;
-                    @Trigger = @trigger;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "action", @out: false, min: 1, max: 1)]
-                public action[] @Action { get; }
-
-                [nterraform.Core.TerraformProperty(name: "trigger", @out: false, min: 1, max: 1)]
-                public trigger[] @Trigger { get; }
-            }
-
             [nterraform.Core.TerraformStructure(category: "resource", typeName: "secret_properties")]
             public sealed class secret_properties : nterraform.Core.structure
             {
@@ -150,6 +101,55 @@ namespace nterraform.resources
 
                 [nterraform.Core.TerraformProperty(name: "reuse_key", @out: false, min: 1, max: 1)]
                 public bool @ReuseKey { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "lifetime_action")]
+            public sealed class lifetime_action : nterraform.Core.structure
+            {
+                [nterraform.Core.TerraformStructure(category: "resource", typeName: "action")]
+                public sealed class action : nterraform.Core.structure
+                {
+                    public action(string @actionType)
+                    {
+                        @ActionType = @actionType;
+                        base._validate_();
+                    }
+
+                    [nterraform.Core.TerraformProperty(name: "action_type", @out: false, min: 1, max: 1)]
+                    public string @ActionType { get; }
+                }
+
+                [nterraform.Core.TerraformStructure(category: "resource", typeName: "trigger")]
+                public sealed class trigger : nterraform.Core.structure
+                {
+                    public trigger(int? @daysBeforeExpiry = null,
+                                   int? @lifetimePercentage = null)
+                    {
+                        @DaysBeforeExpiry = @daysBeforeExpiry;
+                        @LifetimePercentage = @lifetimePercentage;
+                        base._validate_();
+                    }
+
+                    [nterraform.Core.TerraformProperty(name: "days_before_expiry", @out: false, min: 0, max: 1)]
+                    public int? @DaysBeforeExpiry { get; }
+
+                    [nterraform.Core.TerraformProperty(name: "lifetime_percentage", @out: false, min: 0, max: 1)]
+                    public int? @LifetimePercentage { get; }
+                }
+
+                public lifetime_action(action[] @action,
+                                       trigger[] @trigger)
+                {
+                    @Action = @action;
+                    @Trigger = @trigger;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "action", @out: false, min: 1, max: 1)]
+                public action[] @Action { get; }
+
+                [nterraform.Core.TerraformProperty(name: "trigger", @out: false, min: 1, max: 1)]
+                public trigger[] @Trigger { get; }
             }
 
             public certificate_policy(issuer_parameters[] @issuerParameters,

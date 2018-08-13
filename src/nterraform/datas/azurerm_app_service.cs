@@ -5,6 +5,21 @@ namespace nterraform.datas
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_app_service")]
     public sealed class azurerm_app_service : nterraform.Core.data
     {
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "source_control")]
+        public sealed class source_control : nterraform.Core.structure
+        {
+            public source_control()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
+            public string @Branch { get; }
+
+            [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
+            public string @RepoUrl { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "data", typeName: "connection_string")]
         public sealed class connection_string : nterraform.Core.structure
         {
@@ -21,21 +36,6 @@ namespace nterraform.datas
 
             [nterraform.Core.TerraformProperty(name: "value", @out: true, min: 0, max: 1)]
             public string @Value { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "source_control")]
-        public sealed class source_control : nterraform.Core.structure
-        {
-            public source_control()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
-            public string @Branch { get; }
-
-            [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
-            public string @RepoUrl { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "site_config")]

@@ -5,45 +5,6 @@ namespace nterraform.datas
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_virtual_network_gateway")]
     public sealed class azurerm_virtual_network_gateway : nterraform.Core.data
     {
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "ip_configuration")]
-        public sealed class ip_configuration : nterraform.Core.structure
-        {
-            public ip_configuration()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "private_ip_address_allocation", @out: true, min: 0, max: 1)]
-            public string @PrivateIpAddressAllocation { get; }
-
-            [nterraform.Core.TerraformProperty(name: "public_ip_address_id", @out: true, min: 0, max: 1)]
-            public string @PublicIpAddressId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "subnet_id", @out: true, min: 0, max: 1)]
-            public string @SubnetId { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "bgp_settings")]
-        public sealed class bgp_settings : nterraform.Core.structure
-        {
-            public bgp_settings()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "asn", @out: true, min: 0, max: 1)]
-            public int? @Asn { get; }
-
-            [nterraform.Core.TerraformProperty(name: "peer_weight", @out: true, min: 0, max: 1)]
-            public int? @PeerWeight { get; }
-
-            [nterraform.Core.TerraformProperty(name: "peering_address", @out: true, min: 0, max: 1)]
-            public string @PeeringAddress { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "vpn_client_configuration")]
         public sealed class vpn_client_configuration : nterraform.Core.structure
         {
@@ -102,6 +63,45 @@ namespace nterraform.datas
 
             [nterraform.Core.TerraformProperty(name: "vpn_client_protocols", @out: true, min: 0, max: 1)]
             public string[] @VpnClientProtocols { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "bgp_settings")]
+        public sealed class bgp_settings : nterraform.Core.structure
+        {
+            public bgp_settings()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "asn", @out: true, min: 0, max: 1)]
+            public int? @Asn { get; }
+
+            [nterraform.Core.TerraformProperty(name: "peer_weight", @out: true, min: 0, max: 1)]
+            public int? @PeerWeight { get; }
+
+            [nterraform.Core.TerraformProperty(name: "peering_address", @out: true, min: 0, max: 1)]
+            public string @PeeringAddress { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "ip_configuration")]
+        public sealed class ip_configuration : nterraform.Core.structure
+        {
+            public ip_configuration()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "private_ip_address_allocation", @out: true, min: 0, max: 1)]
+            public string @PrivateIpAddressAllocation { get; }
+
+            [nterraform.Core.TerraformProperty(name: "public_ip_address_id", @out: true, min: 0, max: 1)]
+            public string @PublicIpAddressId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "subnet_id", @out: true, min: 0, max: 1)]
+            public string @SubnetId { get; }
         }
 
         public azurerm_virtual_network_gateway(string @name,

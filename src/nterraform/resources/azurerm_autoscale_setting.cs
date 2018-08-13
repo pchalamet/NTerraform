@@ -5,65 +5,6 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_autoscale_setting")]
     public sealed class azurerm_autoscale_setting : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "notification")]
-        public sealed class notification : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "webhook")]
-            public sealed class webhook : nterraform.Core.structure
-            {
-                public webhook(string @serviceUri,
-                               Dictionary<string,string> @properties = null)
-                {
-                    @ServiceUri = @serviceUri;
-                    @Properties = @properties;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "service_uri", @out: false, min: 1, max: 1)]
-                public string @ServiceUri { get; }
-
-                [nterraform.Core.TerraformProperty(name: "properties", @out: false, min: 0, max: 1)]
-                public Dictionary<string,string> @Properties { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "email")]
-            public sealed class email : nterraform.Core.structure
-            {
-                public email(string[] @customEmails = null,
-                             bool? @sendToSubscriptionAdministrator = null,
-                             bool? @sendToSubscriptionCoAdministrator = null)
-                {
-                    @CustomEmails = @customEmails;
-                    @SendToSubscriptionAdministrator = @sendToSubscriptionAdministrator;
-                    @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "custom_emails", @out: false, min: 0, max: 1)]
-                public string[] @CustomEmails { get; }
-
-                [nterraform.Core.TerraformProperty(name: "send_to_subscription_administrator", @out: false, min: 0, max: 1)]
-                public bool? @SendToSubscriptionAdministrator { get; }
-
-                [nterraform.Core.TerraformProperty(name: "send_to_subscription_co_administrator", @out: false, min: 0, max: 1)]
-                public bool? @SendToSubscriptionCoAdministrator { get; }
-            }
-
-            public notification(email[] @email = null,
-                                webhook[] @webhook = null)
-            {
-                @Email = @email;
-                @Webhook = @webhook;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "email", @out: false, min: 0, max: 1)]
-            public email[] @Email { get; }
-
-            [nterraform.Core.TerraformProperty(name: "webhook", @out: false, min: 0, max: 0)]
-            public webhook[] @Webhook { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "profile")]
         public sealed class profile : nterraform.Core.structure
         {
@@ -263,6 +204,65 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "rule", @out: false, min: 0, max: 10)]
             public rule[] @Rule { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "notification")]
+        public sealed class notification : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "webhook")]
+            public sealed class webhook : nterraform.Core.structure
+            {
+                public webhook(string @serviceUri,
+                               Dictionary<string,string> @properties = null)
+                {
+                    @ServiceUri = @serviceUri;
+                    @Properties = @properties;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "service_uri", @out: false, min: 1, max: 1)]
+                public string @ServiceUri { get; }
+
+                [nterraform.Core.TerraformProperty(name: "properties", @out: false, min: 0, max: 1)]
+                public Dictionary<string,string> @Properties { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "email")]
+            public sealed class email : nterraform.Core.structure
+            {
+                public email(string[] @customEmails = null,
+                             bool? @sendToSubscriptionAdministrator = null,
+                             bool? @sendToSubscriptionCoAdministrator = null)
+                {
+                    @CustomEmails = @customEmails;
+                    @SendToSubscriptionAdministrator = @sendToSubscriptionAdministrator;
+                    @SendToSubscriptionCoAdministrator = @sendToSubscriptionCoAdministrator;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "custom_emails", @out: false, min: 0, max: 1)]
+                public string[] @CustomEmails { get; }
+
+                [nterraform.Core.TerraformProperty(name: "send_to_subscription_administrator", @out: false, min: 0, max: 1)]
+                public bool? @SendToSubscriptionAdministrator { get; }
+
+                [nterraform.Core.TerraformProperty(name: "send_to_subscription_co_administrator", @out: false, min: 0, max: 1)]
+                public bool? @SendToSubscriptionCoAdministrator { get; }
+            }
+
+            public notification(email[] @email = null,
+                                webhook[] @webhook = null)
+            {
+                @Email = @email;
+                @Webhook = @webhook;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "email", @out: false, min: 0, max: 1)]
+            public email[] @Email { get; }
+
+            [nterraform.Core.TerraformProperty(name: "webhook", @out: false, min: 0, max: 0)]
+            public webhook[] @Webhook { get; }
         }
 
         public azurerm_autoscale_setting(string @location,

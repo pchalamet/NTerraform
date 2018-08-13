@@ -5,29 +5,22 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_kubernetes_cluster")]
     public sealed class azurerm_kubernetes_cluster : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_profile")]
-        public sealed class network_profile : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "service_principal")]
+        public sealed class service_principal : nterraform.Core.structure
         {
-            public network_profile(string @networkPlugin)
+            public service_principal(string @clientId,
+                                     string @clientSecret)
             {
-                @NetworkPlugin = @networkPlugin;
+                @ClientId = @clientId;
+                @ClientSecret = @clientSecret;
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "network_plugin", @out: false, min: 1, max: 1)]
-            public string @NetworkPlugin { get; }
+            [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
+            public string @ClientId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
-            public string @DnsServiceIp { get; }
-
-            [nterraform.Core.TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
-            public string @DockerBridgeCidr { get; }
-
-            [nterraform.Core.TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
-            public string @PodCidr { get; }
-
-            [nterraform.Core.TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
-            public string @ServiceCidr { get; }
+            [nterraform.Core.TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
+            public string @ClientSecret { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "kube_config")]
@@ -57,53 +50,29 @@ namespace nterraform.resources
             public string @Username { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "linux_profile")]
-        public sealed class linux_profile : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_profile")]
+        public sealed class network_profile : nterraform.Core.structure
         {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "ssh_key")]
-            public sealed class ssh_key : nterraform.Core.structure
+            public network_profile(string @networkPlugin)
             {
-                public ssh_key(string @keyData)
-                {
-                    @KeyData = @keyData;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
-                public string @KeyData { get; }
-            }
-
-            public linux_profile(string @adminUsername,
-                                 ssh_key[] @sshKey)
-            {
-                @AdminUsername = @adminUsername;
-                @SshKey = @sshKey;
+                @NetworkPlugin = @networkPlugin;
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
-            public string @AdminUsername { get; }
+            [nterraform.Core.TerraformProperty(name: "network_plugin", @out: false, min: 1, max: 1)]
+            public string @NetworkPlugin { get; }
 
-            [nterraform.Core.TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 0)]
-            public ssh_key[] @SshKey { get; }
-        }
+            [nterraform.Core.TerraformProperty(name: "dns_service_ip", @out: true, min: 0, max: 1)]
+            public string @DnsServiceIp { get; }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "service_principal")]
-        public sealed class service_principal : nterraform.Core.structure
-        {
-            public service_principal(string @clientId,
-                                     string @clientSecret)
-            {
-                @ClientId = @clientId;
-                @ClientSecret = @clientSecret;
-                base._validate_();
-            }
+            [nterraform.Core.TerraformProperty(name: "docker_bridge_cidr", @out: true, min: 0, max: 1)]
+            public string @DockerBridgeCidr { get; }
 
-            [nterraform.Core.TerraformProperty(name: "client_id", @out: false, min: 1, max: 1)]
-            public string @ClientId { get; }
+            [nterraform.Core.TerraformProperty(name: "pod_cidr", @out: true, min: 0, max: 1)]
+            public string @PodCidr { get; }
 
-            [nterraform.Core.TerraformProperty(name: "client_secret", @out: false, min: 1, max: 1)]
-            public string @ClientSecret { get; }
+            [nterraform.Core.TerraformProperty(name: "service_cidr", @out: true, min: 0, max: 1)]
+            public string @ServiceCidr { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "agent_pool_profile")]
@@ -148,6 +117,37 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "vnet_subnet_id", @out: false, min: 0, max: 1)]
             public string @VnetSubnetId { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "linux_profile")]
+        public sealed class linux_profile : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "ssh_key")]
+            public sealed class ssh_key : nterraform.Core.structure
+            {
+                public ssh_key(string @keyData)
+                {
+                    @KeyData = @keyData;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "key_data", @out: false, min: 1, max: 1)]
+                public string @KeyData { get; }
+            }
+
+            public linux_profile(string @adminUsername,
+                                 ssh_key[] @sshKey)
+            {
+                @AdminUsername = @adminUsername;
+                @SshKey = @sshKey;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "admin_username", @out: false, min: 1, max: 1)]
+            public string @AdminUsername { get; }
+
+            [nterraform.Core.TerraformProperty(name: "ssh_key", @out: false, min: 1, max: 0)]
+            public ssh_key[] @SshKey { get; }
         }
 
         public azurerm_kubernetes_cluster(agent_pool_profile[] @agentPoolProfile,

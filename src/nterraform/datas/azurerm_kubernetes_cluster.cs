@@ -47,33 +47,6 @@ namespace nterraform.datas
             public string @ClientId { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "kube_config")]
-        public sealed class kube_config : nterraform.Core.structure
-        {
-            public kube_config()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
-            public string @ClientCertificate { get; }
-
-            [nterraform.Core.TerraformProperty(name: "client_key", @out: true, min: 0, max: 1)]
-            public string @ClientKey { get; }
-
-            [nterraform.Core.TerraformProperty(name: "cluster_ca_certificate", @out: true, min: 0, max: 1)]
-            public string @ClusterCaCertificate { get; }
-
-            [nterraform.Core.TerraformProperty(name: "host", @out: true, min: 0, max: 1)]
-            public string @Host { get; }
-
-            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "linux_profile")]
         public sealed class linux_profile : nterraform.Core.structure
         {
@@ -100,6 +73,33 @@ namespace nterraform.datas
 
             [nterraform.Core.TerraformProperty(name: "ssh_key", @out: false, min: 0, max: 0)]
             public ssh_key[] @SshKey { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "kube_config")]
+        public sealed class kube_config : nterraform.Core.structure
+        {
+            public kube_config()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "client_certificate", @out: true, min: 0, max: 1)]
+            public string @ClientCertificate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "client_key", @out: true, min: 0, max: 1)]
+            public string @ClientKey { get; }
+
+            [nterraform.Core.TerraformProperty(name: "cluster_ca_certificate", @out: true, min: 0, max: 1)]
+            public string @ClusterCaCertificate { get; }
+
+            [nterraform.Core.TerraformProperty(name: "host", @out: true, min: 0, max: 1)]
+            public string @Host { get; }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
+
+            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "data", typeName: "network_profile")]

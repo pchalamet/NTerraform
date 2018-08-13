@@ -33,29 +33,6 @@ namespace nterraform.datas
             public bool @Table { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "resource_types")]
-        public sealed class resource_types : nterraform.Core.structure
-        {
-            public resource_types(bool @container,
-                                  bool @object,
-                                  bool @service)
-            {
-                @Container = @container;
-                @Object = @object;
-                @Service = @service;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "container", @out: false, min: 1, max: 1)]
-            public bool @Container { get; }
-
-            [nterraform.Core.TerraformProperty(name: "object", @out: false, min: 1, max: 1)]
-            public bool @Object { get; }
-
-            [nterraform.Core.TerraformProperty(name: "service", @out: false, min: 1, max: 1)]
-            public bool @Service { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "data", typeName: "permissions")]
         public sealed class permissions : nterraform.Core.structure
         {
@@ -102,6 +79,29 @@ namespace nterraform.datas
 
             [nterraform.Core.TerraformProperty(name: "write", @out: false, min: 1, max: 1)]
             public bool @Write { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "resource_types")]
+        public sealed class resource_types : nterraform.Core.structure
+        {
+            public resource_types(bool @container,
+                                  bool @object,
+                                  bool @service)
+            {
+                @Container = @container;
+                @Object = @object;
+                @Service = @service;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "container", @out: false, min: 1, max: 1)]
+            public bool @Container { get; }
+
+            [nterraform.Core.TerraformProperty(name: "object", @out: false, min: 1, max: 1)]
+            public bool @Object { get; }
+
+            [nterraform.Core.TerraformProperty(name: "service", @out: false, min: 1, max: 1)]
+            public bool @Service { get; }
         }
 
         public azurerm_storage_account_sas(string @connectionString,

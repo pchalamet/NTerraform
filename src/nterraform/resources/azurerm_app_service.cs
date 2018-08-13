@@ -24,36 +24,6 @@ namespace nterraform.resources
             public string @TenantId { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "source_control")]
-        public sealed class source_control : nterraform.Core.structure
-        {
-            public source_control()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
-            public string @Branch { get; }
-
-            [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
-            public string @RepoUrl { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_credential")]
-        public sealed class site_credential : nterraform.Core.structure
-        {
-            public site_credential()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
-            public string @Password { get; }
-
-            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
-            public string @Username { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_config")]
         public sealed class site_config : nterraform.Core.structure
         {
@@ -164,6 +134,21 @@ namespace nterraform.resources
             public bool? @WebsocketsEnabled { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "source_control")]
+        public sealed class source_control : nterraform.Core.structure
+        {
+            public source_control()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "branch", @out: true, min: 0, max: 1)]
+            public string @Branch { get; }
+
+            [nterraform.Core.TerraformProperty(name: "repo_url", @out: true, min: 0, max: 1)]
+            public string @RepoUrl { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "connection_string")]
         public sealed class connection_string : nterraform.Core.structure
         {
@@ -185,6 +170,21 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "value", @out: false, min: 1, max: 1)]
             public string @Value { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "site_credential")]
+        public sealed class site_credential : nterraform.Core.structure
+        {
+            public site_credential()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: true, min: 0, max: 1)]
+            public string @Password { get; }
+
+            [nterraform.Core.TerraformProperty(name: "username", @out: true, min: 0, max: 1)]
+            public string @Username { get; }
         }
 
         public azurerm_app_service(string @appServicePlanId,

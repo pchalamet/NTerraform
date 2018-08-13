@@ -5,201 +5,6 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_virtual_machine_scale_set")]
     public sealed class azurerm_virtual_machine_scale_set : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "os_profile_windows_config")]
-        public sealed class os_profile_windows_config : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "winrm")]
-            public sealed class winrm : nterraform.Core.structure
-            {
-                public winrm(string @protocol,
-                             string @certificateUrl = null)
-                {
-                    @Protocol = @protocol;
-                    @CertificateUrl = @certificateUrl;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "protocol", @out: false, min: 1, max: 1)]
-                public string @Protocol { get; }
-
-                [nterraform.Core.TerraformProperty(name: "certificate_url", @out: false, min: 0, max: 1)]
-                public string @CertificateUrl { get; }
-            }
-
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "additional_unattend_config")]
-            public sealed class additional_unattend_config : nterraform.Core.structure
-            {
-                public additional_unattend_config(string @component,
-                                                  string @content,
-                                                  string @pass,
-                                                  string @settingName)
-                {
-                    @Component = @component;
-                    @Content = @content;
-                    @Pass = @pass;
-                    @SettingName = @settingName;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "component", @out: false, min: 1, max: 1)]
-                public string @Component { get; }
-
-                [nterraform.Core.TerraformProperty(name: "content", @out: false, min: 1, max: 1)]
-                public string @Content { get; }
-
-                [nterraform.Core.TerraformProperty(name: "pass", @out: false, min: 1, max: 1)]
-                public string @Pass { get; }
-
-                [nterraform.Core.TerraformProperty(name: "setting_name", @out: false, min: 1, max: 1)]
-                public string @SettingName { get; }
-            }
-
-            public os_profile_windows_config(additional_unattend_config[] @additionalUnattendConfig = null,
-                                             bool? @enableAutomaticUpgrades = null,
-                                             bool? @provisionVmAgent = null,
-                                             winrm[] @winrm = null)
-            {
-                @AdditionalUnattendConfig = @additionalUnattendConfig;
-                @EnableAutomaticUpgrades = @enableAutomaticUpgrades;
-                @ProvisionVmAgent = @provisionVmAgent;
-                @Winrm = @winrm;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "additional_unattend_config", @out: false, min: 0, max: 0)]
-            public additional_unattend_config[] @AdditionalUnattendConfig { get; }
-
-            [nterraform.Core.TerraformProperty(name: "enable_automatic_upgrades", @out: false, min: 0, max: 1)]
-            public bool? @EnableAutomaticUpgrades { get; }
-
-            [nterraform.Core.TerraformProperty(name: "provision_vm_agent", @out: false, min: 0, max: 1)]
-            public bool? @ProvisionVmAgent { get; }
-
-            [nterraform.Core.TerraformProperty(name: "winrm", @out: false, min: 0, max: 0)]
-            public winrm[] @Winrm { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
-        public sealed class sku : nterraform.Core.structure
-        {
-            public sku(int @capacity,
-                       string @name)
-            {
-                @Capacity = @capacity;
-                @Name = @name;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
-            public int @Capacity { get; }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "tier", @out: true, min: 0, max: 1)]
-            public string @Tier { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "extension")]
-        public sealed class extension : nterraform.Core.structure
-        {
-            public extension(string @name,
-                             string @publisher,
-                             string @type,
-                             string @typeHandlerVersion,
-                             bool? @autoUpgradeMinorVersion = null,
-                             string @protectedSettings = null,
-                             string @settings = null)
-            {
-                @Name = @name;
-                @Publisher = @publisher;
-                @Type = @type;
-                @TypeHandlerVersion = @typeHandlerVersion;
-                @AutoUpgradeMinorVersion = @autoUpgradeMinorVersion;
-                @ProtectedSettings = @protectedSettings;
-                @Settings = @settings;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "publisher", @out: false, min: 1, max: 1)]
-            public string @Publisher { get; }
-
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "type_handler_version", @out: false, min: 1, max: 1)]
-            public string @TypeHandlerVersion { get; }
-
-            [nterraform.Core.TerraformProperty(name: "auto_upgrade_minor_version", @out: false, min: 0, max: 1)]
-            public bool? @AutoUpgradeMinorVersion { get; }
-
-            [nterraform.Core.TerraformProperty(name: "protected_settings", @out: false, min: 0, max: 1)]
-            public string @ProtectedSettings { get; }
-
-            [nterraform.Core.TerraformProperty(name: "settings", @out: false, min: 0, max: 1)]
-            public string @Settings { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "os_profile_secrets")]
-        public sealed class os_profile_secrets : nterraform.Core.structure
-        {
-            [nterraform.Core.TerraformStructure(category: "resource", typeName: "vault_certificates")]
-            public sealed class vault_certificates : nterraform.Core.structure
-            {
-                public vault_certificates(string @certificateUrl,
-                                          string @certificateStore = null)
-                {
-                    @CertificateUrl = @certificateUrl;
-                    @CertificateStore = @certificateStore;
-                    base._validate_();
-                }
-
-                [nterraform.Core.TerraformProperty(name: "certificate_url", @out: false, min: 1, max: 1)]
-                public string @CertificateUrl { get; }
-
-                [nterraform.Core.TerraformProperty(name: "certificate_store", @out: false, min: 0, max: 1)]
-                public string @CertificateStore { get; }
-            }
-
-            public os_profile_secrets(string @sourceVaultId,
-                                      vault_certificates[] @vaultCertificates = null)
-            {
-                @SourceVaultId = @sourceVaultId;
-                @VaultCertificates = @vaultCertificates;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
-            public string @SourceVaultId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "vault_certificates", @out: false, min: 0, max: 0)]
-            public vault_certificates[] @VaultCertificates { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
-        public sealed class identity : nterraform.Core.structure
-        {
-            public identity(string @type,
-                            string[] @identityIds = null)
-            {
-                @Type = @type;
-                @IdentityIds = @identityIds;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
-
-            [nterraform.Core.TerraformProperty(name: "identity_ids", @out: false, min: 0, max: 1)]
-            public string[] @IdentityIds { get; }
-
-            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_profile_image_reference")]
         public sealed class storage_profile_image_reference : nterraform.Core.structure
         {
@@ -233,111 +38,25 @@ namespace nterraform.resources
             public string @Version { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "plan")]
-        public sealed class plan : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "sku")]
+        public sealed class sku : nterraform.Core.structure
         {
-            public plan(string @name,
-                        string @product,
-                        string @publisher)
+            public sku(int @capacity,
+                       string @name)
             {
+                @Capacity = @capacity;
                 @Name = @name;
-                @Product = @product;
-                @Publisher = @publisher;
                 base._validate_();
             }
+
+            [nterraform.Core.TerraformProperty(name: "capacity", @out: false, min: 1, max: 1)]
+            public int @Capacity { get; }
 
             [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
             public string @Name { get; }
 
-            [nterraform.Core.TerraformProperty(name: "product", @out: false, min: 1, max: 1)]
-            public string @Product { get; }
-
-            [nterraform.Core.TerraformProperty(name: "publisher", @out: false, min: 1, max: 1)]
-            public string @Publisher { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_profile_data_disk")]
-        public sealed class storage_profile_data_disk : nterraform.Core.structure
-        {
-            public storage_profile_data_disk(string @createOption,
-                                             int @lun)
-            {
-                @CreateOption = @createOption;
-                @Lun = @lun;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "create_option", @out: false, min: 1, max: 1)]
-            public string @CreateOption { get; }
-
-            [nterraform.Core.TerraformProperty(name: "lun", @out: false, min: 1, max: 1)]
-            public int @Lun { get; }
-
-            [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
-            public string @Caching { get; }
-
-            [nterraform.Core.TerraformProperty(name: "disk_size_gb", @out: true, min: 0, max: 1)]
-            public int? @DiskSizeGb { get; }
-
-            [nterraform.Core.TerraformProperty(name: "managed_disk_type", @out: true, min: 0, max: 1)]
-            public string @ManagedDiskType { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_profile_os_disk")]
-        public sealed class storage_profile_os_disk : nterraform.Core.structure
-        {
-            public storage_profile_os_disk(string @createOption,
-                                           string @image = null,
-                                           string @name = null,
-                                           string @osType = null,
-                                           string[] @vhdContainers = null)
-            {
-                @CreateOption = @createOption;
-                @Image = @image;
-                @Name = @name;
-                @OsType = @osType;
-                @VhdContainers = @vhdContainers;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "create_option", @out: false, min: 1, max: 1)]
-            public string @CreateOption { get; }
-
-            [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
-            public string @Caching { get; }
-
-            [nterraform.Core.TerraformProperty(name: "image", @out: false, min: 0, max: 1)]
-            public string @Image { get; }
-
-            [nterraform.Core.TerraformProperty(name: "managed_disk_type", @out: true, min: 0, max: 1)]
-            public string @ManagedDiskType { get; }
-
-            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
-            public string @Name { get; }
-
-            [nterraform.Core.TerraformProperty(name: "os_type", @out: false, min: 0, max: 1)]
-            public string @OsType { get; }
-
-            [nterraform.Core.TerraformProperty(name: "vhd_containers", @out: false, min: 0, max: 1)]
-            public string[] @VhdContainers { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "boot_diagnostics")]
-        public sealed class boot_diagnostics : nterraform.Core.structure
-        {
-            public boot_diagnostics(string @storageUri,
-                                    bool? @enabled = null)
-            {
-                @StorageUri = @storageUri;
-                @Enabled = @enabled;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "storage_uri", @out: false, min: 1, max: 1)]
-            public string @StorageUri { get; }
-
-            [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
-            public bool? @Enabled { get; }
+            [nterraform.Core.TerraformProperty(name: "tier", @out: true, min: 0, max: 1)]
+            public string @Tier { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_profile")]
@@ -488,6 +207,116 @@ namespace nterraform.resources
             public string @CustomData { get; }
         }
 
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_profile_os_disk")]
+        public sealed class storage_profile_os_disk : nterraform.Core.structure
+        {
+            public storage_profile_os_disk(string @createOption,
+                                           string @image = null,
+                                           string @name = null,
+                                           string @osType = null,
+                                           string[] @vhdContainers = null)
+            {
+                @CreateOption = @createOption;
+                @Image = @image;
+                @Name = @name;
+                @OsType = @osType;
+                @VhdContainers = @vhdContainers;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "create_option", @out: false, min: 1, max: 1)]
+            public string @CreateOption { get; }
+
+            [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
+            public string @Caching { get; }
+
+            [nterraform.Core.TerraformProperty(name: "image", @out: false, min: 0, max: 1)]
+            public string @Image { get; }
+
+            [nterraform.Core.TerraformProperty(name: "managed_disk_type", @out: true, min: 0, max: 1)]
+            public string @ManagedDiskType { get; }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 0, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "os_type", @out: false, min: 0, max: 1)]
+            public string @OsType { get; }
+
+            [nterraform.Core.TerraformProperty(name: "vhd_containers", @out: false, min: 0, max: 1)]
+            public string[] @VhdContainers { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
+        public sealed class identity : nterraform.Core.structure
+        {
+            public identity(string @type,
+                            string[] @identityIds = null)
+            {
+                @Type = @type;
+                @IdentityIds = @identityIds;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "identity_ids", @out: false, min: 0, max: 1)]
+            public string[] @IdentityIds { get; }
+
+            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
+            public string @PrincipalId { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "plan")]
+        public sealed class plan : nterraform.Core.structure
+        {
+            public plan(string @name,
+                        string @product,
+                        string @publisher)
+            {
+                @Name = @name;
+                @Product = @product;
+                @Publisher = @publisher;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "product", @out: false, min: 1, max: 1)]
+            public string @Product { get; }
+
+            [nterraform.Core.TerraformProperty(name: "publisher", @out: false, min: 1, max: 1)]
+            public string @Publisher { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_profile_data_disk")]
+        public sealed class storage_profile_data_disk : nterraform.Core.structure
+        {
+            public storage_profile_data_disk(string @createOption,
+                                             int @lun)
+            {
+                @CreateOption = @createOption;
+                @Lun = @lun;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "create_option", @out: false, min: 1, max: 1)]
+            public string @CreateOption { get; }
+
+            [nterraform.Core.TerraformProperty(name: "lun", @out: false, min: 1, max: 1)]
+            public int @Lun { get; }
+
+            [nterraform.Core.TerraformProperty(name: "caching", @out: true, min: 0, max: 1)]
+            public string @Caching { get; }
+
+            [nterraform.Core.TerraformProperty(name: "disk_size_gb", @out: true, min: 0, max: 1)]
+            public int? @DiskSizeGb { get; }
+
+            [nterraform.Core.TerraformProperty(name: "managed_disk_type", @out: true, min: 0, max: 1)]
+            public string @ManagedDiskType { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "os_profile_linux_config")]
         public sealed class os_profile_linux_config : nterraform.Core.structure
         {
@@ -522,6 +351,177 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "ssh_keys", @out: false, min: 0, max: 0)]
             public ssh_keys[] @SshKeys { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "os_profile_secrets")]
+        public sealed class os_profile_secrets : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "vault_certificates")]
+            public sealed class vault_certificates : nterraform.Core.structure
+            {
+                public vault_certificates(string @certificateUrl,
+                                          string @certificateStore = null)
+                {
+                    @CertificateUrl = @certificateUrl;
+                    @CertificateStore = @certificateStore;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "certificate_url", @out: false, min: 1, max: 1)]
+                public string @CertificateUrl { get; }
+
+                [nterraform.Core.TerraformProperty(name: "certificate_store", @out: false, min: 0, max: 1)]
+                public string @CertificateStore { get; }
+            }
+
+            public os_profile_secrets(string @sourceVaultId,
+                                      vault_certificates[] @vaultCertificates = null)
+            {
+                @SourceVaultId = @sourceVaultId;
+                @VaultCertificates = @vaultCertificates;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "source_vault_id", @out: false, min: 1, max: 1)]
+            public string @SourceVaultId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "vault_certificates", @out: false, min: 0, max: 0)]
+            public vault_certificates[] @VaultCertificates { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "os_profile_windows_config")]
+        public sealed class os_profile_windows_config : nterraform.Core.structure
+        {
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "winrm")]
+            public sealed class winrm : nterraform.Core.structure
+            {
+                public winrm(string @protocol,
+                             string @certificateUrl = null)
+                {
+                    @Protocol = @protocol;
+                    @CertificateUrl = @certificateUrl;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "protocol", @out: false, min: 1, max: 1)]
+                public string @Protocol { get; }
+
+                [nterraform.Core.TerraformProperty(name: "certificate_url", @out: false, min: 0, max: 1)]
+                public string @CertificateUrl { get; }
+            }
+
+            [nterraform.Core.TerraformStructure(category: "resource", typeName: "additional_unattend_config")]
+            public sealed class additional_unattend_config : nterraform.Core.structure
+            {
+                public additional_unattend_config(string @component,
+                                                  string @content,
+                                                  string @pass,
+                                                  string @settingName)
+                {
+                    @Component = @component;
+                    @Content = @content;
+                    @Pass = @pass;
+                    @SettingName = @settingName;
+                    base._validate_();
+                }
+
+                [nterraform.Core.TerraformProperty(name: "component", @out: false, min: 1, max: 1)]
+                public string @Component { get; }
+
+                [nterraform.Core.TerraformProperty(name: "content", @out: false, min: 1, max: 1)]
+                public string @Content { get; }
+
+                [nterraform.Core.TerraformProperty(name: "pass", @out: false, min: 1, max: 1)]
+                public string @Pass { get; }
+
+                [nterraform.Core.TerraformProperty(name: "setting_name", @out: false, min: 1, max: 1)]
+                public string @SettingName { get; }
+            }
+
+            public os_profile_windows_config(additional_unattend_config[] @additionalUnattendConfig = null,
+                                             bool? @enableAutomaticUpgrades = null,
+                                             bool? @provisionVmAgent = null,
+                                             winrm[] @winrm = null)
+            {
+                @AdditionalUnattendConfig = @additionalUnattendConfig;
+                @EnableAutomaticUpgrades = @enableAutomaticUpgrades;
+                @ProvisionVmAgent = @provisionVmAgent;
+                @Winrm = @winrm;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "additional_unattend_config", @out: false, min: 0, max: 0)]
+            public additional_unattend_config[] @AdditionalUnattendConfig { get; }
+
+            [nterraform.Core.TerraformProperty(name: "enable_automatic_upgrades", @out: false, min: 0, max: 1)]
+            public bool? @EnableAutomaticUpgrades { get; }
+
+            [nterraform.Core.TerraformProperty(name: "provision_vm_agent", @out: false, min: 0, max: 1)]
+            public bool? @ProvisionVmAgent { get; }
+
+            [nterraform.Core.TerraformProperty(name: "winrm", @out: false, min: 0, max: 0)]
+            public winrm[] @Winrm { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "extension")]
+        public sealed class extension : nterraform.Core.structure
+        {
+            public extension(string @name,
+                             string @publisher,
+                             string @type,
+                             string @typeHandlerVersion,
+                             bool? @autoUpgradeMinorVersion = null,
+                             string @protectedSettings = null,
+                             string @settings = null)
+            {
+                @Name = @name;
+                @Publisher = @publisher;
+                @Type = @type;
+                @TypeHandlerVersion = @typeHandlerVersion;
+                @AutoUpgradeMinorVersion = @autoUpgradeMinorVersion;
+                @ProtectedSettings = @protectedSettings;
+                @Settings = @settings;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "name", @out: false, min: 1, max: 1)]
+            public string @Name { get; }
+
+            [nterraform.Core.TerraformProperty(name: "publisher", @out: false, min: 1, max: 1)]
+            public string @Publisher { get; }
+
+            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
+
+            [nterraform.Core.TerraformProperty(name: "type_handler_version", @out: false, min: 1, max: 1)]
+            public string @TypeHandlerVersion { get; }
+
+            [nterraform.Core.TerraformProperty(name: "auto_upgrade_minor_version", @out: false, min: 0, max: 1)]
+            public bool? @AutoUpgradeMinorVersion { get; }
+
+            [nterraform.Core.TerraformProperty(name: "protected_settings", @out: false, min: 0, max: 1)]
+            public string @ProtectedSettings { get; }
+
+            [nterraform.Core.TerraformProperty(name: "settings", @out: false, min: 0, max: 1)]
+            public string @Settings { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "boot_diagnostics")]
+        public sealed class boot_diagnostics : nterraform.Core.structure
+        {
+            public boot_diagnostics(string @storageUri,
+                                    bool? @enabled = null)
+            {
+                @StorageUri = @storageUri;
+                @Enabled = @enabled;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "storage_uri", @out: false, min: 1, max: 1)]
+            public string @StorageUri { get; }
+
+            [nterraform.Core.TerraformProperty(name: "enabled", @out: false, min: 0, max: 1)]
+            public bool? @Enabled { get; }
         }
 
         public azurerm_virtual_machine_scale_set(string @location,

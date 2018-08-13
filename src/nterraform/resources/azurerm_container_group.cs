@@ -5,29 +5,6 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_container_group")]
     public sealed class azurerm_container_group : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "image_registry_credential")]
-        public sealed class image_registry_credential : nterraform.Core.structure
-        {
-            public image_registry_credential(string @password,
-                                             string @server,
-                                             string @username)
-            {
-                @Password = @password;
-                @Server = @server;
-                @Username = @username;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
-            public string @Password { get; }
-
-            [nterraform.Core.TerraformProperty(name: "server", @out: false, min: 1, max: 1)]
-            public string @Server { get; }
-
-            [nterraform.Core.TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
-            public string @Username { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "container")]
         public sealed class container : nterraform.Core.structure
         {
@@ -117,6 +94,29 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "volume", @out: false, min: 0, max: 0)]
             public volume[] @Volume { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "image_registry_credential")]
+        public sealed class image_registry_credential : nterraform.Core.structure
+        {
+            public image_registry_credential(string @password,
+                                             string @server,
+                                             string @username)
+            {
+                @Password = @password;
+                @Server = @server;
+                @Username = @username;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "password", @out: false, min: 1, max: 1)]
+            public string @Password { get; }
+
+            [nterraform.Core.TerraformProperty(name: "server", @out: false, min: 1, max: 1)]
+            public string @Server { get; }
+
+            [nterraform.Core.TerraformProperty(name: "username", @out: false, min: 1, max: 1)]
+            public string @Username { get; }
         }
 
         public azurerm_container_group(container[] @container,

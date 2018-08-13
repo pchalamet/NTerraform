@@ -5,6 +5,24 @@ namespace nterraform.datas
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_cosmosdb_account")]
     public sealed class azurerm_cosmosdb_account : nterraform.Core.data
     {
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "consistency_policy")]
+        public sealed class consistency_policy : nterraform.Core.structure
+        {
+            public consistency_policy()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "consistency_level", @out: true, min: 0, max: 1)]
+            public string @ConsistencyLevel { get; }
+
+            [nterraform.Core.TerraformProperty(name: "max_interval_in_seconds", @out: true, min: 0, max: 1)]
+            public int? @MaxIntervalInSeconds { get; }
+
+            [nterraform.Core.TerraformProperty(name: "max_staleness_prefix", @out: true, min: 0, max: 1)]
+            public int? @MaxStalenessPrefix { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "data", typeName: "geo_location")]
         public sealed class geo_location : nterraform.Core.structure
         {
@@ -33,24 +51,6 @@ namespace nterraform.datas
 
             [nterraform.Core.TerraformProperty(name: "name", @out: true, min: 0, max: 1)]
             public string @Name { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "consistency_policy")]
-        public sealed class consistency_policy : nterraform.Core.structure
-        {
-            public consistency_policy()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "consistency_level", @out: true, min: 0, max: 1)]
-            public string @ConsistencyLevel { get; }
-
-            [nterraform.Core.TerraformProperty(name: "max_interval_in_seconds", @out: true, min: 0, max: 1)]
-            public int? @MaxIntervalInSeconds { get; }
-
-            [nterraform.Core.TerraformProperty(name: "max_staleness_prefix", @out: true, min: 0, max: 1)]
-            public int? @MaxStalenessPrefix { get; }
         }
 
         public azurerm_cosmosdb_account(string @name,

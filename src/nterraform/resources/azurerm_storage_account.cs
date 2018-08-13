@@ -5,23 +5,25 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_storage_account")]
     public sealed class azurerm_storage_account : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
-        public sealed class identity : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_rules")]
+        public sealed class network_rules : nterraform.Core.structure
         {
-            public identity(string @type)
+            public network_rules(string[] @ipRules = null,
+                                 string[] @virtualNetworkSubnetIds = null)
             {
-                @Type = @type;
+                @IpRules = @ipRules;
+                @VirtualNetworkSubnetIds = @virtualNetworkSubnetIds;
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
-            public string @Type { get; }
+            [nterraform.Core.TerraformProperty(name: "bypass", @out: true, min: 0, max: 1)]
+            public string[] @Bypass { get; }
 
-            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
-            public string @PrincipalId { get; }
+            [nterraform.Core.TerraformProperty(name: "ip_rules", @out: false, min: 0, max: 1)]
+            public string[] @IpRules { get; }
 
-            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
-            public string @TenantId { get; }
+            [nterraform.Core.TerraformProperty(name: "virtual_network_subnet_ids", @out: false, min: 0, max: 1)]
+            public string[] @VirtualNetworkSubnetIds { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "custom_domain")]
@@ -42,25 +44,23 @@ namespace nterraform.resources
             public bool? @UseSubdomain { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "network_rules")]
-        public sealed class network_rules : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "identity")]
+        public sealed class identity : nterraform.Core.structure
         {
-            public network_rules(string[] @ipRules = null,
-                                 string[] @virtualNetworkSubnetIds = null)
+            public identity(string @type)
             {
-                @IpRules = @ipRules;
-                @VirtualNetworkSubnetIds = @virtualNetworkSubnetIds;
+                @Type = @type;
                 base._validate_();
             }
 
-            [nterraform.Core.TerraformProperty(name: "bypass", @out: true, min: 0, max: 1)]
-            public string[] @Bypass { get; }
+            [nterraform.Core.TerraformProperty(name: "type", @out: false, min: 1, max: 1)]
+            public string @Type { get; }
 
-            [nterraform.Core.TerraformProperty(name: "ip_rules", @out: false, min: 0, max: 1)]
-            public string[] @IpRules { get; }
+            [nterraform.Core.TerraformProperty(name: "principal_id", @out: true, min: 0, max: 1)]
+            public string @PrincipalId { get; }
 
-            [nterraform.Core.TerraformProperty(name: "virtual_network_subnet_ids", @out: false, min: 0, max: 1)]
-            public string[] @VirtualNetworkSubnetIds { get; }
+            [nterraform.Core.TerraformProperty(name: "tenant_id", @out: true, min: 0, max: 1)]
+            public string @TenantId { get; }
         }
 
         public azurerm_storage_account(string @accountReplicationType,

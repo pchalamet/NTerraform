@@ -5,24 +5,6 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_service_fabric_cluster")]
     public sealed class azurerm_service_fabric_cluster : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "client_certificate_thumbprint")]
-        public sealed class client_certificate_thumbprint : nterraform.Core.structure
-        {
-            public client_certificate_thumbprint(bool @isAdmin,
-                                                 string @thumbprint)
-            {
-                @IsAdmin = @isAdmin;
-                @Thumbprint = @thumbprint;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "is_admin", @out: false, min: 1, max: 1)]
-            public bool @IsAdmin { get; }
-
-            [nterraform.Core.TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
-            public string @Thumbprint { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "node_type")]
         public sealed class node_type : nterraform.Core.structure
         {
@@ -107,27 +89,22 @@ namespace nterraform.resources
             public ephemeral_ports[] @EphemeralPorts { get; }
         }
 
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate")]
-        public sealed class certificate : nterraform.Core.structure
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "client_certificate_thumbprint")]
+        public sealed class client_certificate_thumbprint : nterraform.Core.structure
         {
-            public certificate(string @thumbprint,
-                               string @x509StoreName,
-                               string @thumbprintSecondary = null)
+            public client_certificate_thumbprint(bool @isAdmin,
+                                                 string @thumbprint)
             {
+                @IsAdmin = @isAdmin;
                 @Thumbprint = @thumbprint;
-                @X509StoreName = @x509StoreName;
-                @ThumbprintSecondary = @thumbprintSecondary;
                 base._validate_();
             }
 
+            [nterraform.Core.TerraformProperty(name: "is_admin", @out: false, min: 1, max: 1)]
+            public bool @IsAdmin { get; }
+
             [nterraform.Core.TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
             public string @Thumbprint { get; }
-
-            [nterraform.Core.TerraformProperty(name: "x509_store_name", @out: false, min: 1, max: 1)]
-            public string @X509StoreName { get; }
-
-            [nterraform.Core.TerraformProperty(name: "thumbprint_secondary", @out: false, min: 0, max: 1)]
-            public string @ThumbprintSecondary { get; }
         }
 
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "diagnostics_config")]
@@ -179,6 +156,29 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "parameters", @out: false, min: 0, max: 1)]
             public Dictionary<string,string> @Parameters { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "certificate")]
+        public sealed class certificate : nterraform.Core.structure
+        {
+            public certificate(string @thumbprint,
+                               string @x509StoreName,
+                               string @thumbprintSecondary = null)
+            {
+                @Thumbprint = @thumbprint;
+                @X509StoreName = @x509StoreName;
+                @ThumbprintSecondary = @thumbprintSecondary;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "thumbprint", @out: false, min: 1, max: 1)]
+            public string @Thumbprint { get; }
+
+            [nterraform.Core.TerraformProperty(name: "x509_store_name", @out: false, min: 1, max: 1)]
+            public string @X509StoreName { get; }
+
+            [nterraform.Core.TerraformProperty(name: "thumbprint_secondary", @out: false, min: 0, max: 1)]
+            public string @ThumbprintSecondary { get; }
         }
 
         public azurerm_service_fabric_cluster(string @location,

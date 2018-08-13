@@ -5,27 +5,6 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_packet_capture")]
     public sealed class azurerm_packet_capture : nterraform.Core.resource
     {
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_location")]
-        public sealed class storage_location : nterraform.Core.structure
-        {
-            public storage_location(string @filePath = null,
-                                    string @storageAccountId = null)
-            {
-                @FilePath = @filePath;
-                @StorageAccountId = @storageAccountId;
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "file_path", @out: false, min: 0, max: 1)]
-            public string @FilePath { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_account_id", @out: false, min: 0, max: 1)]
-            public string @StorageAccountId { get; }
-
-            [nterraform.Core.TerraformProperty(name: "storage_path", @out: true, min: 0, max: 1)]
-            public string @StoragePath { get; }
-        }
-
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "filter")]
         public sealed class filter : nterraform.Core.structure
         {
@@ -57,6 +36,27 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "remote_port", @out: false, min: 0, max: 1)]
             public string @RemotePort { get; }
+        }
+
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "storage_location")]
+        public sealed class storage_location : nterraform.Core.structure
+        {
+            public storage_location(string @filePath = null,
+                                    string @storageAccountId = null)
+            {
+                @FilePath = @filePath;
+                @StorageAccountId = @storageAccountId;
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "file_path", @out: false, min: 0, max: 1)]
+            public string @FilePath { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_account_id", @out: false, min: 0, max: 1)]
+            public string @StorageAccountId { get; }
+
+            [nterraform.Core.TerraformProperty(name: "storage_path", @out: true, min: 0, max: 1)]
+            public string @StoragePath { get; }
         }
 
         public azurerm_packet_capture(string @name,

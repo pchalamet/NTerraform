@@ -5,6 +5,21 @@ namespace nterraform.resources
     [nterraform.Core.TerraformStructure(category: "resource", typeName: "azurerm_metric_alertrule")]
     public sealed class azurerm_metric_alertrule : nterraform.Core.resource
     {
+        [nterraform.Core.TerraformStructure(category: "resource", typeName: "email_action")]
+        public sealed class email_action : nterraform.Core.structure
+        {
+            public email_action()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "custom_emails", @out: true, min: 0, max: 1)]
+            public string[] @CustomEmails { get; }
+
+            [nterraform.Core.TerraformProperty(name: "send_to_service_owners", @out: true, min: 0, max: 1)]
+            public bool? @SendToServiceOwners { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "resource", typeName: "webhook_action")]
         public sealed class webhook_action : nterraform.Core.structure
         {
@@ -19,21 +34,6 @@ namespace nterraform.resources
 
             [nterraform.Core.TerraformProperty(name: "properties", @out: true, min: 0, max: 1)]
             public Dictionary<string,string> @Properties { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "resource", typeName: "email_action")]
-        public sealed class email_action : nterraform.Core.structure
-        {
-            public email_action()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "custom_emails", @out: true, min: 0, max: 1)]
-            public string[] @CustomEmails { get; }
-
-            [nterraform.Core.TerraformProperty(name: "send_to_service_owners", @out: true, min: 0, max: 1)]
-            public bool? @SendToServiceOwners { get; }
         }
 
         public azurerm_metric_alertrule(string @aggregation,

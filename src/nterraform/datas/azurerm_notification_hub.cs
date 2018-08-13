@@ -5,6 +5,18 @@ namespace nterraform.datas
     [nterraform.Core.TerraformStructure(category: "data", typeName: "azurerm_notification_hub")]
     public sealed class azurerm_notification_hub : nterraform.Core.data
     {
+        [nterraform.Core.TerraformStructure(category: "data", typeName: "gcm_credential")]
+        public sealed class gcm_credential : nterraform.Core.structure
+        {
+            public gcm_credential()
+            {
+                base._validate_();
+            }
+
+            [nterraform.Core.TerraformProperty(name: "api_key", @out: true, min: 0, max: 1)]
+            public string @ApiKey { get; }
+        }
+
         [nterraform.Core.TerraformStructure(category: "data", typeName: "apns_credential")]
         public sealed class apns_credential : nterraform.Core.structure
         {
@@ -27,18 +39,6 @@ namespace nterraform.datas
 
             [nterraform.Core.TerraformProperty(name: "token", @out: true, min: 0, max: 1)]
             public string @Token { get; }
-        }
-
-        [nterraform.Core.TerraformStructure(category: "data", typeName: "gcm_credential")]
-        public sealed class gcm_credential : nterraform.Core.structure
-        {
-            public gcm_credential()
-            {
-                base._validate_();
-            }
-
-            [nterraform.Core.TerraformProperty(name: "api_key", @out: true, min: 0, max: 1)]
-            public string @ApiKey { get; }
         }
 
         public azurerm_notification_hub(string @name,
