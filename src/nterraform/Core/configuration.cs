@@ -27,7 +27,6 @@ namespace nterraform
         {
             foreach (var line in var.WriteObject(name))
                 Console.WriteLine(line);
-            Console.WriteLine();
         }
 
         private static void ProcessVariables(Dictionary<string, structure> context)

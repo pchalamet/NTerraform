@@ -54,13 +54,13 @@ namespace nterraform
                     return b ? "\"true\"" : "\"false\"";
 
                 case string[] arr:
-                    return "[ " + String.Join(", ", arr.Select(x => $"\"{x}\"")) + " ]";
+                    return "[ " + string.Join(", ", arr.Select(x => $"\"{x}\"")) + " ]";
 
                 case int[] arr:
-                    return "[ " + String.Join(", ", arr.Select(x => $"\"{x}\"")) + " ]";
+                    return "[ " + string.Join(", ", arr.Select(x => $"\"{x}\"")) + " ]";
 
                 case bool[] arr:
-                    return "[ " + String.Join(", ", arr.Select(x => x ? "\"true\"" : "\"false\"")) + " ]";
+                    return "[ " + string.Join(", ", arr.Select(x => x ? "\"true\"" : "\"false\"")) + " ]";
 
                 default:
                     return o;
@@ -93,6 +93,8 @@ namespace nterraform
                         result = arr.Select(x => WriteObject(indent + 2, $"  {sindent}{propAttribute.Name} =", Format(x)))
                                     .Aggregate(result, (acc, lines) => acc.Concat(lines));
                         break;
+
+                    // TODO: support Dictionary
 
                     default:
                         throw new ArgumentException("Unknown type");
