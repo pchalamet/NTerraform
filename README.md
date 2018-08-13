@@ -74,7 +74,46 @@ let network = azurerm_virtual_network(name = "production-network",
 configuration.build()
 ```
 
-This script can then be executed through FSI (it will write to stdout the terraform definition).
+This script can then be executed through FSI, for example:
+```
+fsi src\sandboxFS\Sample.fsx
+```
+
+it will write on console (but will in the future be pipelined to terraform):
+```
+provider "azurerm" "provider" {
+  environment = "dev"
+}
+
+resource "azurerm_resource_group" "resgroup" {
+  location = "West US"
+  name = "production"
+}
+
+resource "azurerm_virtual_network" "network" {
+  address_space = [ "10.0.0.0/16" ]
+  location = "West US"
+  name = "production-network"
+  resource_group_name = "production"
+  subnet = {
+    address_prefix = "10.0.1.0/24"
+    name = "subnet1"
+  }
+  subnet = {
+    address_prefix = "10.0.2.0/24"
+    name = "subnet2"
+  }
+  subnet = {
+    address_prefix = "10.0.3.0/24"
+    name = "subnet3"
+  }
+}
+```
+
+Following plugins are included:
+* azurerm
+* aws
+* consul
 
 # Dependencies
 * TFSchema: use this version https://github.com/pchalamet/tfschema, required for deterministic tf schema support
@@ -89,7 +128,7 @@ Note that if a terraform plugin does not work well (for eg aws), rebuild it from
 # Future
 This is a POC as stated before. Following items are in sight:
 
-## Generate Nuget
+## Generate Nugets
 NTerraform is just a bunch of code and not modular enough.
 Idea is to generate Nugets for each providers and be able to reference each Nuget in script.
 For example, C# script support `#r "nuget"` syntax. FSI does not for the moment but is planned.
