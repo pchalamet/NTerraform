@@ -17,8 +17,8 @@ function List-TFSchema
 }
 
 terraform init
-cat providers.txt | % { $plugin = $_
-                        Write-Host "Generating provider $plugin"
-                        Invoke-NTerraformGen $plugin provider $plugin 
-                        List-TFSchema data $plugin | % { Write-Host "Generating data $_"; Invoke-NTerraformGen $plugin data $_ }
-                        List-TFSchema resource $plugin | % { Write-Host "Generating resource $_"; Invoke-NTerraformGen $plugin resource $_ } }
+cat plugins.txt | % { $plugin = $_
+                      Write-Host "Generating provider $plugin"
+                      Invoke-NTerraformGen $plugin provider $plugin 
+                      List-TFSchema data $plugin | % { Write-Host "Generating data $_"; Invoke-NTerraformGen $plugin data $_ }
+                      List-TFSchema resource $plugin | % { Write-Host "Generating resource $_"; Invoke-NTerraformGen $plugin resource $_ } }

@@ -83,7 +83,8 @@ This script can then be executed through FSI (it will write to stdout the terraf
 Both tools must be on PATH.
 
 # Generate new NTerraformLibrary
-Script `src/nterraform/build.ps1` can regenerate definitions. Update `src/nterraform/providers.txt` accordingly.
+Script `src/nterraform/build.ps1` can regenerate definitions. Update `src/nterraform/plugins.txt` accordingly.
+Note that if a terraform plugin does not work well (for eg aws), rebuild it from go sources and it should work.
 
 # Future
 This is a POC as stated before. Following items are in sight:
