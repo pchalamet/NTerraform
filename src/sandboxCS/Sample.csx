@@ -1,6 +1,6 @@
 #! "netcoreapp2.1"
 
-#r "../nterraform/bin/Debug/netcoreapp2.1/nterraform.dll"
+#r "../nterraform/bin/Debug/netcoreapp2.0/nterraform.dll"
 
 using nterraform;
 using nterraform.providers;
