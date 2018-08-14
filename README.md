@@ -9,6 +9,9 @@ Cons:
 * it's merely a new layer on top of terraform
 * terraform plugins often do not implement correctly schema interface
 
+# WARNING
+This is a prototype and is absolutely not functional as dependencies, interpolation, lifecyle... are not implemented. You have been warned.
+
 # Example
 Here is a terraform definition (from https://www.terraform.io/docs/providers/azurerm/index.html):
 
